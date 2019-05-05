@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ckgl.cg.dao.UserMapper">
+    <!--一对多：查看某一用户关联的role-->
+    <select id="findByUserName" resultMap="userMap">
+        select u.*,r.role
+            from user u
+        LEFT JOIN user_role sru
+            on u.id= sru.userid
+        LEFT JOIN role r
+            on sru.roleid=r.id
+        where username= #{username}
+    </select>
+    <resultMap id="userMap" type="com.ckgl.cg.bean.User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <!--一对多关联映射：collection
+            ofType 表示属性集合中元素的类型，List<Orders>属性即Orders类-->
+        <collection property="roles" ofType="com.ckgl.cg.bean.Role">
+            <id property="id" column="id"/>
+            <result property="role" column="role"/>
+        </collection>
+    </resultMap>
+</mapper>

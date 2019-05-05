@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>仓库管理系统</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="mjfs" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>A</b>LT</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg">仓库管理</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="/user/logout"  class="dropdown-toggle">
+              <span  class="btn btn-primary btn-block btn-flat">用户登出</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="../dist/img/sbhxg.png" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>mjfs</p>
+          <!-- Status -->
+          <a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
+        </div>
+      </div>
+      <!--&lt;!&ndash; search form &ndash;&gt;-->
+      <!--<form action="#" method="get" class="sidebar-form">-->
+        <!--<div class="input-group">-->
+          <!--<input type="text" name="q" class="form-control" placeholder="搜索...">-->
+          <!--<span class="input-group-btn">-->
+                <!--<button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>-->
+                <!--</button>-->
+              <!--</span>-->
+        <!--</div>-->
+      <!--</form>-->
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">名锦服饰</li>
+        <!-- Optionally, you can add icons to the links -->
+        <!--li class="active"><a href=""><i class="fa fa-link"></i> <span>搜索</span></a></li-->
+        <li class="active"><a href="/yewubu/a"><i class="yewu"></i> <span>业务部</span></a></li>
+        <li class="active"><a href="/caijianbu/a"><i class="caijian"></i> <span>裁剪部</span></a></li>
+        <li class="active"><a href="/houdaobu/a"><i class="houdao"></i> <span>后道部</span></a></li>
+        <li class="active"><a href="/rucang/a"><i class="rucang"></i> <span>入仓</span></a></li>
+        <li class="active"><a href="/chucang/a"><i class="chucang"></i> <span>出仓</span></a></li>
+        <!--<li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>基础数据</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="houdaobu.html">客户信息管理</a></li>
+            <li><a href="caijianbu.html">货物信息管理</a></li>
+          </ul>
+        </li>-->
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        仓库管理系统
+        <small>仓库管理系统（暂定）</small>
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>裁剪部</a></li>
+        <li class="active">裁剪</li>
+      </ol>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="panel panel-default">
+        <ol class="breadcrumb">
+          <li>裁剪部信息管理</li>
+        </ol>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-1 col-sm-2">
+              <div class="btn-group">
+                <button class="btn btn-default dropdown-toggle"
+                        data-toggle="dropdown">
+                  <span id="search_type">查询款号</span>
+                </button>
+              </div>
+            </div>
+            <div class="col-md-9 col-sm-9">
+              <div>
+                <div class="col-md-3 col-sm-4">
+                  <input id="search_input" type="text" class="form-control"
+                         placeholder="输入款号">
+                </div>
+                <div class="col-md-2 col-sm-2">
+                  <button id="search_button" class="btn btn-success">
+                    <span class="glyphicon glyphicon-search"></span> <span>查询</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top: 25px">
+            <div class="col-md-5">
+              <button class="btn btn-sm btn-default" id="add_goods">
+                <span class="glyphicon glyphicon-plus"></span> <span>添加裁剪信息</span>
+              </button>
+              <!--
+              <button class="btn btn-sm btn-default" id="import_customer">
+              <span class="glyphicon glyphicon-import"></span> <span>导入</span>
+              </button>
+              <button class="btn btn-sm btn-default" id="export_customer">
+              <span class="glyphicon glyphicon-export"></span> <span>导出</span>
+              </button>
+               -->
+            </div>
+            <div class="col-md-5"></div>
+          </div>
+
+          <div class="row" style="margin-top: 15px">
+            <div class="col-md-12">
+              <table id="goodsList" class="table table-bordered table-hover"></table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 添加货物信息模态框 -->
+      <div id="add_modal" class="modal fade" table-index="-1" role="dialog"
+           aria-labelledby="myModalLabel" aria-hidden="true"
+           data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" type="button" data-dismiss="modal"
+                      aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel">添加裁剪信息</h4>
+            </div>
+            <div class="modal-body">
+              <!-- 模态框的内容 -->
+              <div class="row">
+                <div class="col-md-1 col-sm-1"></div>
+                <div class="col-md-8 col-sm-8">
+                  <form class="form-horizontal" role="form" id="goods_form"
+                        style="margin-top: 25px">
+                    <div class="form-group">
+                      <label for="" class="control-label col-md-4 col-sm-4"> <span>款号：</span>
+                      </label>
+                      <div class="col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="kuanhao"
+                               name="kuanhao" placeholder="款号">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="" class="control-label col-md-4 col-sm-4"> <span>裁剪日期：</span>
+                      </label>
+                      <div class="col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="cjriqi"
+                               name="cjriqi" placeholder="裁剪日期">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="" class="control-label col-md-4 col-sm-4"> <span>颜色：</span>
+                      </label>
+                      <div class="col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="yanse"
+                               name="yanse" placeholder="颜色">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="" class="control-label col-md-4 col-sm-4"> <span>尺码(XS/34)：</span>
+                      </label>
+                      <div class="col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="xs"
+                               name="xs" placeholder="尺码(XS)">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="" class="control-label col-md-4 col-sm-4"> <span>尺码(S/36)：</span>
+                      </label>
+                      <div class="col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="s"
+                               name="s" placeholder="尺码(S)">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="" class="control-label col-md-4 col-sm-4"> <span>尺码(M/38)：</span>
+                      </label>
+                      <div class="col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="m"
+                               name="m" placeholder="尺码(M)">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="" class="control-label col-md-4 col-sm-4"> <span>尺码(L/40)：</span>
+                      </label>
+                      <div class="col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="l"
+                               name="l" placeholder="尺码(L)">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="" class="control-label col-md-4 col-sm-4"> <span>尺码(XL/42)：</span>
+                      </label>
+                      <div class="col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="xl"
+                               name="xl" placeholder="尺码(XL)">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="" class="control-label col-md-4 col-sm-4"> <span>尺码(XXL/44)：</span>
+                      </label>
+                      <div class="col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="xxl"
+                               name="xxl" placeholder="尺码(XXL)">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="" class="control-label col-md-4 col-sm-4"> <span>尺码(XXXL/46)：</span>
+                      </label>
+                      <div class="col-md-8 col-sm-8">
+                        <input type="text" class="form-control" id="xxxl"
+                               name="xxxl" placeholder="尺码(XXXL)">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-md-1 col-sm-1"></div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-default" type="button" data-dismiss="modal">
+                <span>取消</span>
+              </button>
+              <button class="btn btn-success" type="button" id="add_modal_submit" >
+                <span>提交</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- 导入货物信息模态框 -->
+      <!--
+      <div class="modal fade" id="import_modal" table-index="-1" role="dialog"
+           aria-labelledby="myModalLabel" aria-hidden="true"
+           data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" type="button" data-dismiss="modal"
+                      aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel">导入货物信息</h4>
+            </div>
+            <div class="modal-body">
+              <div id="step1">
+                <div class="row" style="margin-top: 15px">
+                  <div class="col-md-1 col-sm-1"></div>
+                  <div class="col-md-10 col-sm-10">
+                    <div>
+                      <h4>点击下面的下载按钮，下载货物信息电子表格</h4>
+                    </div>
+                    <div style="margin-top: 30px; margin-buttom: 15px">
+                      <a class="btn btn-info"
+                         href="commons/fileSource/download/goodsInfo.xlsx"
+                         target="_blank"> <span class="glyphicon glyphicon-download"></span>
+                        <span>下载</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="step2" class="hide">
+                <div class="row" style="margin-top: 15px">
+                  <div class="col-md-1 col-sm-1"></div>
+                  <div class="col-md-10 col-sm-10">
+                    <div>
+                      <h4>请按照货物信息电子表格中指定的格式填写需要添加的一个或多个货物信息</h4>
+                    </div>
+                    <div class="alert alert-info"
+                         style="margin-top: 10px; margin-buttom: 30px">
+                      <p>注意：表格中各个列均不能为空，若存在未填写的项，则该条信息将不能成功导入</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="step3" class="hide">
+                <div class="row" style="margin-top: 15px">
+                  <div class="col-md-1 col-sm-1"></div>
+                  <div class="col-md-8 col-sm-10">
+                    <div>
+                      <div>
+                        <h4>请点击下面上传文件按钮，上传填写好的货物信息电子表格</h4>
+                      </div>
+                      <div style="margin-top: 30px; margin-buttom: 15px">
+									<span class="btn btn-info btn-file"> <span> <span
+                                            class="glyphicon glyphicon-upload"></span> <span>上传文件</span>
+									</span>
+									<form id="import_file_upload"><input type="file" id="file" name="file"></form>
+									</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="hide" id="uploading">
+                <div class="row" style="margin-top: 15px" id="import_progress_bar">
+                  <div class="col-md-1 col-sm-1"></div>
+                  <div class="col-md-10 col-sm-10"
+                       style="margin-top: 30px; margin-bottom: 30px">
+                    <div class="progress progress-striped active">
+                      <div class="progress-bar progress-bar-success"
+                           role="progreessbar" aria-valuenow="60" aria-valuemin="0"
+                           aria-valuemax="100" style="width: 100%;">
+                        <span class="sr-only">请稍后...</span>
+                      </div>
+                    </div>
+                    <!--
+                    <div style="text-align: center">
+                        <h4 id="import_info"></h4>
+                    </div>
+                     这里有注释
+                  </div>
+                  <div class="col-md-1 col-sm-1"></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 col-sm-4"></div>
+                  <div class="col-md-4 col-sm-4">
+                    <div id="import_result" class="hide">
+                      <div id="import_success" class="hide" style="text-align: center;">
+                        <img src="media/icons/success-icon.png" alt=""
+                             style="width: 100px; height: 100px;">
+                      </div>
+                      <div id="import_error" class="hide" style="text-align: center;">
+                        <img src="media/icons/error-icon.png" alt=""
+                             style="width: 100px; height: 100px;">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-4"></div>
+                </div>
+                <div class="row" style="margin-top: 10px">
+                  <div class="col-md-3 col-sm-3"></div>
+                  <div class="col-md-6 col-sm-6" style="text-align: center;">
+                    <h4 id="import_info"></h4>
+                  </div>
+                  <div class="col-md-3 col-sm-3"></div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn ben-default" type="button" id="previous">
+                <span>上一步</span>
+              </button>
+              <button class="btn btn-success" type="button" id="next">
+                <span>下一步</span>
+              </button>
+              <button class="btn btn-success hide" type="button" id="submit">
+                <span>&nbsp;&nbsp;&nbsp;提交&nbsp;&nbsp;&nbsp;</span>
+              </button>
+              <button class="btn btn-success hide disabled" type="button"
+                      id="confirm" data-dismiss="modal">
+                <span>&nbsp;&nbsp;&nbsp;确认&nbsp;&nbsp;&nbsp;</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      -->
+      <!-- 导出货物信息模态框 -->
+      <!--
+      <div class="modal fade" id="export_modal" table-index="-1" role="dialog"
+           aria-labelledby="myModalLabel" aria-hidden="true"
+           data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" type="button" data-dismiss="modal"
+                      aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel">导出货物信息</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-3 col-sm-3" style="text-align: center;">
+                  <img src="media/icons/warning-icon.png" alt=""
+                       style="width: 70px; height: 70px; margin-top: 20px;">
+                </div>
+                <div class="col-md-8 col-sm-8">
+                  <h3>是否确认导出货物信息</h3>
+                  <p>(注意：请确定要导出的货物信息，导出的内容为当前列表的搜索结果)</p>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-default" type="button" data-dismiss="modal">
+                <span>取消</span>
+              </button>
+              <button class="btn btn-success" type="button" id="export_goods_download">
+                <span>确认下载</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      -->
+<!--      &lt;!&ndash; 删除提示模态框 &ndash;&gt;-->
+<!--      <div class="modal fade" id="deleteWarning_modal" table-index="-1"-->
+<!--           role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">-->
+<!--        <div class="modal-dialog">-->
+<!--          <div class="modal-content">-->
+<!--            <div class="modal-header">-->
+<!--              <button class="close" type="button" data-dismiss="modal"-->
+<!--                      aria-hidden="true">&times;</button>-->
+<!--              <h4 class="modal-title" id="myModalLabel">警告</h4>-->
+<!--            </div>-->
+<!--            <div class="modal-body">-->
+<!--              <div class="row">-->
+<!--                <div class="col-md-3 col-sm-3" style="text-align: center;">-->
+<!--                  <img src="media/icons/warning-icon.png" alt=""-->
+<!--                       style="width: 70px; height: 70px; margin-top: 20px;">-->
+<!--                </div>-->
+<!--                <div class="col-md-8 col-sm-8">-->
+<!--                  <h3>是否确认删除该条货物信息</h3>-->
+<!--                  <p>(注意：若该货物已经有仓库进出库记录或有仓存记录，则该货物信息将不能删除成功。如需删除该货物的信息，请先确保该货物没有关联的仓库进出库记录或有仓存记录)</p>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="modal-footer">-->
+<!--              <button class="btn btn-default" type="button" data-dismiss="modal">-->
+<!--                <span>取消</span>-->
+<!--              </button>-->
+<!--              <button class="btn btn-danger" type="button" id="delete_confirm">-->
+<!--                <span>确认删除</span>-->
+<!--              </button>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <!-- 查看货物信息模态框 -->
+      <div id="edit_modal" class="modal fade" table-index="-1" role="dialog"
+           aria-labelledby="myModalLabel" aria-hidden="true"
+           data-backdrop="static">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" type="button" data-dismiss="modal"
+                      aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="myModalLabel">裁剪部信息</h4>
+            </div>
+            <div class="modal-body">
+              <!-- 模态框的内容 -->
+                  <div class="row" style="margin-top: 15px">
+                    <div class="col-md-12">
+                      <table id="goodsdetail" class="table table-bordered table-hover"></table>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-success" type="button" id="edit_modal_submit">
+                        <span>关闭</span>
+                      </button>
+                    </div>
+                  </div>
+                <div class="col-md-1 col-sm-1"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+      <b>Version</b> 2.4.0
+    </div>
+    <strong>MJFS &copy; 2019 <a href="/mjfs">主页</a>.</strong> All rights
+    reserved.
+  </footer>
+
+
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/demo.js"></script>
+<!-- page script -->
+<script type="text/javascript"
+        src="../dist/js/jquery-ui.min.js"></script>
+<script type="text/javascript"
+        src="../dist/js/bootstrapValidator.min.js"></script>
+<script type="text/javascript"
+        src="../dist/js/bootstrap-table.min.js"></script>
+<script type="text/javascript"
+        src="../dist/js/bootstrap-table-zh-CN.min.js"></script>
+<script type="text/javascript"
+        src="../dist/js/jquery.md5.js"></script>
+<script type="text/javascript"
+        src="../dist/js/jquery.mloading.js"></script>
+<script type="text/javascript"
+        src="../dist/js/mainPage.js"></script>
+<script type="text/javascript"
+        src="../dist/js/ajaxfileupload.js"></script>
+<script type="text/javascript"
+        src="../dist/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript"
+        src="../dist/js/bootstrap-datetimepicker.zh-CN.js"></script>
+<script>
+  $(function () {
+    $('#example1').DataTable()
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  })
+</script>
+<script type="text/javascript" src="../js/caijianbuController.js"></script>
+</body>
+</html>

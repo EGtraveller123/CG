@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+    <head lang="en">
+        <link rel="stylesheet" href="../static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <meta charset="UTF-8"/>
+        <title>主页</title>
+    </head>
+    <body>
+        <h3>欢迎来到主页</h3>
+        <!--Thymeleaf 语法取值-->
+        姓名：<span class="logo-lg" th:text="${name}">未知</span>
+        年龄：<span th:text="${age}">未知</span>
+
+        <div class="pull-left image">
+            <img src="../dist/img/user2-160x160.jpg" th:class="img-circle" alt="User Image">
+        </div>
+
+    </body>
+</html>
