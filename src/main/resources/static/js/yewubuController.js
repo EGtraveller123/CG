@@ -203,6 +203,59 @@ function rowShowOperation(row) {
             clickToSelect : true
         }
     );
+    $('#sumGoods').bootstrapTable(
+        {
+            columns : [
+                {
+                    field : 'kuanhao',
+                    title : '款号'
+                },
+                {
+                    field : 'yanse',
+                    title : '颜色'
+                },
+                {
+                    field : 'xs',
+                    title : 'XS/34'
+                },
+                {
+                    field : 's',
+                    title : 'S/36'
+                },
+                {
+                    field : 'm',
+                    title : 'M/38'
+                },
+                {
+                    field : 'l',
+                    title : 'L/40'
+                },
+                {
+                    field : 'xl',
+                    title : 'XL/42'
+                },
+                {
+                    field : 'xxl',
+                    title : 'XXL/44'
+                },
+                {
+                    field : 'xxxl',
+                    title : 'XXXL/46'
+                }],
+            sortable : false,
+            locale : 'zh-CN',
+            url : 'selectBykuanhaoyanse',
+            method : 'GET',
+            sidePagination : "server",
+            contentType: "application/x-www-form-urlencoded",
+            dataType : 'json',
+            pagination : false,
+            pageNumber : 1,
+            pageSize : 5,
+            pageList : [ 5, 10, 25, 50, 100 ],
+            clickToSelect : true
+        }
+    );
 
 }
 
@@ -444,6 +497,9 @@ function bootstrapValidatorInit() {
 
 function detailTableRefresh() {
     $('#goodsdetail').bootstrapTable('refresh', {
+        query : {}
+    });
+    $('#sumGoods').bootstrapTable('refresh', {
         query : {}
     });
 }
