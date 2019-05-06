@@ -109,4 +109,34 @@ public class KucunController {
         responseContent.setResponseResult(Response.RESPONSE_RESULT_SUCCESS);
         return responseContent.generateResponse();
     }
+
+    /**
+     * @param kuanhao 款号
+     * @return 返回一个map，其中：key 为 result 的值为操作的结果，包括：success 与 error；key 为 data
+     * 的值为客户信息
+     */
+    @RequestMapping(value = "findByKuanhao", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    Map<String, Object> findByKuanhao(@RequestParam("keyWord") String kuanhao) {
+        // 初始化 Response
+        Response responseContent = ResponseFactory.newInstance();
+        String result = Response.RESPONSE_RESULT_ERROR;
+
+        //初始化kucun信息
+        Object kucun = null;
+        Map<String, Object> queryResult = query(FIND_BY_KUANHAO, kuanhao, 5, 0);
+        if (queryResult != null) {
+            kucun = queryResult.get("data");
+            if (kucun != null) {
+                result = Response.RESPONSE_RESULT_SUCCESS;
+            }
+        }
+
+        // 设置 Response
+        responseContent.setResponseResult(result);
+        responseContent.setCustomerInfo("rows",kucun);
+        responseContent.setResponseTotal((Long) queryResult.get("total"));
+        return responseContent.generateResponse();
+    }
 }

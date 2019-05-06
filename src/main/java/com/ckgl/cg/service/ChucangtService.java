@@ -3,8 +3,10 @@ package com.ckgl.cg.service;
 import com.alibaba.fastjson.JSONObject;
 import com.ckgl.cg.bean.Chucang;
 import com.ckgl.cg.bean.Chucangt;
+import com.ckgl.cg.bean.Kucunt;
 import com.ckgl.cg.dao.ChucangMapper;
 import com.ckgl.cg.dao.ChucangtMapper;
+import com.ckgl.cg.dao.KucunMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -23,6 +25,9 @@ public class ChucangtService {
 
     @Autowired
     private ChucangMapper chucangMapper;
+
+    @Autowired
+    private KucunMapper kucunMapper;
 
     public Map<String, Object> selectByKuanhao(String kuanhao) {
         Map<String, Object> resultSet = new HashMap<>();
@@ -50,8 +55,10 @@ public class ChucangtService {
     public JSONObject insert(JSONObject jsonObject) {
         Chucangt chucangt = new Chucangt();
         Chucang chucang = new Chucang();
+        Kucunt kucunt = new Kucunt();
         JSONObject js1 = new JSONObject();
         JSONObject js2 = new JSONObject();
+        JSONObject js3 = new JSONObject();
         chucangt.setKuanhao(jsonObject.getString("kuanhao"));
         chucangt.setYanse(jsonObject.getString("yanse"));
         chucangt.setCcriqi(jsonObject.getString("ccriqi"));
@@ -64,7 +71,18 @@ public class ChucangtService {
         chucangt.setXxxl(jsonObject.getInteger("xxxl"));
         chucang.setKuanhao(jsonObject.getString("kuanhao"));
         chucang.setCcshuliang(jsonObject.getInteger("ccshuliang"));
+        kucunt.setKuanhao(jsonObject.getString("kuanhao"));
+        kucunt.setYanse(jsonObject.getString("yanse"));
+        kucunt.setXs(jsonObject.getInteger("xs"));
+        kucunt.setS(jsonObject.getInteger("s"));
+        kucunt.setM(jsonObject.getInteger("m"));
+        kucunt.setL(jsonObject.getInteger("l"));
+        kucunt.setXl(jsonObject.getInteger("xl"));
+        kucunt.setXxl(jsonObject.getInteger("xxl"));
+        kucunt.setXxxl(jsonObject.getInteger("xxxl"));
         if (chucangtMapper.insert(chucangt)) {
+            kucunMapper.insertCC(kucunt);
+            js3.put("result","success");
             if (chucangMapper.selectByKuanhao(chucang.getKuanhao())==null) {
                 chucangMapper.insert(chucang);
                 js2.put("result","success");

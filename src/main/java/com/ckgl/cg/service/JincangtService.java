@@ -3,8 +3,11 @@ package com.ckgl.cg.service;
 import com.alibaba.fastjson.JSONObject;
 import com.ckgl.cg.bean.Jincang;
 import com.ckgl.cg.bean.Jincangt;
+import com.ckgl.cg.bean.Kucun;
+import com.ckgl.cg.bean.Kucunt;
 import com.ckgl.cg.dao.JincangMapper;
 import com.ckgl.cg.dao.JincangtMapper;
+import com.ckgl.cg.dao.KucunMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -23,6 +26,9 @@ public class JincangtService {
 
     @Autowired
     private JincangMapper jincangMapper;
+
+    @Autowired
+    private KucunMapper kucunMapper;
 
     public Map<String, Object> selectByKuanhao(String kuanhao) {
         Map<String, Object> resultSet = new HashMap<>();
@@ -49,9 +55,12 @@ public class JincangtService {
 
     public JSONObject insert(JSONObject jsonObject) {
         Jincangt jincangt = new Jincangt();
+        Kucunt kucunt = new Kucunt();
+        Kucun kucun = new Kucun();
         Jincang jincang = new Jincang();
         JSONObject js1 = new JSONObject();
         JSONObject js2 = new JSONObject();
+        JSONObject js3 = new JSONObject();
         jincangt.setKuanhao(jsonObject.getString("kuanhao"));
         jincangt.setYanse(jsonObject.getString("yanse"));
         jincangt.setJcriqi(jsonObject.getString("jcriqi"));
@@ -64,7 +73,24 @@ public class JincangtService {
         jincangt.setXxxl(jsonObject.getInteger("xxxl"));
         jincang.setKuanhao(jsonObject.getString("kuanhao"));
         jincang.setJcshuliang(jsonObject.getInteger("jcshuliang"));
+        kucunt.setKuanhao(jsonObject.getString("kuanhao"));
+        kucunt.setYanse(jsonObject.getString("yanse"));
+        kucunt.setXs(jsonObject.getInteger("xs"));
+        kucunt.setS(jsonObject.getInteger("s"));
+        kucunt.setM(jsonObject.getInteger("m"));
+        kucunt.setL(jsonObject.getInteger("l"));
+        kucunt.setXl(jsonObject.getInteger("xl"));
+        kucunt.setXxl(jsonObject.getInteger("xxl"));
+        kucunt.setXxxl(jsonObject.getInteger("xxxl"));
+        kucun.setKuanhao(jsonObject.getString("kuanhao"));
         if (jincangtMapper.insert(jincangt)) {
+            kucunMapper.insertJC(kucunt);
+            if(kucunMapper.selectKuanhao(kucun.getKuanhao())==null){
+                kucunMapper.insertKucun(kucun);
+            }else{
+                kucunMapper.updateKucun(kucun);
+            }
+            js3.put("result","success");
             if (jincangMapper.selectByKuanhao(jincang.getKuanhao())==null) {
                 jincangMapper.insert(jincang);
                 js2.put("result","success");
@@ -76,6 +102,7 @@ public class JincangtService {
         }else {
             js1.put("result","error");
         }
+//        kucunMapper.update(kucun);
         return js1;
     }
 

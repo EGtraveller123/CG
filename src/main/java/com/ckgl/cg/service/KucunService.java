@@ -2,6 +2,7 @@ package com.ckgl.cg.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ckgl.cg.bean.Kucun;
+import com.ckgl.cg.bean.Kucunt;
 import com.ckgl.cg.dao.KucunMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -83,18 +84,6 @@ public class KucunService {
         return resultSet;
     }
 
-    public List<Kucun> insert(String kuanhao) {
-        List<Kucun> list = kucunMapper.selectA();
-        JSONObject res = new JSONObject();
-        if(list.contains(kuanhao)){
-            kucunMapper.updatetKucun(kuanhao);
-            res.put("result","success");
-        }else{
-            kucunMapper.insertKucun(kuanhao);
-            res.put("result","success");
-        }
-        return list;
-    }
 
     /**
      * @param offset 分页的偏移值
@@ -105,7 +94,7 @@ public class KucunService {
         // 初始化结果集
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
-        List<Kucun> kucuns = null;
+        List<Kucunt> kucunts = null;
         long total = 0;
         boolean isPagination = true;
 
@@ -117,26 +106,24 @@ public class KucunService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                kucuns = kucunMapper.findByKuanhao(kuanhao);
-//                caijianbuts = caijianbutMapper.selectA(kuanhao);
-                if (kucuns != null) {
-                    PageInfo<Kucun> pageInfo = new PageInfo<>(kucuns);
+                kucunts = kucunMapper.selectKucuntBykuanhaoyanse(kuanhao);
+                if (kucunts != null) {
+                    PageInfo<Kucunt> pageInfo = new PageInfo<>(kucunts);
                     total = pageInfo.getTotal();
                 } else
-                    kucuns = new ArrayList<>();
+                    kucunts = new ArrayList<>();
             } else {
-                kucuns = kucunMapper.findByKuanhao(kuanhao);
-//                caijianbuts = caijianbutMapper.selectA(kuanhao);
-                if (kucuns != null)
-                    total = kucuns.size();
+                kucunts = kucunMapper.selectKucuntBykuanhaoyanse(kuanhao);
+                if (kucunts != null)
+                    total = kucunts.size();
                 else
-                    kucuns = new ArrayList<>();
+                    kucunts = new ArrayList<>();
             }
         } catch (PersistenceException e) {
             e.printStackTrace();
         }
 
-        resultSet.put("data", kucuns);
+        resultSet.put("data", kucunts);
         resultSet.put("total", total);
         return resultSet;
     }

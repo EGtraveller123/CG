@@ -101,7 +101,6 @@ public class CaijianbutService {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
                 caijianbuts = caijianbutMapper.findByKuanhao(kuanhao);
-//                caijianbuts = caijianbutMapper.selectA(kuanhao);
                 if (caijianbuts != null) {
                     PageInfo<Caijianbut> pageInfo = new PageInfo<>(caijianbuts);
                     total = pageInfo.getTotal();
@@ -109,7 +108,6 @@ public class CaijianbutService {
                     caijianbuts = new ArrayList<>();
             } else {
                 caijianbuts = caijianbutMapper.findByKuanhao(kuanhao);
-//                caijianbuts = caijianbutMapper.selectA(kuanhao);
                 if (caijianbuts != null)
                     total = caijianbuts.size();
                 else
