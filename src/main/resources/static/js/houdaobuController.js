@@ -159,35 +159,35 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'xs',
-                    title : 'XS/34',
+                    title : 'XS/34'
                 },
                 {
                     field : 's',
-                    title : 'S/36',
+                    title : 'S/36'
                 },
                 {
                     field : 'm',
-                    title : 'M/38',
+                    title : 'M/38'
                 },
                 {
                     field : 'l',
-                    title : 'L/40',
+                    title : 'L/40'
                 },
                 {
                     field : 'xl',
-                    title : 'XL/42',
+                    title : 'XL/42'
                 },
                 {
                     field : 'xxl',
-                    title : 'XXL/44',
+                    title : 'XXL/44'
                 },
                 {
                     field : 'xxxl',
-                    title : 'XXXL/46',
+                    title : 'XXXL/46'
                 },
                 {
                     field : 'beizhu',
-                    title : '备注',
+                    title : '备注'
                 }],
             url : 'findByKuanhao',
             method : 'GET',
@@ -241,14 +241,14 @@ function rowEditOperation(row) {
                     field : 'xxxl',
                     title : 'XXXL/46'
                 }],
-            sortable : false,
             locale : 'zh-CN',
             url : 'selectBykuanhaoyanse',
             method : 'GET',
             sidePagination : "server",
+            queryParams : queryParams,
             contentType: "application/x-www-form-urlencoded",
             dataType : 'json',
-            pagination : false,
+            pagination : true,
             pageNumber : 1,
             pageSize : 5,
             pageList : [ 5, 10, 25, 50, 100 ],

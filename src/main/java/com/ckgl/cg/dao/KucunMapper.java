@@ -30,12 +30,8 @@ public interface KucunMapper {
     @Insert("insert into kucun(kuanhao,kcshuliang) values (#{kuanhao},(select sum(xs+s+m+l+xl+xxl+xxxl) from kucun_t where kuanhao=#{kuanhao}))")
     boolean insert(Kucun kucun);
 
-
-
-
     @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl from kucun_t where kuanhao=#{kuanhao}")
     List<Kucunt> findByKuanhao(String kuanhao);
-
 
     //进仓
     @Insert("insert into kucun_t(kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl) values (#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")
