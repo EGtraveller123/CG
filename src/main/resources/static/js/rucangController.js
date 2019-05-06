@@ -97,6 +97,7 @@ function goodsListInit() {
                 onLoadError:function(status){
                     handleAjaxError(status);
                 },
+                locale : 'zh-CN',
                 method : 'GET',
                 queryParams : queryParams,
                 sidePagination : "server",
@@ -178,6 +179,7 @@ function rowEditOperation(row) {
                     field : 'xxxl',
                     title : 'XXXL/46'
                 }],
+            locale : 'zh-CN',
             url : 'findByKuanhao',
             method : 'GET',
             queryParams : queryParams,

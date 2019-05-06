@@ -183,6 +183,7 @@ function rowEditOperation(row) {
                     field : 'beizhu',
                     title : '备注'
                 }],
+            locale : 'zh-CN',
             url : 'findByKuanhao',
             method : 'GET',
             queryParams : queryParams,
