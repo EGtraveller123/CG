@@ -21,8 +21,8 @@ public interface JincangtMapper {
     @Insert("insert into kucun_t(kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl) values (#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")
     boolean insertKucunt(Kucunt kucunt);
 
-    @Update("update kucun_t set ccriqi=#{ccriqi},set xs=#{xs},set s=#{s},set m=#{m},set l=#{l},set xl=#{xl},set xxl=#{xxl},set xxxl=#{xxxl} where kuanhao = #{kuanhao}")
-    boolean updateKucunt(String kuanhao);
+    @Update("update kucun_t set xs=#{xs},set s=#{s},set m=#{m},set l=#{l},set xl=#{xl},set xxl=#{xxl},set xxxl=#{xxxl} where kuanhao = #{kuanhao}")
+    boolean updateKucunt(Kucunt kucunt);
 
     /**
      *

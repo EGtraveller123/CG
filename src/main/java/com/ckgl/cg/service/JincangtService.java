@@ -57,10 +57,9 @@ public class JincangtService {
         Jincangt jincangt = new Jincangt();
         Kucunt kucunt = new Kucunt();
         Kucun kucun = new Kucun();
+        Kucunt kucunt1 =new Kucunt();
         Jincang jincang = new Jincang();
         JSONObject js1 = new JSONObject();
-        JSONObject js2 = new JSONObject();
-        JSONObject js3 = new JSONObject();
         jincangt.setKuanhao(jsonObject.getString("kuanhao"));
         jincangt.setYanse(jsonObject.getString("yanse"));
         jincangt.setJcriqi(jsonObject.getString("jcriqi"));
@@ -83,26 +82,32 @@ public class JincangtService {
         kucunt.setXxl(jsonObject.getInteger("xxl"));
         kucunt.setXxxl(jsonObject.getInteger("xxxl"));
         kucun.setKuanhao(jsonObject.getString("kuanhao"));
+        kucunt1=kucunMapper.findByKuanhaoYanse(kucunt.getKuanhao(),kucunt.getYanse());
         if (jincangtMapper.insert(jincangt)) {
-            kucunMapper.insertJC(kucunt);
-            if(kucunMapper.selectKuanhao(kucun.getKuanhao())==null){
-                kucunMapper.insertKucun(kucun);
-            }else{
-                kucunMapper.updateKucun(kucun);
+            js1.put("result1","success");
+            if(kucunt1==null){
+                if(jincangtMapper.insertKucunt(kucunt)){
+                    js1.put("result2","success");
+                }else {
+                    js1.put("result2","error");
+                }
+            }else {
+                kucunt.setXs(kucunt.getXs()+kucunt1.getXs());
+                kucunt.setS(kucunt.getS()+kucunt1.getS());
+                kucunt.setM(kucunt.getM()+kucunt1.getM());
+                kucunt.setL(kucunt.getL()+kucunt1.getL());
+                kucunt.setXl(kucunt.getXl()+kucunt1.getXl());
+                kucunt.setXxl(kucunt.getXxl()+kucunt1.getXxl());
+                kucunt.setXxxl(kucunt.getXxxl()+kucunt1.getXxxl());
+                if(jincangtMapper.updateKucunt(kucunt)){
+                    js1.put("result2","success");
+                }else {
+                    js1.put("result2","error");
+                }
             }
-            js3.put("result","success");
-            if (jincangMapper.selectByKuanhao(jincang.getKuanhao())==null) {
-                jincangMapper.insert(jincang);
-                js2.put("result","success");
-            }else{
-                jincangMapper.update(jincang);
-                js2.put("result", "success");
-            }
-            js1.put("result", "success");
         }else {
-            js1.put("result","error");
+            js1.put("result1","error");
         }
-//        kucunMapper.update(kucun);
         return js1;
     }
 

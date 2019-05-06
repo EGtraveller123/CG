@@ -129,9 +129,9 @@ function detailTableRefresh() {
     $('#goodsdetail').bootstrapTable('refresh', {
         query : {}
     });
-    $('#sumGoods').bootstrapTable('refresh', {
-        query : {}
-    });
+    // $('#sumGoods').bootstrapTable('refresh', {
+    //     query : {}
+    // });
 }
 
 
@@ -147,16 +147,19 @@ function rowEditOperation(row) {
             columns : [
                 {
                     field : 'kuanhao',
-                    title : '款号'
+                    title : '款号',
+                    width : "100px"
                     //sortable: true
                 },
                 {
                     field : 'yanse',
-                    title : '颜色'
+                    title : '颜色',
+                    width : "100px"
                 },
                 {
                     field : 'hdriqi',
-                    title : '后道日期'
+                    title : '后道日期',
+                    width : "150px"
                 },
                 {
                     field : 'xs',
@@ -188,7 +191,8 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'beizhu',
-                    title : '备注'
+                    title : '备注',
+                    width : '500px'
                 }],
             locale : 'zh-CN',
             url : 'findByKuanhao',
@@ -204,59 +208,59 @@ function rowEditOperation(row) {
             clickToSelect : true
         }
     );
-    $('#sumGoods').bootstrapTable(
-        {
-            columns : [
-                {
-                    field : 'kuanhao',
-                    title : '款号'
-                },
-                {
-                    field : 'yanse',
-                    title : '颜色'
-                },
-                {
-                    field : 'xs',
-                    title : 'XS/34'
-                },
-                {
-                    field : 's',
-                    title : 'S/36'
-                },
-                {
-                    field : 'm',
-                    title : 'M/38'
-                },
-                {
-                    field : 'l',
-                    title : 'L/40'
-                },
-                {
-                    field : 'xl',
-                    title : 'XL/42'
-                },
-                {
-                    field : 'xxl',
-                    title : 'XXL/44'
-                },
-                {
-                    field : 'xxxl',
-                    title : 'XXXL/46'
-                }],
-            locale : 'zh-CN',
-            url : 'selectBykuanhaoyanse',
-            method : 'GET',
-            sidePagination : "server",
-            queryParams : queryParams,
-            contentType: "application/x-www-form-urlencoded",
-            dataType : 'json',
-            pagination : true,
-            pageNumber : 1,
-            pageSize : 5,
-            pageList : [ 5, 10, 25, 50, 100 ],
-            clickToSelect : true
-        }
-    );
+    // $('#sumGoods').bootstrapTable(
+    //     {
+    //         columns : [
+    //             {
+    //                 field : 'kuanhao',
+    //                 title : '款号'
+    //             },
+    //             {
+    //                 field : 'yanse',
+    //                 title : '颜色'
+    //             },
+    //             {
+    //                 field : 'xs',
+    //                 title : 'XS/34'
+    //             },
+    //             {
+    //                 field : 's',
+    //                 title : 'S/36'
+    //             },
+    //             {
+    //                 field : 'm',
+    //                 title : 'M/38'
+    //             },
+    //             {
+    //                 field : 'l',
+    //                 title : 'L/40'
+    //             },
+    //             {
+    //                 field : 'xl',
+    //                 title : 'XL/42'
+    //             },
+    //             {
+    //                 field : 'xxl',
+    //                 title : 'XXL/44'
+    //             },
+    //             {
+    //                 field : 'xxxl',
+    //                 title : 'XXXL/46'
+    //             }],
+    //         locale : 'zh-CN',
+    //         url : 'selectBykuanhaoyanse',
+    //         method : 'GET',
+    //         sidePagination : "server",
+    //         queryParams : queryParams,
+    //         contentType: "application/x-www-form-urlencoded",
+    //         dataType : 'json',
+    //         pagination : true,
+    //         pageNumber : 1,
+    //         pageSize : 5,
+    //         pageList : [ 5, 10, 25, 50, 100 ],
+    //         clickToSelect : true
+    //     }
+    // );
 
 }
 

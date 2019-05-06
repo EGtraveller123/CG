@@ -12,6 +12,9 @@ import java.util.List;
 @Component
 public interface KucunMapper {
 
+    @Select("select * from kucun_t where kuanhao=#{kuanhao} and yanse=#{yanse}")
+    Kucunt findByKuanhaoYanse(String kuanhao,String yanse);
+
     @Select("select * from kucun")
     List<Kucun> selectAll();
 
