@@ -3,6 +3,7 @@ package com.ckgl.cg.dao;
 import com.ckgl.cg.bean.Chucangt;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -13,6 +14,8 @@ public interface ChucangtMapper {
     @Insert("insert into chucang_t(kuanhao,yanse,ccriqi,xs,s,m,l,xl,xxl,xxxl) values (#{kuanhao},#{yanse},#{ccriqi},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")
     boolean insert(Chucangt chucangt);
 
+    @Update("update kucun_t set ccriqi=#{ccriqi},set xs=#{xs},set s=#{s},set m=#{m},set l=#{l},set xl=#{xl},set xxl=#{xxl},set xxxl=#{xxxl} where kuanhao = #{kuanhao}")
+    boolean updateKucunt(String kuanhao);
     /**
      *
      * @param kuanhao

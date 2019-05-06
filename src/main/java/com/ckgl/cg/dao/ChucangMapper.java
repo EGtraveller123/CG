@@ -27,4 +27,7 @@ public interface ChucangMapper {
     @Update("update chucang set ccshuliang = (select sum(xs+s+m+l+xl+xxl+xxxl) from chucang_t where kuanhao = #{kuanhao}) where kuanhao = #{kuanhao}")
     boolean update(Chucang chucang);
 
+    @Update("update cukun set kcshuliang = (select sum(xs+s+m+l+xl+xxl+xxxl) from chucang_t where kuanhao = #{kuanhao}) where kuanhao = #{kuanhao}")
+    boolean updateKucun(Chucang chucang);
+
 }
