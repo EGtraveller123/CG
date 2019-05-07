@@ -255,8 +255,8 @@ function tableRefresh() {
     //         clickToSelect : true
     //     }
     // );
-
-}
+//
+// }
 
 // 添加供应商模态框数据校验
 function bootstrapValidatorInit() {
