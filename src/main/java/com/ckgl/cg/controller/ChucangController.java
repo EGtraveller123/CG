@@ -1,9 +1,7 @@
 package com.ckgl.cg.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ckgl.cg.bean.Chucang;
 import com.ckgl.cg.bean.Chucangt;
-import com.ckgl.cg.service.ChucangService;
 import com.ckgl.cg.service.ChucangtService;
 import com.ckgl.cg.util.Response;
 import com.ckgl.cg.util.ResponseFactory;
@@ -17,14 +15,11 @@ import java.util.Map;
 @Controller
 @RequestMapping("/chucang")
 public class ChucangController {
-    @Autowired
-    private ChucangService chucangService;
 
     @Autowired
     private ChucangtService chucangtService;
 
     private static final String SEARCH_BY_KUANHAO = "searchByKuanhao";
-    private static final String FIND_BY_KUANHAO = "findByKuanhao";
     private static final String SEARCH_ALL = "searchAll";
 //    private static final String NONE = "none";
 
@@ -38,13 +33,10 @@ public class ChucangController {
 
         switch (searchType) {
             case SEARCH_BY_KUANHAO:
-                queryResult = chucangService.selectByKuanhao(keyWord);
+                queryResult = chucangtService.selectByKuanhao(keyWord);
                 break;
             case SEARCH_ALL:
-                queryResult = chucangService.selectAll(offset,limit);
-                break;
-            case FIND_BY_KUANHAO:
-                queryResult = chucangtService.findByKuanhao(offset, limit,keyWord);
+                queryResult = chucangtService.selectAll(offset,limit);
                 break;
             default:
                 // do other thing
@@ -68,10 +60,10 @@ public class ChucangController {
         String result = Response.RESPONSE_RESULT_ERROR;
 
         // 获取出仓信息
-        Chucang chucang = null;
+        Map<String,String> chucang = null;
         Map<String, Object> queryResult = query(SEARCH_BY_KUANHAO, kuanhao, -1, -1);
         if (queryResult != null) {
-            chucang = (Chucang) queryResult.get("data");
+            chucang = (Map<String, String>) queryResult.get("data");
             if (chucang != null) {
                 result = Response.RESPONSE_RESULT_SUCCESS;
             }
@@ -88,30 +80,30 @@ public class ChucangController {
      * 的值为客户信息
      * 这是返回chucangt表
      */
-    @RequestMapping(value = "findByKuanhao", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    Map<String, Object> findByKuanhao(@RequestParam("keyWord") String kuanhao) {
-        // 初始化 Response
-        Response responseContent = ResponseFactory.newInstance();
-        String result = Response.RESPONSE_RESULT_ERROR;
-
-        //初始化chucangt信息
-        Object chucangt = null;
-        Map<String, Object> queryResult = query(FIND_BY_KUANHAO, kuanhao, 5, 0);
-        if (queryResult != null) {
-            chucangt = queryResult.get("data");
-            if (chucangt != null) {
-                result = Response.RESPONSE_RESULT_SUCCESS;
-            }
-        }
-
-        // 设置 Response
-        responseContent.setResponseResult(result);
-        responseContent.setCustomerInfo("rows",chucangt);
-        responseContent.setResponseTotal((Long) queryResult.get("total"));
-        return responseContent.generateResponse();
-}
+//    @RequestMapping(value = "findByKuanhao", method = RequestMethod.GET)
+//    public
+//    @ResponseBody
+//    Map<String, Object> findByKuanhao(@RequestParam("keyWord") String kuanhao) {
+//        // 初始化 Response
+//        Response responseContent = ResponseFactory.newInstance();
+//        String result = Response.RESPONSE_RESULT_ERROR;
+//
+//        //初始化chucangt信息
+//        Object chucangt = null;
+//        Map<String, Object> queryResult = query(FIND_BY_KUANHAO, kuanhao, 5, 0);
+//        if (queryResult != null) {
+//            chucangt = queryResult.get("data");
+//            if (chucangt != null) {
+//                result = Response.RESPONSE_RESULT_SUCCESS;
+//            }
+//        }
+//
+//        // 设置 Response
+//        responseContent.setResponseResult(result);
+//        responseContent.setCustomerInfo("rows",chucangt);
+//        responseContent.setResponseTotal((Long) queryResult.get("total"));
+//        return responseContent.generateResponse();
+//}
 
     /**
      * @param searchType 搜索类型
@@ -129,11 +121,11 @@ public class ChucangController {
                                        @RequestParam("keyWord") String keyWord) {
         // 初始化 Response
         Response responseContent = ResponseFactory.newInstance();
-        List<Chucang> rows = null;
+        List<Map> rows = null;
         long total = 0;
         Map<String, Object> queryResult = query(searchType, keyWord, offset, limit);
         if (queryResult != null) {
-            rows = (List<Chucang>) queryResult.get("data");
+            rows = (List<Map>) queryResult.get("data");
             total = (long) queryResult.get("total");
         }
         // 设置 Response

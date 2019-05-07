@@ -1,9 +1,6 @@
 package com.ckgl.cg.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ckgl.cg.bean.Jincang;
-import com.ckgl.cg.bean.Jincangt;
-import com.ckgl.cg.service.JincangService;
 import com.ckgl.cg.service.JincangtService;
 import com.ckgl.cg.util.Response;
 import com.ckgl.cg.util.ResponseFactory;
@@ -17,9 +14,6 @@ import java.util.Map;
 @Controller
 @RequestMapping("/rucang")
 public class JincangController {
-    @Autowired
-    private JincangService jincangService;
-
     @Autowired
     private JincangtService jincangtService;
 
@@ -38,13 +32,10 @@ public class JincangController {
 
         switch (searchType) {
             case SEARCH_BY_KUANHAO:
-                queryResult = jincangService.selectByKuanhao(keyWord);
+                queryResult = jincangtService.selectByKuanhao(keyWord);
                 break;
             case SEARCH_ALL:
-                queryResult = jincangService.selectAll(offset,limit);
-                break;
-            case FIND_BY_KUANHAO:
-                queryResult = jincangtService.findByKuanhao(offset, limit,keyWord);
+                queryResult = jincangtService.selectAll(offset,limit);
                 break;
             default:
                 // do other thing
@@ -68,10 +59,10 @@ public class JincangController {
         String result = Response.RESPONSE_RESULT_ERROR;
 
         // 获取进仓信息
-        Jincang jincang = null;
+        Map<String,String> jincang = null;
         Map<String, Object> queryResult = query(SEARCH_BY_KUANHAO, kuanhao, -1, -1);
         if (queryResult != null) {
-            jincang = (Jincang) queryResult.get("data");
+            jincang = (Map) queryResult.get("data");
             if (jincang != null) {
                 result = Response.RESPONSE_RESULT_SUCCESS;
             }
@@ -97,10 +88,10 @@ public class JincangController {
         String result = Response.RESPONSE_RESULT_ERROR;
 
         //初始化Jincangt信息
-        Object jincangt = null;
+        Map<String,String> jincangt = null;
         Map<String, Object> queryResult = query(FIND_BY_KUANHAO, kuanhao, 5, 0);
         if (queryResult != null) {
-            jincangt = queryResult.get("data");
+            jincangt = (Map) queryResult.get("data");
             if (jincangt != null) {
                 result = Response.RESPONSE_RESULT_SUCCESS;
             }
@@ -129,11 +120,11 @@ public class JincangController {
                                        @RequestParam("keyWord") String keyWord) {
         // 初始化 Response
         Response responseContent = ResponseFactory.newInstance();
-        List<Jincang> rows = null;
+        List<Map> rows = null;
         long total = 0;
         Map<String, Object> queryResult = query(searchType, keyWord, offset, limit);
         if (queryResult != null) {
-            rows = (List<Jincang>) queryResult.get("data");
+            rows = (List<Map>) queryResult.get("data");
             total = (long) queryResult.get("total");
         }
         // 设置 Response

@@ -178,10 +178,6 @@ function rowEditOperation(row) {
                 {
                     field : 'xxxl',
                     title : 'XXXL/46'
-                },
-                {
-                    field : 'beizhu',
-                    title : '备注'
                 }],
             locale : 'zh-CN',
             url : 'findByKuanhao',

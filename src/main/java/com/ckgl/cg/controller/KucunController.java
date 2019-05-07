@@ -41,7 +41,7 @@ public class KucunController {
                 queryResult = kucunService.selectAll(offset,limit);
                 break;
             case FIND_BY_KUANHAO:
-                queryResult = kucunService.findByKuanhao(offset, limit,keyWord);
+                queryResult = kucunService.findByKuanhao(keyWord);
                 break;
             default:
                 // do other thing

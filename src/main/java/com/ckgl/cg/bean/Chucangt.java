@@ -2,8 +2,7 @@ package com.ckgl.cg.bean;
 
 public class Chucangt {
     private Integer id;
-    private String kuanhao;
-    private String yanse;
+    private String kucunid;
     private String ccriqi;
     private Integer xs;
     private Integer s;
@@ -12,13 +11,14 @@ public class Chucangt {
     private Integer xl;
     private Integer xxl;
     private Integer xxxl;
+    private String beizhu;
 
     @Override
     public String toString() {
         return "Chucangt{" +
                 "id=" + id +
-                ", kuanhao='" + kuanhao + '\'' +
-                ", yanse='" + yanse + '\'' +
+                ", beizhu='" + beizhu + '\'' +
+                ", kucunid='" + kucunid + '\'' +
                 ", ccriqi='" + ccriqi + '\'' +
                 ", xs=" + xs +
                 ", s=" + s +
@@ -36,22 +36,6 @@ public class Chucangt {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getKuanhao() {
-        return kuanhao;
-    }
-
-    public void setKuanhao(String kuanhao) {
-        this.kuanhao = kuanhao;
-    }
-
-    public String getYanse() {
-        return yanse;
-    }
-
-    public void setYanse(String yanse) {
-        this.yanse = yanse;
     }
 
     public String getCcriqi() {
@@ -116,5 +100,17 @@ public class Chucangt {
 
     public void setXxxl(Integer xxxl) {
         this.xxxl = xxxl;
+    }
+
+    public String getBeizhu() {
+        return beizhu;
+    }
+
+    public void setBeizhu(String beizhu) {
+        this.beizhu = beizhu;
+    }
+
+    public void setKucunid(String kucunid) {
+        this.kucunid = kucunid;
     }
 }

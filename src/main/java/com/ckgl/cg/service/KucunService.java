@@ -1,9 +1,10 @@
 package com.ckgl.cg.service;
 
-import com.alibaba.fastjson.JSONObject;
+
 import com.ckgl.cg.bean.Kucun;
 import com.ckgl.cg.bean.Kucunt;
 import com.ckgl.cg.dao.KucunMapper;
+import com.ckgl.cg.dao.KucuntMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -21,6 +22,9 @@ public class KucunService {
     @Autowired
     private KucunMapper kucunMapper;
 
+    @Autowired
+    private KucuntMapper kucuntMapper;
+
     public Map<String, Object> selectByKuanhao(String kuanhao) {
         Map<String, Object> resultSet = new HashMap<>();
         List<Kucun> kucuns = new ArrayList<>();
@@ -28,7 +32,7 @@ public class KucunService {
 
         Kucun kucun = null;
         try {
-            kucun = kucunMapper.selectBykuanhao(kuanhao);
+            kucun = kucunMapper.selectByKuanhao(kuanhao);
         } catch (PersistenceException e) {
             System.out.println("exception catch");
             e.printStackTrace();
@@ -85,44 +89,17 @@ public class KucunService {
     }
 
 
-    /**
-     * @param offset 分页的偏移值
-     * @param limit  分页的大小
-     * @return 结果的一个Map，其中： key为 data 的代表记录数据；key 为 total 代表结果记录的数量
-     */
-    public Map<String, Object> findByKuanhao(int offset, int limit, String kuanhao) {
-        // 初始化结果集
+    public Map<String, Object> findByKuanhao(String kuanhao) {
         Map<String, Object> resultSet = new HashMap<>();
-        PageHelper.startPage(offset,limit);
-        List<Kucunt> kucunts = null;
+        List<Kucunt> kucunts = new ArrayList<>();
         long total = 0;
-        boolean isPagination = true;
 
-        // validate
-        if (offset < 0 || limit < 0)
-            isPagination = false;
-
-        // query
         try {
-            if (isPagination) {
-                PageHelper.offsetPage(offset, limit);
-                kucunts = kucunMapper.selectKucuntBykuanhaoyanse(kuanhao);
-                if (kucunts != null) {
-                    PageInfo<Kucunt> pageInfo = new PageInfo<>(kucunts);
-                    total = pageInfo.getTotal();
-                } else
-                    kucunts = new ArrayList<>();
-            } else {
-                kucunts = kucunMapper.selectKucuntBykuanhaoyanse(kuanhao);
-                if (kucunts != null)
-                    total = kucunts.size();
-                else
-                    kucunts = new ArrayList<>();
-            }
+            kucunts = kucuntMapper.selectByKuanhao(kuanhao);
         } catch (PersistenceException e) {
+            System.out.println("exception catch");
             e.printStackTrace();
         }
-
         resultSet.put("data", kucunts);
         resultSet.put("total", total);
         return resultSet;

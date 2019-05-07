@@ -1,13 +1,12 @@
 package com.ckgl.cg.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ckgl.cg.bean.Jincang;
 import com.ckgl.cg.bean.Jincangt;
 import com.ckgl.cg.bean.Kucun;
 import com.ckgl.cg.bean.Kucunt;
-import com.ckgl.cg.dao.JincangMapper;
 import com.ckgl.cg.dao.JincangtMapper;
 import com.ckgl.cg.dao.KucunMapper;
+import com.ckgl.cg.dao.KucuntMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -22,93 +21,78 @@ import java.util.Map;
 @Service
 public class JincangtService {
     @Autowired
-    private JincangtMapper jincangtMapper;
+    private JincangtMapper JincangtMapper;
 
     @Autowired
-    private JincangMapper jincangMapper;
+    private KucuntMapper kucuntMapper;
 
     @Autowired
     private KucunMapper kucunMapper;
 
     public Map<String, Object> selectByKuanhao(String kuanhao) {
         Map<String, Object> resultSet = new HashMap<>();
-        List<Jincangt> jincangts = new ArrayList<>();
+        List<Map> Jincangs = null;
         long total = 0;
-
-        Jincangt jincangt = null;
         try {
-            jincangt = jincangtMapper.selectByKuanhao(kuanhao);
+            Jincangs = JincangtMapper.selectByKuanhao(kuanhao);
         } catch (PersistenceException e) {
             System.out.println("exception catch");
             e.printStackTrace();
         }
 
-        if (jincangt != null) {
-            jincangts.add(jincangt);
-            total = 1;
-        }
-
-        resultSet.put("data", jincangts);
+        resultSet.put("data", Jincangs);
         resultSet.put("total", total);
         return resultSet;
     }
 
     public JSONObject insert(JSONObject jsonObject) {
-        Jincangt jincangt = new Jincangt();
+        JSONObject result = new JSONObject();
         Kucunt kucunt = new Kucunt();
-        Kucun kucun = new Kucun();
-        Kucunt kucunt1 =new Kucunt();
-        Jincang jincang = new Jincang();
-        JSONObject js1 = new JSONObject();
-        jincangt.setKuanhao(jsonObject.getString("kuanhao"));
-        jincangt.setYanse(jsonObject.getString("yanse"));
-        jincangt.setJcriqi(jsonObject.getString("jcriqi"));
-        jincangt.setXs(jsonObject.getInteger("xs"));
-        jincangt.setS(jsonObject.getInteger("s"));
-        jincangt.setM(jsonObject.getInteger("m"));
-        jincangt.setL(jsonObject.getInteger("l"));
-        jincangt.setXl(jsonObject.getInteger("xl"));
-        jincangt.setXxl(jsonObject.getInteger("xxl"));
-        jincangt.setXxxl(jsonObject.getInteger("xxxl"));
-        jincang.setKuanhao(jsonObject.getString("kuanhao"));
-        jincang.setJcshuliang(jsonObject.getInteger("jcshuliang"));
-        kucunt.setKuanhao(jsonObject.getString("kuanhao"));
-        kucunt.setYanse(jsonObject.getString("yanse"));
-        kucunt.setXs(jsonObject.getInteger("xs"));
-        kucunt.setS(jsonObject.getInteger("s"));
-        kucunt.setM(jsonObject.getInteger("m"));
-        kucunt.setL(jsonObject.getInteger("l"));
-        kucunt.setXl(jsonObject.getInteger("xl"));
-        kucunt.setXxl(jsonObject.getInteger("xxl"));
-        kucunt.setXxxl(jsonObject.getInteger("xxxl"));
-        kucun.setKuanhao(jsonObject.getString("kuanhao"));
-        kucunt1=kucunMapper.findByKuanhaoYanse(kucunt.getKuanhao(),kucunt.getYanse());
-        if (jincangtMapper.insert(jincangt)) {
-            js1.put("result1","success");
-            if(kucunt1==null){
-                if(jincangtMapper.insertKucunt(kucunt)){
-                    js1.put("result2","success");
-                }else {
-                    js1.put("result2","error");
-                }
+        Kucunt kucunt1 = new Kucunt();
+        Jincangt Jincangt = new Jincangt();
+        Jincangt.setJcriqi(jsonObject.getString("ccriqi"));
+        Jincangt.setL(kucunt1.getL()-jsonObject.getInteger("l"));
+        Jincangt.setXs(kucunt1.getXs()-jsonObject.getInteger("xs"));
+        Jincangt.setS(kucunt1.getS()-jsonObject.getInteger("s"));
+        Jincangt.setM(kucunt1.getM()-jsonObject.getInteger("m"));
+        Jincangt.setXl(kucunt1.getXl()-jsonObject.getInteger("xl"));
+        Jincangt.setXxl(kucunt1.getXxl()-jsonObject.getInteger("xxl"));
+        Jincangt.setXxxl(kucunt1.getXxxl()-jsonObject.getInteger("xxxl"));
+        Jincangt.setBeizhu(jsonObject.getString("beizhu"));
+        kucunt1 = kucuntMapper.selectByKuanhaoYanse(jsonObject.getString("kuanhao"),jsonObject.getString("yanse"));
+        if (kucunt1 != null){
+            kucunt.setId(kucunt1.getId());
+            kucunt.setKuanhao(jsonObject.getString("kuanhao"));
+            kucunt.setYanse("yanse");
+            kucunt.setL(kucunt1.getL()+jsonObject.getInteger("l"));
+            kucunt.setXs(kucunt1.getXs()+jsonObject.getInteger("xs"));
+            kucunt.setS(kucunt1.getS()+jsonObject.getInteger("s"));
+            kucunt.setM(kucunt1.getM()+jsonObject.getInteger("m"));
+            kucunt.setXl(kucunt1.getXl()+jsonObject.getInteger("xl"));
+            kucunt.setXxl(kucunt1.getXxl()+jsonObject.getInteger("xxl"));
+            kucunt.setXxxl(kucunt1.getXxxl()+jsonObject.getInteger("xxxl"));
+            kucuntMapper.updateKucunt(kucunt);
+            kucunMapper.updateKucun(kucunt1.getId());
+            Jincangt.setId(kucunt1.getId());
+            JincangtMapper.insert(Jincangt);
+            result.put("result", "success");
             }else {
-                kucunt.setXs(kucunt.getXs()+kucunt1.getXs());
-                kucunt.setS(kucunt.getS()+kucunt1.getS());
-                kucunt.setM(kucunt.getM()+kucunt1.getM());
-                kucunt.setL(kucunt.getL()+kucunt1.getL());
-                kucunt.setXl(kucunt.getXl()+kucunt1.getXl());
-                kucunt.setXxl(kucunt.getXxl()+kucunt1.getXxl());
-                kucunt.setXxxl(kucunt.getXxxl()+kucunt1.getXxxl());
-                if(jincangtMapper.updateKucunt(kucunt)){
-                    js1.put("result2","success");
-                }else {
-                    js1.put("result2","error");
-                }
+            kucunt.setKuanhao(jsonObject.getString("kuanhao"));
+            kucunt.setYanse("yanse");
+            kucunt.setL(jsonObject.getInteger("l"));
+            kucunt.setXs(jsonObject.getInteger("xs"));
+            kucunt.setS(jsonObject.getInteger("s"));
+            kucunt.setM(jsonObject.getInteger("m"));
+            kucunt.setXl(jsonObject.getInteger("xl"));
+            kucunt.setXxl(jsonObject.getInteger("xxl"));
+            kucunt.setXxxl(jsonObject.getInteger("xxxl"));
+            kucuntMapper.insertKucunt(kucunt);
+            kucunMapper.insertKucun(jsonObject.getString("kuanhao"));
+            Jincangt.setId(kucuntMapper.selectByKuanhaoYanse(jsonObject.getString("kuanhao"),jsonObject.getString("yanse")).getId());
+            JincangtMapper.insert(Jincangt);
+            result.put("result", "success");
             }
-        }else {
-            js1.put("result1","error");
-        }
-        return js1;
+        return result;
     }
 
     /**
@@ -116,40 +100,37 @@ public class JincangtService {
      * @param limit  分页的大小
      * @return 结果的一个Map，其中： key为 data 的代表记录数据；key 为 total 代表结果记录的数量
      */
-    public Map<String, Object> findByKuanhao(int offset, int limit, String kuanhao) {
-        // 初始化结果集
+    public Map<String, Object> selectAll(int offset, int limit) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
-        List<Jincangt> jincangts = null;
+        List<Map> Jincangts = null;
         long total = 0;
         boolean isPagination = true;
 
-        // validate
         if (offset < 0 || limit < 0)
             isPagination = false;
-
         // query
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                jincangts = jincangtMapper.findByKuanhao(kuanhao);
-                if (jincangts != null) {
-                    PageInfo<Jincangt> pageInfo = new PageInfo<>(jincangts);
+                Jincangts = JincangtMapper.selectAll();
+                if (Jincangts != null) {
+                    PageInfo<Map> pageInfo = new PageInfo<>(Jincangts);
                     total = pageInfo.getTotal();
                 } else
-                    jincangts = new ArrayList<>();
+                    Jincangts = new ArrayList<>();
             } else {
-                jincangts = jincangtMapper.findByKuanhao(kuanhao);
-                if (jincangts != null)
-                    total = jincangts.size();
+                Jincangts = JincangtMapper.selectAll();
+                if (Jincangts != null)
+                    total = Jincangts.size();
                 else
-                    jincangts = new ArrayList<>();
+                    Jincangts = new ArrayList<>();
             }
         } catch (PersistenceException e) {
             e.printStackTrace();
         }
 
-        resultSet.put("data", jincangts);
+        resultSet.put("data", Jincangts);
         resultSet.put("total", total);
         return resultSet;
     }

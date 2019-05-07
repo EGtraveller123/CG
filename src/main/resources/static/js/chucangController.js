@@ -3,7 +3,6 @@
  */
 var search_type_goods = "searchAll";
 var search_keyWord = "";
-var selectID;
 
 $(function() {
     optionAction();
@@ -57,37 +56,49 @@ function goodsListInit() {
             {
                 columns : [
                     {
-                        field : 'id',
-                        title : 'ID'
+                        field : 'kuanhao',
+                        title : '款号'
                         //sortable: true
                     },
                     {
-                        field : 'kuanhao',
-                        title : '款号'
+                        field : 'yanse',
+                        title : '颜色'
                     },
                     {
-                        field : 'ccshuliang',
-                        title : '出仓数量'
+                        field : 'ccriqi',
+                        title : '出仓日期'
                     },
                     {
-                        field : 'operation',
-                        title : '操作',
-                        formatter : function(value, row, index) {
-                            var s = '<button class="btn btn-info btn-sm edit"><span>查看</span></button>';
-                            // var d = '<button class="btn btn-danger btn-sm delete"><span>删除</span></button>';
-                            // var fun = '';
-                            return s ;
-                        },
-                        events : {
-                            // 操作列中编辑按钮的动作
-                            'click .edit': function (e, value,
-                                                     row, index) {
-                                selectID = row.kuanhao;
-                                search_keyWord = selectID;
-                                detailTableRefresh();
-                                rowEditOperation(row);
-                            }
-                        }
+                        field : 'xs',
+                        title : 'XS/34'
+                    },
+                    {
+                        field : 's',
+                        title : 'S/36'
+                    },
+                    {
+                        field : 'm',
+                        title : 'M/38'
+                    },
+                    {
+                        field : 'l',
+                        title : 'L/40'
+                    },
+                    {
+                        field : 'xl',
+                        title : 'XL/42'
+                    },
+                    {
+                        field : 'xxl',
+                        title : 'XXL/44'
+                    },
+                    {
+                        field : 'xxxl',
+                        title : 'XXXL/46'
+                    },
+                    {
+                        field : 'beizhu',
+                        title : '备注'
                     }],
                 url : 'all',
                 onLoadSuccess:function(json){
@@ -117,81 +128,81 @@ function tableRefresh() {
     });
 }
 
-function detailTableRefresh() {
-    $('#goodsdetail').bootstrapTable('refresh', {
-        query : {}
-    });
-    // $('#sumGoods').bootstrapTable('refresh', {
-    //     query : {}
-    // });
-}
+// function detailTableRefresh() {
+//     $('#goodsdetail').bootstrapTable('refresh', {
+//         query : {}
+//     });
+//     // $('#sumGoods').bootstrapTable('refresh', {
+//     //     query : {}
+//     // });
+// }
 
 
 // 查看操作
-function rowEditOperation(row) {
-    $('#edit_modal').modal("show");
-    $('#edit_modal').modal({backdrop: 'static', keyboard: false});
-    search_type_goods = "findByKuanhao";
-    $('#edit_modal_submit').click(function(){
-        $('#edit_modal').modal("hide")});
-    $('#goodsdetail').bootstrapTable(
-        {
-            columns : [
-                {
-                    field : 'kuanhao',
-                    title : '款号'
-                    //sortable: true
-                },
-                {
-                    field : 'yanse',
-                    title : '颜色'
-                },
-                {
-                    field : 'ccriqi',
-                    title : '出仓日期'
-                },
-                {
-                    field : 'xs',
-                    title : 'XS/34'
-                },
-                {
-                    field : 's',
-                    title : 'S/36'
-                },
-                {
-                    field : 'm',
-                    title : 'M/38'
-                },
-                {
-                    field : 'l',
-                    title : 'L/40'
-                },
-                {
-                    field : 'xl',
-                    title : 'XL/42'
-                },
-                {
-                    field : 'xxl',
-                    title : 'XXL/44'
-                },
-                {
-                    field : 'xxxl',
-                    title : 'XXXL/46'
-                }],
-            url : 'findByKuanhao',
-            locale : 'zh-CN',
-            method : 'GET',
-            queryParams : queryParams,
-            sidePagination : "server",
-            contentType: "application/x-www-form-urlencoded",
-            dataType : 'json',
-            pagination : true,
-            pageNumber : 1,
-            pageSize : 5,
-            pageList : [ 5, 10, 25, 50, 100 ],
-            clickToSelect : true
-        }
-    );
+// function rowEditOperation(row) {
+//     $('#edit_modal').modal("show");
+//     $('#edit_modal').modal({backdrop: 'static', keyboard: false});
+//     search_type_goods = "findByKuanhao";
+//     $('#edit_modal_submit').click(function(){
+//         $('#edit_modal').modal("hide")});
+//     $('#goodsdetail').bootstrapTable(
+//         {
+//             columns : [
+//                 {
+//                     field : 'kuanhao',
+//                     title : '款号'
+//                     //sortable: true
+//                 },
+//                 {
+//                     field : 'yanse',
+//                     title : '颜色'
+//                 },
+//                 {
+//                     field : 'ccriqi',
+//                     title : '出仓日期'
+//                 },
+//                 {
+//                     field : 'xs',
+//                     title : 'XS/34'
+//                 },
+//                 {
+//                     field : 's',
+//                     title : 'S/36'
+//                 },
+//                 {
+//                     field : 'm',
+//                     title : 'M/38'
+//                 },
+//                 {
+//                     field : 'l',
+//                     title : 'L/40'
+//                 },
+//                 {
+//                     field : 'xl',
+//                     title : 'XL/42'
+//                 },
+//                 {
+//                     field : 'xxl',
+//                     title : 'XXL/44'
+//                 },
+//                 {
+//                     field : 'xxxl',
+//                     title : 'XXXL/46'
+//                 }],
+//             url : 'findByKuanhao',
+//             locale : 'zh-CN',
+//             method : 'GET',
+//             queryParams : queryParams,
+//             sidePagination : "server",
+//             contentType: "application/x-www-form-urlencoded",
+//             dataType : 'json',
+//             pagination : true,
+//             pageNumber : 1,
+//             pageSize : 5,
+//             pageList : [ 5, 10, 25, 50, 100 ],
+//             clickToSelect : true
+//         }
+//     );
     // $('#sumGoods').bootstrapTable(
     //     {
     //         columns : [
@@ -361,6 +372,7 @@ function addGoodsAction() {
                 xl: $('#xl').val(),
                 xxl: $('#xxl').val(),
                 xxxl: $('#xxxl').val(),
+                beizhu: $('#beizhu').val()
 
             }
             // ajax
@@ -396,6 +408,7 @@ function addGoodsAction() {
                         $('#xl').val(),
                         $('#xxl').val(),
                         $('#xxxl').val(),
+                        $('#beizhu').val(),
                         $('#goods_form').bootstrapValidator("resetForm", true);
                     tableRefresh();
                 },

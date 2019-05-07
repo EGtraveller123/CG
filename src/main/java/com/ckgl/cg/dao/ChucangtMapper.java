@@ -7,23 +7,22 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Map;
 
 @Component
 public interface ChucangtMapper {
 
-    @Insert("insert into chucang_t(kuanhao,yanse,ccriqi,xs,s,m,l,xl,xxl,xxxl) values (#{kuanhao},#{yanse},#{ccriqi},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")
+    @Select("select k.kuanhao,k.yanse,j.ccriqi,j.xs,j.s,j.m,j.l,j.xl,j.xxl,j.xxxl from jincangt j join kucun_t t on j.kucunid=k.id")
+    List<Map> selectAll();
+
+    @Insert("insert into chucang_t(kucunid,ccriqi,xs,s,m,l,xl,xxl,xxxl,beizhu) values (#{kucunid},#{ccriqi},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{beizhu})")
     boolean insert(Chucangt chucangt);
 
-    @Update("update kucun_t set ccriqi=#{ccriqi},set xs=#{xs},set s=#{s},set m=#{m},set l=#{l},set xl=#{xl},set xxl=#{xxl},set xxxl=#{xxxl} where kuanhao = #{kuanhao}")
-    boolean updateKucunt(String kuanhao);
-    /**
-     *
-     * @param kuanhao
-     * @return
-     */
-    @Select("select kuanhao,yanse,ccriqi,xs,s,m,l,xl,xxl,xxxl from chucang_t where kuanhao=#{kuanhao}")
-    Chucangt selectByKuanhao(String kuanhao);
+    @Select("select k.kuanhao,k.yanse,j.ccriqi,j.xs,j.s,j.m,j.l,j.xl,j.xxl,j.xxxl from chucang_t j join kucun_t k on j.kucunid=k.id where k.kuanhao=#{kuanhao}")
+    List<Map> selectByKuanhao(String kuanhao);
 
-    @Select("select kuanhao,yanse,ccriqi,xs,s,m,l,xl,xxl,xxxl from chucang_t where kuanhao=#{kuanhao}")
-    List<Chucangt> findByKuanhao(String kuanhao);
+    @Select("select k.kuanhao,k.yanse,j.ccriqi,j.xs,j.s,j.m,j.l,j.xl,j.xxl,j.xxxl from chucang_t j join kucun_t k on j.kucunid=k.id where k.kuanhao=#{kuanhao} and k.yanse=#{yanse}")
+    List<Map> findByKuanhaoYanse(String kuanhao,String yanse);
+
+
 }

@@ -2,8 +2,8 @@ package com.ckgl.cg.bean;
 
 public class Jincangt {
     private Integer id;
-    private String kuanhao;
-    private String yanse;
+    private String kucunid;
+    private String beizhu;
     private String jcriqi;
     private Integer xs;
     private Integer s;
@@ -17,8 +17,8 @@ public class Jincangt {
     public String toString() {
         return "Jincangt{" +
                 "id=" + id +
-                ", kuanhao='" + kuanhao + '\'' +
-                ", yanse='" + yanse + '\'' +
+                ", kucunid='" + kucunid + '\'' +
+                ", beizhu='" + beizhu + '\'' +
                 ", jcriqi='" + jcriqi + '\'' +
                 ", xs=" + xs +
                 ", s=" + s +
@@ -38,21 +38,6 @@ public class Jincangt {
         this.id = id;
     }
 
-    public String getKuanhao() {
-        return kuanhao;
-    }
-
-    public void setKuanhao(String kuanhao) {
-        this.kuanhao = kuanhao;
-    }
-
-    public String getYanse() {
-        return yanse;
-    }
-
-    public void setYanse(String yanse) {
-        this.yanse = yanse;
-    }
 
     public String getJcriqi() {
         return jcriqi;
@@ -116,5 +101,20 @@ public class Jincangt {
 
     public void setXxxl(Integer xxxl) {
         this.xxxl = xxxl;
+    }
+
+    public String getKucunid() {
+        return kucunid;
+    }
+
+    public void setKucunid(String kucunid) {
+        this.kucunid = kucunid;
+    }
+
+    public void setBeizhu(String beizhu) {
+        this.beizhu = beizhu;
+    }
+    public String getBeizhu() {
+        return beizhu;
     }
 }
