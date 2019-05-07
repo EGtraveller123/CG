@@ -2,7 +2,7 @@ package com.ckgl.cg.bean;
 
 public class Jincangt {
     private Integer id;
-    private String kucunid;
+    private Integer kucunid;
     private String beizhu;
     private String jcriqi;
     private Integer xs;
@@ -103,11 +103,11 @@ public class Jincangt {
         this.xxxl = xxxl;
     }
 
-    public String getKucunid() {
+    public Integer getKucunid() {
         return kucunid;
     }
 
-    public void setKucunid(String kucunid) {
+    public void setKucunid(Integer kucunid) {
         this.kucunid = kucunid;
     }
 

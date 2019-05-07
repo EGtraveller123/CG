@@ -12,7 +12,7 @@ import java.util.List;
 @Component
 public interface KucuntMapper {
 
-    @Update("update kucun_t set xs=#{xs},set s=#{s},set m=#{m},set l=#{l},set xl=#{xl},set xxl=#{xxl},set xxxl=#{xxxl} where id = #{id}")
+    @Update("update kucun_t set xs=#{xs}, s=#{s}, m=#{m}, l=#{l}, xl=#{xl}, xxl=#{xxl}, xxxl=#{xxxl} where id = #{id}")
     boolean updateKucunt(Kucunt kucunt);
 
     @Insert("insert into kucun_t (kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl) values (#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")

@@ -50,17 +50,17 @@ public class ChucangtService {
         Kucunt kucunt = new Kucunt();
         Kucunt kucunt1 = new Kucunt();
         Chucangt chucangt = new Chucangt();
-        chucangt.setCcriqi(jsonObject.getString("ccriqi"));
-        chucangt.setL(kucunt1.getL()-jsonObject.getInteger("l"));
-        chucangt.setXs(kucunt1.getXs()-jsonObject.getInteger("xs"));
-        chucangt.setS(kucunt1.getS()-jsonObject.getInteger("s"));
-        chucangt.setM(kucunt1.getM()-jsonObject.getInteger("m"));
-        chucangt.setXl(kucunt1.getXl()-jsonObject.getInteger("xl"));
-        chucangt.setXxl(kucunt1.getXxl()-jsonObject.getInteger("xxl"));
-        chucangt.setXxxl(kucunt1.getXxxl()-jsonObject.getInteger("xxxl"));
-        chucangt.setBeizhu(jsonObject.getString("beizhu"));
         kucunt1 = kucuntMapper.selectByKuanhaoYanse(jsonObject.getString("kuanhao"),jsonObject.getString("yanse"));
         if (kucunt1 != null){
+            chucangt.setCcriqi(jsonObject.getString("ccriqi"));
+            chucangt.setL(jsonObject.getInteger("l"));
+            chucangt.setXs(jsonObject.getInteger("xs"));
+            chucangt.setS(jsonObject.getInteger("s"));
+            chucangt.setM(jsonObject.getInteger("m"));
+            chucangt.setXl(jsonObject.getInteger("xl"));
+            chucangt.setXxl(jsonObject.getInteger("xxl"));
+            chucangt.setXxxl(jsonObject.getInteger("xxxl"));
+            chucangt.setBeizhu(jsonObject.getString("beizhu"));
             if(chucangt.getL()<=kucunt1.getL()
                     &&chucangt.getM()<=kucunt1.getM()
                     &&chucangt.getS()<=kucunt1.getS()

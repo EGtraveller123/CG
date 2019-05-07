@@ -19,7 +19,7 @@ public interface KucunMapper {
     @Select("select * from kucun")
     List<Kucun> selectAll();
 
-    @Insert("insert into kucun(kuanhao,kcshuliang) values(#{kuanhao},(sum(select xs,s,m,l,xl,xxl,xxxl from kucun_t where kuanhao=#{kuanhao})))")
+    @Insert("insert into kucun(kuanhao,kcshuliang) values(#{kuanhao},(select sum(xs+s+m+l+xl+xxl+xxxl) from kucun_t where kuanhao=#{kuanhao}))")
     boolean insertKucun(String kuanhao);
 
     @Update("update kucun set kcshuliang=(select sum(xs+s+m+l+xl+xxl+xxxl) from kucun_t where id=#{id})")

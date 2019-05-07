@@ -2,7 +2,12 @@ package com.ckgl.cg.bean;
 
 public class Chucangt {
     private Integer id;
-    private String kucunid;
+
+    public Integer getKucunid() {
+        return kucunid;
+    }
+
+    private Integer kucunid;
     private String ccriqi;
     private Integer xs;
     private Integer s;
@@ -110,7 +115,7 @@ public class Chucangt {
         this.beizhu = beizhu;
     }
 
-    public void setKucunid(String kucunid) {
+    public void setKucunid(Integer kucunid) {
         this.kucunid = kucunid;
     }
 }

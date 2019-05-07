@@ -148,10 +148,6 @@ function rowEditOperation(row) {
                     title : '颜色'
                 },
                 {
-                    field : 'hdriqi',
-                    title : '后道日期'
-                },
-                {
                     field : 'xs',
                     title : 'XS/34'
                 },
