@@ -307,16 +307,16 @@ function addGoodsAction() {
                     tableRefresh();
 
                     // reset
-                    $('#kuanhaogoods').val(),
-                        $('#yanse').val(),
-                        $('#xs').val("0"),
-                        $('#s').val("0"),
-                        $('#m').val("0"),
-                        $('#l').val("0"),
-                        $('#xl').val("0"),
-                        $('#xxl').val("0"),
-                        $('#xxxl').val("0"),
-                        $('#goods_form').bootstrapValidator("resetForm", true);
+                    $('#kuanhaogoods').val();
+                    $('#yanse').val();
+                    $('#xs').val("0");
+                    $('#s').val("0");
+                    $('#m').val("0");
+                    $('#l').val("0");
+                    $('#xl').val("0");
+                    $('#xxl').val("0");
+                    $('#xxxl').val("0");
+                    $('#goods_form').bootstrapValidator("resetForm", true);
                     tableRefresh();
                 },
                 error : function(xhr, textStatus, errorThrow) {
