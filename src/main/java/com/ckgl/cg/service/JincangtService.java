@@ -88,7 +88,11 @@ public class JincangtService {
             kucunt.setXxl(jsonObject.getInteger("xxl"));
             kucunt.setXxxl(jsonObject.getInteger("xxxl"));
             kucuntMapper.insertKucunt(kucunt);
-            kucunMapper.insertKucun(jsonObject.getString("kuanhao"));
+            if(kucunMapper.selectByKuanhao(jsonObject.getString("kuanhao"))!=null){
+                kucunMapper.updateKucun(jsonObject.getString("kuanhao"));
+            }else {
+                kucunMapper.insertKucun(jsonObject.getString("kuanhao"));
+            }
             Jincangt.setKucunid(kucuntMapper.selectByKuanhaoYanse(jsonObject.getString("kuanhao"),jsonObject.getString("yanse")).getId());
             JincangtMapper.insert(Jincangt);
             result.put("result", "success");
