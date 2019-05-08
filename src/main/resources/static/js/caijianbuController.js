@@ -387,16 +387,16 @@ function addGoodsAction() {
                 tableRefresh();
 
                 // reset
-                $('#kuanhao').val(),
-                $('#cjriqi').val("2019-05-08"),
-                $('#yanse').val(),
-                $('#xs').val("0"),
-                $('#s').val("0"),
-                $('#m').val("0"),
-                $('#l').val("0"),
-                $('#xl').val("0"),
-                $('#xxl').val("0"),
-                $('#xxxl').val("0"),
+                $('#kuanhao').val();
+                $('#cjriqi').val("2019-05-08");
+                $('#yanse').val();
+                $('#xs').val("0");
+                $('#s').val("0");
+                $('#m').val("0");
+                $('#l').val("0");
+                $('#xl').val("0");
+                $('#xxl').val("0");
+                $('#xxxl').val("0");
                 $('#goods_form').bootstrapValidator("resetForm", true);
                 tableRefresh();
             },
