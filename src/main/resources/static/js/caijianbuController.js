@@ -58,12 +58,14 @@ function goodsListInit() {
                 columns : [
                     {
                         field : 'id',
-                        title : 'ID'
+                        title : 'ID',
+                        width : '100px'
                         //sortable: true
                     },
                     {
                         field : 'kuanhao',
-                        title : '款号'
+                        title : '款号',
+                        width : '100px'
                     },
                     {
                         field : 'ywbshuliang',

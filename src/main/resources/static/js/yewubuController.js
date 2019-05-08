@@ -67,11 +67,13 @@ function customerListInit() {
                 columns : [
                     {
                         field : 'id',
-                        title : 'id'
+                        title : 'id',
+                        width : '100px'
                     },
                     {
                         field : 'kuanhao',
-                        title : '款号'
+                        title : '款号',
+                        width : '100px'
                         //sortable: true
                     },
                     {

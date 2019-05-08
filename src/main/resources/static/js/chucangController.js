@@ -57,16 +57,19 @@ function goodsListInit() {
                 columns : [
                     {
                         field : 'kuanhao',
-                        title : '款号'
+                        title : '款号',
+                        width : '75px'
                         //sortable: true
                     },
                     {
                         field : 'yanse',
-                        title : '颜色'
+                        title : '颜色',
+                        width : '75px'
                     },
                     {
                         field : 'ccriqi',
-                        title : '出仓日期'
+                        title : '出仓日期',
+                        width : '100px'
                     },
                     {
                         field : 'xs',
