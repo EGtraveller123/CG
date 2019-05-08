@@ -2,7 +2,6 @@ package com.ckgl.cg.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ckgl.cg.bean.Jincangt;
-import com.ckgl.cg.bean.Kucun;
 import com.ckgl.cg.bean.Kucunt;
 import com.ckgl.cg.dao.JincangtMapper;
 import com.ckgl.cg.dao.KucunMapper;
@@ -52,6 +51,8 @@ public class JincangtService {
         Jincangt Jincangt = new Jincangt();
         kucunt1 = kucuntMapper.selectByKuanhaoYanse(jsonObject.getString("kuanhao"),jsonObject.getString("yanse"));
         Jincangt.setJcriqi(jsonObject.getString("jcriqi"));
+        kucunt.setKuanhao(jsonObject.getString("kuanhao"));
+        kucunt.setYanse(jsonObject.getString("yanse"));
         Jincangt.setL(jsonObject.getInteger("l"));
         Jincangt.setXs(jsonObject.getInteger("xs"));
         Jincangt.setS(jsonObject.getInteger("s"));

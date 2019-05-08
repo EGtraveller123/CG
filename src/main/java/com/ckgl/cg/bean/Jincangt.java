@@ -3,6 +3,25 @@ package com.ckgl.cg.bean;
 public class Jincangt {
     private Integer id;
     private Integer kucunid;
+    private String kuanhao;
+
+    public String getYanse() {
+        return yanse;
+    }
+
+    public void setYanse(String yanse) {
+        this.yanse = yanse;
+    }
+
+    public String getKuanhao() {
+        return kuanhao;
+    }
+
+    public void setKuanhao(String kuanhao) {
+        this.kuanhao = kuanhao;
+    }
+
+    private String yanse;
     private String beizhu;
     private String jcriqi;
     private Integer xs;

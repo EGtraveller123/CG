@@ -7,6 +7,24 @@ public class Chucangt {
         return kucunid;
     }
 
+    public String getYanse() {
+        return yanse;
+    }
+
+    public void setYanse(String yanse) {
+        this.yanse = yanse;
+    }
+
+    public String getKuanhao() {
+        return kuanhao;
+    }
+
+    public void setKuanhao(String kuanhao) {
+        this.kuanhao = kuanhao;
+    }
+
+    private String yanse;
+    private String kuanhao;
     private Integer kucunid;
     private String ccriqi;
     private Integer xs;

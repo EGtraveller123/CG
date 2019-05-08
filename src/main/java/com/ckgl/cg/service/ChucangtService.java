@@ -2,7 +2,6 @@ package com.ckgl.cg.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ckgl.cg.bean.Chucangt;
-import com.ckgl.cg.bean.Kucun;
 import com.ckgl.cg.bean.Kucunt;
 import com.ckgl.cg.dao.ChucangtMapper;
 import com.ckgl.cg.dao.KucunMapper;
@@ -53,6 +52,8 @@ public class ChucangtService {
         kucunt1 = kucuntMapper.selectByKuanhaoYanse(jsonObject.getString("kuanhao"),jsonObject.getString("yanse"));
         if (kucunt1 != null){
             chucangt.setCcriqi(jsonObject.getString("ccriqi"));
+            kucunt.setKuanhao(jsonObject.getString("kuanhao"));
+            kucunt.setYanse(jsonObject.getString("yanse"));
             chucangt.setL(jsonObject.getInteger("l"));
             chucangt.setXs(jsonObject.getInteger("xs"));
             chucangt.setS(jsonObject.getInteger("s"));
@@ -70,7 +71,7 @@ public class ChucangtService {
                     &&chucangt.getXxxl()<=kucunt1.getXxxl()){
                 kucunt.setId(kucunt1.getId());
                 kucunt.setKuanhao(jsonObject.getString("kuanhao"));
-                kucunt.setYanse("yanse");
+                kucunt.setYanse(jsonObject.getString("yanse"));
                 kucunt.setXs(kucunt1.getXs()-jsonObject.getInteger("xs"));
                 kucunt.setS(kucunt1.getS()-jsonObject.getInteger("s"));
                 kucunt.setM(kucunt1.getM()-jsonObject.getInteger("m"));
