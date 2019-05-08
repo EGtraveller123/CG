@@ -551,6 +551,7 @@ function editCustomerAction() {
                 },
                 error : function(xhr, textStatus, errorThrown) {
                     $('#edit_modal').modal("hide");
+                    tableRefresh();
                     // 处理错误
                     handleAjaxError(xhr.status)
                 }
