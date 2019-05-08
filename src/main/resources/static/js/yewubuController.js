@@ -309,13 +309,13 @@ function addGoodsAction() {
                     // reset
                     $('#kuanhaogoods').val(),
                         $('#yanse').val(),
-                        $('#xs').val(),
-                        $('#s').val(),
-                        $('#m').val(),
-                        $('#l').val(),
-                        $('#xl').val(),
-                        $('#xxl').val(),
-                        $('#xxxl').val(),
+                        $('#xs').val("0"),
+                        $('#s').val("0"),
+                        $('#m').val("0"),
+                        $('#l').val("0"),
+                        $('#xl').val("0"),
+                        $('#xxl').val("0"),
+                        $('#xxxl').val("0"),
                         $('#goods_form').bootstrapValidator("resetForm", true);
                     tableRefresh();
                 },
@@ -640,9 +640,9 @@ function addCustomerAction() {
                     // reset
                     $('#kuanhao').val("");
                     $('#kehu').val("");
-                    $('#ywbshuliang').val("");
+                    $('#ywbshuliang').val("0");
                     $('#mianliao').val("");
-                    $('#chriqi').val("");
+                    $('#chriqi').val("2019-05-08");
                     $('#customer_form').bootstrapValidator("resetForm", true);
                     tableRefresh();
                 },
