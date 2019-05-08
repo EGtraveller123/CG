@@ -292,7 +292,7 @@ function addGoodsAction() {
                 contentType : "application/json",
                 data : JSON.stringify(data),
                 success : function(response) {
-                    $('#add_modal').modal("hide");
+                    $('#add_goods_modal').modal("hide");
                     var msg;
                     var type;
                     var append = '';
@@ -320,7 +320,8 @@ function addGoodsAction() {
                     tableRefresh();
                 },
                 error : function(xhr, textStatus, errorThrow) {
-                    $('#add_modal').modal("hide");
+                    $('#add_goods_modal').modal("hide");
+                    tableRefresh();
                     // handler error
                     handleAjaxError(xhr.status);
                 }
