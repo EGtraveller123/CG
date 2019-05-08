@@ -51,8 +51,8 @@ public class JincangtService {
         Jincangt Jincangt = new Jincangt();
         kucunt1 = kucuntMapper.selectByKuanhaoYanse(jsonObject.getString("kuanhao"),jsonObject.getString("yanse"));
         Jincangt.setJcriqi(jsonObject.getString("jcriqi"));
-        kucunt.setKuanhao(jsonObject.getString("kuanhao"));
-        kucunt.setYanse(jsonObject.getString("yanse"));
+        Jincangt.setKuanhao(jsonObject.getString("kuanhao"));
+        Jincangt.setYanse(jsonObject.getString("yanse"));
         Jincangt.setL(jsonObject.getInteger("l"));
         Jincangt.setXs(jsonObject.getInteger("xs"));
         Jincangt.setS(jsonObject.getInteger("s"));

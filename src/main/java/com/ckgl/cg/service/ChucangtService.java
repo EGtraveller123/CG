@@ -52,8 +52,8 @@ public class ChucangtService {
         kucunt1 = kucuntMapper.selectByKuanhaoYanse(jsonObject.getString("kuanhao"),jsonObject.getString("yanse"));
         if (kucunt1 != null){
             chucangt.setCcriqi(jsonObject.getString("ccriqi"));
-            kucunt.setKuanhao(jsonObject.getString("kuanhao"));
-            kucunt.setYanse(jsonObject.getString("yanse"));
+            chucangt.setKuanhao(jsonObject.getString("kuanhao"));
+            chucangt.setYanse(jsonObject.getString("yanse"));
             chucangt.setL(jsonObject.getInteger("l"));
             chucangt.setXs(jsonObject.getInteger("xs"));
             chucangt.setS(jsonObject.getInteger("s"));
