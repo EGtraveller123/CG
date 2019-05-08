@@ -21,16 +21,13 @@ public class YewubutService {
     @Autowired
     private YewubutMapper yewubutMapper;
 
-    @Autowired
-    private YewubuMapper yewubuMapper;
+
 
 
 
     public JSONObject insert(JSONObject jsonObject){
         Yewubut yewubut = new Yewubut();
-        Yewubu yewubu = new Yewubu();
         JSONObject js1 = new JSONObject();
-        yewubu=yewubuMapper.selectByKuanhao(jsonObject.getString("kuanhao"));
         yewubut.setKuanhao(js1.getString("kuanhao"));
         yewubut.setYanse(js1.getString("yanse"));
         yewubut.setXs(js1.getInteger("xs"));
@@ -40,9 +37,9 @@ public class YewubutService {
         yewubut.setXl(js1.getInteger("xl"));
         yewubut.setXxl(js1.getInteger("xxl"));
         yewubut.setXxxl(js1.getInteger("xxxl"));
-        if (yewubutMapper.insert(yewubut)){
+        if(yewubutMapper.insert(yewubut)){
             js1.put("result","success");
-        }else {
+        }else{
             js1.put("result","error");
         }
         return js1;

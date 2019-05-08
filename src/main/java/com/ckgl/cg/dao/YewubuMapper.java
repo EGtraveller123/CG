@@ -21,8 +21,8 @@ public interface YewubuMapper {
     @Select("select * from yewubu")
     List<Yewubu> selectAll();
 
-    @Update("update yewubu set ywbshuliang=(select sum(xs+s+m+l+xl+xxl+xxxl) from yewubu_t where kuanhao=#{kuanhao}) where kuanhao=#{kuanhao}")
-    List<Yewubu> updateshuliang(String kuanhao);
+    @Update("update yewubu set ywbshuliang=#{ywbshuliang} where kuanhao=#{kuanhao}")
+    List<Yewubu> updateshuliang(Yewubu yewubu);
 
     /**
      * @return 返回指定KUANHAO对应的Yewubu信息

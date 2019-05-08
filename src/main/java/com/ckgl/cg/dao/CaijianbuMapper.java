@@ -7,8 +7,11 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+
 @Component
 public interface CaijianbuMapper {
 
@@ -31,5 +34,7 @@ public interface CaijianbuMapper {
 
     @Update("update caijianbu set cjbshuliang = (select sum(xs+s+m+l+xl+xxl+xxxl) from caijianbu_t where kuanhao = #{kuanhao}) where kuanhao = #{kuanhao}")
     boolean update(Caijianbu caijianbu);
+
+
 
 }

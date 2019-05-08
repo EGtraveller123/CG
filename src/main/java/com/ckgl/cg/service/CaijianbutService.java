@@ -88,7 +88,7 @@ public class CaijianbutService {
         // 初始化结果集
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
-        List<Caijianbut> caijianbuts = null;
+        List<Map> caijianbuts = null;
         long total = 0;
         boolean isPagination = true;
 
@@ -102,7 +102,7 @@ public class CaijianbutService {
                 PageHelper.offsetPage(offset, limit);
                 caijianbuts = caijianbutMapper.findByKuanhao(kuanhao);
                 if (caijianbuts != null) {
-                    PageInfo<Caijianbut> pageInfo = new PageInfo<>(caijianbuts);
+                    PageInfo<Map> pageInfo = new PageInfo<>(caijianbuts);
                     total = pageInfo.getTotal();
                 } else
                     caijianbuts = new ArrayList<>();

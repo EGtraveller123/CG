@@ -89,7 +89,7 @@ public class HoudaobutService {
         // 初始化结果集
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
-        List<Houdaobut> houdaobuts = null;
+        List<Map> houdaobuts = null;
         long total = 0;
         boolean isPagination = true;
 
@@ -103,7 +103,7 @@ public class HoudaobutService {
                 PageHelper.offsetPage(offset, limit);
                 houdaobuts = houdaobutMapper.findByKuanhao(kuanhao);
                 if (houdaobuts != null) {
-                    PageInfo<Houdaobut> pageInfo = new PageInfo<>(houdaobuts);
+                    PageInfo<Map> pageInfo = new PageInfo<>(houdaobuts);
                     total = pageInfo.getTotal();
                 } else
                     houdaobuts = new ArrayList<>();
