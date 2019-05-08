@@ -139,51 +139,237 @@ function rowEditOperation(row) {
     $('#edit_modal').modal({backdrop: 'static', keyboard: false});
     search_type_goods = "findByKuanhao";
     $('#edit_modal_submit').click(function(){
-        $('#edit_modal').modal("hide")
+        $('#edit_modal').modal("hide");
+        search_type_goods = "searchAll";
         tableRefresh();});
     $('#goodsdetail').bootstrapTable(
         {
             columns : [
                 {
-                    field : 'kuanhao',
-                    title : '款号'
+                    field : 'ca_kuanhao',
+                    title : '款号',
+                    width : "250px",
+                    halign :"center",
+                    align : "center"
+                    // valign : 'middle'
                     //sortable: true
                 },
                 {
-                    field : 'yanse',
-                    title : '颜色'
+                    field : 'ca_yanse',
+                    title : '颜色',
+                    width : "100px",
+                    halign :"center",
+                    align : "center"
                 },
                 {
-                    field : 'cjriqi',
-                    title : '裁剪日期'
+                    field : 'ca_cjriqi',
+                    title : '裁剪日期',
+                    width : "100px",
+                    halign :"center",
+                    align : "center"
                 },
                 {
-                    field : 'xs',
-                    title : 'XS/34'
+                    field : 'ye_xs',
+                    title : '业务XS/34',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold",
+                                "color":"#ff1111"
+                            }
+                        }
+                    }
                 },
                 {
-                    field : 's',
-                    title : 'S/36'
+                    field : 'ca_xs',
+                    title : '裁剪XS/34',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold"
+                            }
+                        }
+                    }
                 },
                 {
-                    field : 'm',
-                    title : 'M/38'
+                    field : 'ye_s',
+                    title : '业务S/36',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold",
+                                "color":"#ff1111"
+                            }
+                        }
+                    }
                 },
                 {
-                    field : 'l',
-                    title : 'L/40'
+                    field : 'ca_s',
+                    title : '裁剪S/36',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold"
+                            }
+                        }
+                    }
                 },
                 {
-                    field : 'xl',
-                    title : 'XL/42'
+                    field : 'ye_m',
+                    title : '业务M/38',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold",
+                                "color":"#ff1111"
+                            }
+                        }
+                    }
                 },
                 {
-                    field : 'xxl',
-                    title : 'XXL/44'
+                    field : 'ca_m',
+                    title : '裁剪M/38',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold"
+                            }
+                        }
+                    }
                 },
                 {
-                    field : 'xxxl',
-                    title : 'XXXL/46'
+                    field : 'ye_l',
+                    title : '业务L/40',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold",
+                                "color":"#ff1111"
+                            }
+                        }
+                    }
+                },
+                {
+                    field : 'ca_l',
+                    title : '裁剪L/40',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold"
+                            }
+                        }
+                    }
+                },
+                {
+                    field : 'ye_xl',
+                    title : '业务XL/42',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold",
+                                "color":"#ff1111"
+                            }
+                        }
+                    }
+                },
+                {
+                    field : 'ca_xl',
+                    title : '裁剪XL/42',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold"
+                            }
+                        }
+                    }
+                },
+                {
+                    field : 'ye_xxl',
+                    title : '业务XXL/44',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold",
+                                "color":"#ff1111"
+                            }
+                        }
+                    }
+                },
+                {
+                    field : 'ca_xxl',
+                    title : '裁剪XXL/44',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold"
+                            }
+                        }
+                    }
+                },
+                {
+                    field : 'ye_xxxl',
+                    title : '业务XXXL/46',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold",
+                                "color":"#ff1111"
+                            }
+                        }
+                    }
+                },
+                {
+                    field : 'ca_xxxl',
+                    title : '裁剪XXXL/46',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold"
+                            }
+                        }
+                    }
                 }],
             locale : 'zh-CN',
             url : 'findByKuanhao',
@@ -351,6 +537,9 @@ function addGoodsAction() {
         $('#add_modal').modal("show");
     });
     $('#add_modal_submit').click(function() {
+        var msg = "操作失败";//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
+        $("#goods_form").bootstrapValidator('validate');//提交验证
+        if ($("#goods_form").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
         var data = {
             kuanhao : $('#kuanhao').val(),
             cjriqi : $('#cjriqi').val(),
@@ -361,7 +550,7 @@ function addGoodsAction() {
             l :$('#l').val(),
             xl : $('#xl').val(),
             xxl : $('#xxl').val(),
-            xxxl : $('#xxxl').val(),
+            xxxl : $('#xxxl').val()
 
         }
         // ajax
@@ -373,15 +562,16 @@ function addGoodsAction() {
             data : JSON.stringify(data),
             success : function(response) {
                 $('#add_modal').modal("hide");
-                var msg;
                 var type;
                 var append = '';
                 if (response.result == "success") {
                     type = "success";
-                    msg = "货物添加成功";
-                } else if (response.result == "error") {
+                    msg = "操作成功";
+                    alert(msg);//验证成功后的操作，如ajax
+                } else if (response.result != "success") {
                     type = "error";
-                    msg = "货物添加失败";
+                    msg = "操作失败";
+                    alert(msg);//验证成功后的操作，如ajax
                 }
                 showMsg(type, msg, append);
                 tableRefresh();
@@ -400,12 +590,14 @@ function addGoodsAction() {
                 $('#goods_form').bootstrapValidator("resetForm", true);
                 tableRefresh();
             },
-            error : function(xhr, textStatus, errorThrow) {
+            error: function (xhr, textStatus, errorThrow) {
                 $('#add_modal').modal("hide");
                 tableRefresh();
                 // handler error
                 handleAjaxError(xhr.status);
             }
         });
+        }
+
     });
 }

@@ -362,7 +362,7 @@ function addGoodsAction() {
     $('#add_modal_submit').click(function() {//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
         $("#goods_form").bootstrapValidator('validate');//提交验证
         if ($("#goods_form").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
-            alert("操作成功");//验证成功后的操作，如ajax
+
             var data = {
                 kuanhao : $('#kuanhao').val(),
                 jcriqi : $('#jcriqi').val(),
@@ -390,10 +390,12 @@ function addGoodsAction() {
                     var append = '';
                     if (response.result == "success") {
                         type = "success";
-                        msg = "货物添加成功";
+                        msg = "操作成功";
+                        alert(msg);
                     } else if (response.result!="success") {
                         type = "error";
-                        msg = "货物添加失败";
+                        msg = response.result;
+                        alert(msg);
                     }
                     showMsg(type, msg, append);
                     tableRefresh();

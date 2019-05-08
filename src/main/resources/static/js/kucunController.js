@@ -134,7 +134,8 @@ function rowEditOperation(row) {
     $('#edit_modal').modal({backdrop: 'static', keyboard: false});
     search_type_goods = "findByKuanhao";
     $('#edit_modal_submit').click(function(){
-        $('#edit_modal').modal("hide")});
+        $('#edit_modal').modal("hide");
+        search_type_goods = "searchAll";});
     $('#goodsdetail').bootstrapTable(
         {
             columns : [

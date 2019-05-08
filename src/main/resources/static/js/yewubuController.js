@@ -152,7 +152,8 @@ function rowShowOperation(row) {
     $('#show_modal').modal({backdrop: 'static', keyboard: false});
     search_type = "findByKuanhao";
     $('#close_showme').click(function(){
-        $('#show_modal').modal("hide")});
+        $('#show_modal').modal("hide");
+        search_type = "none";});
     $('#goodsdetail').bootstrapTable(
         {
             columns : [
@@ -268,10 +269,10 @@ function addGoodsAction() {
     $('#add_goods').click(function() {
         $('#add_goods_modal').modal("show");
     });
-    $('#add_goods_modal_submit').click(function() {//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
+    $('#add_goods_modal_submit').click(function() {
+        var msg = "操作失败";//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
         $("#goods_form").bootstrapValidator('validate');//提交验证
         if ($("#goods_form").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
-            alert("操作成功");//验证成功后的操作，如ajax
             var data = {
                 kuanhao : $('#kuanhaogoods').val(),
                 yanse : $('#yanse').val(),
@@ -281,7 +282,7 @@ function addGoodsAction() {
                 l :$('#l').val(),
                 xl : $('#xl').val(),
                 xxl : $('#xxl').val(),
-                xxxl : $('#xxxl').val(),
+                xxxl : $('#xxxl').val()
 
             }
             // ajax
@@ -293,17 +294,15 @@ function addGoodsAction() {
                 data : JSON.stringify(data),
                 success : function(response) {
                     $('#add_goods_modal').modal("hide");
-                    var msg;
-                    var type;
-                    var append = '';
+
                     if (response.result == "success") {
-                        type = "success";
-                        msg = "货物添加成功";
-                    } else if (response.result == "error") {
-                        type = "error";
-                        msg = "货物添加失败";
+                        msg = "操作成功";
+                        alert(msg);
+                    } else if (response.status != "success") {
+                        msg = "操作失败";
+                        alert(msg);
                     }
-                    showMsg(type, msg, append);
+
                     tableRefresh();
 
                     // reset
@@ -513,6 +512,7 @@ function detailTableRefresh() {
 function editCustomerAction() {
     $('#edit_modal_submit').click(
         function() {
+            var msg = "业务信息更新失败";
             $('#customer_form_edit').data('bootstrapValidator')
                 .validate();
             if (!$('#customer_form_edit').data('bootstrapValidator')
@@ -538,14 +538,16 @@ function editCustomerAction() {
                 success : function(response) {
                     $('#edit_modal').modal("hide");
                     var type;
-                    var msg;
+
                     var append = ''
                     if (response.result == "success") {
                         type = "success";
                         msg = "业务信息更新成功";
-                    } else if (response.result == "error") {
+                        alert(msg);
+                    } else if (response.result != "success") {
                         type = "error";
-                        msg = "业务信息更新失败"
+                        msg = "业务信息更新失败";
+                        alert(msg);
                     }
                     showMsg(type, msg, append);
                     tableRefresh();
@@ -563,6 +565,7 @@ function editCustomerAction() {
 // 刪除客户信息
 function deleteCustomerAction(){
     $('#delete_confirm').click(function(){
+        var msg = "业务信息删除失败";
         var data = {
             "kuanhao" : selectID
         }
@@ -577,14 +580,15 @@ function deleteCustomerAction(){
             success : function(response){
                 $('#deleteWarning_modal').modal("hide");
                 var type;
-                var msg;
                 var append = '';
                 if(response.result == "success"){
                     type = "success";
                     msg = "业务信息删除成功";
+                    alert(msg);
                 }else{
                     type = "error";
                     msg = "业务信息删除失败";
+                    alert(msg);
                 }
                 showMsg(type, msg, append);
                 tableRefresh();
@@ -604,11 +608,11 @@ function addCustomerAction() {
     $('#add_customer').click(function() {
         $('#add_modal').modal("show");
     });
-    $('#add_modal_submit').click(function() {//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
+    $('#add_modal_submit').click(function() {
+        var msg = "业务添加失败";//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
         $("#customer_form").bootstrapValidator('validate');//提交验证
         if ($("#customer_form").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
-            alert("操作成功");//验证成功后的操作，如ajax
-            var data = {
+             var data = {
                 kuanhao : $('#kuanhao').val(),
                 kehu : $('#kehu').val(),
                 ywbshuliang : $('#ywbshuliang').val(),
@@ -624,18 +628,14 @@ function addCustomerAction() {
                 data : JSON.stringify(data),
                 success : function(response) {
                     $('#add_modal').modal("hide");
-                    var msg;
-                    var type;
-                    var append = '';
+
                     if (response.result == "success") {
-                        type = "success";
                         msg = "业务添加成功";
-                    } else if (response.result == "error") {
-                        type = "error";
+                        alert(msg);
+                    } else if (response.result != "success") {
                         msg = "业务添加失败";
+                        alert(msg);
                     }
-                    showMsg(type, msg, append);
-                    tableRefresh();
 
                     // reset
                     $('#kuanhao').val("");
@@ -649,6 +649,7 @@ function addCustomerAction() {
                 error : function(xhr, textStatus, errorThrown) {
                     $('#add_modal').modal("hide");
                     tableRefresh();
+                    alert(msg);
                     // handler error
                     handleAjaxError(xhr.status);
                 }

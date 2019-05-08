@@ -143,7 +143,8 @@ function rowEditOperation(row) {
     $('#edit_modal').modal({backdrop: 'static', keyboard: false});
     search_type_goods = "findByKuanhao";
     $('#edit_modal_submit').click(function(){
-        $('#edit_modal').modal("hide")});
+        $('#edit_modal').modal("hide");
+        search_type_goods = "searchAll";});
     $('#goodsdetail').bootstrapTable(
         {
             columns : [
@@ -164,37 +165,207 @@ function rowEditOperation(row) {
                     width : "150px"
                 },
                 {
-                    field : 'xs',
-                    title : 'XS/34'
+                    field : 'ca_xs',
+                    title : '裁剪XS/34',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold",
+                                "color":"#ff1111"
+                            }
+                        }
+                    }
                 },
                 {
-                    field : 's',
-                    title : 'S/36'
+                    field : 'ho_xs',
+                    title : '后道XS/34',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold"
+                            }
+                        }
+                    }
                 },
                 {
-                    field : 'm',
-                    title : 'M/38'
+                    field : 'ca_s',
+                    title : '裁剪S/36',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold",
+                                "color":"#ff1111"
+                            }
+                        }
+                    }
                 },
                 {
-                    field : 'l',
-                    title : 'L/40'
+                    field : 'ho_s',
+                    title : '后道S/36',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold"
+                            }
+                        }
+                    }
                 },
                 {
-                    field : 'xl',
-                    title : 'XL/42'
+                    field : 'ca_m',
+                    title : '裁剪M/38',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold",
+                                "color":"#ff1111"
+                            }
+                        }
+                    }
                 },
                 {
-                    field : 'xxl',
-                    title : 'XXL/44'
+                    field : 'ho_m',
+                    title : '后道M/38',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold"
+                            }
+                        }
+                    }
                 },
                 {
-                    field : 'xxxl',
-                    title : 'XXXL/46'
+                    field : 'ca_l',
+                    title : '裁剪L/40',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold",
+                                "color":"#ff1111"
+                            }
+                        }
+                    }
                 },
                 {
-                    field : 'beizhu',
-                    title : '备注',
-                    width : '500px'
+                    field : 'ho_l',
+                    title : '后道L/40',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold"
+                            }
+                        }
+                    }
+                },
+                {
+                    field : 'ca_xl',
+                    title : '裁剪XL/42',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold",
+                                "color":"#ff1111"
+                            }
+                        }
+                    }
+                },
+                {
+                    field : 'ho_xl',
+                    title : '后道XL/42',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold"
+                            }
+                        }
+                    }
+                },
+                {
+                    field : 'ca_xxl',
+                    title : '裁剪XXL/44',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold",
+                                "color":"#ff1111"
+                            }
+                        }
+                    }
+                },
+                {
+                    field : 'ho_xxl',
+                    title : '后道XXL/44',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold"
+                            }
+                        }
+                    }
+                },
+                {
+                    field : 'ca_xxxl',
+                    title : '裁剪XXXL/46',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold",
+                                "color":"#ff1111"
+                            }
+                        }
+                    }
+                },
+                {
+                    field : 'ho_xxxl',
+                    title : '后道XXXL/46',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold"
+                            }
+                        }
+                    }
                 }],
             locale : 'zh-CN',
             url : 'findByKuanhao',
@@ -363,10 +534,11 @@ function addGoodsAction() {
     $('#add_goods').click(function() {
         $('#add_modal').modal("show");
     });
-    $('#add_modal_submit').click(function() {//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
+    $('#add_modal_submit').click(function() {
+        var msg = "操作失败";//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
         $("#goods_form").bootstrapValidator('validate');//提交验证
         if ($("#goods_form").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
-            alert("操作成功");//验证成功后的操作，如ajax
+
             var data = {
                 kuanhao : $('#kuanhao').val(),
                 hdriqi : $('#hdriqi').val(),
@@ -390,15 +562,17 @@ function addGoodsAction() {
                 data: JSON.stringify(data),
                 success: function (response) {
                     $('#add_modal').modal("hide");
-                    var msg;
+
                     var type;
                     var append = '';
                     if (response.result == "success") {
                         type = "success";
-                        msg = "货物添加成功";
-                    } else if (response.result == "error") {
+                        msg = "操作成功";
+                        alert(msg);
+                    } else if (response.result != "success") {
                         type = "error";
-                        msg = "货物添加失败";
+                        msg = "操作失败";
+                        alert(msg);
                     }
                     showMsg(type, msg, append);
                     tableRefresh();
