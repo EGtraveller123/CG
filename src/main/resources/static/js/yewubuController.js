@@ -647,6 +647,7 @@ function addCustomerAction() {
                 },
                 error : function(xhr, textStatus, errorThrown) {
                     $('#add_modal').modal("hide");
+                    tableRefresh();
                     // handler error
                     handleAjaxError(xhr.status);
                 }
