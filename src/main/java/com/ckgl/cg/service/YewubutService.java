@@ -1,7 +1,9 @@
 package com.ckgl.cg.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.ckgl.cg.bean.Yewubu;
 import com.ckgl.cg.bean.Yewubut;
+import com.ckgl.cg.dao.YewubuMapper;
 import com.ckgl.cg.dao.YewubutMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -19,10 +21,16 @@ public class YewubutService {
     @Autowired
     private YewubutMapper yewubutMapper;
 
+    @Autowired
+    private YewubuMapper yewubuMapper;
+
+
 
     public JSONObject insert(JSONObject jsonObject){
         Yewubut yewubut = new Yewubut();
+        Yewubu yewubu = new Yewubu();
         JSONObject js1 = new JSONObject();
+        yewubu=yewubuMapper.selectByKuanhao(jsonObject.getString("kuanhao"));
         yewubut.setKuanhao(js1.getString("kuanhao"));
         yewubut.setYanse(js1.getString("yanse"));
         yewubut.setXs(js1.getInteger("xs"));

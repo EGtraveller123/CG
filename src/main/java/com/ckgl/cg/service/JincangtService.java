@@ -74,7 +74,7 @@ public class JincangtService {
             kucunt.setXxxl(kucunt1.getXxxl()+jsonObject.getInteger("xxxl"));
             kucuntMapper.updateKucunt(kucunt);
             kucunMapper.updateKucun(kucunt1.getKuanhao());
-            Jincangt.setId(kucunt1.getId());
+            Jincangt.setKucunid(kucunt1.getId());
             JincangtMapper.insert(Jincangt);
             result.put("result", "success");
             }else {

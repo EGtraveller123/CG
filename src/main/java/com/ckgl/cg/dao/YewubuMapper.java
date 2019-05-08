@@ -21,8 +21,8 @@ public interface YewubuMapper {
     @Select("select * from yewubu")
     List<Yewubu> selectAll();
 
-
-
+    @Update("update yewubu set ywbshuliang=(select sum(xs+s+m+l+xl+xxl+xxxl) from yewubu_t where kuanhao=#{kuanhao}) where kuanhao=#{kuanhao}")
+    List<Yewubu> updateshuliang(String kuanhao);
 
     /**
      * @return 返回指定KUANHAO对应的Yewubu信息
@@ -47,6 +47,7 @@ public interface YewubuMapper {
      */
     @Insert("insert into yewubu(kuanhao,kehu,ywbshuliang,mianliao,chriqi) values (#{kuanhao},#{kehu},#{ywbshuliang},#{mianliao},#{chriqi})")
     boolean insert(Yewubu yewubu);
+
 
 
 

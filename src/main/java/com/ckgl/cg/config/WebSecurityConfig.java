@@ -72,6 +72,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/plugins/**",
                         "/js/*"
                 ).permitAll()
+                .antMatchers("/rucang/**",
+                        "/chucang/**",
+                        "/kucun/**"
+                ).hasAuthority("admin")
                 .anyRequest().authenticated() //4  所有请求必须要登录后才能认证
                 .and()
                 .formLogin()
