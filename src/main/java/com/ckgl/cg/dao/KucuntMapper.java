@@ -21,7 +21,7 @@ public interface KucuntMapper {
     @Delete("delete from kucun_t where id = #{id}")
     boolean deleteKucunt(int id);
 
-    @Select("select sum(xs,s,m,l,xl,xxl,xxxl) from kucun_t where id=#{id}")
+    @Select("select sum(xs+s+m+l+xl+xxl+xxxl) from kucun_t where id=#{id}")
     int findKucuntSum(int id);
 
     @Select("select * from kucun_t")

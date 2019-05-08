@@ -1,6 +1,7 @@
 package com.ckgl.cg.controller;
 
 import com.ckgl.cg.bean.Kucun;
+import com.ckgl.cg.bean.Kucunt;
 import com.ckgl.cg.service.KucunService;
 import com.ckgl.cg.util.Response;
 import com.ckgl.cg.util.ResponseFactory;
@@ -37,11 +38,11 @@ public class KucunController {
             case SEARCH_BY_KUANHAO:
                 queryResult = kucunService.selectByKuanhao(keyWord);
                 break;
-            case SEARCH_ALL:
-                queryResult = kucunService.selectAll(offset,limit);
-                break;
             case FIND_BY_KUANHAO:
                 queryResult = kucunService.findByKuanhao(keyWord);
+                break;
+            case SEARCH_ALL:
+                queryResult = kucunService.selectAll(offset, limit);
                 break;
             default:
                 // do other thing
@@ -123,19 +124,19 @@ public class KucunController {
         Response responseContent = ResponseFactory.newInstance();
         String result = Response.RESPONSE_RESULT_ERROR;
 
-        //初始化kucun信息
-        Object kucun = null;
+        //初始化kucunt信息
+        Object kucunt = null;
         Map<String, Object> queryResult = query(FIND_BY_KUANHAO, kuanhao, 5, 0);
         if (queryResult != null) {
-            kucun = queryResult.get("data");
-            if (kucun != null) {
+            kucunt = queryResult.get("data");
+            if (kucunt != null) {
                 result = Response.RESPONSE_RESULT_SUCCESS;
             }
         }
 
         // 设置 Response
         responseContent.setResponseResult(result);
-        responseContent.setCustomerInfo("rows",kucun);
+        responseContent.setCustomerInfo("rows",kucunt);
         responseContent.setResponseTotal((Long) queryResult.get("total"));
         return responseContent.generateResponse();
     }

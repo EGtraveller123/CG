@@ -71,16 +71,16 @@ public class ChucangtService {
                 kucunt.setId(kucunt1.getId());
                 kucunt.setKuanhao(jsonObject.getString("kuanhao"));
                 kucunt.setYanse("yanse");
-                kucunt.setL(kucunt1.getL()-jsonObject.getInteger("l"));
                 kucunt.setXs(kucunt1.getXs()-jsonObject.getInteger("xs"));
                 kucunt.setS(kucunt1.getS()-jsonObject.getInteger("s"));
                 kucunt.setM(kucunt1.getM()-jsonObject.getInteger("m"));
+                kucunt.setL(kucunt1.getL()-jsonObject.getInteger("l"));
                 kucunt.setXl(kucunt1.getXl()-jsonObject.getInteger("xl"));
                 kucunt.setXxl(kucunt1.getXxl()-jsonObject.getInteger("xxl"));
                 kucunt.setXxxl(kucunt1.getXxxl()-jsonObject.getInteger("xxxl"));
                 kucuntMapper.updateKucunt(kucunt);
-                kucunMapper.updateKucun(kucunt1.getId());
-                chucangt.setId(kucunt1.getId());
+                kucunMapper.updateKucun(kucunt1.getKuanhao());
+                chucangt.setKucunid(kucunt1.getId());
                 chucangtMapper.insert(chucangt);
                 result.put("result", "success");
                 if(kucuntMapper.findKucuntSum(kucunt1.getId())==0){

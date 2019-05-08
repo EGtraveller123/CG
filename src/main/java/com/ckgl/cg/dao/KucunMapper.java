@@ -22,8 +22,8 @@ public interface KucunMapper {
     @Insert("insert into kucun(kuanhao,kcshuliang) values(#{kuanhao},(select sum(xs+s+m+l+xl+xxl+xxxl) from kucun_t where kuanhao=#{kuanhao}))")
     boolean insertKucun(String kuanhao);
 
-    @Update("update kucun set kcshuliang=(select sum(xs+s+m+l+xl+xxl+xxxl) from kucun_t where id=#{id})")
-    boolean updateKucun(int id);
+    @Update("update kucun set kcshuliang=(select sum(xs+s+m+l+xl+xxl+xxxl) from kucun_t where kuanhao=#{kuanhao}) where kuanhao=#{kuanhao}")
+    boolean updateKucun(String kuanhao);
 
     @Delete("delete from kucun where kuanhao=#{kuanhao}")
     boolean deleteKucun(String kuanhao);
