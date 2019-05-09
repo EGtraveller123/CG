@@ -4,7 +4,6 @@ public class Houdaobut {
     private Integer id;
     private String kuanhao;
     private String yanse;
-    private String hdriqi;
     private Integer xs;
     private Integer s;
     private Integer m;
@@ -12,6 +11,8 @@ public class Houdaobut {
     private Integer xl;
     private Integer xxl;
     private Integer xxxl;
+    private String hdriqi;
+    private Integer hdshuliang;
     private String beizhu;
 
     public String getBeizhu() {
@@ -110,4 +111,11 @@ public class Houdaobut {
         this.xxxl = xxxl;
     }
 
+    public Integer getHdshuliang() {
+        return hdshuliang;
+    }
+
+    public void setHdshuliang(Integer hdshuliang) {
+        this.hdshuliang = hdshuliang;
+    }
 }

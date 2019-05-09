@@ -24,24 +24,33 @@ public class HoudaobutService {
     @Autowired
     private HoudaobuMapper houdaobuMapper;
 
-    public Map<String, Object> selectByKuanhao(String kuanhao) {
+    public Map<String, Object> selectByKuanhao(int offset, int limit, String kuanhao) {
         Map<String, Object> resultSet = new HashMap<>();
-        List<Houdaobut> houdaobuts = new ArrayList<>();
+        PageHelper.startPage(offset,limit);
+        List<Map> houdaobuts = null;
         long total = 0;
-
-        Houdaobut houdaobut = null;
+        boolean isPagination = true;
+        if (offset < 0 || limit < 0)
+            isPagination = false;
         try {
-            houdaobut = houdaobutMapper.selectByKuanhao(kuanhao);
+            if (isPagination) {
+                PageHelper.offsetPage(offset, limit);
+                houdaobuts = houdaobutMapper.selectByKuanhao(kuanhao);
+                if (houdaobuts != null) {
+                    PageInfo<Map> pageInfo = new PageInfo<>(houdaobuts);
+                    total = pageInfo.getTotal();
+                } else
+                    houdaobuts = new ArrayList<>();
+            } else {
+                houdaobuts = houdaobutMapper.selectByKuanhao(kuanhao);
+                if (houdaobuts != null)
+                    total = houdaobuts.size();
+                else
+                    houdaobuts = new ArrayList<>();
+            }
         } catch (PersistenceException e) {
-            System.out.println("exception catch");
             e.printStackTrace();
         }
-
-        if (houdaobut != null) {
-            houdaobuts.add(houdaobut);
-            total = 1;
-        }
-
         resultSet.put("data", houdaobuts);
         resultSet.put("total", total);
         return resultSet;
@@ -49,35 +58,10 @@ public class HoudaobutService {
 
     public JSONObject insert(JSONObject jsonObject) {
         Houdaobut houdaobut = new Houdaobut();
-        Houdaobu houdaobu = new Houdaobu();
-        JSONObject js1 = new JSONObject();
-        JSONObject js2 = new JSONObject();
+        JSONObject res = new JSONObject();
         houdaobut.setKuanhao(jsonObject.getString("kuanhao"));
         houdaobut.setYanse(jsonObject.getString("yanse"));
-        houdaobut.setHdriqi(jsonObject.getString("hdriqi"));
-        houdaobut.setXs(jsonObject.getInteger("xs"));
-        houdaobut.setS(jsonObject.getInteger("s"));
-        houdaobut.setM(jsonObject.getInteger("m"));
-        houdaobut.setL(jsonObject.getInteger("l"));
-        houdaobut.setXl(jsonObject.getInteger("xl"));
-        houdaobut.setXxl(jsonObject.getInteger("xxl"));
-        houdaobut.setXxxl(jsonObject.getInteger("xxxl"));
-        houdaobut.setBeizhu(jsonObject.getString("beizhu"));
-        houdaobu.setKuanhao(jsonObject.getString("kuanhao"));
-        houdaobu.setHdbshuliang(jsonObject.getInteger("hdbshuliang"));
-        if (houdaobutMapper.insert(houdaobut)) {
-            if (houdaobuMapper.selectByKuanhao(houdaobu.getKuanhao())==null) {
-                houdaobuMapper.insert(houdaobu);
-                js2.put("result","success");
-            }else{
-                houdaobuMapper.update(houdaobu);
-                js2.put("result", "success");
-            }
-            js1.put("result", "success");
-        }else {
-            js1.put("result","error");
-        }
-        return js1;
+
     }
 
     /**

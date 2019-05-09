@@ -74,36 +74,6 @@ public class ChucangController {
         return responseContent.generateResponse();
     }
 
-    /**
-     * @param kuanhao 款号
-     * @return 返回一个map，其中：key 为 result 的值为操作的结果，包括：success 与 error；key 为 data
-     * 的值为客户信息
-     * 这是返回chucangt表
-     */
-//    @RequestMapping(value = "findByKuanhao", method = RequestMethod.GET)
-//    public
-//    @ResponseBody
-//    Map<String, Object> findByKuanhao(@RequestParam("keyWord") String kuanhao) {
-//        // 初始化 Response
-//        Response responseContent = ResponseFactory.newInstance();
-//        String result = Response.RESPONSE_RESULT_ERROR;
-//
-//        //初始化chucangt信息
-//        Object chucangt = null;
-//        Map<String, Object> queryResult = query(FIND_BY_KUANHAO, kuanhao, 5, 0);
-//        if (queryResult != null) {
-//            chucangt = queryResult.get("data");
-//            if (chucangt != null) {
-//                result = Response.RESPONSE_RESULT_SUCCESS;
-//            }
-//        }
-//
-//        // 设置 Response
-//        responseContent.setResponseResult(result);
-//        responseContent.setCustomerInfo("rows",chucangt);
-//        responseContent.setResponseTotal((Long) queryResult.get("total"));
-//        return responseContent.generateResponse();
-//}
 
     /**
      * @param searchType 搜索类型

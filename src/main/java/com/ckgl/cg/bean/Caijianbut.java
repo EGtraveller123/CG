@@ -2,9 +2,9 @@ package com.ckgl.cg.bean;
 
 public class Caijianbut {
     private Integer id;
+    private Integer yewubutid;
     private String kuanhao;
     private String yanse;
-    private String cjriqi;
     private Integer xs;
     private Integer s;
     private Integer m;
@@ -12,7 +12,8 @@ public class Caijianbut {
     private Integer xl;
     private Integer xxl;
     private Integer xxxl;
-
+    private String cjriqi;
+    private Integer cjshuliang;
 
     public Integer getId() {
         return id;
@@ -36,14 +37,6 @@ public class Caijianbut {
 
     public void setYanse(String yanse) {
         this.yanse = yanse;
-    }
-
-    public String getCjriqi() {
-        return cjriqi;
-    }
-
-    public void setCjriqi(String cjriqi) {
-        this.cjriqi = cjriqi;
     }
 
     public Integer getXs() {
@@ -102,20 +95,28 @@ public class Caijianbut {
         this.xxxl = xxxl;
     }
 
-    @Override
-    public String toString() {
-        return "Caijianbut{" +
-                "id=" + id +
-                ", kuanhao='" + kuanhao + '\'' +
-                ", yanse='" + yanse + '\'' +
-                ", cjriqi='" + cjriqi + '\'' +
-                ", xs=" + xs +
-                ", s=" + s +
-                ", m=" + m +
-                ", l=" + l +
-                ", xl=" + xl +
-                ", xxl=" + xxl +
-                ", xxxl=" + xxxl +
-                '}';
+
+    public String getCjriqi() {
+        return cjriqi;
+    }
+
+    public void setCjriqi(String cjriqi) {
+        this.cjriqi = cjriqi;
+    }
+
+    public Integer getCjshuliang() {
+        return cjshuliang;
+    }
+
+    public void setCjshuliang(Integer cjshuliang) {
+        this.cjshuliang = cjshuliang;
+    }
+
+    public Integer getYewubuid() {
+        return yewubutid;
+    }
+
+    public void setYewubuid(Integer yewubuid) {
+        this.yewubutid = yewubuid;
     }
 }

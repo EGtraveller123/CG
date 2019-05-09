@@ -4,16 +4,7 @@ package com.ckgl.cg.bean;
 public class Caijianbu {
     private Integer id;
     private String kuanhao;
-    private Integer ywbshuliang;
     private Integer cjbshuliang;
-
-    public Integer getYwbshuliang() {
-        return ywbshuliang;
-    }
-
-    public void setYwbshuliang(Integer ywbshuliang) {
-        this.ywbshuliang = ywbshuliang;
-    }
 
     public Integer getId() {
         return id;

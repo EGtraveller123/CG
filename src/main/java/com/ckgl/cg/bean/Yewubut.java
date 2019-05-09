@@ -4,7 +4,9 @@ public class Yewubut {
 
     private Integer id;
     private String kuanhao;
+    private String kehu;
     private String yanse;
+    private String mianliao;
     private Integer xs;
     private Integer s;
     private Integer m;
@@ -12,6 +14,33 @@ public class Yewubut {
     private Integer xl;
     private Integer xxl;
     private Integer xxxl;
+    private String chriqi;
+    private Integer ywshuliang;
+
+
+    public String getMianliao() {
+        return mianliao;
+    }
+
+    public void setMianliao(String mianliao) {
+        this.mianliao = mianliao;
+    }
+
+    public String getChriqi() {
+        return chriqi;
+    }
+
+    public void setChriqi(String chriqi) {
+        this.chriqi = chriqi;
+    }
+
+    public String getKehu() {
+        return kehu;
+    }
+
+    public void setKehu(String kehu) {
+        this.kehu = kehu;
+    }
 
     public Integer getId() {
         return id;
@@ -93,19 +122,11 @@ public class Yewubut {
         this.xxxl = xxxl;
     }
 
-    @Override
-    public String toString() {
-        return "Yewubut{" +
-                "id=" + id +
-                ", kuanhao='" + kuanhao + '\'' +
-                ", yanse='" + yanse + '\'' +
-                ", xs=" + xs +
-                ", s=" + s +
-                ", m=" + m +
-                ", l=" + l +
-                ", xl=" + xl +
-                ", xxl=" + xxl +
-                ", xxxl=" + xxxl +
-                '}';
+    public Integer getYwshuliang() {
+        return ywshuliang;
+    }
+
+    public void setYwshuliang(Integer ywshuliang) {
+        this.ywshuliang = ywshuliang;
     }
 }
