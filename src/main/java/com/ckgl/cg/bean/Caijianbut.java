@@ -2,7 +2,6 @@ package com.ckgl.cg.bean;
 
 public class Caijianbut {
     private Integer id;
-    private Integer yewubutid;
     private String kuanhao;
     private String yanse;
     private Integer xs;
@@ -13,7 +12,7 @@ public class Caijianbut {
     private Integer xxl;
     private Integer xxxl;
     private String cjriqi;
-    private Integer cjshuliang;
+
 
     public Integer getId() {
         return id;
@@ -104,19 +103,5 @@ public class Caijianbut {
         this.cjriqi = cjriqi;
     }
 
-    public Integer getCjshuliang() {
-        return cjshuliang;
-    }
 
-    public void setCjshuliang(Integer cjshuliang) {
-        this.cjshuliang = cjshuliang;
-    }
-
-    public Integer getYewubuid() {
-        return yewubutid;
-    }
-
-    public void setYewubuid(Integer yewubuid) {
-        this.yewubutid = yewubuid;
-    }
 }

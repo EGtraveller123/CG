@@ -37,7 +37,14 @@ public class YewubutService {
         yewubut.setYwshuliang(jsonObject.getInteger("xs")+jsonObject.getInteger("s")+jsonObject.getInteger("m")+jsonObject.getInteger("l")+jsonObject.getInteger("xl")+jsonObject.getInteger("xxl")+jsonObject.getInteger("xxxl"));
         yewubutMapper.insertYewubut(yewubut);
         yewubu.setKuanhao(jsonObject.getString("kuanhao"));
-        yewubu.setYewubutid(yewubut.getId());
+        yewubu.setYanse(jsonObject.getString("yanse"));
+        yewubu.setXs(jsonObject.getInteger("xs"));
+        yewubu.setS(jsonObject.getInteger("s"));
+        yewubu.setM(jsonObject.getInteger("m"));
+        yewubu.setL(jsonObject.getInteger("l"));
+        yewubu.setXl(jsonObject.getInteger("xl"));
+        yewubu.setXxl(jsonObject.getInteger("xxl"));
+        yewubu.setXxxl(jsonObject.getInteger("xxxl"));
         yewubuMapper.insertYewubu(yewubu);
         res.put("result","success");
         return res;

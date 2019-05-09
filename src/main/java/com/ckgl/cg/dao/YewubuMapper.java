@@ -15,7 +15,7 @@ import java.util.Map;
 @Component
 public interface YewubuMapper {
 
-    @Insert("insert into yewubu(kuanhao) values(#{kuanhao})")
+    @Insert("insert into yewubu(kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl) values (#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")
     boolean insertYewubu(Yewubu yewubu);
 
 }
