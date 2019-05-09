@@ -3,6 +3,7 @@ package com.ckgl.cg.service;
 import com.alibaba.fastjson.JSONObject;
 import com.ckgl.cg.bean.Houdaobu;
 import com.ckgl.cg.bean.Houdaobut;
+import com.ckgl.cg.dao.CaijianbuMapper;
 import com.ckgl.cg.dao.HoudaobuMapper;
 import com.ckgl.cg.dao.HoudaobutMapper;
 import com.github.pagehelper.PageHelper;
@@ -23,6 +24,9 @@ public class HoudaobutService {
 
     @Autowired
     private HoudaobuMapper houdaobuMapper;
+
+    @Autowired
+    private CaijianbuMapper caijianbuMapper;
 
     public Map<String, Object> selectByKuanhao(int offset, int limit, String kuanhao) {
         Map<String, Object> resultSet = new HashMap<>();
@@ -56,54 +60,48 @@ public class HoudaobutService {
         return resultSet;
     }
 
-    public JSONObject insert(JSONObject jsonObject) {
+    public JSONObject insert(JSONObject jsonObject){
         Houdaobut houdaobut = new Houdaobut();
+        Houdaobu houdaobu = new Houdaobu();
+        Houdaobu houdaobu1 = new Houdaobu();
         JSONObject res = new JSONObject();
+        houdaobu1=houdaobuMapper.selectHoudaobu(jsonObject.getInteger("houdaobuid"));
         houdaobut.setKuanhao(jsonObject.getString("kuanhao"));
         houdaobut.setYanse(jsonObject.getString("yanse"));
-
-    }
-
-    /**
-     * @param offset 分页的偏移值
-     * @param limit  分页的大小
-     * @return 结果的一个Map，其中： key为 data 的代表记录数据；key 为 total 代表结果记录的数量
-     */
-    public Map<String, Object> findByKuanhao(int offset, int limit, String kuanhao) {
-        // 初始化结果集
-        Map<String, Object> resultSet = new HashMap<>();
-        PageHelper.startPage(offset,limit);
-        List<Map> houdaobuts = null;
-        long total = 0;
-        boolean isPagination = true;
-
-        // validate
-        if (offset < 0 || limit < 0)
-            isPagination = false;
-
-        // query
-        try {
-            if (isPagination) {
-                PageHelper.offsetPage(offset, limit);
-                houdaobuts = houdaobutMapper.findByKuanhao(kuanhao);
-                if (houdaobuts != null) {
-                    PageInfo<Map> pageInfo = new PageInfo<>(houdaobuts);
-                    total = pageInfo.getTotal();
-                } else
-                    houdaobuts = new ArrayList<>();
-            } else {
-                houdaobuts = houdaobutMapper.findByKuanhao(kuanhao);
-                if (houdaobuts != null)
-                    total = houdaobuts.size();
-                else
-                    houdaobuts = new ArrayList<>();
-            }
-        } catch (PersistenceException e) {
-            e.printStackTrace();
+        houdaobut.setXs(jsonObject.getInteger("xs"));
+        houdaobut.setS(jsonObject.getInteger("s"));
+        houdaobut.setM(jsonObject.getInteger("m"));
+        houdaobut.setL(jsonObject.getInteger("l"));
+        houdaobut.setXl(jsonObject.getInteger("xl"));
+        houdaobut.setXxl(jsonObject.getInteger("xxl"));
+        houdaobut.setXxxl(jsonObject.getInteger("xxxl"));
+        houdaobut.setHdriqi(jsonObject.getString("hdriqi"));
+        houdaobut.setBeizhu(jsonObject.getString("beizhu"));
+        if(houdaobu1!=null){
+            houdaobu.setXs(houdaobu1.getXs()+jsonObject.getInteger("xs"));
+            houdaobu.setS(houdaobu1.getS()+jsonObject.getInteger("s"));
+            houdaobu.setM(houdaobu1.getM()+jsonObject.getInteger("m"));
+            houdaobu.setL(houdaobu1.getL()+jsonObject.getInteger("l"));
+            houdaobu.setXl(houdaobu1.getXl()+jsonObject.getInteger("xl"));
+            houdaobu.setXxl(houdaobu1.getXxl()+jsonObject.getInteger("xxl"));
+            houdaobu.setXxxl(houdaobu1.getXxxl()+jsonObject.getInteger("xxxl"));
+            houdaobuMapper.updateHoudaobu(houdaobu);
+            houdaobutMapper.updateHoudaobut(houdaobut);
+            res.put("result","success");
+        }else {
+            houdaobu.setKuanhao(jsonObject.getString("kuanhao"));
+            houdaobu.setYanse(jsonObject.getString("yanse"));
+            houdaobu.setCaijianbuid(caijianbuMapper.selectKuanhaoYanse(jsonObject.getString("yanse"),jsonObject.getString("yanse")).getId());
+            houdaobu.setXs(jsonObject.getInteger("xs"));
+            houdaobu.setS(jsonObject.getInteger("s"));
+            houdaobu.setM(jsonObject.getInteger("m"));
+            houdaobu.setL(jsonObject.getInteger("l"));
+            houdaobu.setXl(jsonObject.getInteger("xl"));
+            houdaobu.setXxl(jsonObject.getInteger("xxl"));
+            houdaobu.setXxxl(jsonObject.getInteger("xxxl"));
+            houdaobuMapper.insertHoudaobu(houdaobu);
+            res.put("result","success");
         }
-
-        resultSet.put("data", houdaobuts);
-        resultSet.put("total", total);
-        return resultSet;
+        return res;
     }
 }

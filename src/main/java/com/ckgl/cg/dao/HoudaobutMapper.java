@@ -4,6 +4,7 @@ import com.ckgl.cg.bean.Houdaobu;
 import com.ckgl.cg.bean.Houdaobut;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
 
 
@@ -16,7 +17,7 @@ public interface HoudaobutMapper {
     @Select("select * from houdaobu_t")
     List<Map> selectAll();
 
-    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdriqi,hdshuliang from houdaobu_t where kuanhao=#{kuanhao}")
+    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdriqi from houdaobu_t where kuanhao=#{kuanhao}")
     List<Map> selectByKuanhao(String kuanhao);
 
     @Select("select a.kuanhao as ca_kuanhao,a.yanse as ca_yanse,sum(a.xs) as ca_xs,sum(a.s) as ca_s,sum(a.m) as ca_m," +
@@ -28,4 +29,7 @@ public interface HoudaobutMapper {
     @Insert("insert into houdaobu_t(kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdriqi,hdshuliang) " +
             "values(#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{hdriqi},#{hdshuliang})")
     boolean insertHoudaobu(Houdaobu houdaobu);
+
+    @Update("update houdaobu_t set xs=#{xs},s=#{s},m=#{m},#{l},#{xl},#{xxl},#{xxxl} where caijianbuid=#{caijianbuid}")
+    boolean updateHoudaobut(Houdaobut houdaobut);
 }

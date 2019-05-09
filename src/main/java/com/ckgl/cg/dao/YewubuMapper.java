@@ -18,4 +18,9 @@ public interface YewubuMapper {
     @Insert("insert into yewubu(kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl) values (#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")
     boolean insertYewubu(Yewubu yewubu);
 
+    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl from yewubu where kuanhao=#{kuanhao} and yanse=#{yanse}")
+    Yewubu selectByKuanhaoYanse(String kuanhao,String yanse);
+
+    @Update("update yewubu set xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl}")
+    boolean updateYewubu(Yewubu yewubu);
 }

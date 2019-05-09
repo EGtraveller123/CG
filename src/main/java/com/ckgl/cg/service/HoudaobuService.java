@@ -20,38 +20,42 @@ public class HoudaobuService {
     private HoudaobuMapper houdaobuMapper;
 
 
-    public Map<String, Object> selectByKuanhao(String kuanhao) {
+    public Map<String, Object> selectByKuanhao(int offset, int limit, String kuanhao) {
         Map<String, Object> resultSet = new HashMap<>();
-        List<Houdaobu> houdaobus = new ArrayList<>();
+        PageHelper.startPage(offset,limit);
+        List<Map> houdaobuts = null;
         long total = 0;
-
-        Houdaobu houdaobu = null;
+        boolean isPagination = true;
+        if (offset < 0 || limit < 0)
+            isPagination = false;
         try {
-            houdaobu = houdaobuMapper.selectByKuanhao(kuanhao);
+            if (isPagination) {
+                PageHelper.offsetPage(offset, limit);
+                houdaobuts = houdaobuMapper.selectByKuanhao2(kuanhao);
+                if (houdaobuts != null) {
+                    PageInfo<Map> pageInfo = new PageInfo<>(houdaobuts);
+                    total = pageInfo.getTotal();
+                } else
+                    houdaobuts = new ArrayList<>();
+            } else {
+                houdaobuts = houdaobuMapper.selectByKuanhao2(kuanhao);
+                if (houdaobuts != null)
+                    total = houdaobuts.size();
+                else
+                    houdaobuts = new ArrayList<>();
+            }
         } catch (PersistenceException e) {
-            System.out.println("exception catch");
             e.printStackTrace();
         }
-
-        if (houdaobu != null) {
-            houdaobus.add(houdaobu);
-            total = 1;
-        }
-
-        resultSet.put("data", houdaobus);
+        resultSet.put("data", houdaobuts);
         resultSet.put("total", total);
         return resultSet;
     }
 
-    /**
-     * @param offset 分页的偏移值
-     * @param limit  分页的大小
-     * @return 结果的一个Map，其中： key为 data 的代表记录数据；key 为 total 代表结果记录的数量
-     */
     public Map<String, Object> selectAll(int offset, int limit) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
-        List<Houdaobu> houdaobus = null;
+        List<Map> houdaobus = null;
         long total = 0;
         boolean isPagination = true;
 
@@ -63,7 +67,7 @@ public class HoudaobuService {
                 PageHelper.offsetPage(offset, limit);
                 houdaobus = houdaobuMapper.selectAll();
                 if (houdaobus != null) {
-                    PageInfo<Houdaobu> pageInfo = new PageInfo<>(houdaobus);
+                    PageInfo<Map> pageInfo = new PageInfo<>(houdaobus);
                     total = pageInfo.getTotal();
                 } else
                     houdaobus = new ArrayList<>();
@@ -77,21 +81,9 @@ public class HoudaobuService {
         } catch (PersistenceException e) {
             e.printStackTrace();
         }
+
         resultSet.put("data", houdaobus);
         resultSet.put("total", total);
         return resultSet;
-    }
-
-    public JSONObject delete(String jsonObject){
-        JSONObject js2 = new JSONObject();
-        Houdaobu houdaobu = houdaobuMapper.selectByKuanhao(jsonObject);
-        if(houdaobu!=null){
-            if (houdaobuMapper.delete(jsonObject)){
-                js2.put("result","success");
-            }
-        }else {
-            js2.put("result","error");
-        }
-        return js2;
     }
 }

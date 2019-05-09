@@ -14,18 +14,18 @@ import java.util.Map;
 @Component
 public interface HoudaobuMapper {
 
-    @Select("select kuanhao,hdbshuliang from houdaobu")
+    @Select("select * from houdaobu")
     List<Map> selectAll();
-
-    @Insert("insert into houdaobu(kuanhao,hdbshuliang) values(#{kuanhao},#{hdbshuliang})")
-    boolean insertHoudaobu(Houdaobu caijianbu);
-
-    @Select("select * from houdaobu where kuanhao=#{kuanhao}")
-    Houdaobu selectByKuanhao(String kuanhao);
-
-    @Update("update houdaobu set hdbshuliang=#{hdbshuliang} where kuanhao=#{kuanhao}")
-    Houdaobu updateHoudaobu(String kuanhao);
 
     @Select("select * from houdaobu where kuanhao=#{kuanhao}")
     List<Map> selectByKuanhao2(String kuanhao);
+
+    @Select("select * from caijianbu where caijianbuid=#{caijianbuid}")
+    Houdaobu selectHoudaobu(int yewubuid);
+
+    @Update("update houdaobu set xs=#{xs},s=#{s},#{m},#{l},#{xl},#{xxl},#{xxxl} where caijianbuod=#{caijianbuid}")
+    boolean updateHoudaobu(Houdaobu houdaobu);
+
+    @Insert("insert into houdaobu(caijianbuid,kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl) values (#{caijianbuid},#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")
+    boolean insertHoudaobu(Houdaobu houdaobu);
 }
