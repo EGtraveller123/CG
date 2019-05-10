@@ -84,7 +84,7 @@ function goodsListInit() {
                         align : "center"
                     },
                     {
-                        field : 'ca_yanse',
+                        field : 'yanse',
                         title : '颜色',
                         width : "100px",
                         halign :"center",
@@ -192,7 +192,7 @@ function showYeWu() {
                         align : "center"
                     },
                     {
-                        field : 'ca_yanse',
+                        field : 'yanse',
                         title : '颜色',
                         width : "100px",
                         halign :"center",
