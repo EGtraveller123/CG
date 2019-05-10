@@ -10,7 +10,6 @@ $(function() {
     searchAction();
     goodsListInit();
     bootstrapValidatorInit();
-    addGoodsAction();
 })
 
 // 下拉框選擇動作
@@ -65,34 +64,64 @@ function goodsListInit() {
                     {
                         field : 'kuanhao',
                         title : '款号',
-                        width : '100px'
+                        width : "250px",
+                        halign :"center",
+                        align : "center"
                     },
                     {
                         field : 'ywbshuliang',
-                        title : '业务部数量'
+                        title : '业务部数量',
+                        width : "250px",
+                        halign :"center",
+                        align : "center"
                     },
-                    {
-                        field : 'cjbshuliang',
-                        title : '裁剪部数量'
-                    },
+                    // {
+                    //     field : 'cjbshuliang',
+                    //     title : '裁剪部数量'
+                    // },
                     {
                         field : 'operation',
                         title : '操作',
+                        halign :"center",
+                        align : "center",
                         formatter : function(value, row, index) {
-                            var s = '<button class="btn btn-info btn-sm edit"><span>查看</span></button>';
+                            var s = '<button class="btn btn-info" id="edit" style="margin-left: 10px"><span>查看详情</span></button>';
+                            var sd = '<button class="btn btn-primary" id="ywLinkcj" style="margin-left: 10px"><span>比较业务部数量</span></button>';
+                            var de = '<button class="btn btn-success" id="myModalLabel" style="margin-left: 10px"><span>添加详情</span></button>';
                             // var d = '<button class="btn btn-danger btn-sm delete"><span>删除</span></button>';
                             // var fun = '';
-                            return s ;
+                            return s + ' ' + sd + ' ' + de  ;
                         },
                         events : {
                             // 操作列中编辑按钮的动作
-                            'click .edit': function (e, value,
+                            'click #edit': function (e, value,
                                                      row, index) {
                                 selectID = row.kuanhao;
                                 search_keyWord = selectID;
+                                showYeWu();
                                 detailTableRefresh();
+                            },
+                            'click #ywLinkcj': function (e, value,
+                                                     row, index) {
+                                selectID = row.kuanhao;
+                                search_keyWord = selectID;
                                 rowEditOperation(row);
+                                detailTableRefresh();
+                            },
+                            'click #myModalLabel': function (e, value,
+                                                     row, index) {
+                                selectID = row.kuanhao;
+                                search_keyWord = selectID;
+                                addGoodsAction(row);
+                                detailTableRefresh();
                             }
+                            // 'click .delete': function (e, value,
+                            //                          row, index) {
+                            //     selectID = row.kuanhao;
+                            //     search_keyWord = selectID;
+                            //     detailTableRefresh();
+                            //     rowEditOperation(row);
+                            // }
                         }
                     }],
                 url : 'all',
@@ -104,6 +133,142 @@ function goodsListInit() {
                 },
                 method : 'GET',
                 locale : 'zh-CN',
+                queryParams : queryParams,
+                sidePagination : "server",
+                contentType: "application/x-www-form-urlencoded",
+                dataType : 'json',
+                pagination : true,
+                pageNumber : 1,
+                pageSize : 5,
+                pageList : [ 5, 10, 25, 50, 100 ],
+                clickToSelect : true
+            });
+}
+
+function showYeWu() {
+    $('#show_modal').modal("show");
+    $('#show_modal').modal({backdrop: 'static', keyboard: false});
+    search_type_goods = "select_by_caijianbu";
+    $('#show_modal_submit').click(function(){
+        $('#show_modal').modal("hide");
+        search_type_goods = "searchAll";});
+    $('#showdetail')
+        .bootstrapTable(
+            {
+                columns : [
+                    {
+                        field : 'id',
+                        title : 'ID'
+                        //sortable: true
+                    },
+                    {
+                        field : 'kuanhao',
+                        title : '款号',
+                        width : '250px',
+                        halign :"center",
+                        align : "center"
+                    },
+                    {
+                        field : 'cjriqi',
+                        title : '裁剪日期',
+                        width : '150px',
+                        halign :"center",
+                        align : "center"
+                    },
+                    {
+                        field : 'ca_xs',
+                        title : '裁剪XS/34',
+                        halign :"center",
+                        align : "center",
+                        cellStyle:function(value,row,index) {
+                            return {
+                                css: {
+                                    "font-weight":"bold"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        field : 'ca_s',
+                        title : '裁剪S/36',
+                        halign :"center",
+                        align : "center",
+                        cellStyle:function(value,row,index) {
+                            return {
+                                css: {
+                                    "font-weight":"bold"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        field : 'ca_m',
+                        title : '裁剪M/38',
+                        halign :"center",
+                        align : "center",
+                        cellStyle:function(value,row,index) {
+                            return {
+                                css: {
+                                    "font-weight":"bold"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        field : 'ca_l',
+                        title : '裁剪L/40',
+                        halign :"center",
+                        align : "center",
+                        cellStyle:function(value,row,index) {
+                            return {
+                                css: {
+                                    "font-weight":"bold"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        field : 'ca_xl',
+                        title : '裁剪XL/42',
+                        halign :"center",
+                        align : "center",
+                        cellStyle:function(value,row,index) {
+                            return {
+                                css: {
+                                    "font-weight":"bold"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        field : 'ca_xxl',
+                        title : '裁剪XXL/44',
+                        halign :"center",
+                        align : "center",
+                        cellStyle:function(value,row,index) {
+                            return {
+                                css: {
+                                    "font-weight":"bold"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        field : 'ca_xxxl',
+                        title : '裁剪XXXL/46',
+                        halign :"center",
+                        align : "center",
+                        cellStyle:function(value,row,index) {
+                            return {
+                                css: {
+                                    "font-weight":"bold"
+                                }
+                            }
+                        }
+                    }],
+                locale : 'zh-CN',
+                url : 'selectByYewubu',
+                method : 'GET',
                 queryParams : queryParams,
                 sidePagination : "server",
                 contentType: "application/x-www-form-urlencoded",
@@ -452,13 +617,6 @@ function bootstrapValidatorInit() {
         },
         excluded: [':disabled'],
         fields: {
-            kuanhao: {
-                validators: {
-                    notEmpty: {
-                        message: '款号不能为空'
-                    }
-                }
-            },
             cjriqi: {
                 validators: {
                     notEmpty: {
@@ -481,6 +639,10 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -488,6 +650,10 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -495,6 +661,10 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -502,6 +672,10 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -509,6 +683,10 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -516,6 +694,10 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -523,6 +705,10 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             }
@@ -532,16 +718,14 @@ function bootstrapValidatorInit() {
 
 
 // 添加货物信息
-function addGoodsAction() {
-    $('#add_goods').click(function() {
-        $('#add_modal').modal("show");
-    });
+function addGoodsAction(row) {
+    $('#add_modal').modal("show");
     $('#add_modal_submit').click(function() {
         var msg = "操作失败";//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
         $("#goods_form").bootstrapValidator('validate');//提交验证
         if ($("#goods_form").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
         var data = {
-            kuanhao : $('#kuanhao').val(),
+            kuanhao : row.kuanhao,
             cjriqi : $('#cjriqi').val(),
             yanse : $('#yanse').val(),
             xs : $('#xs').val(),
@@ -577,7 +761,6 @@ function addGoodsAction() {
                 tableRefresh();
 
                 // reset
-                $('#kuanhao').val();
                 $('#cjriqi').val("2019-05-08");
                 $('#yanse').val();
                 $('#xs').val("0");

@@ -10,7 +10,6 @@ $(function() {
     searchAction();
     goodsListInit();
     bootstrapValidatorInit();
-    addGoodsAction();
 })
 
 // 下拉框選擇動作
@@ -65,38 +64,64 @@ function goodsListInit() {
                     {
                         field : 'kuanhao',
                         title : '款号',
-                        width : '100px'
-                    },
-                    {
-                        field : 'ywbshuliang',
-                        title : '业务部数量'
+                        width : "250px",
+                        halign :"center",
+                        align : "center"
                     },
                     {
                         field : 'cjbshuliang',
-                        title : '裁剪部数量'
+                        title : '裁剪部数量',
+                        width : "250px",
+                        halign :"center",
+                        align : "center"
                     },
-                    {
-                        field : 'hdbshuliang',
-                        title : '后道部数量'
-                    },
+                    // {
+                    //     field : 'cjbshuliang',
+                    //     title : '裁剪部数量'
+                    // },
                     {
                         field : 'operation',
                         title : '操作',
+                        halign :"center",
+                        align : "center",
                         formatter : function(value, row, index) {
-                            var s = '<button class="btn btn-info btn-sm edit"><span>查看</span></button>';
+                            var s = '<button class="btn btn-info" id="edit" style="margin-left: 10px"><span>查看详情</span></button>';
+                            var sd = '<button class="btn btn-primary" id="cjLinkhd" style="margin-left: 10px"><span>比较裁剪部数量</span></button>';
+                            var de = '<button class="btn btn-success" id="myModalLabel" style="margin-left: 10px"><span>添加详情</span></button>';
                             // var d = '<button class="btn btn-danger btn-sm delete"><span>删除</span></button>';
                             // var fun = '';
-                            return s ;
+                            return s + ' ' + sd + ' ' + de  ;
                         },
                         events : {
                             // 操作列中编辑按钮的动作
-                            'click .edit': function (e, value,
+                            'click #edit': function (e, value,
                                                      row, index) {
                                 selectID = row.kuanhao;
                                 search_keyWord = selectID;
+                                showCaiJian();
                                 detailTableRefresh();
+                            },
+                            'click #cjLinkhd': function (e, value,
+                                                         row, index) {
+                                selectID = row.kuanhao;
+                                search_keyWord = selectID;
                                 rowEditOperation(row);
+                                detailTableRefresh();
+                            },
+                            'click #myModalLabel': function (e, value,
+                                                             row, index) {
+                                selectID = row.kuanhao;
+                                search_keyWord = selectID;
+                                addGoodsAction(row);
+                                detailTableRefresh();
                             }
+                            // 'click .delete': function (e, value,
+                            //                          row, index) {
+                            //     selectID = row.kuanhao;
+                            //     search_keyWord = selectID;
+                            //     detailTableRefresh();
+                            //     rowEditOperation(row);
+                            // }
                         }
                     }],
                 url : 'all',
@@ -106,7 +131,143 @@ function goodsListInit() {
                 onLoadError:function(status){
                     handleAjaxError(status);
                 },
+                method : 'GET',
                 locale : 'zh-CN',
+                queryParams : queryParams,
+                sidePagination : "server",
+                contentType: "application/x-www-form-urlencoded",
+                dataType : 'json',
+                pagination : true,
+                pageNumber : 1,
+                pageSize : 5,
+                pageList : [ 5, 10, 25, 50, 100 ],
+                clickToSelect : true
+            });
+}
+
+function showCaiJian() {
+    $('#show_modal').modal("show");
+    $('#show_modal').modal({backdrop: 'static', keyboard: false});
+    search_type_goods = "select_by_caijianbu";
+    $('#show_modal_submit').click(function(){
+        $('#show_modal').modal("hide");
+        search_type_goods = "searchAll";});
+    $('#showdetail')
+        .bootstrapTable(
+            {
+                columns : [
+                    {
+                        field : 'id',
+                        title : 'ID'
+                        //sortable: true
+                    },
+                    {
+                        field : 'kuanhao',
+                        title : '款号',
+                        width : "250px",
+                        halign :"center",
+                        align : "center"
+                    },
+                    {
+                        field : 'hdriqi',
+                        title : '后道日期',
+                        width : "150px",
+                        halign :"center",
+                        align : "center"
+                    },
+                    {
+                        field : 'ca_xs',
+                        title : '后道XS/34',
+                        halign :"center",
+                        align : "center",
+                        cellStyle:function(value,row,index) {
+                            return {
+                                css: {
+                                    "font-weight":"bold"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        field : 'ca_s',
+                        title : '后道S/36',
+                        halign :"center",
+                        align : "center",
+                        cellStyle:function(value,row,index) {
+                            return {
+                                css: {
+                                    "font-weight":"bold"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        field : 'ca_m',
+                        title : '后道M/38',
+                        halign :"center",
+                        align : "center",
+                        cellStyle:function(value,row,index) {
+                            return {
+                                css: {
+                                    "font-weight":"bold"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        field : 'ca_l',
+                        title : '后道L/40',
+                        halign :"center",
+                        align : "center",
+                        cellStyle:function(value,row,index) {
+                            return {
+                                css: {
+                                    "font-weight":"bold"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        field : 'ca_xl',
+                        title : '后道XL/42',
+                        halign :"center",
+                        align : "center",
+                        cellStyle:function(value,row,index) {
+                            return {
+                                css: {
+                                    "font-weight":"bold"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        field : 'ca_xxl',
+                        title : '后道XXL/44',
+                        halign :"center",
+                        align : "center",
+                        cellStyle:function(value,row,index) {
+                            return {
+                                css: {
+                                    "font-weight":"bold"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        field : 'ca_xxxl',
+                        title : '后道XXXL/46',
+                        halign :"center",
+                        align : "center",
+                        cellStyle:function(value,row,index) {
+                            return {
+                                css: {
+                                    "font-weight":"bold"
+                                }
+                            }
+                        }
+                    }],
+                locale : 'zh-CN',
+                url : 'selectBycaijianbu',
                 method : 'GET',
                 queryParams : queryParams,
                 sidePagination : "server",
@@ -119,6 +280,7 @@ function goodsListInit() {
                 clickToSelect : true
             });
 }
+
 
 // 表格刷新
 function tableRefresh() {
@@ -480,6 +642,10 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -487,6 +653,10 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -494,6 +664,10 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -501,6 +675,10 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -508,6 +686,10 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -515,6 +697,10 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -522,6 +708,10 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             }
@@ -530,17 +720,14 @@ function bootstrapValidatorInit() {
 }
 
 // 添加货物信息
-function addGoodsAction() {
-    $('#add_goods').click(function() {
-        $('#add_modal').modal("show");
-    });
+function addGoodsAction(row) {
+    $('#add_modal').modal("show");
     $('#add_modal_submit').click(function() {
         var msg = "操作失败";//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
         $("#goods_form").bootstrapValidator('validate');//提交验证
         if ($("#goods_form").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
-
             var data = {
-                kuanhao : $('#kuanhao').val(),
+                kuanhao : row.kuanhao,
                 hdriqi : $('#hdriqi').val(),
                 yanse : $('#yanse').val(),
                 xs : $('#xs').val(),
@@ -549,36 +736,33 @@ function addGoodsAction() {
                 l :$('#l').val(),
                 xl : $('#xl').val(),
                 xxl : $('#xxl').val(),
-                xxxl : $('#xxxl').val(),
-                beizhu : $('#beizhu').val()
+                xxxl : $('#xxxl').val()
 
             }
             // ajax
             $.ajax({
-                type: "POST",
-                url: "insert",
-                dataType: "json",
-                contentType: "application/json",
-                data: JSON.stringify(data),
-                success: function (response) {
+                type : "POST",
+                url : "insert",
+                dataType : "json",
+                contentType : "application/json",
+                data : JSON.stringify(data),
+                success : function(response) {
                     $('#add_modal').modal("hide");
-
                     var type;
                     var append = '';
                     if (response.result == "success") {
                         type = "success";
                         msg = "操作成功";
-                        alert(msg);
+                        alert(msg);//验证成功后的操作，如ajax
                     } else if (response.result != "success") {
                         type = "error";
                         msg = "操作失败";
-                        alert(msg);
+                        alert(msg);//验证成功后的操作，如ajax
                     }
                     showMsg(type, msg, append);
                     tableRefresh();
 
                     // reset
-                    $('#kuanhao').val();
                     $('#hdriqi').val("2019-05-08");
                     $('#yanse').val();
                     $('#xs').val("0");
@@ -588,7 +772,6 @@ function addGoodsAction() {
                     $('#xl').val("0");
                     $('#xxl').val("0");
                     $('#xxxl').val("0");
-                    $('#beizhu').val();
                     $('#goods_form').bootstrapValidator("resetForm", true);
                     tableRefresh();
                 },
@@ -600,5 +783,6 @@ function addGoodsAction() {
                 }
             });
         }
+
     });
 }
