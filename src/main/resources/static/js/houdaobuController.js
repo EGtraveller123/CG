@@ -199,7 +199,7 @@ function showCaiJian() {
                         align : "center"
                     },
                     {
-                        field : 'ca_xs',
+                        field : 'xs',
                         title : '后道XS/34',
                         halign :"center",
                         align : "center",
@@ -212,7 +212,7 @@ function showCaiJian() {
                         }
                     },
                     {
-                        field : 'ca_s',
+                        field : 's',
                         title : '后道S/36',
                         halign :"center",
                         align : "center",
@@ -225,7 +225,7 @@ function showCaiJian() {
                         }
                     },
                     {
-                        field : 'ca_m',
+                        field : 'm',
                         title : '后道M/38',
                         halign :"center",
                         align : "center",
@@ -238,7 +238,7 @@ function showCaiJian() {
                         }
                     },
                     {
-                        field : 'ca_l',
+                        field : 'l',
                         title : '后道L/40',
                         halign :"center",
                         align : "center",
@@ -251,7 +251,7 @@ function showCaiJian() {
                         }
                     },
                     {
-                        field : 'ca_xl',
+                        field : 'xl',
                         title : '后道XL/42',
                         halign :"center",
                         align : "center",
@@ -264,7 +264,7 @@ function showCaiJian() {
                         }
                     },
                     {
-                        field : 'ca_xxl',
+                        field : 'xxl',
                         title : '后道XXL/44',
                         halign :"center",
                         align : "center",
@@ -277,7 +277,7 @@ function showCaiJian() {
                         }
                     },
                     {
-                        field : 'ca_xxxl',
+                        field : 'xxxl',
                         title : '后道XXXL/46',
                         halign :"center",
                         align : "center",
@@ -343,11 +343,6 @@ function rowEditOperation(row) {
                     field : 'yanse',
                     title : '颜色',
                     width : "100px"
-                },
-                {
-                    field : 'hdriqi',
-                    title : '后道日期',
-                    width : "150px"
                 },
                 {
                     field : 'ca_xs',
