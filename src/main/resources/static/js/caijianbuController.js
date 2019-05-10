@@ -119,7 +119,7 @@ function goodsListInit() {
                             },
                             'click #ywLinkcj': function (e, value,
                                                      row, index) {
-                                selectID = row.kuanhao;
+                                selectID = row.id;
                                 search_keyWord = selectID;
                                 search_type_goods = "findByKuanhao";
                                 rowEditOperation(row);

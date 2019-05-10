@@ -119,7 +119,7 @@ function goodsListInit() {
                             },
                             'click #cjLinkhd': function (e, value,
                                                          row, index) {
-                                selectID = row.kuanhao;
+                                selectID = row.id;
                                 search_keyWord = selectID;
                                 rowEditOperation(row);
                                 detailTableRefresh();
