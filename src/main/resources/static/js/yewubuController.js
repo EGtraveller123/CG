@@ -116,8 +116,8 @@ function customerListInit() {
                         title : 'XXXL/46'
                     },
                     {
-                        field : 'ywbshuliang',
-                        title : '业务部数量'
+                        field : 'ywshuliang',
+                        title : '业务数量'
                     },
                     {
                         field : 'operation',
