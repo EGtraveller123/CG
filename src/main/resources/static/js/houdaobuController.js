@@ -744,6 +744,7 @@ function addGoodsAction(row) {
         $("#goods_form").bootstrapValidator('validate');//提交验证
         if ($("#goods_form").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
             var data = {
+                id : row.id,
                 kuanhao : row.kuanhao,
                 hdriqi : $('#hdriqi').val(),
                 yanse : $('#yanse').val(),
