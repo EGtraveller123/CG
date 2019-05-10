@@ -79,8 +79,8 @@ function customerListInit() {
                         title : '客户名称'
                     },
                     {
-                        field : 'mianliao',
-                        title : '面料'
+                        field : 'yanse',
+                        title : '颜色'
                     },
                     {
                         field : 'chriqi',
