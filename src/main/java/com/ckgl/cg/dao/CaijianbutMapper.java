@@ -18,7 +18,7 @@ public interface CaijianbutMapper {
     @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi from caijianbu_t where kuanhao=#{kuanhao}")
     List<Map> selectByKuanhao(String kuanhao);
 
-    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi from caijianbu_t where cjriqi=#{cjriqi}")
+    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi from caijianbu_t where kuanhao=#{kuanhao} and cjriqi=#{cjriqi} and yanse=#{yanse}")
     Caijianbut selectByKuanhaoRiqiYanse(String Kuanhao,String cjriqi,String yanse);
 
     @Select("select a.kuanhao as ye_kuanhao,a.yanse as ye_yanse,sum(a.xs) as ye_xs,sum(a.s) as ye_s,sum(a.m) as ye_m," +
@@ -27,8 +27,8 @@ public interface CaijianbutMapper {
             "from yewubu_t a join caijianbu_t b on a.id=b.id where id=#{id}")
     List<Map> findById(Integer id);
 
-    @Insert("insert into caijianbu_t(kuanhao,yanse,yewubutid,xs,s,m,l,xl,xxl,xxxl,cjriqi) " +
-            "values(#{kuanhao},#{yanse},#{yewubutid},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{cjriqi})")
+    @Insert("insert into caijianbu_t(kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi) " +
+            "values(#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{cjriqi})")
     boolean insertCaijiant(Caijianbut caijianbut);
 
     @Update("update caijianbu_t set xs=#{xs},s=#{s},m=#{m},#{l},#{xl},#{xxl},#{xxxl} where kuanhao=#{kuanhao} and yanse=#{yanse} and cjriqi=#{cjriqi}")

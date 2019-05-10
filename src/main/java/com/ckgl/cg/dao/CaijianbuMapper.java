@@ -20,13 +20,13 @@ public interface CaijianbuMapper {
     @Insert("insert into caijianbu(yewubuid,kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl) values (#{yewubuid},#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")
     boolean insertcaijianbu(Caijianbu caijianbu);
 
-    @Select("select * from caijianbu where Yewubuid=#{yewubuid}")
-    Caijianbu selectYewubuid(int yewubuid);
+    @Select("select * from yewubu where id=#{id}")
+    Caijianbu selectByid(Integer id);
 
     @Update("update caijianbu set xs=#{xs},s=#{s},#{m},#{l},#{xl},#{xxl},#{xxxl} where yewubuid=#{yewubuid}")
     boolean updateCaijianbu(Caijianbu caijianbu);
 
-    @Select("select * from caijianbu where kuanhao=#{kuanhao}")
+    @Select("select * from caijianbu_t where kuanhao=#{kuanhao}")
     List<Map> selectByKuanhao2(String kuanhao);
 
     @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl from caijianbu where kuanhao=#{kuanhao} and yanse=#{yanse}")

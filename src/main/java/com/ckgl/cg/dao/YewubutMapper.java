@@ -14,10 +14,10 @@ public interface YewubutMapper {
             "values (#{kuanhao},#{kehu},#{yanse},#{mianliao},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{chriqi},#{ywshuliang})")
     boolean insertYewubut(Yewubut yewubut);
 
-    @Select("select kuanhao,kehu,yanse,xs,s,m,l,xl,xxl,xxxl,chriqi,ywshuliang from yewubu_t where kehu=#{kehu}")
+    @Select("select id,kuanhao,kehu,yanse,xs,s,m,l,xl,xxl,xxxl,chriqi,ywshuliang from yewubu_t where kehu=#{kehu}")
     List<Map> selectByKehu(String kehu);
 
-    @Select("select kuanhao,kehu,yanse,xs,s,m,l,xl,xxl,xxxl,chriqi,ywshuliang from yewubu_t where kuanhao=#{kuanhao}")
+    @Select("select id,kuanhao,kehu,yanse,xs,s,m,l,xl,xxl,xxxl,chriqi,ywshuliang from yewubu_t where kuanhao=#{kuanhao}")
     List<Map> selectByKuanhao(String kuanhao);
 
     @Select("select * from yewubu_t")

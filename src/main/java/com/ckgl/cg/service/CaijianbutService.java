@@ -70,7 +70,7 @@ public class CaijianbutService {
         Caijianbu caijianbu1 = new Caijianbu();
         Caijianbut caijianbut1 = new Caijianbut();
         JSONObject res = new JSONObject();
-        caijianbu1=caijianbuMapper.selectYewubuid(jsonObject.getInteger("yewubuid"));
+        caijianbu1=caijianbuMapper.selectByid(jsonObject.getInteger("id"));
         caijianbut.setKuanhao(jsonObject.getString("kuanhao"));
         caijianbut.setYanse(jsonObject.getString("yanse"));
         caijianbut.setXs(jsonObject.getInteger("xs"));
