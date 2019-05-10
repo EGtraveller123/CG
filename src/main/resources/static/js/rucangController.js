@@ -435,13 +435,13 @@ function addGoodsAction() {
                     if (response.result == "success") {
                         type = "success";
                         msg = "操作成功";
-                        alert(msg);
+
                     } else if (response.result!="success") {
                         type = "error";
                         msg = response.result;
-                        alert(msg);
+
                     }
-                    showMsg(type, msg, append);
+                    alert(msg);
                     tableRefresh();
 
                     // reset

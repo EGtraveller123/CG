@@ -776,13 +776,11 @@ function addGoodsAction(row) {
                     if (response.result == "success") {
                         type = "success";
                         msg = "操作成功";
-                        alert(msg);//验证成功后的操作，如ajax
                     } else if (response.result != "success") {
                         type = "error";
                         msg = "操作失败";
-                        alert(msg);//验证成功后的操作，如ajax
                     }
-                    showMsg(type, msg, append);
+                    alert(msg);//验证成功后的操作，如ajax
                     tableRefresh();
 
                     // reset

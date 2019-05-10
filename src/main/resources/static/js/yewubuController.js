@@ -327,12 +327,12 @@ function addGoodsAction() {
 
                     if (response.result == "success") {
                         msg = "操作成功";
-                        alert(msg);
+
                     } else if (response.status != "success") {
                         msg = "操作失败";
-                        alert(msg);
-                    }
 
+                    }
+                    alert(msg);
                     tableRefresh();
 
                     // reset
@@ -654,18 +654,16 @@ function deleteCustomerAction(){
             data : data,
             success : function(response){
                 $('#deleteWarning_modal').modal("hide");
-                var type;
-                var append = '';
                 if(response.result == "success"){
-                    type = "success";
+
                     msg = "业务信息删除成功";
-                    alert(msg);
+
                 }else{
-                    type = "error";
+
                     msg = "业务信息删除失败";
-                    alert(msg);
+
                 }
-                showMsg(type, msg, append);
+                alert(msg);
                 tableRefresh();
             },error : function(xhr, textStatus, errorThrown){
                 $('#deleteWarning_modal').modal("hide");

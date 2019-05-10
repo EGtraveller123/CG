@@ -431,21 +431,14 @@ function addGoodsAction() {
                 data: JSON.stringify(data),
                 success: function (response) {
                     $('#add_modal').modal("hide");
-                    var type;
-                    var append = '';
                     if (response.result == "success") {
-                        type = "success";
                         msg = "操作成功";
-                        alert(msg);
                     } else if (response.result != "success") {
-                        type = "error";
-                        alert(msg);
                         msg = response.result;
                     } else {
                         msg = "操作失败";
-                        alert(msg);
                     }
-                    showMsg(type, msg, append);
+                    alert(msg);
                     tableRefresh();
 
                     // reset

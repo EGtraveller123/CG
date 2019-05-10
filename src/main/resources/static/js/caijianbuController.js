@@ -3,6 +3,7 @@
  */
 var search_type_goods = "searchAll";
 var search_keyWord = "";
+var search_keyWord2="";
 var selectID;
 
 $(function() {
@@ -59,7 +60,9 @@ function queryParams(params) {
         limit : params.limit,
         offset : params.offset,
         searchType : search_type_goods,
-        keyWord : search_keyWord
+        keyWord : search_keyWord,
+        keyWord2: search_keyWord2
+
     }
     return temp;
 }
@@ -121,6 +124,7 @@ function goodsListInit() {
                                 selectID = row.kuanhao;
                                 search_keyWord = selectID;
                                 search_type_goods = "searchByKuanhao";
+                                search_keyWord2 = row.yanse;
                                 showYeWu();
                                 detailTableRefresh();
                             },
@@ -174,7 +178,8 @@ function showYeWu() {
     $('#show_modal').modal({backdrop: 'static', keyboard: false});
     $('#show_modal_submit').click(function(){
         $('#show_modal').modal("hide");
-        search_type_goods = "searchAll";});
+        search_type_goods = "findByKuanhaoYanse";
+        search_keyWord2 = "";});
     $('#showdetail')
         .bootstrapTable(
             {
@@ -782,13 +787,11 @@ function addGoodsAction(row) {
                 if (response.result == "success") {
                     type = "success";
                     msg = "操作成功";
-                    alert(msg);//验证成功后的操作，如ajax
                 } else if (response.result != "success") {
                     type = "error";
                     msg = "操作失败";
-                    alert(msg);//验证成功后的操作，如ajax
                 }
-                showMsg(type, msg, append);
+                alert(msg);//验证成功后的操作，如ajax
                 tableRefresh();
 
                 // reset
