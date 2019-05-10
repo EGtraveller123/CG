@@ -164,7 +164,7 @@ function goodsListInit() {
 function showCaiJian() {
     $('#show_modal').modal("show");
     $('#show_modal').modal({backdrop: 'static', keyboard: false});
-    search_type_goods = "select_by_caijianbu";
+    search_type_goods = "selectBycKuanhao";
     $('#show_modal_submit').click(function(){
         $('#show_modal').modal("hide");
         search_type_goods = "searchAll";});
@@ -283,7 +283,7 @@ function showCaiJian() {
                         }
                     }],
                 locale : 'zh-CN',
-                url : 'selectBycaijianbu',
+                url : 'all',
                 method : 'GET',
                 queryParams : queryParams,
                 sidePagination : "server",
@@ -546,7 +546,7 @@ function rowEditOperation(row) {
                     }
                 }],
             locale : 'zh-CN',
-            url : 'findByKuanhao',
+            url : 'all',
             method : 'GET',
             queryParams : queryParams,
             sidePagination : "server",
