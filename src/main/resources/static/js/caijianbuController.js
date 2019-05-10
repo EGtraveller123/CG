@@ -84,6 +84,13 @@ function goodsListInit() {
                         align : "center"
                     },
                     {
+                        field : 'ca_yanse',
+                        title : '颜色',
+                        width : "100px",
+                        halign :"center",
+                        align : "center"
+                    },
+                    {
                         field : 'ywbshuliang',
                         title : '业务部数量',
                         width : "250px",
@@ -181,6 +188,13 @@ function showYeWu() {
                         field : 'kuanhao',
                         title : '款号',
                         width : '250px',
+                        halign :"center",
+                        align : "center"
+                    },
+                    {
+                        field : 'ca_yanse',
+                        title : '颜色',
+                        width : "100px",
                         halign :"center",
                         align : "center"
                     },
@@ -744,7 +758,7 @@ function addGoodsAction(row) {
             id : row.id,
             kuanhao : row.kuanhao,
             cjriqi : $('#cjriqi').val(),
-            yanse : $('#yanse').val(),
+            yanse : row.yanse,
             xs : $('#xs').val(),
             s : $('#s').val(),
             m : $('#m').val(),
@@ -779,7 +793,6 @@ function addGoodsAction(row) {
 
                 // reset
                 dateNow();
-                $('#yanse').val();
                 $('#xs').val("0");
                 $('#s').val("0");
                 $('#m').val("0");

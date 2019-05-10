@@ -85,6 +85,11 @@ function goodsListInit() {
                         align : "center"
                     },
                     {
+                        field : 'yanse',
+                        title : '颜色',
+                        width : "100px"
+                    },
+                    {
                         field : 'cjbshuliang',
                         title : '裁剪部数量',
                         width : "250px",
@@ -747,7 +752,7 @@ function addGoodsAction(row) {
                 id : row.id,
                 kuanhao : row.kuanhao,
                 hdriqi : $('#hdriqi').val(),
-                yanse : $('#yanse').val(),
+                yanse : row.yanse,
                 xs : $('#xs').val(),
                 s : $('#s').val(),
                 m : $('#m').val(),
@@ -782,7 +787,6 @@ function addGoodsAction(row) {
 
                     // reset
                     dateNow();
-                    $('#yanse').val();
                     $('#xs').val("0");
                     $('#s').val("0");
                     $('#m').val("0");
