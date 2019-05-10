@@ -120,6 +120,8 @@ function goodsListInit() {
                                                      row, index) {
                                 selectID = row.kuanhao;
                                 search_keyWord = selectID;
+                                search_keyWord2 = row.yanse;
+                                search_type_goods = "findByKuanhaoYanse";
                                 showCaiJian();
                                 detailTableRefresh();
                             },
@@ -170,7 +172,6 @@ function goodsListInit() {
 function showCaiJian() {
     $('#show_modal').modal("show");
     $('#show_modal').modal({backdrop: 'static', keyboard: false});
-    search_type_goods = "selectBycKuanhao";
     $('#show_modal_submit').click(function(){
         $('#show_modal').modal("hide");
         search_type_goods = "searchAll";});
