@@ -185,11 +185,6 @@ function showYeWu() {
             {
                 columns : [
                     {
-                        field : 'id',
-                        title : 'ID'
-                        //sortable: true
-                    },
-                    {
                         field : 'kuanhao',
                         title : '款号',
                         width : '250px',
