@@ -1,6 +1,7 @@
 package com.ckgl.cg.dao;
 
 import com.ckgl.cg.bean.Yewubut;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -22,6 +23,10 @@ public interface YewubutMapper {
     @Select("select * from yewubu_t")
     List<Map> selectAll();
 
+    @Delete("delete from yewubu_t where id=#{id}")
+    boolean deleteYewubut(Integer id);
 
+    @Select("select * from yewubu_t where id=#{id}")
+    Yewubut selectByid(Integer id);
 
 }

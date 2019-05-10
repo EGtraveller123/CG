@@ -104,6 +104,7 @@ public class CaijianbutService {
             caijianbu.setXl(caijianbu1.getXl()+jsonObject.getInteger("xl"));
             caijianbu.setXxl(caijianbu1.getXxl()+jsonObject.getInteger("xxl"));
             caijianbu.setXxxl(caijianbu1.getXxxl()+jsonObject.getInteger("xxxl"));
+            caijianbu.setCjbshuliang(caijianbu.getCjbshuliang()+jsonObject.getInteger("xs")+jsonObject.getInteger("s")+jsonObject.getInteger("m")+jsonObject.getInteger("l")+jsonObject.getInteger("xl")+jsonObject.getInteger("xxl")+jsonObject.getInteger("xxxl"));
             caijianbuMapper.updateCaijianbu(caijianbu);
             res.put("result","success");
         }else{
@@ -117,6 +118,7 @@ public class CaijianbutService {
             caijianbu.setXl(jsonObject.getInteger("xl"));
             caijianbu.setXxl(jsonObject.getInteger("xxl"));
             caijianbu.setXxxl(jsonObject.getInteger("xxxl"));
+            caijianbu.setCjbshuliang(jsonObject.getInteger("xs")+jsonObject.getInteger("s")+jsonObject.getInteger("m")+jsonObject.getInteger("l")+jsonObject.getInteger("xl")+jsonObject.getInteger("xxl")+jsonObject.getInteger("xxxl"));
             caijianbuMapper.insertcaijianbu(caijianbu);
             res.put("result","success");
         }
@@ -124,7 +126,7 @@ public class CaijianbutService {
     }
 
 
-    public Map<String, Object> findByKuanhao(int offset, int limit, String kuanhao) {
+    public Map<String, Object> findByKuanhao(int offset, int limit, String id) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
         List<Map> caijianbuts = null;
@@ -135,14 +137,14 @@ public class CaijianbutService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                caijianbuts = caijianbutMapper.findByKuanhao(kuanhao);
+                caijianbuts = caijianbutMapper.findById(Integer.valueOf(id));
                 if (caijianbuts != null) {
                     PageInfo<Map> pageInfo = new PageInfo<>(caijianbuts);
                     total = pageInfo.getTotal();
                 } else
                     caijianbuts = new ArrayList<>();
             } else {
-                caijianbuts = caijianbutMapper.findByKuanhao(kuanhao);
+                caijianbuts = caijianbutMapper.findById(Integer.valueOf(id));
                 if (caijianbuts != null)
                     total = caijianbuts.size();
                 else
@@ -155,6 +157,7 @@ public class CaijianbutService {
         resultSet.put("total", total);
         return resultSet;
     }
+
     public Map<String, Object> selectAll(int offset, int limit) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);

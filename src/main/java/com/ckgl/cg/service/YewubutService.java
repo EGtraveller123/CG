@@ -48,6 +48,7 @@ public class YewubutService {
             yewubu.setXl(jsonObject.getInteger("xl"));
             yewubu.setXxl(jsonObject.getInteger("xxl"));
             yewubu.setXxxl(jsonObject.getInteger("xxxl"));
+            yewubu.setYwbshuliang(jsonObject.getInteger("xs")+jsonObject.getInteger("s")+jsonObject.getInteger("m")+jsonObject.getInteger("l")+jsonObject.getInteger("xl")+jsonObject.getInteger("xxl")+jsonObject.getInteger("xxxl"));
             yewubuMapper.insertYewubu(yewubu);
             res.put("result","success");
         }else{
@@ -58,8 +59,31 @@ public class YewubutService {
             yewubu.setXl(yewubu.getXl()+jsonObject.getInteger("xl"));
             yewubu.setXxl(yewubu1.getXxl()+jsonObject.getInteger("xxl"));
             yewubu.setXxxl(yewubu1.getXxxl()+jsonObject.getInteger("xxxl"));
+            yewubu.setYwbshuliang(yewubu1.getYwbshuliang()+jsonObject.getInteger("xs")+jsonObject.getInteger("s")+jsonObject.getInteger("m")+jsonObject.getInteger("l")+jsonObject.getInteger("xl")+jsonObject.getInteger("xxl")+jsonObject.getInteger("xxxl"));
             yewubuMapper.updateYewubu(yewubu);
             res.put("result","success");
+        }
+        return res;
+    }
+
+    public JSONObject deleteYewubut(JSONObject jsonObject){
+        JSONObject res = new JSONObject();
+        Yewubu yewubu = new Yewubu();
+        Yewubut yewubut = new Yewubut();
+        if(yewubutMapper.deleteYewubut(jsonObject.getInteger("id"))){
+            yewubut=yewubutMapper.selectByid(jsonObject.getInteger("id"));
+            yewubu=yewubuMapper.selectByKuanhao(yewubut.getKuanhao());
+            yewubu.setXs(yewubu.getXs()-yewubut.getXs());
+            yewubu.setS(yewubu.getS()-yewubut.getS());
+            yewubu.setM(yewubu.getM()-yewubut.getM());
+            yewubu.setL(yewubu.getL()-yewubut.getL());
+            yewubu.setXl(yewubu.getXl()-yewubut.getXl());
+            yewubu.setXxl(yewubu.getXxl()-yewubut.getXxl());
+            yewubu.setXxxl(yewubu.getXxxl()-yewubut.getXxxl());
+            yewubuMapper.updateYewubu(yewubu);
+            res.put("result","success");
+        }else{
+            res.put("result","error");
         }
         return res;
     }

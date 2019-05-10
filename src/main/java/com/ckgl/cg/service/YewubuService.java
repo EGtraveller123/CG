@@ -1,6 +1,7 @@
 package com.ckgl.cg.service;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.ckgl.cg.dao.YewubutMapper;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -117,4 +118,5 @@ public class YewubuService {
         resultSet.put("total", total);
         return resultSet;
     }
+
 }

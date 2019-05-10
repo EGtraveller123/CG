@@ -90,5 +90,40 @@ public class CaijianbuService {
         return resultSet;
     }
 
+    public Map<String, Object> selectByYewubu(int offset, int limit,String kuanhao) {
+        Map<String, Object> resultSet = new HashMap<>();
+        PageHelper.startPage(offset,limit);
+        List<Map> Caijianbus = null;
+        long total = 0;
+        boolean isPagination = true;
+
+        if (offset < 0 || limit < 0)
+            isPagination = false;
+        // query
+        try {
+            if (isPagination) {
+                PageHelper.offsetPage(offset, limit);
+                Caijianbus = caijianbuMapper.selectByYewubu(kuanhao);
+                if (Caijianbus != null) {
+                    PageInfo<Map> pageInfo = new PageInfo<>(Caijianbus);
+                    total = pageInfo.getTotal();
+                } else
+                    Caijianbus = new ArrayList<>();
+            } else {
+                Caijianbus = caijianbuMapper.selectByYewubu(kuanhao);
+                if (Caijianbus != null)
+                    total = Caijianbus.size();
+                else
+                    Caijianbus = new ArrayList<>();
+            }
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+        }
+
+        resultSet.put("data", Caijianbus);
+        resultSet.put("total", total);
+        return resultSet;
+    }
+
 
 }

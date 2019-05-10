@@ -23,8 +23,8 @@ public interface HoudaobutMapper {
     @Select("select a.kuanhao as ca_kuanhao,a.yanse as ca_yanse,sum(a.xs) as ca_xs,sum(a.s) as ca_s,sum(a.m) as ca_m," +
             "sum(a.l) as ca_l,sum(a.xl) as ca_xl,sum(a.xxl) as ca_xxl,sum(a.xxxl) as ca_xxxl,sum(b.xs) as ho_xs,sum(b.s) as ho_s," +
             "sum(b.m) as ho_m,sum(b.l) as ho_l,sum(b.xl) as ho_xl,sum(b.xxl) as ho_xxl,sum(b.xxxl) as ho_xxxl " +
-            "from caijianbu_t a,houdaobu_t b where a.kuanhao=#{kuanhao}")
-    List<Map> findByKuanhao(String kuanhao);
+            "from caijianbu_t a join houdaobu_t b on a.id=b.id where id=#{id}")
+    List<Map> findByid(Integer id);
 
     @Insert("insert into houdaobu_t(kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdriqi,hdshuliang) " +
             "values(#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{hdriqi},#{hdshuliang})")

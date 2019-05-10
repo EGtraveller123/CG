@@ -8,6 +8,7 @@ import com.ckgl.cg.service.CaijianbutService;
 import com.ckgl.cg.util.Response;
 import com.ckgl.cg.util.ResponseFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +27,7 @@ public class CaijianbuController {
     private static final String SEARCH_BY_KUANHAO = "searchByKuanhao";
     private static final String SEARCH_ALL = "searchAll";
     private static final String FIND_BY_KUANHAO = "findByKuanhao";
+    private static final String SELECT_BY_YEWUBU = "selectByYewubu";
 
     @RequestMapping("/a")
     public String jumpPage(){
@@ -43,7 +45,10 @@ public class CaijianbuController {
                 queryResult = caijianbuService.selectAll(offset,limit);
                 break;
             case FIND_BY_KUANHAO:
-                queryResult = caijianbutService.findByKuanhao(offset, limit,keyWord);
+                queryResult = caijianbutService.findByKuanhao(offset,limit,keyWord);
+                break;
+            case SELECT_BY_YEWUBU:
+                queryResult = caijianbuService.selectByYewubu(offset,limit,keyWord);
                 break;
             default:
                 // do other thing
@@ -74,10 +79,10 @@ public class CaijianbuController {
     @RequestMapping(value = "all", method = RequestMethod.GET)
     public
     @ResponseBody
-    Map<String, Object> getCaijianbuList(@RequestParam("searchType") String searchType,
-                                         @RequestParam("offset") int offset,
-                                         @RequestParam("limit") int limit,
-                                         @RequestParam("keyWord") String keyWord) {
+    Map<String, Object> getCaijianbu(@RequestParam("searchType") String searchType,
+                                     @RequestParam("offset") int offset,
+                                     @RequestParam("limit") int limit,
+                                     @RequestParam("keyWord") String keyWord) {
         Response responseContent = ResponseFactory.newInstance();
         List<Caijianbu> rows = null;
         long total = 0;

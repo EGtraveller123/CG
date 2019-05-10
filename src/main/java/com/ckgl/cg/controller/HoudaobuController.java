@@ -25,6 +25,8 @@ public class HoudaobuController {
 
     private static final String SEARCH_BY_KUANHAO = "searchByKuanhao";
     private static final String SEARCH_ALL = "searchAll";
+    private static final String FIND_BY_KUANHAO = "findByKuanhao";
+    private static final String SELECT_BY_YEWUBU = "selectByYewubu";
 
     @RequestMapping("/a")
     public String jumpPage(){
@@ -41,6 +43,12 @@ public class HoudaobuController {
             case SEARCH_ALL:
                 queryResult = houdaobuService.selectAll(offset,limit);
                 break;
+            case FIND_BY_KUANHAO:
+                queryResult = houdaobutService.findById(offset,limit,keyWord);
+                break;
+            case SELECT_BY_YEWUBU:
+                queryResult = houdaobuService.selectByCaijianbu(offset,limit,keyWord);
+                break;
             default:
                 // do other thing
                 break;
@@ -48,12 +56,7 @@ public class HoudaobuController {
         return queryResult;
     }
 
-    /**
-     * @param kuanhao 款号
-     * @return 返回一个map，其中：key 为 result 的值为操作的结果，包括：success 与 error；key 为 data
-     * 的值为客户信息
-     * 这是返回houdaobu表
-     */
+
     @RequestMapping(value = "byKuanhao", method = RequestMethod.GET)
     public
     @ResponseBody

@@ -15,7 +15,7 @@ import java.util.Map;
 @Component
 public interface YewubuMapper {
 
-    @Insert("insert into yewubu(kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl) values (#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")
+    @Insert("insert into yewubu(kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,ywbshuliang) values (#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{ywbshuliang})")
     boolean insertYewubu(Yewubu yewubu);
 
     @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl from yewubu where kuanhao=#{kuanhao} and yanse=#{yanse}")
@@ -23,4 +23,7 @@ public interface YewubuMapper {
 
     @Update("update yewubu set xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl}")
     boolean updateYewubu(Yewubu yewubu);
+
+    @Select("select * from yewubu where kuanhao=#{kuanhao}")
+    Yewubu selectByKuanhao(String kuanhao);
 }

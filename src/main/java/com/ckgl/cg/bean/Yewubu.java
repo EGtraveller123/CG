@@ -12,6 +12,7 @@ public class Yewubu {
     private Integer xl;
     private Integer xxl;
     private Integer xxxl;
+    private  Integer ywbshuliang;
 
 
     public Integer getId() {
@@ -92,5 +93,13 @@ public class Yewubu {
 
     public void setXxxl(Integer xxxl) {
         this.xxxl = xxxl;
+    }
+
+    public Integer getYwbshuliang() {
+        return ywbshuliang;
+    }
+
+    public void setYwbshuliang(Integer ywbshuliang) {
+        this.ywbshuliang = ywbshuliang;
     }
 }

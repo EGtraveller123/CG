@@ -104,4 +104,68 @@ public class HoudaobutService {
         }
         return res;
     }
+
+    public Map<String, Object> findById(int offset, int limit,String id) {
+        Map<String, Object> resultSet = new HashMap<>();
+        PageHelper.startPage(offset,limit);
+        List<Map> houdaobuts = null;
+        long total = 0;
+        boolean isPagination = true;
+        if (offset < 0 || limit < 0)
+            isPagination = false;
+        try {
+            if (isPagination) {
+                PageHelper.offsetPage(offset, limit);
+                houdaobuts = houdaobutMapper.findByid(Integer.valueOf(id));
+                if (houdaobuts != null) {
+                    PageInfo<Map> pageInfo = new PageInfo<>(houdaobuts);
+                    total = pageInfo.getTotal();
+                } else
+                    houdaobuts = new ArrayList<>();
+            } else {
+                houdaobuts = houdaobutMapper.findByid(Integer.valueOf(id));
+                if (houdaobuts != null)
+                    total = houdaobuts.size();
+                else
+                    houdaobuts = new ArrayList<>();
+            }
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+        }
+        resultSet.put("data", houdaobuts);
+        resultSet.put("total", total);
+        return resultSet;
+    }
+
+    public Map<String, Object> selectAll(int offset, int limit) {
+        Map<String, Object> resultSet = new HashMap<>();
+        PageHelper.startPage(offset,limit);
+        List<Map> caijianbuts = null;
+        long total = 0;
+        boolean isPagination = true;
+        if (offset < 0 || limit < 0)
+            isPagination = false;
+        try {
+            if (isPagination) {
+                PageHelper.offsetPage(offset, limit);
+                caijianbuts = houdaobutMapper.selectAll();
+                if (caijianbuts != null) {
+                    PageInfo<Map> pageInfo = new PageInfo<>(caijianbuts);
+                    total = pageInfo.getTotal();
+                } else
+                    caijianbuts = new ArrayList<>();
+            } else {
+                caijianbuts = houdaobutMapper.selectAll();
+                if (caijianbuts != null)
+                    total = caijianbuts.size();
+                else
+                    caijianbuts = new ArrayList<>();
+            }
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+        }
+        resultSet.put("data", caijianbuts);
+        resultSet.put("total", total);
+        return resultSet;
+    }
 }

@@ -3,6 +3,7 @@ package com.ckgl.cg.service;
 import com.alibaba.fastjson.JSONObject;
 import com.ckgl.cg.bean.Houdaobu;
 import com.ckgl.cg.dao.HoudaobuMapper;
+import com.ckgl.cg.dao.HoudaobutMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -18,6 +19,9 @@ import java.util.Map;
 public class HoudaobuService {
     @Autowired
     private HoudaobuMapper houdaobuMapper;
+
+    @Autowired
+    private HoudaobutMapper houdaobutMapper;
 
 
     public Map<String, Object> selectByKuanhao(int offset, int limit, String kuanhao) {
@@ -86,4 +90,37 @@ public class HoudaobuService {
         resultSet.put("total", total);
         return resultSet;
     }
+
+    public Map<String, Object> selectByCaijianbu(int offset, int limit,String kuanhao) {
+        Map<String, Object> resultSet = new HashMap<>();
+        PageHelper.startPage(offset,limit);
+        List<Map> Houdaobus = null;
+        long total = 0;
+        boolean isPagination = true;
+        if (offset < 0 || limit < 0)
+            isPagination = false;
+        try {
+            if (isPagination) {
+                PageHelper.offsetPage(offset, limit);
+                Houdaobus = houdaobuMapper.selectByCaijianbu(kuanhao);
+                if (Houdaobus != null) {
+                    PageInfo<Map> pageInfo = new PageInfo<>(Houdaobus);
+                    total = pageInfo.getTotal();
+                } else
+                    Houdaobus = new ArrayList<>();
+            } else {
+                Houdaobus = houdaobuMapper.selectByCaijianbu(kuanhao);
+                if (Houdaobus != null)
+                    total = Houdaobus.size();
+                else
+                    Houdaobus = new ArrayList<>();
+            }
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+        }
+        resultSet.put("data", Houdaobus);
+        resultSet.put("total", total);
+        return resultSet;
+    }
+
 }

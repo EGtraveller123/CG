@@ -13,6 +13,7 @@ public class Caijianbu {
     private Integer xl;
     private Integer xxl;
     private Integer xxxl;
+    private Integer cjbshuliang;
 
     public Integer getId() {
         return id;
@@ -100,5 +101,13 @@ public class Caijianbu {
 
     public void setYewubuid(Integer yewubuid) {
         this.yewubuid = yewubuid;
+    }
+
+    public Integer getCjbshuliang() {
+        return cjbshuliang;
+    }
+
+    public void setCjbshuliang(Integer cjbshuliang) {
+        this.cjbshuliang = cjbshuliang;
     }
 }
