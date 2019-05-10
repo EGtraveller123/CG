@@ -155,11 +155,11 @@
 
                 <div class="row" style="margin-top: 25px">
                     <div class="col-md-5">
-                        <button class="btn btn-sm btn-default" id="add_customer">
-                            <span class="glyphicon glyphicon-plus"></span> <span>添加业务</span>
-                        </button>
+<!--                        <button class="btn btn-sm btn-default" id="add_customer">-->
+<!--                            <span class="glyphicon glyphicon-plus"></span> <span>添加业务</span>-->
+<!--                        </button>-->
                         <button class="btn btn-sm btn-default" id="add_goods">
-                            <span class="glyphicon glyphicon-plus"></span> <span>添加详情</span>
+                            <span class="glyphicon glyphicon-plus"></span> <span>添加业务</span>
                         </button>
 
                     </div>
@@ -174,80 +174,49 @@
             </div>
         </div>
 
-        <!-- 添加客户信息模态框 -->
-        <div id="add_modal" class="modal fade" table-index="-1" role="dialog"
-             aria-labelledby="myModalLabel" aria-hidden="true"
-             data-backdrop="static">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button class="close" type="button" data-dismiss="modal"
-                                aria-hidden="true">&times;</button>
-                        <h4 class="modal-title" id="myModalLabel">添加业务信息</h4>
-                    </div>
-                    <div class="modal-body">
-                        <!-- 模态框的内容 -->
-                        <div class="row">
-                            <div class="col-md-1 col-sm-1"></div>
-                            <div class="col-md-8 col-sm-8">
-                                <form class="form-horizontal" role="form" id="customer_form"
-                                      style="margin-top: 25px">
-                                    <div class="form-group">
-                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>款号：</span>
-                                        </label>
-                                        <div class="col-md-8 col-sm-8">
-                                            <input type="text" class="form-control" id="kuanhao"
-                                                   name="kuanhao" placeholder="款号">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>客户名称：</span>
-                                        </label>
-                                        <div class="col-md-8 col-sm-8">
-                                            <input type="text" class="form-control" id="kehu"
-                                                   name="kehu" placeholder="客户名称">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>业务部数量：</span>
-                                        </label>
-                                        <div class="col-md-8 col-sm-8">
-                                            <input type="text" value="0" class="form-control" id="ywbshuliang"
-                                                   name="ywbshuliang" placeholder="业务部数量">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>面料：</span>
-                                        </label>
-                                        <div class="col-md-8 col-sm-8">
-                                            <input type="text" class="form-control" id="mianliao"
-                                                   name="mianliao" placeholder="面料">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>出货日期：</span>
-                                        </label>
-                                        <div class="col-md-8 col-sm-8">
-                                            <input type="text" value="2019-05-08" class="form-control" id="chriqi"
-                                                   name="chriqi" placeholder="出货日期">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-md-1 col-sm-1"></div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-default" type="button" data-dismiss="modal">
-                            <span>取消</span>
-                        </button>
-                        <button class="btn btn-success" type="button" id="add_modal_submit" >
-                            <span>提交</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!--        &lt;!&ndash; 添加客户信息模态框 &ndash;&gt;-->
+<!--        <div id="add_modal" class="modal fade" table-index="-1" role="dialog"-->
+<!--             aria-labelledby="myModalLabel" aria-hidden="true"-->
+<!--             data-backdrop="static">-->
+<!--            <div class="modal-dialog">-->
+<!--                <div class="modal-content">-->
+<!--                    <div class="modal-header">-->
+<!--                        <button class="close" type="button" data-dismiss="modal"-->
+<!--                                aria-hidden="true">&times;</button>-->
+<!--                        <h4 class="modal-title" id="myModalLabel">添加业务信息</h4>-->
+<!--                    </div>-->
+<!--                    <div class="modal-body">-->
+<!--                        &lt;!&ndash; 模态框的内容 &ndash;&gt;-->
+<!--                        <div class="row">-->
+<!--                            <div class="col-md-1 col-sm-1"></div>-->
+<!--                            <div class="col-md-8 col-sm-8">-->
+<!--                                <form class="form-horizontal" role="form" id="customer_form"-->
+<!--                                      style="margin-top: 25px">-->
+<!--                                    <div class="form-group">-->
+<!--                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>款号：</span>-->
+<!--                                        </label>-->
+<!--                                        <div class="col-md-8 col-sm-8">-->
+<!--                                            <input type="text" class="form-control" id="kuanhao"-->
+<!--                                                   name="kuanhao" placeholder="款号">-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                    -->
+<!--                                </form>-->
+<!--                            </div>-->
+<!--                            <div class="col-md-1 col-sm-1"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="modal-footer">-->
+<!--                        <button class="btn btn-default" type="button" data-dismiss="modal">-->
+<!--                            <span>取消</span>-->
+<!--                        </button>-->
+<!--                        <button class="btn btn-success" type="button" id="add_modal_submit" >-->
+<!--                            <span>提交</span>-->
+<!--                        </button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <!-- 添加货物信息模态框 -->
         <div id="add_goods_modal" class="modal fade" table-index="-1" role="dialog"
@@ -281,6 +250,30 @@
                                         <div class="col-md-8 col-sm-8">
                                             <input type="text" class="form-control" id="yanse"
                                                    name="yanse" placeholder="颜色">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>客户名称：</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            <input type="text" class="form-control" id="kehu"
+                                                   name="kehu" placeholder="客户名称">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>面料：</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            <input type="text" class="form-control" id="mianliao"
+                                                   name="mianliao" placeholder="面料">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>出货日期：</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            <input type="text" value="2019-05-08" class="form-control" id="chriqi"
+                                                   name="chriqi" placeholder="出货日期">
                                         </div>
                                     </div>
                                     <div class="form-group">
