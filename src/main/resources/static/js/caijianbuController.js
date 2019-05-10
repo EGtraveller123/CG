@@ -206,7 +206,7 @@ function showYeWu() {
                         align : "center"
                     },
                     {
-                        field : 'ca_xs',
+                        field : 'xs',
                         title : '裁剪XS/34',
                         halign :"center",
                         align : "center",
@@ -219,7 +219,7 @@ function showYeWu() {
                         }
                     },
                     {
-                        field : 'ca_s',
+                        field : 's',
                         title : '裁剪S/36',
                         halign :"center",
                         align : "center",
@@ -232,7 +232,7 @@ function showYeWu() {
                         }
                     },
                     {
-                        field : 'ca_m',
+                        field : 'm',
                         title : '裁剪M/38',
                         halign :"center",
                         align : "center",
@@ -245,7 +245,7 @@ function showYeWu() {
                         }
                     },
                     {
-                        field : 'ca_l',
+                        field : 'l',
                         title : '裁剪L/40',
                         halign :"center",
                         align : "center",
@@ -258,7 +258,7 @@ function showYeWu() {
                         }
                     },
                     {
-                        field : 'ca_xl',
+                        field : 'xl',
                         title : '裁剪XL/42',
                         halign :"center",
                         align : "center",
@@ -271,7 +271,7 @@ function showYeWu() {
                         }
                     },
                     {
-                        field : 'ca_xxl',
+                        field : 'xxl',
                         title : '裁剪XXL/44',
                         halign :"center",
                         align : "center",
@@ -284,7 +284,7 @@ function showYeWu() {
                         }
                     },
                     {
-                        field : 'ca_xxxl',
+                        field : 'xxxl',
                         title : '裁剪XXXL/46',
                         halign :"center",
                         align : "center",
