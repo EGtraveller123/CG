@@ -14,7 +14,7 @@ import java.util.Map;
 @Component
 public interface HoudaobuMapper {
 
-    @Select("select * from houdaobu")
+    @Select("select id,kuanhao,sum(cjbshuliang) as cjbshuliang from caijianbu")
     List<Map> selectAll();
 
     @Select("select * from houdaobu where kuanhao=#{kuanhao}")
@@ -29,6 +29,6 @@ public interface HoudaobuMapper {
     @Insert("insert into houdaobu(caijianbuid,kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl) values (#{caijianbuid},#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")
     boolean insertHoudaobu(Houdaobu houdaobu);
 
-    @Select("select id,kuanhao,cjbshuliang from caijianbu where kuanhao=#{kuanhao}")
+    @Select("select id,kuanhao,sum(cjbshuliang) as cjbshuliang from caijianbu where kuanhao=#{kuanhao}")
     List<Map> selectByCaijianbu(String kuanhao);
 }
