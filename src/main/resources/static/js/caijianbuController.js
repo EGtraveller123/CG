@@ -361,13 +361,6 @@ function rowEditOperation(row) {
                     align : "center"
                 },
                 {
-                    field : 'ca_cjriqi',
-                    title : '裁剪日期',
-                    width : "100px",
-                    halign :"center",
-                    align : "center"
-                },
-                {
                     field : 'ye_xs',
                     title : '业务XS/34',
                     width : "65px",
