@@ -119,7 +119,7 @@ public class YewubuController{
     }
 
     @ResponseBody
-    @RequestMapping(value = "insert",method = RequestMethod.GET)
+    @RequestMapping(value = "insertYewu",method = RequestMethod.POST)
     public JSONObject insert(@RequestBody JSONObject jsonObject){
         return yewubutService.insert(jsonObject);
     }

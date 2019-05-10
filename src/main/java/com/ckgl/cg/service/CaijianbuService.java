@@ -16,8 +16,6 @@ import java.util.Map;
 @Service
 public class CaijianbuService {
     @Autowired
-    private CaijianbutMapper caijianbutMapper;
-    @Autowired
     private CaijianbuMapper caijianbuMapper;
 
 
