@@ -38,6 +38,22 @@ function searchAction() {
     })
 }
 
+//获取当前日期
+function dateNow() {
+    var date = new Date();
+    var year = date.getFullYear(); //获取年
+    var month = date.getMonth()+1;//获取月
+    var day = date.getDate(); //获取当日
+    if(month<10){
+        month = "0"+ month;
+    }
+    if(day<10){
+        day = "0" + day;
+    }
+    var time = year+"-"+month+"-"+day; //组合时间   alert("当前日期："+time);
+    $('#hdriqi').val(time);
+}
+
 // 分页查询参数
 function queryParams(params) {
     var temp = {
@@ -722,6 +738,7 @@ function bootstrapValidatorInit() {
 // 添加货物信息
 function addGoodsAction(row) {
     $('#add_modal').modal("show");
+    dateNow();
     $('#add_modal_submit').click(function() {
         var msg = "操作失败";//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
         $("#goods_form").bootstrapValidator('validate');//提交验证
@@ -763,7 +780,7 @@ function addGoodsAction(row) {
                     tableRefresh();
 
                     // reset
-                    $('#hdriqi').val("2019-05-08");
+                    dateNow();
                     $('#yanse').val();
                     $('#xs').val("0");
                     $('#s').val("0");

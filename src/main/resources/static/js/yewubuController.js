@@ -293,6 +293,7 @@ function customerListInit() {
 // 添加货物信息
 function addGoodsAction() {
     $('#add_goods').click(function() {
+        dateNow();
         $('#add_goods_modal').modal("show");
     });
     $('#add_goods_modal_submit').click(function() {
@@ -339,7 +340,6 @@ function addGoodsAction() {
                     $('#yanse').val();
                     $('#kehu').val("");
                     $('#mianliao').val("");
-                    $('#chriqi').val("2019-05-08");
                     $('#xs').val("0");
                     $('#s').val("0");
                     $('#m').val("0");
@@ -347,6 +347,7 @@ function addGoodsAction() {
                     $('#xl').val("0");
                     $('#xxl').val("0");
                     $('#xxxl').val("0");
+                    dateNow();
                     $('#goods_form').bootstrapValidator("resetForm", true);
                     tableRefresh();
                 },
@@ -675,6 +676,22 @@ function deleteCustomerAction(){
 
         $('#deleteWarning_modal').modal('hide');
     })
+}
+
+//获取当前日期
+function dateNow() {
+    var date = new Date();
+    var year = date.getFullYear(); //获取年
+    var month = date.getMonth()+1;//获取月
+    var day = date.getDate(); //获取当日
+    if(month<10){
+        month = "0"+ month;
+    }
+    if(day<10){
+        day = "0" + day;
+    }
+    var time = year+"-"+month+"-"+day; //组合时间   alert("当前日期："+time);
+    $('#chriqi').val(time);
 }
 
 // 添加客户信息
