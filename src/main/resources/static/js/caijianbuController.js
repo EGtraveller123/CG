@@ -113,6 +113,7 @@ function goodsListInit() {
                                                      row, index) {
                                 selectID = row.kuanhao;
                                 search_keyWord = selectID;
+                                search_type_goods = "searchByKuanhao";
                                 showYeWu();
                                 detailTableRefresh();
                             },
@@ -120,6 +121,7 @@ function goodsListInit() {
                                                      row, index) {
                                 selectID = row.kuanhao;
                                 search_keyWord = selectID;
+                                search_type_goods = "findByKuanhao";
                                 rowEditOperation(row);
                                 detailTableRefresh();
                             },
@@ -163,7 +165,6 @@ function goodsListInit() {
 function showYeWu() {
     $('#show_modal').modal("show");
     $('#show_modal').modal({backdrop: 'static', keyboard: false});
-    search_type_goods = "select_by_caijianbu";
     $('#show_modal_submit').click(function(){
         $('#show_modal').modal("hide");
         search_type_goods = "searchAll";});
@@ -282,7 +283,7 @@ function showYeWu() {
                         }
                     }],
                 locale : 'zh-CN',
-                url : 'selectByYewubu',
+                url : 'all',
                 method : 'GET',
                 queryParams : queryParams,
                 sidePagination : "server",
@@ -317,7 +318,6 @@ function detailTableRefresh() {
 function rowEditOperation(row) {
     $('#edit_modal').modal("show");
     $('#edit_modal').modal({backdrop: 'static', keyboard: false});
-    search_type_goods = "findByKuanhao";
     $('#edit_modal_submit').click(function(){
         $('#edit_modal').modal("hide");
         search_type_goods = "searchAll";
@@ -552,7 +552,7 @@ function rowEditOperation(row) {
                     }
                 }],
             locale : 'zh-CN',
-            url : 'findByKuanhao',
+            url : 'all',
             method : 'GET',
             queryParams : queryParams,
             sidePagination : "server",
