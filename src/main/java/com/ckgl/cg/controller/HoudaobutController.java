@@ -25,7 +25,7 @@ public class HoudaobutController {
 
         switch (searchType) {
             case SEARCH_BY_KUANHAO:
-                queryResult = houdaobutService.selectByKuanhao(keyWord);
+                queryResult = houdaobutService.selectByKuanhao(offset,limit,keyWord);
                 break;
 //            case FIND_BY_KUANHAO:
 //                queryResult = caijianbutService.findByKuanhao(offset, limit,keyWord);

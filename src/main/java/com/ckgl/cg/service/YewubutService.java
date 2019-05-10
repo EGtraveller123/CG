@@ -23,7 +23,7 @@ public class YewubutService {
         Yewubu yewubu = new Yewubu();
         Yewubu yewubu1 = new Yewubu();
         JSONObject res = new JSONObject();
-        yewubu1=yewubuMapper.selectAll(jsonObject.getString("kuanhao"),jsonObject.getString("yanse"));
+        yewubu1=yewubuMapper.selectByKuanhaoYanse(jsonObject.getString("kuanhao"),jsonObject.getString("yanse"));
         yewubut.setKuanhao(jsonObject.getString("kuanhao"));
         yewubut.setKehu(jsonObject.getString("kehu"));
         yewubut.setYanse(jsonObject.getString("yanse"));

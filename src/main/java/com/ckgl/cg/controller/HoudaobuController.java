@@ -24,7 +24,6 @@ public class HoudaobuController {
     private HoudaobutService houdaobutService;
 
     private static final String SEARCH_BY_KUANHAO = "searchByKuanhao";
-    private static final String FIND_BY_KUANHAO = "findByKuanhao";
     private static final String SEARCH_ALL = "searchAll";
 
     @RequestMapping("/a")
@@ -37,13 +36,10 @@ public class HoudaobuController {
 
         switch (searchType) {
             case SEARCH_BY_KUANHAO:
-                queryResult = houdaobuService.selectByKuanhao(keyWord);
+                queryResult = houdaobuService.selectByKuanhao(offset,limit,keyWord);
                 break;
             case SEARCH_ALL:
                 queryResult = houdaobuService.selectAll(offset,limit);
-                break;
-            case FIND_BY_KUANHAO:
-                queryResult = houdaobutService.findByKuanhao(offset, limit,keyWord);
                 break;
             default:
                 // do other thing
@@ -81,36 +77,36 @@ public class HoudaobuController {
         return responseContent.generateResponse();
     }
 
-    /**
-     * @param kuanhao 款号
-     * @return 返回一个map，其中：key 为 result 的值为操作的结果，包括：success 与 error；key 为 data
-     * 的值为客户信息
-     * 这是返回houdaobut表
-     */
-    @RequestMapping(value = "findByKuanhao", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    Map<String, Object> findByKuanhao(@RequestParam("keyWord") String kuanhao) {
-        // 初始化 Response
-        Response responseContent = ResponseFactory.newInstance();
-        String result = Response.RESPONSE_RESULT_ERROR;
-
-        //初始化houdaobut信息
-        Object houdaobut = null;
-        Map<String, Object> queryResult = query(FIND_BY_KUANHAO, kuanhao, 5, 0);
-        if (queryResult != null) {
-            houdaobut = queryResult.get("data");
-            if (houdaobut != null) {
-                result = Response.RESPONSE_RESULT_SUCCESS;
-            }
-        }
-
-        // 设置 Response
-        responseContent.setResponseResult(result);
-        responseContent.setCustomerInfo("rows",houdaobut);
-        responseContent.setResponseTotal((Long) queryResult.get("total"));
-        return responseContent.generateResponse();
-    }
+//    /**
+//     * @param kuanhao 款号
+//     * @return 返回一个map，其中：key 为 result 的值为操作的结果，包括：success 与 error；key 为 data
+//     * 的值为客户信息
+//     * 这是返回houdaobut表
+//     */
+//    @RequestMapping(value = "findByKuanhao", method = RequestMethod.GET)
+//    public
+//    @ResponseBody
+//    Map<String, Object> findByKuanhao(@RequestParam("keyWord") String kuanhao) {
+//        // 初始化 Response
+//        Response responseContent = ResponseFactory.newInstance();
+//        String result = Response.RESPONSE_RESULT_ERROR;
+//
+//        //初始化houdaobut信息
+//        Object houdaobut = null;
+//        Map<String, Object> queryResult = query(FIND_BY_KUANHAO, kuanhao, 5, 0);
+//        if (queryResult != null) {
+//            houdaobut = queryResult.get("data");
+//            if (houdaobut != null) {
+//                result = Response.RESPONSE_RESULT_SUCCESS;
+//            }
+//        }
+//
+//        // 设置 Response
+//        responseContent.setResponseResult(result);
+//        responseContent.setCustomerInfo("rows",houdaobut);
+//        responseContent.setResponseTotal((Long) queryResult.get("total"));
+//        return responseContent.generateResponse();
+//    }
 
     /**
      * @param searchType 搜索类型
