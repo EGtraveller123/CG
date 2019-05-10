@@ -100,9 +100,9 @@ function goodsListInit() {
                         halign :"center",
                         align : "center",
                         formatter : function(value, row, index) {
-                            var s = '<button class="btn btn-info" id="edit" style="margin-left: 10px"><span>查看详情</span></button>';
-                            var sd = '<button class="btn btn-primary" id="ywLinkcj" style="margin-left: 10px"><span>比较业务部数量</span></button>';
-                            var de = '<button class="btn btn-success" id="myModalLabel" style="margin-left: 10px"><span>添加详情</span></button>';
+                            var s = '<button class="btn btn-info" id="edit" style="padding-left: 50px;padding-right: 50px"><span>查看详情</span></button>';
+                            var sd = '<button class="btn btn-primary" id="ywLinkcj" style="margin-left: 20px;padding-left: 30px;padding-right: 30px"><span>比较业务部数量</span></button>';
+                            var de = '<button class="btn btn-success" id="myModalLabel" style="margin-left: 20px;padding-left: 50px;padding-right: 50px"><span>添加详情</span></button>';
                             // var d = '<button class="btn btn-danger btn-sm delete"><span>删除</span></button>';
                             // var fun = '';
                             return s + ' ' + sd + ' ' + de  ;
