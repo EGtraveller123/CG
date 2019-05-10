@@ -123,7 +123,7 @@ function goodsListInit() {
                                                      row, index) {
                                 selectID = row.kuanhao;
                                 search_keyWord = selectID;
-                                search_type_goods = "searchByKuanhao";
+                                search_type_goods = "findByKuanhaoYanse";
                                 search_keyWord2 = row.yanse;
                                 showYeWu();
                                 detailTableRefresh();
@@ -178,7 +178,7 @@ function showYeWu() {
     $('#show_modal').modal({backdrop: 'static', keyboard: false});
     $('#show_modal_submit').click(function(){
         $('#show_modal').modal("hide");
-        search_type_goods = "findByKuanhaoYanse";
+        search_type_goods = "searchAll";
         search_keyWord2 = "";});
     $('#showdetail')
         .bootstrapTable(

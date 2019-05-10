@@ -3,6 +3,7 @@
  */
 var search_type_goods = "searchAll";
 var search_keyWord = "";
+var search_keyWord2="";
 var selectID;
 
 $(function() {
