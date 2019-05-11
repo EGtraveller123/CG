@@ -16,7 +16,10 @@ public interface CaijianbutMapper {
     List<Map> selectAll();
 
     @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi from caijianbu_t where id=#{id}")
-    List<Map> selectById(Integer id);
+    Caijianbut selectById(Integer id);
+
+    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi from caijianbu_t where kuanhao=#{kuanhao} and yanse=#{yanse}")
+    List<Map> selectByKuanhaoYanse(String kuanhao,String yanse);
 
     @Select("select a.kuanhao as ca_kuanhao,a.yanse as ca_yanse ,a.xs as ye_xs,a.s as ye_s,a.m as ye_m,a.l as ye_l,a.xl as ye_xl,a.xxl as ye_xxl,a.xxxl as ye_xxxl," +
             "b.xs as ca_xs,b.s as ca_s,b.m as ca_m,b.l as ca_l,b.xl as ca_xl,b.xxl as ca_xxl,b.xxxl as ca_xxxl " +

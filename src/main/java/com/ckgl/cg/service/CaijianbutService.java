@@ -32,7 +32,7 @@ public class CaijianbutService {
     public Map<String, Object> selectById(int offset, int limit, int id) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
-        List<Map> caijianbuts = null;
+        Caijianbut caijianbuts = null;
         long total = 0;
         boolean isPagination = true;
         if (offset < 0 || limit < 0)
