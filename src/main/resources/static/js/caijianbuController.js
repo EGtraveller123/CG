@@ -108,21 +108,22 @@ function goodsListInit() {
                         halign :"center",
                         align : "center",
                         formatter : function(value, row, index) {
-                            var s = '<button class="btn btn-info" id="edit" style="padding-left: 40px;padding-right: 40px"><span>查看详情</span></button>';
-                            var sd = '<button class="btn btn-primary" id="ywLinkcj" style="margin-left: 20px;padding-left: 20px;padding-right: 20px"><span>比较业务部数量</span></button>';
-                            var de = '<button class="btn btn-success" id="myModalLabel" style="margin-left: 20px;padding-left: 40px;padding-right: 40px"><span>添加详情</span></button>';
+                            var s = '<button class="btn btn-info" id="moredetail" type="button" style="padding-left: 40px;padding-right: 40px"><span>查看详情</span></button>';
+                            var sd = '<button class="btn btn-primary" id="ywLinkcj" type="button" style="margin-left: 20px;padding-left: 20px;padding-right: 20px"><span>比较业务部数量</span></button>';
+                            var de = '<button class="btn btn-success" id="myModalLabel" type="button" style="margin-left: 20px;padding-left: 40px;padding-right: 40px"><span>添加详情</span></button>';
                             // var d = '<button class="btn btn-danger btn-sm delete"><span>删除</span></button>';
                             // var fun = '';
                             return s + ' ' + sd + ' ' + de  ;
                         },
                         events : {
                             // 操作列中编辑按钮的动作
-                            'click #edit': function (e, value,
+                            'click #moredetail': function (e, value,
                                                      row, index) {
                                 selectID = row.id;
+                                search_keyWord = selectID;
                                 search_type_goods = "findByKuanhaoYanse";
-                                showYeWu();
-                                detailTableRefresh();
+                                showYeWu(row);
+                                infotableRefresh();
                             },
                             'click #ywLinkcj': function (e, value,
                                                      row, index) {
@@ -137,7 +138,7 @@ function goodsListInit() {
                                 selectID = row.kuanhao;
                                 search_keyWord = selectID;
                                 addGoodsAction(row);
-                                detailTableRefresh();
+                                tableRefresh();
                             }
                             // 'click .delete': function (e, value,
                             //                          row, index) {
@@ -169,16 +170,15 @@ function goodsListInit() {
             });
 }
 
-function showYeWu() {
+function showYeWu(row) {
     $('#show_modal').modal("show");
     $('#show_modal').modal({backdrop: 'static', keyboard: false});
     $('#show_modal_submit').click(function(){
         $('#show_modal').modal("hide");
         search_type_goods = "searchAll";
+        infotableRefresh();
         });
-    $('#showdetail')
-        .bootstrapTable(
-            {
+    $('#showdetail').bootstrapTable({
                 columns : [
                     {
                         field : 'kuanhao',
@@ -292,24 +292,36 @@ function showYeWu() {
                             }
                         }
                     }],
+        onLoadSuccess:function(json){
+            $("#showdetail").bootstrapTable('load',json);
+        },
+        onLoadError:function(status){
+            handleAjaxError(status);
+        },
                 locale : 'zh-CN',
                 url : 'all',
                 method : 'GET',
                 queryParams : queryParams,
                 sidePagination : "server",
-                contentType: "application/x-www-form-urlencoded",
+                contentType: "application/x-www-form-urlencoded; charset=UTF-8 ",
                 dataType : 'json',
                 pagination : true,
                 pageNumber : 1,
                 pageSize : 5,
                 pageList : [ 5, 10, 25, 50, 100 ],
                 clickToSelect : true
-            });
+    });
 }
 
 // 表格刷新
 function tableRefresh() {
     $('#goodsList').bootstrapTable('refresh', {
+        query : {}
+    });
+}
+
+function infotableRefresh() {
+    $('#showdetail').bootstrapTable('refresh', {
         query : {}
     });
 }

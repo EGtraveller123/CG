@@ -121,7 +121,7 @@ function goodsListInit() {
                                 search_keyWord = selectID;
                                 search_type_goods = "findByKuanhaoYanse";
                                 showCaiJian();
-                                detailTableRefresh();
+                                infotableRefresh();
                             },
                             'click #cjLinkhd': function (e, value,
                                                          row, index) {
@@ -135,7 +135,7 @@ function goodsListInit() {
                                 selectID = row.kuanhao;
                                 search_keyWord = selectID;
                                 addGoodsAction(row);
-                                detailTableRefresh();
+                                tableRefresh();
                             }
                             // 'click .delete': function (e, value,
                             //                          row, index) {
@@ -312,6 +312,12 @@ function showCaiJian() {
 // 表格刷新
 function tableRefresh() {
     $('#goodsList').bootstrapTable('refresh', {
+        query : {}
+    });
+}
+
+function infotableRefresh() {
+    $('#showdetail').bootstrapTable('refresh', {
         query : {}
     });
 }
