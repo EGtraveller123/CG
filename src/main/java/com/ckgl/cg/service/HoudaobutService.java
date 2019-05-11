@@ -28,7 +28,7 @@ public class HoudaobutService {
     @Autowired
     private CaijianbuMapper caijianbuMapper;
 
-    public Map<String, Object> selectByKuanhaoYanse(int offset, int limit, String kuanhao) {
+    public Map<String, Object> selectByKuanhaoYanse(int offset, int limit, int id) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
         List<Map> houdaobuts = null;
@@ -39,14 +39,14 @@ public class HoudaobutService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                houdaobuts = houdaobutMapper.selectByKuanhaoYanse(kuanhao);
+                houdaobuts = houdaobutMapper.selectByKuanhaoYanse(id);
                 if (houdaobuts != null) {
                     PageInfo<Map> pageInfo = new PageInfo<>(houdaobuts);
                     total = pageInfo.getTotal();
                 } else
                     houdaobuts = new ArrayList<>();
             } else {
-                houdaobuts = houdaobutMapper.selectByKuanhaoYanse(kuanhao);
+                houdaobuts = houdaobutMapper.selectByKuanhaoYanse(id);
                 if (houdaobuts != null)
                     total = houdaobuts.size();
                 else

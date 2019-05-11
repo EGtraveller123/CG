@@ -17,7 +17,7 @@ public interface HoudaobuMapper {
     @Select("select id,kuanhao,yanse,cjbshuliang from caijianbu")
     List<Map> selectAll();
 
-    @Insert("insert into houdaobu(caijianbuid,kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdbshuliang) values (#{caijianbuid},#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{hdbshuliang})")
+    @Insert("insert into houdaobu(caijianbuid,kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl) values (#{caijianbuid},#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")
     boolean insertHoudaobu(Houdaobu houdaobu);
 
     @Select("select * from houdaobu where caijianbuid=#{id}")

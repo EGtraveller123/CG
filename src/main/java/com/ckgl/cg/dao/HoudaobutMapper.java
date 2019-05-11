@@ -15,8 +15,8 @@ public interface HoudaobutMapper {
     @Select("select * from houdaobu_t")
     List<Map> selectAll();
 
-    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdriqi from houdaobu_t where kuanhao=#{kuanhao}")
-    List<Map> selectByKuanhaoYanse(@Param("kuanhao")String kuanhao);
+    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdriqi from houdaobu_t where id=#{id}")
+    List<Map> selectByKuanhaoYanse(Integer id);
 
     @Select("select a.kuanhao as ho_kuanhao,a.yanse as ho_yanse,a.xs as ca_xs,a.s as ca_s,a.m as ca_m,a.l as ca_l,a.xl as ca_xl,a.xxl as ca_xxl,a.xxxl as ca_xxxl," +
             "b.xs as ho_xs,b.s as ho_s,b.m as ho_m,b.l as ho_l,b.xl as ho_xl,b.xxl as ho_xxl,b.xxxl as ho_xxxl " +
