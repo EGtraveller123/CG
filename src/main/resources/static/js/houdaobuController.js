@@ -344,13 +344,13 @@ function rowEditOperation(row) {
         {
             columns : [
                 {
-                    field : 'kuanhao',
+                    field : 'ho_kuanhao',
                     title : '款号',
                     width : "100px"
                     //sortable: true
                 },
                 {
-                    field : 'yanse',
+                    field : 'ho_yanse',
                     title : '颜色',
                     width : "100px"
                 },
