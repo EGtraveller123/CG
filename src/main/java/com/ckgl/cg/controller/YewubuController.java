@@ -126,7 +126,8 @@ public class YewubuController{
 
 
     @RequestMapping(value = "/delete",method = RequestMethod.GET)
-    public JSONObject delete(@RequestBody JSONObject jsonObject){
-        return yewubutService.deleteYewubut(jsonObject);
+    @ResponseBody
+    public JSONObject delete(@RequestParam("id") String id){
+        return yewubutService.deleteYewubut(id);
     }
 }

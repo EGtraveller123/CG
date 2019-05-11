@@ -18,7 +18,9 @@ public interface CaijianbutMapper {
     @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi from caijianbu_t where kuanhao=#{kuanhao} and yanse=#{yanse}")
     List<Map> selectByKuanhaoYanse(@Param("kuanhao")String kuanhao,@Param("yanse") String yanse);
 
-    @Select("select * from yewubu a left join caijianbu b on a.id=b.yewubuid where b.yewubuid=#{id}")
+    @Select("select a.kuanhao as ca_kuanhao,a.yanse as ca_yanse ,a.xs as ye_xs,a.s as ye_s,a.m as ye_m,a.l as ye_l,a.xl as ye_xl,a.xxl as ye_xxl,a.xxxl as ye_xxxl," +
+            "b.xs as ca_xs,b.s as ca_s,b.m as ca_m,b.l as ca_l,b.xl as ca_xl,b.xxl as ca_xxl,b.xxxl as ca_xxxl " +
+            "from yewubu a left join caijianbu b on a.id=b.yewubuid where a.id=#{id}")
     List<Map> findById(Integer id);
 
     @Insert("insert into caijianbu_t(kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi) " +

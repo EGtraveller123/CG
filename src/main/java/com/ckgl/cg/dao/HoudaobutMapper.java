@@ -18,10 +18,9 @@ public interface HoudaobutMapper {
     @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdriqi from houdaobu_t where kuanhao=#{kuanhao} and yanse=#{yanse}")
     List<Map> selectByKuanhaoYanse(@Param("kuanhao")String kuanhao,@Param("yanse") String yanse);
 
-    @Select("select DISTINCT a.kuanhao as ca_kuanhao,a.yanse as ca_yanse,sum(a.xs) as ye_xs,sum(a.s) as ye_s,sum(a.m) as ye_m," +
-            "sum(a.l) as ye_l,sum(a.xl) as ye_xl,sum(a.xxl) as ye_xxl,sum(a.xxxl) as ye_xxxl,sum(b.xs) as ca_xs,sum(b.s) as ca_s," +
-            "sum(b.m) as ca_m,sum(b.l) as ca_l,sum(b.xl) as ca_xl,sum(b.xxl) as ca_xxl,sum(b.xxxl) as ca_xxxl " +
-            "from yewubu a, caijianbu b  where a.id=#{id} or b.yewubuid=#{id}")
+    @Select("select a.kuanhao as ho_kuanhao,a.yanse as ho_yanse,a.xs as ca_xs,a.s as ca_s,a.m as ca_m,a.l as ca_l,a.xl as ca_xl,a.xxl as ca_xxl,a.xxxl as ca_xxxl," +
+            "b.xs as ho_xs,b.s as ho_s,b.m as ho_m,b.l as ho_l,b.xl as ho_xl,b.xxl as ho_xxl,b.xxxl as ho_xxxl " +
+            "from caijianbu a left join houdaobu b on a.id=b.caijianbuid where a.id=#{id}")
     List<Map> findById(Integer id);
 
     @Insert("insert into houdaobu_t(kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdriqi,beizhu) " +
