@@ -80,6 +80,7 @@ public class YewubutService {
             yewubu.setXl(yewubu.getXl()-yewubut.getXl());
             yewubu.setXxl(yewubu.getXxl()-yewubut.getXxl());
             yewubu.setXxxl(yewubu.getXxxl()-yewubut.getXxxl());
+            yewubu.setYwbshuliang(yewubu.getXs()+yewubu.getS()+yewubu.getM()+yewubu.getL()+yewubu.getXl()+yewubu.getXxl()+yewubu.getXxxl());
             yewubuMapper.updateYewubu(yewubu);
             res.put("result","success");
         }else{
