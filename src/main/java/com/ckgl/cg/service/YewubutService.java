@@ -66,13 +66,13 @@ public class YewubutService {
         return res;
     }
 
-    public JSONObject deleteYewubut(String  jsonObject){
+    public JSONObject deleteYewubut(String jsonObject){
         JSONObject res = new JSONObject();
         Yewubu yewubu = new Yewubu();
         Yewubut yewubut = new Yewubut();
+        yewubut=yewubutMapper.selectByid(Integer.valueOf(jsonObject));
+        yewubu=yewubuMapper.selectByKuanhaoYanse(yewubut.getKuanhao(),yewubut.getYanse());
         if(yewubutMapper.deleteYewubut(Integer.valueOf(jsonObject))){
-            yewubut=yewubutMapper.selectByid(Integer.valueOf(jsonObject));
-            yewubu=yewubuMapper.selectByKuanhao(yewubut.getKuanhao());
             yewubu.setXs(yewubu.getXs()-yewubut.getXs());
             yewubu.setS(yewubu.getS()-yewubut.getS());
             yewubu.setM(yewubu.getM()-yewubut.getM());

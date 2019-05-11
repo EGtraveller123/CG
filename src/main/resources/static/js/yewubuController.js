@@ -642,7 +642,7 @@ function deleteCustomerAction(){
     $('#delete_confirm').click(function(){
         var msg = "业务信息删除失败";
         var data = {
-            "id" : selectID
+            id : selectID
         }
 
         // ajax
