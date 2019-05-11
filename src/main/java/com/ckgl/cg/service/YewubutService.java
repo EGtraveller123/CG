@@ -52,11 +52,13 @@ public class YewubutService {
             yewubuMapper.insertYewubu(yewubu);
             res.put("result","success");
         }else{
+            yewubu.setKuanhao(yewubu1.getKuanhao());
+            yewubu.setYanse(yewubu1.getYanse());
             yewubu.setXs(yewubu1.getXs()+jsonObject.getInteger("xs"));
             yewubu.setS(yewubu1.getS()+jsonObject.getInteger("s"));
             yewubu.setM(yewubu1.getM()+jsonObject.getInteger("m"));
             yewubu.setL(yewubu1.getL()+jsonObject.getInteger("l"));
-            yewubu.setXl(yewubu.getXl()+jsonObject.getInteger("xl"));
+            yewubu.setXl(yewubu1.getXl()+jsonObject.getInteger("xl"));
             yewubu.setXxl(yewubu1.getXxl()+jsonObject.getInteger("xxl"));
             yewubu.setXxxl(yewubu1.getXxxl()+jsonObject.getInteger("xxxl"));
             yewubu.setYwbshuliang(yewubu1.getYwbshuliang()+jsonObject.getInteger("xs")+jsonObject.getInteger("s")+jsonObject.getInteger("m")+jsonObject.getInteger("l")+jsonObject.getInteger("xl")+jsonObject.getInteger("xxl")+jsonObject.getInteger("xxxl"));
