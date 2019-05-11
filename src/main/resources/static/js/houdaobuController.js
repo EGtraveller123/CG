@@ -4,12 +4,14 @@
 var search_type_goods = "searchAll";
 var search_keyWord = "";
 var selectID;
+var data;
 
 $(function() {
     optionAction();
     searchAction();
     goodsListInit();
     bootstrapValidatorInit();
+    addNew();
 })
 
 // 下拉框選擇動作
@@ -717,19 +719,16 @@ function bootstrapValidatorInit() {
     })
 }
 
-// 添加货物信息
-function addGoodsAction(row) {
-    $('#add_modal').modal("show");
-    dateNow();
+function addNew() {
     $('#add_modal_submit').click(function() {
         var msg = "操作失败";//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
         $("#goods_form").bootstrapValidator('validate');//提交验证
         if ($("#goods_form").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
-            var data = {
-                id : row.id,
-                kuanhao : row.kuanhao,
+            data = {
+                id : data.id,
+                kuanhao : data.kuanhao,
                 hdriqi : $('#hdriqi').val(),
-                yanse : row.yanse,
+                yanse : data.yanse,
                 xs : $('#xs').val(),
                 s : $('#s').val(),
                 m : $('#m').val(),
@@ -781,4 +780,15 @@ function addGoodsAction(row) {
         }
 
     });
+}
+
+// 添加货物信息
+function addGoodsAction(row) {
+    $('#add_modal').modal("show");
+    dateNow();
+    data = {
+        id : row.id,
+        kuanhao : row.kuanhao,
+        yanse : row.yanse
+    }
 }

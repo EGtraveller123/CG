@@ -4,12 +4,14 @@
 var search_type_goods = "searchAll";
 var search_keyWord = "";
 var selectID;
+var data;
 
 $(function() {
     optionAction();
     searchAction();
     goodsListInit();
     bootstrapValidatorInit();
+    addNew();
 })
 
 // 下拉框選擇動作
@@ -744,69 +746,76 @@ function bootstrapValidatorInit() {
     })
 }
 
+function addNew() {
+    $('#add_modal_submit').click(function() {
+        var msg = "操作失败";//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
+        $("#goods_form").bootstrapValidator('validate');//提交验证
+        if ($("#goods_form").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
+            data = {
+                id : data.id,
+                kuanhao : data.kuanhao,
+                cjriqi : $('#cjriqi').val(),
+                yanse : data.yanse,
+                xs : $('#xs').val(),
+                s : $('#s').val(),
+                m : $('#m').val(),
+                l :$('#l').val(),
+                xl : $('#xl').val(),
+                xxl : $('#xxl').val(),
+                xxxl : $('#xxxl').val()
+
+            }
+            // ajax
+            $.ajax({
+                type : "POST",
+                url : "insert",
+                dataType : "json",
+                contentType : "application/json",
+                data : JSON.stringify(data),
+                success : function(response) {
+                    $('#add_modal').modal("hide");
+                    var type;
+                    var append = '';
+                    if (response.result == "success") {
+                        type = "success";
+                        msg = "操作成功";
+                    } else if (response.result != "success") {
+                        type = "error";
+                        msg = "操作失败";
+                    }
+                    alert(msg);//验证成功后的操作，如ajax
+                    tableRefresh();
+
+                    // reset
+                    dateNow();
+                    $('#xs').val("0");
+                    $('#s').val("0");
+                    $('#m').val("0");
+                    $('#l').val("0");
+                    $('#xl').val("0");
+                    $('#xxl').val("0");
+                    $('#xxxl').val("0");
+                    $('#goods_form').bootstrapValidator("resetForm", false);
+                },
+                error: function (xhr, textStatus, errorThrow) {
+                    $('#add_modal').modal("hide");
+                    tableRefresh();
+                    // handler error
+                    handleAjaxError(xhr.status);
+                }
+            });
+        }
+
+    });
+}
 
 // 添加货物信息
 function addGoodsAction(row) {
     $('#add_modal').modal("show");
     dateNow();
-    $('#add_modal_submit').click(function() {
-        var msg = "操作失败";//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
-        $("#goods_form").bootstrapValidator('validate');//提交验证
-        if ($("#goods_form").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
-        var data = {
-            id : row.id,
-            kuanhao : row.kuanhao,
-            cjriqi : $('#cjriqi').val(),
-            yanse : row.yanse,
-            xs : $('#xs').val(),
-            s : $('#s').val(),
-            m : $('#m').val(),
-            l :$('#l').val(),
-            xl : $('#xl').val(),
-            xxl : $('#xxl').val(),
-            xxxl : $('#xxxl').val()
-
-        }
-        // ajax
-        $.ajax({
-            type : "POST",
-            url : "insert",
-            dataType : "json",
-            contentType : "application/json",
-            data : JSON.stringify(data),
-            success : function(response) {
-                $('#add_modal').modal("hide");
-                var type;
-                var append = '';
-                if (response.result == "success") {
-                    type = "success";
-                    msg = "操作成功";
-                } else if (response.result != "success") {
-                    type = "error";
-                    msg = "操作失败";
-                }
-                alert(msg);//验证成功后的操作，如ajax
-                tableRefresh();
-
-                // reset
-                dateNow();
-                $('#xs').val("0");
-                $('#s').val("0");
-                $('#m').val("0");
-                $('#l').val("0");
-                $('#xl').val("0");
-                $('#xxl').val("0");
-                $('#xxxl').val("0");
-                $('#goods_form').bootstrapValidator("resetForm", false);
-            },
-            error: function (xhr, textStatus, errorThrow) {
-                $('#add_modal').modal("hide");
-                tableRefresh();
-                // handler error
-                handleAjaxError(xhr.status);
-            }
-        });
-        }
-
-    });
+    data = {
+        id : row.id,
+        kuanhao : row.kuanhao,
+        yanse : row.yanse
+    }
 }
