@@ -33,6 +33,7 @@ public class CaijianbutService {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
         Caijianbut caijianbuts = null;
+        List<Map> caijianbuts1 = null;
         long total = 0;
         boolean isPagination = true;
         if (offset < 0 || limit < 0)
@@ -41,22 +42,24 @@ public class CaijianbutService {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
                 caijianbuts = caijianbutMapper.selectById(id);
-                if (caijianbuts != null) {
-                    PageInfo<Map> pageInfo = new PageInfo<>(caijianbuts);
+                caijianbuts1 = caijianbutMapper.selectByKuanhaoYanse(caijianbuts.getKuanhao(),caijianbuts.getYanse());
+                if (caijianbuts1 != null) {
+                    PageInfo<Map> pageInfo = new PageInfo<>(caijianbuts1);
                     total = pageInfo.getTotal();
                 } else
-                    caijianbuts = new ArrayList<>();
+                    caijianbuts1 = new ArrayList<>();
             } else {
                 caijianbuts = caijianbutMapper.selectById(id);
-                if (caijianbuts != null)
-                    total = caijianbuts.size();
+                caijianbuts1 = caijianbutMapper.selectByKuanhaoYanse(caijianbuts.getKuanhao(),caijianbuts.getYanse());
+                if (caijianbuts1 != null)
+                    total = caijianbuts1.size();
                 else
-                    caijianbuts = new ArrayList<>();
+                    caijianbuts1 = new ArrayList<>();
             }
         } catch (PersistenceException e) {
             e.printStackTrace();
         }
-        resultSet.put("data", caijianbuts);
+        resultSet.put("data", caijianbuts1);
         resultSet.put("total", total);
         return resultSet;
     }

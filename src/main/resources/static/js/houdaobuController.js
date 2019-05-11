@@ -768,7 +768,8 @@ function addNew() {
                     $('#xl').val("0");
                     $('#xxl').val("0");
                     $('#xxxl').val("0");
-                    $('#goods_form').bootstrapValidator("resetForm", false);
+                    $('#goods_form').data("bootstrapValidator").resetForm();
+
                 },
                 error: function (xhr, textStatus, errorThrow) {
                     $('#add_modal').modal("hide");

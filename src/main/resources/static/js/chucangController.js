@@ -442,9 +442,8 @@ function addGoodsAction() {
                     tableRefresh();
 
                     // reset
-                    $('#kuanhao').val();
+                    $('#kuanhao').val("");
                     dateNow();
-                    $('#yanse').val();
                     $('#xs').val("0");
                     $('#s').val("0");
                     $('#m').val("0");
@@ -452,8 +451,9 @@ function addGoodsAction() {
                     $('#xl').val("0");
                     $('#xxl').val("0");
                     $('#xxxl').val("0");
-                    $('#beizhu').val();
-                    $('#goods_form').bootstrapValidator("resetForm", false);
+                    $('#beizhu').val("");
+                    $('#goods_form').data("bootstrapValidator").resetForm();
+
                 },
                 error: function (xhr, textStatus, errorThrow) {
                     $('#add_modal').modal("hide");
