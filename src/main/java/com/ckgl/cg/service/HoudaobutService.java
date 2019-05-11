@@ -1,6 +1,7 @@
 package com.ckgl.cg.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.ckgl.cg.bean.Caijianbu;
 import com.ckgl.cg.bean.Houdaobu;
 import com.ckgl.cg.bean.Houdaobut;
 import com.ckgl.cg.dao.CaijianbuMapper;
@@ -31,7 +32,8 @@ public class HoudaobutService {
     public Map<String, Object> selectById(int offset, int limit, int id) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
-        List<Map> houdaobuts = null;
+        Caijianbu caijianbus = null;
+        List<Map> houdaobuts1 = null;
         long total = 0;
         boolean isPagination = true;
         if (offset < 0 || limit < 0)
@@ -39,23 +41,25 @@ public class HoudaobutService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                houdaobuts = houdaobutMapper.selectById(id);
-                if (houdaobuts != null) {
-                    PageInfo<Map> pageInfo = new PageInfo<>(houdaobuts);
+                caijianbus = houdaobutMapper.selectById(id);
+                houdaobuts1 = houdaobutMapper.selectByKuanhaoYanse(caijianbus.getKuanhao(),caijianbus.getYanse());
+                if (houdaobuts1 != null) {
+                    PageInfo<Map> pageInfo = new PageInfo<>(houdaobuts1);
                     total = pageInfo.getTotal();
                 } else
-                    houdaobuts = new ArrayList<>();
+                    houdaobuts1 = new ArrayList<>();
             } else {
-                houdaobuts = houdaobutMapper.selectById(id);
-                if (houdaobuts != null)
-                    total = houdaobuts.size();
+                caijianbus = houdaobutMapper.selectById(id);
+                houdaobuts1 = houdaobutMapper.selectByKuanhaoYanse(caijianbus.getKuanhao(),caijianbus.getYanse());
+                if (houdaobuts1 != null)
+                    total = houdaobuts1.size();
                 else
-                    houdaobuts = new ArrayList<>();
+                    houdaobuts1 = new ArrayList<>();
             }
         } catch (PersistenceException e) {
             e.printStackTrace();
         }
-        resultSet.put("data", houdaobuts);
+        resultSet.put("data", houdaobuts1);
         resultSet.put("total", total);
         return resultSet;
     }
@@ -68,13 +72,13 @@ public class HoudaobutService {
         houdaobu1=houdaobuMapper.selectByid(jsonObject.getInteger("id"));
         houdaobut.setKuanhao(jsonObject.getString("kuanhao"));
         houdaobut.setYanse(jsonObject.getString("yanse"));
-        houdaobut.setXs(jsonObject.getInteger("xs"));
-        houdaobut.setS(jsonObject.getInteger("s"));
-        houdaobut.setM(jsonObject.getInteger("m"));
-        houdaobut.setL(jsonObject.getInteger("l"));
-        houdaobut.setXl(jsonObject.getInteger("xl"));
-        houdaobut.setXxl(jsonObject.getInteger("xxl"));
-        houdaobut.setXxxl(jsonObject.getInteger("xxxl"));
+        houdaobut.setXs(Integer.valueOf(jsonObject.getString("xs")));
+        houdaobut.setS(Integer.valueOf(jsonObject.getString("s")));
+        houdaobut.setM(Integer.valueOf(jsonObject.getString("m")));
+        houdaobut.setL(Integer.valueOf(jsonObject.getString("l")));
+        houdaobut.setXl(Integer.valueOf(jsonObject.getString("xl")));
+        houdaobut.setXxl(Integer.valueOf(jsonObject.getString("xxl")));
+        houdaobut.setXxxl(Integer.valueOf(jsonObject.getString("xxxl")));
         houdaobut.setHdriqi(jsonObject.getString("hdriqi"));
         houdaobut.setBeizhu(jsonObject.getString("beizhu"));
         if(houdaobutMapper.insertHoudaobut(houdaobut)){
@@ -84,26 +88,26 @@ public class HoudaobutService {
             return res;
         }
         if(houdaobu1!=null){
-            houdaobu1.setXs(houdaobu1.getXs()+jsonObject.getInteger("xs"));
-            houdaobu1.setS(houdaobu1.getS()+jsonObject.getInteger("s"));
-            houdaobu1.setM(houdaobu1.getM()+jsonObject.getInteger("m"));
-            houdaobu1.setL(houdaobu1.getL()+jsonObject.getInteger("l"));
-            houdaobu1.setXl(houdaobu1.getXl()+jsonObject.getInteger("xl"));
-            houdaobu1.setXxl(houdaobu1.getXxl()+jsonObject.getInteger("xxl"));
-            houdaobu1.setXxxl(houdaobu1.getXxxl()+jsonObject.getInteger("xxxl"));
-            houdaobuMapper.updateHoudaobu(houdaobu);
+            houdaobu1.setXs(houdaobu1.getXs()+Integer.valueOf(jsonObject.getString("xs")));
+            houdaobu1.setS(houdaobu1.getS()+Integer.valueOf(jsonObject.getString("s")));
+            houdaobu1.setM(houdaobu1.getM()+Integer.valueOf(jsonObject.getString("m")));
+            houdaobu1.setL(houdaobu1.getL()+Integer.valueOf(jsonObject.getString("l")));
+            houdaobu1.setXl(houdaobu1.getXl()+Integer.valueOf(jsonObject.getString("xl")));
+            houdaobu1.setXxl(houdaobu1.getXxl()+Integer.valueOf(jsonObject.getString("xxl")));
+            houdaobu1.setXxxl(houdaobu1.getXxxl()+Integer.valueOf(jsonObject.getString("xxxl")));
+            houdaobuMapper.updateHoudaobu(houdaobu1);
             res.put("result","success");
         }else {
             houdaobu.setKuanhao(jsonObject.getString("kuanhao"));
             houdaobu.setYanse(jsonObject.getString("yanse"));
             houdaobu.setCaijianbuid(jsonObject.getInteger("id"));
-            houdaobu.setXs(jsonObject.getInteger("xs"));
-            houdaobu.setS(jsonObject.getInteger("s"));
-            houdaobu.setM(jsonObject.getInteger("m"));
-            houdaobu.setL(jsonObject.getInteger("l"));
-            houdaobu.setXl(jsonObject.getInteger("xl"));
-            houdaobu.setXxl(jsonObject.getInteger("xxl"));
-            houdaobu.setXxxl(jsonObject.getInteger("xxxl"));
+            houdaobu.setXs(Integer.valueOf(jsonObject.getString("xs")));
+            houdaobu.setS(Integer.valueOf(jsonObject.getString("s")));
+            houdaobu.setM(Integer.valueOf(jsonObject.getString("m")));
+            houdaobu.setL(Integer.valueOf(jsonObject.getString("l")));
+            houdaobu.setXl(Integer.valueOf(jsonObject.getString("xl")));
+            houdaobu.setXxl(Integer.valueOf(jsonObject.getString("xxl")));
+            houdaobu.setXxxl(Integer.valueOf(jsonObject.getString("xxxl")));
             houdaobuMapper.insertHoudaobu(houdaobu);
             res.put("result","success");
         }

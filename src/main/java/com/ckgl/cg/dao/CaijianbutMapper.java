@@ -1,5 +1,6 @@
 package com.ckgl.cg.dao;
 import com.ckgl.cg.bean.Caijianbut;
+import com.ckgl.cg.bean.Yewubu;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -15,8 +16,8 @@ public interface CaijianbutMapper {
     @Select("select * from caijianbu_t")
     List<Map> selectAll();
 
-    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi from caijianbu_t where id=#{id}")
-    Caijianbut selectById(Integer id);
+    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl from yewubu where id=#{id}")
+    Yewubu selectById(Integer id);
 
     @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi from caijianbu_t where kuanhao=#{kuanhao} and yanse=#{yanse}")
     List<Map> selectByKuanhaoYanse(String kuanhao,String yanse);

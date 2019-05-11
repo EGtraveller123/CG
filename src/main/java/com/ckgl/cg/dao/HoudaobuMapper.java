@@ -23,7 +23,7 @@ public interface HoudaobuMapper {
     @Select("select * from houdaobu where caijianbuid=#{id}")
     Houdaobu selectByid(Integer id);
 
-    @Update("update houdaobu set xs=#{xs},s=#{s},#{m},#{l},#{xl},#{xxl},#{xxxl} where caijianbuid=#{caijianbuid}")
+    @Update("update houdaobu set xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl} where caijianbuid=#{caijianbuid}")
     boolean updateHoudaobu(Houdaobu houdaobu);
 
     @Select("select * from houdaobu_t where kuanhao=#{kuanhao}")

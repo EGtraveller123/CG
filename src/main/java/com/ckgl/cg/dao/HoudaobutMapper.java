@@ -1,4 +1,5 @@
 package com.ckgl.cg.dao;
+import com.ckgl.cg.bean.Caijianbu;
 import com.ckgl.cg.bean.Houdaobut;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
@@ -15,8 +16,8 @@ public interface HoudaobutMapper {
     @Select("select * from houdaobu_t")
     List<Map> selectAll();
 
-    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdriqi from houdaobu_t where id=#{id}")
-    List<Map> selectById(Integer id);
+    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl from caijianbu where id=#{id}")
+    Caijianbu selectById(Integer id);
 
     @Select("select a.kuanhao as ho_kuanhao,a.yanse as ho_yanse,a.xs as ca_xs,a.s as ca_s,a.m as ca_m,a.l as ca_l,a.xl as ca_xl,a.xxl as ca_xxl,a.xxxl as ca_xxxl," +
             "b.xs as ho_xs,b.s as ho_s,b.m as ho_m,b.l as ho_l,b.xl as ho_xl,b.xxl as ho_xxl,b.xxxl as ho_xxxl " +
@@ -27,5 +28,7 @@ public interface HoudaobutMapper {
             "values(#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{hdriqi},#{beizhu})")
     boolean insertHoudaobut(Houdaobut houdaobut);
 
+    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdriqi,beizhu from houdaobu_t where kuanhao=#{kuanhao} and yanse=#{yanse}")
+    List<Map> selectByKuanhaoYanse(String kuanhao,String yanse);
 
 }

@@ -29,5 +29,4 @@ public interface KucunMapper {
     boolean deleteKucun(String kuanhao);
 
 
-
 }
