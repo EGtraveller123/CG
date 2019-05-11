@@ -14,6 +14,7 @@ $(function() {
     // addCustomerAction();
     // editCustomerAction();
     deleteCustomerAction();
+    tableRefresh();
     addGoodsAction();
     bootstrapValidatorInitGoods();
 })
@@ -44,7 +45,6 @@ function optionAction() {
 function searchAction() {
     $('#search_button').click(function() {
         search_keyWord = $('#search_input').val();
-        tableRefresh();
     })
 }
 
@@ -334,7 +334,6 @@ function addGoodsAction() {
                     }
                     alert(msg);
                     tableRefresh();
-
                     // reset
                     $('#kuanhaogoods').val("");
                     $('#yanse').val("");
@@ -352,7 +351,6 @@ function addGoodsAction() {
                 },
                 error : function(xhr, textStatus, errorThrow) {
                     $('#add_goods_modal').modal("hide");
-                    tableRefresh();
                     // handler error
                     handleAjaxError(xhr.status);
                 }

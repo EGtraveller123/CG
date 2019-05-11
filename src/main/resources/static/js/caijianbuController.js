@@ -176,7 +176,7 @@ function showYeWu(row) {
     $('#show_modal_submit').click(function(){
         $('#show_modal').modal("hide");
         search_type_goods = "searchAll";
-        infotableRefresh();
+
         });
     $('#showdetail').bootstrapTable({
                 columns : [
@@ -343,7 +343,7 @@ function rowEditOperation(row) {
     $('#edit_modal_submit').click(function(){
         $('#edit_modal').modal("hide");
         search_type_goods = "searchAll";
-        tableRefresh();});
+        });
     $('#goodsdetail').bootstrapTable(
         {
             columns : [
