@@ -1,8 +1,8 @@
 package com.ckgl.cg.dao;
 import com.ckgl.cg.bean.Caijianbut;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
 
 
@@ -15,23 +15,18 @@ public interface CaijianbutMapper {
     @Select("select * from caijianbu_t")
     List<Map> selectAll();
 
-    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi from caijianbu_t where kuanhao=#{kuanhao}")
-    List<Map> selectByKuanhao(String kuanhao);
+    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi from caijianbu_t where kuanhao=#{kuanhao} and yanse=#{yanse}")
+    List<Map> selectByKuanhaoYanse(@Param("kuanhao")String kuanhao,@Param("yanse") String yanse);
 
-    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi from caijianbu_t where kuanhao=#{kuanhao} and cjriqi=#{cjriqi} and yanse=#{yanse}")
-    Caijianbut selectByKuanhaoRiqiYanse(String Kuanhao,String cjriqi,String yanse);
-
-    @Select("select a.kuanhao as ye_kuanhao,a.yanse as ye_yanse,sum(a.xs) as ye_xs,sum(a.s) as ye_s,sum(a.m) as ye_m," +
+    @Select("select DISTINCT a.kuanhao as ca_kuanhao,a.yanse as ca_yanse,sum(a.xs) as ye_xs,sum(a.s) as ye_s,sum(a.m) as ye_m," +
             "sum(a.l) as ye_l,sum(a.xl) as ye_xl,sum(a.xxl) as ye_xxl,sum(a.xxxl) as ye_xxxl,sum(b.xs) as ca_xs,sum(b.s) as ca_s," +
             "sum(b.m) as ca_m,sum(b.l) as ca_l,sum(b.xl) as ca_xl,sum(b.xxl) as ca_xxl,sum(b.xxxl) as ca_xxxl " +
-            "from yewubu_t a join caijianbu_t b on a.id=b.id where id=#{id}")
+            "from yewubu a, caijianbu b  where a.id=#{id} or b.yewubuid=#{id}")
     List<Map> findById(Integer id);
 
     @Insert("insert into caijianbu_t(kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi) " +
             "values(#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{cjriqi})")
     boolean insertCaijiant(Caijianbut caijianbut);
 
-    @Update("update caijianbu_t set xs=#{xs},s=#{s},m=#{m},#{l},#{xl},#{xxl},#{xxxl} where kuanhao=#{kuanhao} and yanse=#{yanse} and cjriqi=#{cjriqi}")
-    boolean updateCaijianbut(Caijianbut caijianbut);
 
 }

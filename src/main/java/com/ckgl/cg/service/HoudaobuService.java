@@ -102,14 +102,14 @@ public class HoudaobuService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                Houdaobus = houdaobuMapper.selectByCaijianbu(kuanhao);
+                Houdaobus = houdaobuMapper.selectByYewubu(kuanhao);
                 if (Houdaobus != null) {
                     PageInfo<Map> pageInfo = new PageInfo<>(Houdaobus);
                     total = pageInfo.getTotal();
                 } else
                     Houdaobus = new ArrayList<>();
             } else {
-                Houdaobus = houdaobuMapper.selectByCaijianbu(kuanhao);
+                Houdaobus = houdaobuMapper.selectByYewubu(kuanhao);
                 if (Houdaobus != null)
                     total = Houdaobus.size();
                 else

@@ -14,19 +14,19 @@ import java.util.Map;
 @Component
 public interface CaijianbuMapper {
 
-    @Select("select id,kuanhao,sum(ywbshuliang) as ywbshuliang from yewubu")
+    @Select("select id,kuanhao,yanse,ywbshuliang from yewubu")
     List<Map> selectAll();
 
-    @Insert("insert into caijianbu(yewubuid,kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl) values (#{yewubuid},#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")
+    @Insert("insert into caijianbu(yewubuid,kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjbshuliang) values (#{yewubuid},#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{cjbshuliang})")
     boolean insertcaijianbu(Caijianbu caijianbu);
 
-    @Select("select * from yewubu where id=#{id}")
+    @Select("select * from caijianbu where yewubuid=#{id}")
     Caijianbu selectByid(Integer id);
 
-    @Update("update caijianbu set xs=#{xs},s=#{s},#{m},#{l},#{xl},#{xxl},#{xxxl} where yewubuid=#{yewubuid}")
+    @Update("update caijianbu set xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl} where yewubuid=#{yewubuid}")
     boolean updateCaijianbu(Caijianbu caijianbu);
 
-    @Select("select * from caijianbu_t where kuanhao=#{kuanhao}")
+    @Select("select id,kuanhao,yanse,ywbshuliang from yewubu where kuanhao=#{kuanhao}")
     List<Map> selectByKuanhao2(String kuanhao);
 
     @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl from caijianbu where kuanhao=#{kuanhao} and yanse=#{yanse}")

@@ -28,7 +28,7 @@ public class HoudaobutService {
     @Autowired
     private CaijianbuMapper caijianbuMapper;
 
-    public Map<String, Object> selectByKuanhao(int offset, int limit, String kuanhao) {
+    public Map<String, Object> selectByKuanhaoYanse(int offset, int limit, String kuanhao,String yanse) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
         List<Map> houdaobuts = null;
@@ -39,14 +39,14 @@ public class HoudaobutService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                houdaobuts = houdaobutMapper.selectByKuanhao(kuanhao);
+                houdaobuts = houdaobutMapper.selectByKuanhaoYanse(kuanhao,yanse);
                 if (houdaobuts != null) {
                     PageInfo<Map> pageInfo = new PageInfo<>(houdaobuts);
                     total = pageInfo.getTotal();
                 } else
                     houdaobuts = new ArrayList<>();
             } else {
-                houdaobuts = houdaobutMapper.selectByKuanhao(kuanhao);
+                houdaobuts = houdaobutMapper.selectByKuanhaoYanse(kuanhao,yanse);
                 if (houdaobuts != null)
                     total = houdaobuts.size();
                 else
@@ -65,7 +65,7 @@ public class HoudaobutService {
         Houdaobu houdaobu = new Houdaobu();
         Houdaobu houdaobu1 = new Houdaobu();
         JSONObject res = new JSONObject();
-        houdaobu1=houdaobuMapper.selectHoudaobu(jsonObject.getInteger("houdaobuid"));
+        houdaobu1=houdaobuMapper.selectByid(jsonObject.getInteger("id"));
         houdaobut.setKuanhao(jsonObject.getString("kuanhao"));
         houdaobut.setYanse(jsonObject.getString("yanse"));
         houdaobut.setXs(jsonObject.getInteger("xs"));
@@ -77,21 +77,26 @@ public class HoudaobutService {
         houdaobut.setXxxl(jsonObject.getInteger("xxxl"));
         houdaobut.setHdriqi(jsonObject.getString("hdriqi"));
         houdaobut.setBeizhu(jsonObject.getString("beizhu"));
+        if(houdaobutMapper.insertHoudaobut(houdaobut)){
+            res.put("result","success");
+        }else {
+            res.put("result","error");
+            return res;
+        }
         if(houdaobu1!=null){
-            houdaobu.setXs(houdaobu1.getXs()+jsonObject.getInteger("xs"));
-            houdaobu.setS(houdaobu1.getS()+jsonObject.getInteger("s"));
-            houdaobu.setM(houdaobu1.getM()+jsonObject.getInteger("m"));
-            houdaobu.setL(houdaobu1.getL()+jsonObject.getInteger("l"));
-            houdaobu.setXl(houdaobu1.getXl()+jsonObject.getInteger("xl"));
-            houdaobu.setXxl(houdaobu1.getXxl()+jsonObject.getInteger("xxl"));
-            houdaobu.setXxxl(houdaobu1.getXxxl()+jsonObject.getInteger("xxxl"));
+            houdaobu1.setXs(houdaobu1.getXs()+jsonObject.getInteger("xs"));
+            houdaobu1.setS(houdaobu1.getS()+jsonObject.getInteger("s"));
+            houdaobu1.setM(houdaobu1.getM()+jsonObject.getInteger("m"));
+            houdaobu1.setL(houdaobu1.getL()+jsonObject.getInteger("l"));
+            houdaobu1.setXl(houdaobu1.getXl()+jsonObject.getInteger("xl"));
+            houdaobu1.setXxl(houdaobu1.getXxl()+jsonObject.getInteger("xxl"));
+            houdaobu1.setXxxl(houdaobu1.getXxxl()+jsonObject.getInteger("xxxl"));
             houdaobuMapper.updateHoudaobu(houdaobu);
-            houdaobutMapper.updateHoudaobut(houdaobut);
             res.put("result","success");
         }else {
             houdaobu.setKuanhao(jsonObject.getString("kuanhao"));
             houdaobu.setYanse(jsonObject.getString("yanse"));
-            houdaobu.setCaijianbuid(caijianbuMapper.selectKuanhaoYanse(jsonObject.getString("yanse"),jsonObject.getString("yanse")).getId());
+            houdaobu.setCaijianbuid(jsonObject.getInteger("id"));
             houdaobu.setXs(jsonObject.getInteger("xs"));
             houdaobu.setS(jsonObject.getInteger("s"));
             houdaobu.setM(jsonObject.getInteger("m"));
@@ -116,14 +121,14 @@ public class HoudaobutService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                houdaobuts = houdaobutMapper.findByid(Integer.valueOf(id));
+                houdaobuts = houdaobutMapper.findById(Integer.valueOf(id));
                 if (houdaobuts != null) {
                     PageInfo<Map> pageInfo = new PageInfo<>(houdaobuts);
                     total = pageInfo.getTotal();
                 } else
                     houdaobuts = new ArrayList<>();
             } else {
-                houdaobuts = houdaobutMapper.findByid(Integer.valueOf(id));
+                houdaobuts = houdaobutMapper.findById(Integer.valueOf(id));
                 if (houdaobuts != null)
                     total = houdaobuts.size();
                 else

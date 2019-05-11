@@ -25,15 +25,16 @@ public class HoudaobuController {
 
     private static final String SEARCH_BY_KUANHAO = "searchByKuanhao";
     private static final String SEARCH_ALL = "searchAll";
+    private static final String FIND_BY_KUANHAO_YANSE = "findByKuanhaoYanse";
     private static final String FIND_BY_KUANHAO = "findByKuanhao";
-    private static final String SELECT_BY_YEWUBU = "selectByYewubu";
+    private static final String SELECT_BY_CAIJIANBU = "selectByYewubu";
 
     @RequestMapping("/a")
     public String jumpPage(){
         return "houdaobu";
     }
 
-    private Map<String, Object> query(String searchType, String keyWord, int offset, int limit) {
+    private Map<String, Object> query(String searchType, String keyWord,String keyWord2, int offset, int limit) {
         Map<String, Object> queryResult = null;
 
         switch (searchType) {
@@ -46,7 +47,10 @@ public class HoudaobuController {
             case FIND_BY_KUANHAO:
                 queryResult = houdaobutService.findById(offset,limit,keyWord);
                 break;
-            case SELECT_BY_YEWUBU:
+            case FIND_BY_KUANHAO_YANSE:
+                queryResult = houdaobutService.selectByKuanhaoYanse(offset,limit,keyWord,keyWord2);
+                break;
+            case SELECT_BY_CAIJIANBU:
                 queryResult = houdaobuService.selectByCaijianbu(offset,limit,keyWord);
                 break;
             default:
@@ -60,14 +64,15 @@ public class HoudaobuController {
     @RequestMapping(value = "byKuanhao", method = RequestMethod.GET)
     public
     @ResponseBody
-    Map<String, Object> selectByKuanhao(@RequestParam("kuanhao") String kuanhao) {
+    Map<String, Object> selectByKuanhao(@RequestParam("kuanhao") String kuanhao,
+                                        @RequestParam("yanse") String yanse) {
         // 初始化 Response
         Response responseContent = ResponseFactory.newInstance();
         String result = Response.RESPONSE_RESULT_ERROR;
 
         // 获取后道部
         Houdaobu houdaobu = null;
-        Map<String, Object> queryResult = query(SEARCH_BY_KUANHAO, kuanhao, -1, -1);
+        Map<String, Object> queryResult = query(SEARCH_BY_KUANHAO, kuanhao,yanse, -1, -1);
         if (queryResult != null) {
             houdaobu = (Houdaobu) queryResult.get("data");
             if (houdaobu != null) {
@@ -79,37 +84,6 @@ public class HoudaobuController {
         responseContent.setResponseData(houdaobu);
         return responseContent.generateResponse();
     }
-
-//    /**
-//     * @param kuanhao 款号
-//     * @return 返回一个map，其中：key 为 result 的值为操作的结果，包括：success 与 error；key 为 data
-//     * 的值为客户信息
-//     * 这是返回houdaobut表
-//     */
-//    @RequestMapping(value = "findByKuanhao", method = RequestMethod.GET)
-//    public
-//    @ResponseBody
-//    Map<String, Object> findByKuanhao(@RequestParam("keyWord") String kuanhao) {
-//        // 初始化 Response
-//        Response responseContent = ResponseFactory.newInstance();
-//        String result = Response.RESPONSE_RESULT_ERROR;
-//
-//        //初始化houdaobut信息
-//        Object houdaobut = null;
-//        Map<String, Object> queryResult = query(FIND_BY_KUANHAO, kuanhao, 5, 0);
-//        if (queryResult != null) {
-//            houdaobut = queryResult.get("data");
-//            if (houdaobut != null) {
-//                result = Response.RESPONSE_RESULT_SUCCESS;
-//            }
-//        }
-//
-//        // 设置 Response
-//        responseContent.setResponseResult(result);
-//        responseContent.setCustomerInfo("rows",houdaobut);
-//        responseContent.setResponseTotal((Long) queryResult.get("total"));
-//        return responseContent.generateResponse();
-//    }
 
     /**
      * @param searchType 搜索类型
@@ -124,12 +98,13 @@ public class HoudaobuController {
     Map<String, Object> getHoudaobuList(@RequestParam("searchType") String searchType,
                                         @RequestParam("offset") int offset,
                                         @RequestParam("limit") int limit,
-                                        @RequestParam("keyWord") String keyWord) {
+                                        @RequestParam("keyWord") String keyWord,
+                                        @RequestParam("keyWord2") String keyWord2) {
         // 初始化 Response
         Response responseContent = ResponseFactory.newInstance();
         List<Houdaobu> rows = null;
         long total = 0;
-        Map<String, Object> queryResult = query(searchType, keyWord, offset, limit);
+        Map<String, Object> queryResult = query(searchType, keyWord,keyWord2, offset, limit);
         if (queryResult != null) {
             rows = (List<Houdaobu>) queryResult.get("data");
             total = (long) queryResult.get("total");
