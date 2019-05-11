@@ -737,7 +737,8 @@ function addNew() {
                 l :$('#l').val(),
                 xl : $('#xl').val(),
                 xxl : $('#xxl').val(),
-                xxxl : $('#xxxl').val()
+                xxxl : $('#xxxl').val(),
+                beizhu : $('#beizhu').val()
 
             }
             // ajax
@@ -770,6 +771,7 @@ function addNew() {
                     $('#xl').val("0");
                     $('#xxl').val("0");
                     $('#xxxl').val("0");
+                    $('#beizhu').val("");
                     $('#goods_form').data("bootstrapValidator").resetForm();
 
                 },
