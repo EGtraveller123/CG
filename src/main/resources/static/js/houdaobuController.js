@@ -135,7 +135,6 @@ function goodsListInit() {
                                 selectID = row.kuanhao;
                                 search_keyWord = selectID;
                                 addGoodsAction(row);
-                                tableRefresh();
                             }
                             // 'click .delete': function (e, value,
                             //                          row, index) {
