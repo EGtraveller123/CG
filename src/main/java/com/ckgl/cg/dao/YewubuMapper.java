@@ -24,6 +24,6 @@ public interface YewubuMapper {
     @Update("update yewubu set xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl} where kuanhao=#{kuanhao} and yanse=#{yanse}")
     boolean updateYewubu(Yewubu yewubu);
 
-    @Select("select * from yewubu where kuanhao=#{kuanhao}")
-    Yewubu selectByKuanhao(String kuanhao);
+//    @Select("select * from yewubu where kuanhao=#{kuanhao} and yanse=#{yanse}")
+//    Yewubu selectByKuanhao(String kuanhao,String yanse);
 }

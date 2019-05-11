@@ -29,7 +29,7 @@ public class CaijianbutService {
     private CaijianbuMapper caijianbuMapper;
 
 
-    public Map<String, Object> selectByKuanhaoYanse(int offset, int limit, String kuanhao,String yanse) {
+    public Map<String, Object> selectById(int offset, int limit, int id) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
         List<Map> caijianbuts = null;
@@ -40,14 +40,14 @@ public class CaijianbutService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                caijianbuts = caijianbutMapper.selectByKuanhaoYanse(kuanhao,yanse);
+                caijianbuts = caijianbutMapper.selectById(id);
                 if (caijianbuts != null) {
                     PageInfo<Map> pageInfo = new PageInfo<>(caijianbuts);
                     total = pageInfo.getTotal();
                 } else
                     caijianbuts = new ArrayList<>();
             } else {
-                caijianbuts = caijianbutMapper.selectByKuanhaoYanse(kuanhao,yanse);
+                caijianbuts = caijianbutMapper.selectById(id);
                 if (caijianbuts != null)
                     total = caijianbuts.size();
                 else
