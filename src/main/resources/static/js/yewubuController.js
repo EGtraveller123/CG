@@ -642,13 +642,13 @@ function deleteCustomerAction(){
     $('#delete_confirm').click(function(){
         var msg = "业务信息删除失败";
         var data = {
-            "kuanhao" : selectID
+            "id" : selectID
         }
 
         // ajax
         $.ajax({
             type : "GET",
-            url : "sc",
+            url : "delete",
             dataType : "json",
             contentType : "application/json",
             data : data,
