@@ -73,8 +73,7 @@ function goodsListInit() {
                 columns : [
                     {
                         field : 'id',
-                        title : 'ID',
-                        width : '100px'
+                        title : 'ID'
                         //sortable: true
                     },
                     {

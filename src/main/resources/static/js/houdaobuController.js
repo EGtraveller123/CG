@@ -73,8 +73,7 @@ function goodsListInit() {
                 columns : [
                     {
                         field : 'id',
-                        title : 'ID',
-                        width : '100px'
+                        title : 'ID'
                         //sortable: true
                     },
                     {
@@ -92,7 +91,7 @@ function goodsListInit() {
                     {
                         field : 'cjbshuliang',
                         title : '裁剪部数量',
-                        width : "250px",
+                        width : "150px",
                         halign :"center",
                         align : "center"
                     },
