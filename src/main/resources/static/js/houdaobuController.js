@@ -291,7 +291,9 @@ function showCaiJian() {
                     },
                     {
                         field : 'beizhu',
-                        title : '备注'
+                        title : '备注',
+                        halign :"center",
+                        align : "center",
                     }],
                 locale : 'zh-CN',
                 url : 'all',
