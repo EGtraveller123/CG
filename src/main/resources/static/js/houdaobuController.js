@@ -3,7 +3,6 @@
  */
 var search_type_goods = "searchAll";
 var search_keyWord = "";
-var search_keyWord2="";
 var selectID;
 
 $(function() {
@@ -118,9 +117,8 @@ function goodsListInit() {
                             // 操作列中编辑按钮的动作
                             'click #edit': function (e, value,
                                                      row, index) {
-                                selectID = row.kuanhao;
+                                selectID = row.id;
                                 search_keyWord = selectID;
-                                search_keyWord2 = row.yanse;
                                 search_type_goods = "findByKuanhaoYanse";
                                 showCaiJian();
                                 detailTableRefresh();

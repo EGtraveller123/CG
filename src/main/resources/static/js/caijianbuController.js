@@ -3,7 +3,6 @@
  */
 var search_type_goods = "searchAll";
 var search_keyWord = "";
-var search_keyWord2="";
 var selectID;
 
 $(function() {
@@ -60,8 +59,7 @@ function queryParams(params) {
         limit : params.limit,
         offset : params.offset,
         searchType : search_type_goods,
-        keyWord : search_keyWord,
-        keyWord2: search_keyWord2
+        keyWord : search_keyWord
 
     }
     return temp;
@@ -95,8 +93,8 @@ function goodsListInit() {
                     },
                     {
                         field : 'ywbshuliang',
-                        title : '业务部数量',
-                        width : "250px",
+                        title : '业务数量',
+                        width : "100px",
                         halign :"center",
                         align : "center"
                     },
@@ -110,9 +108,9 @@ function goodsListInit() {
                         halign :"center",
                         align : "center",
                         formatter : function(value, row, index) {
-                            var s = '<button class="btn btn-info" id="edit" style="padding-left: 50px;padding-right: 50px"><span>查看详情</span></button>';
-                            var sd = '<button class="btn btn-primary" id="ywLinkcj" style="margin-left: 20px;padding-left: 30px;padding-right: 30px"><span>比较业务部数量</span></button>';
-                            var de = '<button class="btn btn-success" id="myModalLabel" style="margin-left: 20px;padding-left: 50px;padding-right: 50px"><span>添加详情</span></button>';
+                            var s = '<button class="btn btn-info" id="edit" style="padding-left: 40px;padding-right: 40px"><span>查看详情</span></button>';
+                            var sd = '<button class="btn btn-primary" id="ywLinkcj" style="margin-left: 20px;padding-left: 20px;padding-right: 20px"><span>比较业务部数量</span></button>';
+                            var de = '<button class="btn btn-success" id="myModalLabel" style="margin-left: 20px;padding-left: 40px;padding-right: 40px"><span>添加详情</span></button>';
                             // var d = '<button class="btn btn-danger btn-sm delete"><span>删除</span></button>';
                             // var fun = '';
                             return s + ' ' + sd + ' ' + de  ;
@@ -121,10 +119,8 @@ function goodsListInit() {
                             // 操作列中编辑按钮的动作
                             'click #edit': function (e, value,
                                                      row, index) {
-                                selectID = row.kuanhao;
-                                search_keyWord = selectID;
+                                selectID = row.id;
                                 search_type_goods = "findByKuanhaoYanse";
-                                search_keyWord2 = row.yanse;
                                 showYeWu();
                                 detailTableRefresh();
                             },
@@ -179,7 +175,7 @@ function showYeWu() {
     $('#show_modal_submit').click(function(){
         $('#show_modal').modal("hide");
         search_type_goods = "searchAll";
-        search_keyWord2 = "";});
+        });
     $('#showdetail')
         .bootstrapTable(
             {
