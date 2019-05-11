@@ -348,8 +348,7 @@ function addGoodsAction() {
                     $('#xxl').value("0");
                     $('#xxxl').value("0");
                     dateNow();
-                    $('#goods_form').bootstrapValidator("resetForm", true);
-                    tableRefresh();
+                    $('#goods_form').bootstrapValidator("resetForm", false);
                 },
                 error : function(xhr, textStatus, errorThrow) {
                     $('#add_goods_modal').modal("hide");

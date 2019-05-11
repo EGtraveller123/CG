@@ -669,10 +669,6 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
-                    },
-                    regexp : {
-                        regexp : '^[0-9]*$',
-                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -680,10 +676,6 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
-                    },
-                    regexp : {
-                        regexp : '^[0-9]*$',
-                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -691,10 +683,6 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
-                    },
-                    regexp : {
-                        regexp : '^[0-9]*$',
-                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -702,10 +690,6 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
-                    },
-                    regexp : {
-                        regexp : '^[0-9]*$',
-                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -713,10 +697,6 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
-                    },
-                    regexp : {
-                        regexp : '^[0-9]*$',
-                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -724,10 +704,6 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
-                    },
-                    regexp : {
-                        regexp : '^[0-9]*$',
-                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
@@ -735,10 +711,6 @@ function bootstrapValidatorInit() {
                 validators : {
                     notEmpty: {
                         message:'尺码不能为空，如没有请输入0'
-                    },
-                    regexp : {
-                        regexp : '^[0-9]*$',
-                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             }
@@ -798,8 +770,7 @@ function addGoodsAction(row) {
                     $('#xl').val("0");
                     $('#xxl').val("0");
                     $('#xxxl').val("0");
-                    $('#goods_form').bootstrapValidator("resetForm", true);
-                    tableRefresh();
+                    $('#goods_form').bootstrapValidator("resetForm", false);
                 },
                 error: function (xhr, textStatus, errorThrow) {
                     $('#add_modal').modal("hide");
