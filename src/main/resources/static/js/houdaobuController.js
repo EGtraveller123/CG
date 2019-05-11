@@ -196,6 +196,7 @@ function showCaiJian() {
                     {
                         field : 'xs',
                         title : '后道XS/34',
+                        width : "65px",
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -209,6 +210,7 @@ function showCaiJian() {
                     {
                         field : 's',
                         title : '后道S/36',
+                        width : "65px",
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -222,6 +224,7 @@ function showCaiJian() {
                     {
                         field : 'm',
                         title : '后道M/38',
+                        width : "65px",
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -235,6 +238,7 @@ function showCaiJian() {
                     {
                         field : 'l',
                         title : '后道L/40',
+                        width : "65px",
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -248,6 +252,7 @@ function showCaiJian() {
                     {
                         field : 'xl',
                         title : '后道XL/42',
+                        width : "65px",
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -261,6 +266,7 @@ function showCaiJian() {
                     {
                         field : 'xxl',
                         title : '后道XXL/44',
+                        width : "65px",
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -274,6 +280,7 @@ function showCaiJian() {
                     {
                         field : 'xxxl',
                         title : '后道XXXL/46',
+                        width : "65px",
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -283,6 +290,10 @@ function showCaiJian() {
                                 }
                             }
                         }
+                    },
+                    {
+                        field : 'beizhu',
+                        title : '备注'
                     }],
                 locale : 'zh-CN',
                 url : 'all',
