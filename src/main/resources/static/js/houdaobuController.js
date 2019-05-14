@@ -194,7 +194,7 @@ function showCaiJian() {
                     {
                         field : 'xs',
                         title : '后道XS/34',
-                        width : "60px",
+                        width : "65px",
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -207,8 +207,8 @@ function showCaiJian() {
                     },
                     {
                         field : 's',
-                        title : '后道S/36',
-                        width : "60px",
+                        title : '后道 S/36',
+                        width : "65px",
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -221,8 +221,8 @@ function showCaiJian() {
                     },
                     {
                         field : 'm',
-                        title : '后道M/38',
-                        width : "60px",
+                        title : '后道 M/38',
+                        width : "65px",
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -235,8 +235,8 @@ function showCaiJian() {
                     },
                     {
                         field : 'l',
-                        title : '后道L/40',
-                        width : "60px",
+                        title : '后道 L/40',
+                        width : "65px",
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -249,8 +249,8 @@ function showCaiJian() {
                     },
                     {
                         field : 'xl',
-                        title : '后道XL/42',
-                        width : "60px",
+                        title : '后道 XL/42',
+                        width : "65px",
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -263,8 +263,8 @@ function showCaiJian() {
                     },
                     {
                         field : 'xxl',
-                        title : '后道XXL/44',
-                        width : "60px",
+                        title : '后道 XXL/44',
+                        width : "65px",
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -277,8 +277,8 @@ function showCaiJian() {
                     },
                     {
                         field : 'xxxl',
-                        title : '后道XXXL/46',
-                        width : "60px",
+                        title : '后道 XXXL/46',
+                        width : "65px",
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -358,8 +358,8 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xs',
-                    title : '裁剪XS/34',
-                    width : "60px",
+                    title : '裁剪 XS/34',
+                    width : "65px",
                     halign :"center",
                     align : "center",
                     cellStyle:function(value,row,index) {
@@ -373,8 +373,8 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_xs',
-                    title : '后道XS/34',
-                    width : "60px",
+                    title : '后道 XS/34',
+                    width : "65px",
                     halign :"center",
                     align : "center",
                     cellStyle:function(value,row,index) {
@@ -387,8 +387,8 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_s',
-                    title : '裁剪S/36',
-                    width : "60px",
+                    title : '裁剪 S/36',
+                    width : "65px",
                     halign :"center",
                     align : "center",
                     cellStyle:function(value,row,index) {
@@ -402,8 +402,8 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_s',
-                    title : '后道S/36',
-                    width : "60px",
+                    title : '后道 S/36',
+                    width : "65px",
                     halign :"center",
                     align : "center",
                     cellStyle:function(value,row,index) {
@@ -416,8 +416,8 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_m',
-                    title : '裁剪M/38',
-                    width : "60px",
+                    title : '裁剪 M/38',
+                    width : "65px",
                     halign :"center",
                     align : "center",
                     cellStyle:function(value,row,index) {
@@ -431,8 +431,8 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_m',
-                    title : '后道M/38',
-                    width : "60px",
+                    title : '后道 M/38',
+                    width : "65px",
                     halign :"center",
                     align : "center",
                     cellStyle:function(value,row,index) {
@@ -445,8 +445,8 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_l',
-                    title : '裁剪L/40',
-                    width : "60px",
+                    title : '裁剪 L/40',
+                    width : "65px",
                     halign :"center",
                     align : "center",
                     cellStyle:function(value,row,index) {
@@ -460,8 +460,8 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_l',
-                    title : '后道L/40',
-                    width : "60px",
+                    title : '后道 L/40',
+                    width : "65px",
                     halign :"center",
                     align : "center",
                     cellStyle:function(value,row,index) {
@@ -474,8 +474,8 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xl',
-                    title : '裁剪XL/42',
-                    width : "60px",
+                    title : '裁剪 XL/42',
+                    width : "65px",
                     halign :"center",
                     align : "center",
                     cellStyle:function(value,row,index) {
@@ -489,8 +489,8 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_xl',
-                    title : '后道XL/42',
-                    width : "60px",
+                    title : '后道 XL/42',
+                    width : "65px",
                     halign :"center",
                     align : "center",
                     cellStyle:function(value,row,index) {
@@ -503,8 +503,8 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xxl',
-                    title : '裁剪XXL/44',
-                    width : "60px",
+                    title : '裁剪 XXL/44',
+                    width : "65px",
                     halign :"center",
                     align : "center",
                     cellStyle:function(value,row,index) {
@@ -518,8 +518,8 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_xxl',
-                    title : '后道XXL/44',
-                    width : "60px",
+                    title : '后道 XXL/44',
+                    width : "65px",
                     halign :"center",
                     align : "center",
                     cellStyle:function(value,row,index) {
@@ -532,8 +532,8 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xxxl',
-                    title : '裁剪XXXL/46',
-                    width : "60px",
+                    title : '裁剪 XXXL/46',
+                    width : "65px",
                     halign :"center",
                     align : "center",
                     cellStyle:function(value,row,index) {
@@ -547,8 +547,8 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_xxxl',
-                    title : '后道XXXL/46',
-                    width : "60px",
+                    title : '后道 XXXL/46',
+                    width : "65px",
                     halign :"center",
                     align : "center",
                     cellStyle:function(value,row,index) {
