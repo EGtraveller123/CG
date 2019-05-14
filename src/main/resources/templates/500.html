@@ -8,18 +8,18 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
-  <link rel="stylesheet" th:href="@{bower_components/bootstrap/dist/css/bootstrap.min.css}">
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" th:href="@{bower_components/font-awesome/css/font-awesome.min.css}">
+  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" th:href="@{bower_components/Ionicons/css/ionicons.min.css}">
+  <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
   <!-- DataTables -->
-  <link rel="stylesheet" th:href="@{bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css}">
+  <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" th:href="@{dist/css/AdminLTE.min.css}">
+  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" th:href="@{dist/css/skins/_all-skins.min.css}">
+  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -73,7 +73,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img th:src="@{dist/img/user2-160x160.jpg}" class="img-circle" alt="User Image">
+          <img src="../static/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Admin</p>
@@ -124,11 +124,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Error Page
+        500 Error Page
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> 仓库管理</a></li>
-        <li class="active">账号权限错误</li>
+        <li class="active">500 error</li>
       </ol>
     </section>
 
@@ -136,13 +136,13 @@
     <section class="content">
 
       <div class="error-page">
-        <h2 class="headline text-red">权限不符</h2>
+        <h2 class="headline text-red">500</h2>
 
         <div class="error-content">
           <h3><i class="fa fa-warning text-red" style="margin-top: 50px"></i> 出错了 </h3>
 
           <p>
-            此账号不能访问此页面或方法。
+            我们将会很快修复它。
             现在你可以点击这里 <a th:href="@{mjfs}">返回主页</a> 。
           </p>
 
@@ -159,6 +159,7 @@
     <div class="pull-right hidden-xs">
       仓库管理
     </div>
+    <!-- Default to the left -->
     <strong>MJFS &copy; 2019 <a th:href="@{mjfs}">主页</a>.</strong> All rights
     reserved.
   </footer>
@@ -171,14 +172,14 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script th:src="@{bower_components/jquery/dist/jquery.min.js}"></script>
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script th:src="@{bower_components/bootstrap/dist/js/bootstrap.min.js}"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
-<script th:src="@{bower_components/fastclick/lib/fastclick.js}"></script>
+<script src="../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script th:src="@{dist/js/adminlte.min.js}"></script>
+<script src="../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script th:src="@{dist/js/demo.js}"></script>
+<script src="../dist/js/demo.js"></script>
 </body>
 </html>
