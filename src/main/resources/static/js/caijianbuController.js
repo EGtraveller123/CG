@@ -99,10 +99,12 @@ function goodsListInit() {
                         halign :"center",
                         align : "center"
                     },
-                    // {
-                    //     field : 'cjbshuliang',
-                    //     title : '裁剪部数量'
-                    // },
+                    {
+                        field : 'cjzonghe',
+                        title : '裁剪总和',
+                        halign :"center",
+                        align : "center"
+                    },
                     {
                         field : 'operation',
                         title : '操作',
