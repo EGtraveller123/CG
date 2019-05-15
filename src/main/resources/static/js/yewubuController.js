@@ -169,6 +169,8 @@ function customerListInit() {
                 sortOrder : 'desc',
                 queryParams : queryParams,
                 sidePagination : "server",
+                offset : 0,
+                limit : 5,
                 contentType: "application/x-www-form-urlencoded",
                 uniqueId: "id",
                 pagination : true,

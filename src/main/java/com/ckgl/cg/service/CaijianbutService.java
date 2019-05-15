@@ -36,7 +36,7 @@ public class CaijianbutService {
         Yewubu yewubus = null;
         long total = 0;
         boolean isPagination = true;
-        yewubus = caijianbutMapper.selectById(id);
+        Yewubu yewubus = caijianbutMapper.selectById(id);
         String ywbkh = yewubus.getKuanhao();
         String ywbys=yewubus.getYanse();
         if (offset < 0 || limit < 0)

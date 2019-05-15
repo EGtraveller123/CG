@@ -134,6 +134,8 @@ function goodsListInit() {
                 locale : 'zh-CN',
                 queryParams : queryParams,
                 sidePagination : "server",
+                offset : 0,
+                limit : 5,
                 contentType: "application/x-www-form-urlencoded",
                 dataType : 'json',
                 pagination : true,
