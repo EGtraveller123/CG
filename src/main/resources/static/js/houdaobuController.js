@@ -59,8 +59,8 @@ function dateNow() {
 // 分页查询参数
 function queryParams(params) {
     var temp = {
-        limit : params.limit,
-        offset : params.offset,
+        limit : params.pageSize,
+        offset : params.pageNumber,
         searchType : search_type_goods,
         keyWord : search_keyWord,
         sortOrder: params.order,//排序
