@@ -48,11 +48,6 @@ public class KucunService {
         return resultSet;
     }
 
-    /**
-     * @param offset 分页的偏移值
-     * @param limit  分页的大小
-     * @return 结果的一个Map，其中： key为 data 的代表记录数据；key 为 total 代表结果记录的数量
-     */
     public Map<String, Object> selectAll(int offset, int limit) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
@@ -89,20 +84,38 @@ public class KucunService {
     }
 
 
-    public Map<String, Object> findByKuanhao(String kuanhao) {
-        Map<String, Object> resultSet = new HashMap<>();
-        List<Kucunt> kucunts = new ArrayList<>();
-        long total = 0;
 
+    public Map<String, Object> findByKuanhao(int offset, int limit,String kuanhao) {
+        Map<String, Object> resultSet = new HashMap<>();
+        PageHelper.startPage(offset,limit);
+        List<Kucunt> kucunts = null;
+        long total = 0;
+        boolean isPagination = true;
+        if (offset < 0 || limit < 0)
+            isPagination = false;
         try {
-            kucunts = kucuntMapper.selectByKuanhao(kuanhao);
+            if (isPagination) {
+                PageHelper.offsetPage(offset, limit);
+                kucunts = kucuntMapper.selectByKuanhao(kuanhao);
+                if (kucunts != null) {
+                    PageInfo<Kucunt> pageInfo = new PageInfo<>(kucunts);
+                    total = pageInfo.getTotal();
+                } else
+                    kucunts = new ArrayList<>();
+            } else {
+                kucunts = kucuntMapper.selectByKuanhao(kuanhao);
+                if (kucunts != null)
+                    total = kucunts.size();
+                else
+                    kucunts = new ArrayList<>();
+            }
         } catch (PersistenceException e) {
-            System.out.println("exception catch");
             e.printStackTrace();
         }
         resultSet.put("data", kucunts);
         resultSet.put("total", total);
         return resultSet;
     }
+
 
 }

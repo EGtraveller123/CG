@@ -16,7 +16,7 @@ public interface KucunMapper {
     @Select("select * from kucun where kuanhao=#{kuanhao}")
     Kucun selectByKuanhao(String kuanhao);
 
-    @Select("select * from kucun")
+    @Select("select * from kucun order by id desc")
     List<Kucun> selectAll();
 
     @Insert("insert into kucun(kuanhao,kcshuliang) values(#{kuanhao},(select sum(xs+s+m+l+xl+xxl+xxxl) from kucun_t where kuanhao=#{kuanhao}))")

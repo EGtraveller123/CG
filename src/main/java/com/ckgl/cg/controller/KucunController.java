@@ -39,7 +39,7 @@ public class KucunController {
                 queryResult = kucunService.selectByKuanhao(keyWord);
                 break;
             case FIND_BY_KUANHAO:
-                queryResult = kucunService.findByKuanhao(keyWord);
+                queryResult = kucunService.findByKuanhao(offset,limit,keyWord);
                 break;
             case SEARCH_ALL:
                 queryResult = kucunService.selectAll(offset, limit);
@@ -133,7 +133,6 @@ public class KucunController {
                 result = Response.RESPONSE_RESULT_SUCCESS;
             }
         }
-
         // 设置 Response
         responseContent.setResponseResult(result);
         responseContent.setCustomerInfo("rows",kucunt);
