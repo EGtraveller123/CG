@@ -52,7 +52,7 @@ public class CaijianbuService {
 
 
 
-    public Map<String, Object> selectAll(int offset, int limit) {
+    public Map<String, Object> selectAll(int offset, int limit,String sortName,String sortOrder) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
         List<Map> Caijianbus = null;
@@ -65,14 +65,14 @@ public class CaijianbuService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                Caijianbus = caijianbuMapper.selectAll();
+                Caijianbus = caijianbuMapper.selectAll(sortName,sortOrder);
                 if (Caijianbus != null) {
                     PageInfo<Map> pageInfo = new PageInfo<>(Caijianbus);
                     total = pageInfo.getTotal();
                 } else
                     Caijianbus = new ArrayList<>();
             } else {
-                Caijianbus = caijianbuMapper.selectAll();
+                Caijianbus = caijianbuMapper.selectAll(sortName,sortOrder);
                 if (Caijianbus != null)
                     total = Caijianbus.size();
                 else

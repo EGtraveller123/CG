@@ -22,7 +22,7 @@ public class YewubuService {
     @Autowired
     private YewubutMapper yewubutMapper;
 
-    public Map<String, Object> selectAll(int offset, int limit) {
+    public Map<String, Object> selectAll(int offset, int limit,String sortName,String sortOrder) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
         List<Map> yewubuts = null;
@@ -34,14 +34,14 @@ public class YewubuService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                yewubuts = yewubutMapper.selectAll();
+                yewubuts = yewubutMapper.selectAll(sortName,sortOrder);
                 if (yewubuts != null) {
                     PageInfo<Map> pageInfo = new PageInfo<>(yewubuts);
                     total = pageInfo.getTotal();
                 } else
                     yewubuts = new ArrayList<>();
             } else {
-                yewubuts = yewubutMapper.selectAll();
+                yewubuts = yewubutMapper.selectAll(sortName,sortOrder);
                 if (yewubuts != null)
                     total = yewubuts.size();
                 else
@@ -55,7 +55,7 @@ public class YewubuService {
         return resultSet;
     }
 
-    public Map<String, Object> selectByKuanhao(int offset, int limit, String kuanhao) {
+    public Map<String, Object> selectByKuanhao(int offset, int limit, String kuanhao,String sortName,String sortOrder) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
         List<Map> yewubuts = null;
@@ -66,14 +66,14 @@ public class YewubuService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                yewubuts = yewubutMapper.selectByKuanhao(kuanhao);
+                yewubuts = yewubutMapper.selectByKuanhao(kuanhao,sortName,sortOrder);
                 if (yewubuts != null) {
                     PageInfo<Map> pageInfo = new PageInfo<>(yewubuts);
                     total = pageInfo.getTotal();
                 } else
                     yewubuts = new ArrayList<>();
             } else {
-                yewubuts = yewubutMapper.selectByKuanhao(kuanhao);
+                yewubuts = yewubutMapper.selectByKuanhao(kuanhao,sortName,sortOrder);
                 if (yewubuts != null)
                     total = yewubuts.size();
                 else
@@ -87,7 +87,7 @@ public class YewubuService {
         return resultSet;
     }
 
-    public Map<String, Object> selectByKehu(int offset, int limit, String kehu) {
+    public Map<String, Object> selectByKehu(int offset, int limit, String kehu,String sortName,String sortOrder) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
         List<Map> yewubuts = null;
@@ -98,14 +98,14 @@ public class YewubuService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                yewubuts = yewubutMapper.selectByKehu(kehu);
+                yewubuts = yewubutMapper.selectByKehu(kehu,sortName,sortOrder);
                 if (yewubuts != null) {
                     PageInfo<Map> pageInfo = new PageInfo<>(yewubuts);
                     total = pageInfo.getTotal();
                 } else
                     yewubuts = new ArrayList<>();
             } else {
-                yewubuts = yewubutMapper.selectByKehu(kehu);
+                yewubuts = yewubutMapper.selectByKehu(kehu,sortName,sortOrder);
                 if (yewubuts != null)
                     total = yewubuts.size();
                 else

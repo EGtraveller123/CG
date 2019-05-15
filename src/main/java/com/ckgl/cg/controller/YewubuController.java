@@ -34,22 +34,22 @@ public class YewubuController{
         return "yewubu";
     }
 
-    private Map<String, Object> query(String searchType, String keyWord, int offset, int limit) {
+    private Map<String, Object> query(String searchType, String keyWord, int offset, int limit,String sortName,String sortOrder) {
         Map<String, Object> queryResult = null;
 
         switch (searchType) {
             case SEARCH_BY_KUANHAO:
 //                if (StringUtils.isNumeric(keyWord))
-                queryResult = yewubuService.selectByKuanhao(offset,limit,keyWord);
+                queryResult = yewubuService.selectByKuanhao(offset,limit,keyWord,sortName,sortOrder);
                 break;
             case SEARCH_BY_KEHU:
-                queryResult = yewubuService.selectByKehu(offset, limit, keyWord);
+                queryResult = yewubuService.selectByKehu(offset, limit, keyWord,sortName,sortOrder);
                 break;
             case SEARCH_ALL:
-                queryResult = yewubuService.selectAll(offset, limit);
+                queryResult = yewubuService.selectAll(offset, limit,sortName,sortOrder);
                 break;
             case NONE:
-                queryResult = yewubuService.selectAll(offset, limit);
+                queryResult = yewubuService.selectAll(offset, limit,sortName,sortOrder);
                 break;
             default:
                 // do other thing
@@ -64,11 +64,13 @@ public class YewubuController{
     Map<String, Object> getYewubuList(@RequestParam("searchType") String searchType,
                                       @RequestParam("offset") int offset,
                                       @RequestParam("limit") int limit,
-                                      @RequestParam("keyWord") String keyWord) {
+                                      @RequestParam("keyWord") String keyWord,
+                                      @RequestParam("sortName") String sortName,
+                                      @RequestParam("sortOrder") String sortOrder) {
         Response responseContent = ResponseFactory.newInstance();
         List<Yewubu> rows = null;
         long total = 0;
-        Map<String, Object> queryResult = query(searchType, keyWord, offset, limit);
+        Map<String, Object> queryResult = query(searchType, keyWord, offset, limit,sortName,sortOrder);
         if (queryResult != null) {
             rows = (List<Yewubu>) queryResult.get("data");
             total = (long) queryResult.get("total");
@@ -82,11 +84,13 @@ public class YewubuController{
     @RequestMapping(value = "byKuanhao", method = RequestMethod.GET)
     public
     @ResponseBody
-    Map<String, Object> selectByKuanhao(@RequestParam("kuanhao") String kuanhao) {
+    Map<String, Object> selectByKuanhao(@RequestParam("kuanhao") String kuanhao,
+                                        @RequestParam("sortName") String sortName,
+                                        @RequestParam("sortOrder") String sortOrder) {
         Response responseContent = ResponseFactory.newInstance();
         String result = Response.RESPONSE_RESULT_ERROR;
         Yewubu yewubu = null;
-        Map<String, Object> queryResult = query(SEARCH_BY_KUANHAO, kuanhao, -1, -1);
+        Map<String, Object> queryResult = query(SEARCH_BY_KUANHAO, kuanhao, -1, -1,sortName,sortOrder);
         if (queryResult != null) {
             yewubu = (Yewubu) queryResult.get("data");
             if (yewubu != null) {
@@ -101,11 +105,13 @@ public class YewubuController{
     @RequestMapping(value = "byKehu", method = RequestMethod.GET)
     public
     @ResponseBody
-    Map<String, Object> selectBykehu(@RequestParam("keyWord") String kehu) {
+    Map<String, Object> selectBykehu(@RequestParam("keyWord") String kehu,
+                                     @RequestParam("sortName") String sortName,
+                                     @RequestParam("sortOrder") String sortOrder) {
         Response responseContent = ResponseFactory.newInstance();
         String result = Response.RESPONSE_RESULT_ERROR;
         Object caijianbut = null;
-        Map<String, Object> queryResult = query(SEARCH_BY_KEHU, kehu, 5, 0);
+        Map<String, Object> queryResult = query(SEARCH_BY_KEHU, kehu, 5, 0,sortName,sortOrder);
         if (queryResult != null) {
             caijianbut = queryResult.get("data");
             if (caijianbut != null) {
