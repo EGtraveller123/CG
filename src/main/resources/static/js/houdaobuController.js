@@ -77,8 +77,8 @@ function goodsListInit() {
                 columns : [
                     {
                         field : 'id',
-                        title : 'ID'
-                        //sortable: true
+                        title : 'ID',
+                        sortable: true
                     },
                     {
                         field : 'kuanhao',
@@ -160,8 +160,8 @@ function goodsListInit() {
                 },
                 method : 'GET',
                 locale : 'zh-CN',
-                sortName : 'kuanhao',
-                sortOrder : 'asc',
+                sortName : 'id',
+                sortOrder : 'desc',
                 queryParams : queryParams,
                 sidePagination : "server",
                 contentType: "application/x-www-form-urlencoded",

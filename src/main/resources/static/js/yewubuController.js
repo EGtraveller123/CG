@@ -69,7 +69,8 @@ function customerListInit() {
                     {
                         field : 'id',
                         title : 'id',
-                        width : '100px'
+                        width : '100px',
+                        sortable: true
                     },
                     {
                         field : 'kuanhao',
@@ -164,8 +165,8 @@ function customerListInit() {
                 },
                 locale : 'zh-CN',
                 method : 'GET',
-                sortName : 'kuanhao',
-                sortOrder : 'asc',
+                sortName : 'id',
+                sortOrder : 'desc',
                 queryParams : queryParams,
                 sidePagination : "server",
                 contentType: "application/x-www-form-urlencoded",
