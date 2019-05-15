@@ -58,46 +58,65 @@ function goodsListInit() {
                     {
                         field : 'kuanhao',
                         title : '款号',
-                        width : '75px'
+                        halign :"center",
+                        align : "center"
                         //sortable: true
                     },
                     {
                         field : 'yanse',
                         title : '颜色',
+                        halign :"center",
+                        align : "center",
                         width : '75px'
                     },
                     {
                         field : 'ccriqi',
                         title : '出仓日期',
-                        width : '100px'
+                        width : '100px',
+                        halign :"center",
+                        align : "center"
                     },
                     {
                         field : 'xs',
-                        title : 'XS/34'
+                        title : 'XS/34',
+                        halign :"center",
+                        align : "center"
                     },
                     {
                         field : 's',
-                        title : 'S/36'
+                        title : 'S/36',
+                        halign :"center",
+                        align : "center"
                     },
                     {
                         field : 'm',
-                        title : 'M/38'
+                        title : 'M/38',
+                        halign :"center",
+                        align : "center"
                     },
                     {
                         field : 'l',
-                        title : 'L/40'
+                        title : 'L/40',
+                        halign :"center",
+                        align : "center"
                     },
                     {
                         field : 'xl',
-                        title : 'XL/42'
+                        title : 'XL/42',
+                        halign :"center",
+                        align : "center"
                     },
                     {
                         field : 'xxl',
-                        title : 'XXL/44'
+                        title : 'XXL/44',
+                        halign :"center",
+                        align : "center"
                     },
                     {
                         field : 'xxxl',
-                        title : 'XXXL/46'
+                        title : 'XXXL/46',
+                        halign :"center",
+                        align : "center"
                     },
                     {
                         field : 'beizhu',
