@@ -309,8 +309,16 @@ function showYeWu(row) {
                 sortName : 'cjriqi',
                 sortOrder : 'desc',
                 method : 'GET',
-                queryParams : queryParams,
-                sidePagination : "server",
+                queryParams : function (params) {
+                    var temp = {
+                        searchType : search_type_goods,
+                        keyWord : search_keyWord,
+                        sortOrder: params.order,//排序
+                        sortName:params.sort//排序字段
+                    };
+                    return temp;
+                },
+                sidePagination : "client",
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8 ",
                 dataType : 'json',
                 pagination : true,
@@ -579,8 +587,16 @@ function rowEditOperation(row) {
             sortName : 'kuanhao',
             sortOrder : 'asc',
             method : 'GET',
-            queryParams : queryParams,
-            sidePagination : "server",
+            queryParams : function (params) {
+                var temp = {
+                    searchType : search_type_goods,
+                    keyWord : search_keyWord,
+                    sortOrder: params.order,//排序
+                    sortName:params.sort//排序字段
+                };
+                return temp;
+            },
+            sidePagination : "client",
             contentType: "application/x-www-form-urlencoded",
             dataType : 'json',
             pagination : true,
