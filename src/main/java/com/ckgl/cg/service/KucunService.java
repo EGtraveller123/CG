@@ -89,17 +89,52 @@ public class KucunService {
     }
 
 
-    public Map<String, Object> findByKuanhao(String kuanhao) {
-        Map<String, Object> resultSet = new HashMap<>();
-        List<Kucunt> kucunts = new ArrayList<>();
-        long total = 0;
+//    public Map<String, Object> findByKuanhao(String kuanhao) {
+//        Map<String, Object> resultSet = new HashMap<>();
+//        List<Kucunt> kucunts = new ArrayList<>();
+//        long total = 0;
+//
+//        try {
+//            kucunts = kucuntMapper.selectByKuanhao(kuanhao);
+//        } catch (PersistenceException e) {
+//            System.out.println("exception catch");
+//            e.printStackTrace();
+//        }
+//        resultSet.put("data", kucunts);
+//        resultSet.put("total", total);
+//        return resultSet;
+//    }
 
+    public Map<String, Object> findByKuanhao(int offset, int limit,String kuanhao) {
+        Map<String, Object> resultSet = new HashMap<>();
+        PageHelper.startPage(offset,limit);
+        List<Kucunt> kucunts = null;
+        long total = 0;
+        boolean isPagination = true;
+
+        if (offset < 0 || limit < 0)
+            isPagination = false;
+        // query
         try {
-            kucunts = kucuntMapper.selectByKuanhao(kuanhao);
+            if (isPagination) {
+                PageHelper.offsetPage(offset, limit);
+                kucunts = kucuntMapper.selectByKuanhao(kuanhao);
+                if (kucunts != null) {
+                    PageInfo<Kucunt> pageInfo = new PageInfo<>(kucunts);
+                    total = pageInfo.getTotal();
+                } else
+                    kucunts = new ArrayList<>();
+            } else {
+                kucunts = kucuntMapper.selectByKuanhao(kuanhao);
+                if (kucunts != null)
+                    total = kucunts.size();
+                else
+                    kucunts = new ArrayList<>();
+            }
         } catch (PersistenceException e) {
-            System.out.println("exception catch");
             e.printStackTrace();
         }
+
         resultSet.put("data", kucunts);
         resultSet.put("total", total);
         return resultSet;
