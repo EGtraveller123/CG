@@ -82,8 +82,8 @@ function goodsListInit() {
                                                      row, index) {
                                 selectID = row.kuanhao;
                                 search_keyWord = selectID;
-                                detailTableRefresh();
                                 rowEditOperation(row);
+                                detailTableRefresh();
                             }
                         }
                     }],
