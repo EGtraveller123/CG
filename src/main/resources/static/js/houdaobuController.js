@@ -62,7 +62,9 @@ function queryParams(params) {
         limit : params.limit,
         offset : params.offset,
         searchType : search_type_goods,
-        keyWord : search_keyWord
+        keyWord : search_keyWord,
+        sortOrder: params.order,//排序
+        sortName:params.sort//排序字段
     }
     return temp;
 }
@@ -88,7 +90,8 @@ function goodsListInit() {
                     {
                         field : 'yanse',
                         title : '颜色',
-                        width : "100px"
+                        width : "100px",
+                        sortable: true
                     },
                     {
                         field : 'cjbshuliang',
@@ -157,6 +160,8 @@ function goodsListInit() {
                 },
                 method : 'GET',
                 locale : 'zh-CN',
+                sortName : 'kuanhao',
+                sortOrder : 'asc',
                 queryParams : queryParams,
                 sidePagination : "server",
                 contentType: "application/x-www-form-urlencoded",
@@ -164,7 +169,7 @@ function goodsListInit() {
                 pagination : true,
                 pageNumber : 1,
                 pageSize : 5,
-                pageList : [ 5, 10, 25, 50, 100 ],
+                pageList : 10,
                 clickToSelect : true
             });
 }
@@ -307,7 +312,7 @@ function showCaiJian() {
                 pagination : true,
                 pageNumber : 1,
                 pageSize : 5,
-                pageList : [ 5, 10, 25, 50, 100 ],
+                pageList : 10,
                 clickToSelect : true
             });
 }
@@ -571,7 +576,7 @@ function rowEditOperation(row) {
             pagination : true,
             pageNumber : 1,
             pageSize : 5,
-            pageList : [ 5, 10, 25, 50, 100 ],
+            pageList : 10,
             clickToSelect : true
         }
     );

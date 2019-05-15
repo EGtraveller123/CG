@@ -61,8 +61,9 @@ function queryParams(params) {
         limit : params.limit,
         offset : params.offset,
         searchType : search_type_goods,
-        keyWord : search_keyWord
-
+        keyWord : search_keyWord,
+        sortOrder: params.order,//排序
+        sortName:params.sort//排序字段
     }
     return temp;
 }
@@ -90,7 +91,8 @@ function goodsListInit() {
                         title : '颜色',
                         width : "100px",
                         halign :"center",
-                        align : "center"
+                        align : "center",
+                        sortable : true
                     },
                     {
                         field : 'ywbshuliang',
@@ -159,6 +161,8 @@ function goodsListInit() {
                     handleAjaxError(status);
                 },
                 method : 'GET',
+                sortName : 'kuanhao',
+                sortOrder : 'asc',
                 locale : 'zh-CN',
                 queryParams : queryParams,
                 sidePagination : "server",
@@ -167,7 +171,7 @@ function goodsListInit() {
                 pagination : true,
                 pageNumber : 1,
                 pageSize : 5,
-                pageList : [ 5, 10, 25, 50, 100 ],
+                pageList : 10,
                 clickToSelect : true
             });
 }
@@ -310,7 +314,7 @@ function showYeWu(row) {
                 pagination : true,
                 pageNumber : 1,
                 pageSize : 5,
-                pageList : [ 5, 10, 25, 50, 100 ],
+                pageList : 10,
                 clickToSelect : true
     });
 }
@@ -578,7 +582,7 @@ function rowEditOperation(row) {
             pagination : true,
             pageNumber : 1,
             pageSize : 5,
-            pageList : [ 5, 10, 25, 50, 100 ],
+            pageList : 10,
             clickToSelect : true
         }
     );

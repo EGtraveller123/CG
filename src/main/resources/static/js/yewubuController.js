@@ -55,7 +55,9 @@ function queryParams(params) {
         limit : params.limit,
         offset : params.offset,
         searchType : search_type,
-        keyWord : search_keyWord
+        keyWord : search_keyWord,
+        sortOrder: params.order,//排序
+        sortName:params.sort//排序字段
     }
     return temp;
 }
@@ -81,7 +83,8 @@ function customerListInit() {
                     },
                     {
                         field : 'yanse',
-                        title : '颜色'
+                        title : '颜色',
+                        sortable: true
                     },
                     {
                         field : 'chriqi',
@@ -161,6 +164,8 @@ function customerListInit() {
                 },
                 locale : 'zh-CN',
                 method : 'GET',
+                sortName : 'kuanhao',
+                sortOrder : 'asc',
                 queryParams : queryParams,
                 sidePagination : "server",
                 contentType: "application/x-www-form-urlencoded",
@@ -168,7 +173,7 @@ function customerListInit() {
                 pagination : true,
                 pageNumber : 1,
                 pageSize : 5,
-                pageList : [ 5, 10, 25, 50, 100 ],
+                pageList : 10,
                 clickToSelect : true
     });
 }
