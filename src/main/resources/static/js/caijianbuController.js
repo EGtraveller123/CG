@@ -170,9 +170,7 @@ function goodsListInit() {
                 dataType : 'json',
                 pagination : true,
                 pageNumber : 1,
-                offset : 0,
-                limit : 10,
-                pageSize : 10,
+                pageSize : 5,
                 pageList : [10],
                 clickToSelect : true
             });
@@ -312,7 +310,7 @@ function showYeWu(row) {
                 sortOrder : 'desc',
                 method : 'GET',
                 queryParams : queryParams,
-                sidePagination : "client",
+                sidePagination : "server",
                 contentType: "application/x-www-form-urlencoded; charset=UTF-8 ",
                 dataType : 'json',
                 pagination : true,
@@ -582,7 +580,7 @@ function rowEditOperation(row) {
             sortOrder : 'asc',
             method : 'GET',
             queryParams : queryParams,
-            sidePagination : "client",
+            sidePagination : "server",
             contentType: "application/x-www-form-urlencoded",
             dataType : 'json',
             pagination : true,

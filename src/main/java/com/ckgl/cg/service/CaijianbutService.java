@@ -28,12 +28,12 @@ public class CaijianbutService {
     @Autowired
     private CaijianbuMapper caijianbuMapper;
 
-    Yewubu yewubus;
 
     public Map<String, Object> selectById(int offset, int limit, int id) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
         List<Map> caijianbuts1 = null;
+        Yewubu yewubus = null;
         long total = 0;
         boolean isPagination = true;
         yewubus = caijianbutMapper.selectById(id);
