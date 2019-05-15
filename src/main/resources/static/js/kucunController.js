@@ -180,7 +180,7 @@ function rowEditOperation(row) {
                     title : 'XXXL/46'
                 }],
             locale : 'zh-CN',
-            url : 'findByKuanhao',
+            url : 'all',
             method : 'GET',
             queryParams : queryParams,
             sidePagination : "server",
