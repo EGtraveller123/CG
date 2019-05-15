@@ -90,7 +90,7 @@ public class YewubuController{
         Response responseContent = ResponseFactory.newInstance();
         String result = Response.RESPONSE_RESULT_ERROR;
         Yewubu yewubu = null;
-        Map<String, Object> queryResult = query(SEARCH_BY_KUANHAO, kuanhao, 10, 0,sortName,sortOrder);
+        Map<String, Object> queryResult = query(SEARCH_BY_KUANHAO, kuanhao, -1, -1,sortName,sortOrder);
         if (queryResult != null) {
             yewubu = (Yewubu) queryResult.get("data");
             if (yewubu != null) {
