@@ -28,7 +28,6 @@ public class CaijianbutService {
     @Autowired
     private CaijianbuMapper caijianbuMapper;
 
-    Yewubu yewubus;
 
     public Map<String, Object> selectById(int offset, int limit, int id) {
         Map<String, Object> resultSet = new HashMap<>();
@@ -36,7 +35,7 @@ public class CaijianbutService {
         List<Map> caijianbuts1 = null;
         long total = 0;
         boolean isPagination = true;
-        yewubus = caijianbutMapper.selectById(id);
+        Yewubu yewubus = caijianbutMapper.selectById(id);
         String ywbkh = yewubus.getKuanhao();
         String ywbys=yewubus.getYanse();
         if (offset < 0 || limit < 0)

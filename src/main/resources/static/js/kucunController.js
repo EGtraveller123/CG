@@ -40,8 +40,8 @@ function searchAction() {
 // 分页查询参数
 function queryParams(params) {
     var temp = {
-        pageSize : params.pageSize,
-        pageNumber : params.pageNumber,
+        limit : params.limit,
+        offset : params.offset,
         searchType : search_type_goods,
         keyWord : search_keyWord
     }
@@ -100,6 +100,8 @@ function goodsListInit() {
                 method : 'GET',
                 queryParams : queryParams,
                 sidePagination : "server",
+                offset : 0,
+                limit : 5,
                 contentType: "application/x-www-form-urlencoded",
                 dataType : 'json',
                 pagination : true,
@@ -181,6 +183,8 @@ function rowEditOperation(row) {
             method : 'GET',
             queryParams : queryParams,
             sidePagination : "server",
+            offset : 0,
+            limit : 5,
             contentType: "application/x-www-form-urlencoded",
             dataType : 'json',
             pagination : true,

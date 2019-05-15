@@ -52,8 +52,8 @@ function searchAction() {
 // 分页查询参数
 function queryParams(params) {
     var temp = {
-        pageSize : params.pageSize,
-        pageNumber : params.pageNumber,
+        limit : params.limit,
+        offset : params.offset,
         searchType : search_type,
         keyWord : search_keyWord,
         sortOrder: params.order,//排序
@@ -169,6 +169,8 @@ function customerListInit() {
                 sortOrder : 'desc',
                 queryParams : queryParams,
                 sidePagination : "server",
+                offset : 0,
+                limit : 5,
                 contentType: "application/x-www-form-urlencoded",
                 uniqueId: "id",
                 pagination : true,
