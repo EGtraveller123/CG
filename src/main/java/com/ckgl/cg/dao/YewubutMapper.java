@@ -15,13 +15,13 @@ public interface YewubutMapper {
             "values (#{kuanhao},#{kehu},#{yanse},#{mianliao},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{chriqi},#{ywshuliang})")
     boolean insertYewubut(Yewubut yewubut);
 
-    @Select("select id,kuanhao,kehu,yanse,xs,s,m,l,xl,xxl,xxxl,chriqi,ywshuliang from yewubu_t where kehu=#{kehu} order by $(sortName) $(sortOrder)")
+    @Select("select id,kuanhao,kehu,yanse,xs,s,m,l,xl,xxl,xxxl,chriqi,ywshuliang from yewubu_t where kehu=#{kehu} order by ${sortName} ${sortOrder}")
     List<Map> selectByKehu(@Param("kehu") String kehu,@Param("sortName") String sortName,@Param("sortOrder") String sortOrder);
 
-    @Select("select id,kuanhao,kehu,yanse,xs,s,m,l,xl,xxl,xxxl,chriqi,ywshuliang from yewubu_t where kuanhao=#{kuanhao} order by $(sortName) $(sortOrder)")
+    @Select("select id,kuanhao,kehu,yanse,xs,s,m,l,xl,xxl,xxxl,chriqi,ywshuliang from yewubu_t where kuanhao=#{kuanhao} order by ${sortName} ${sortOrder}")
     List<Map> selectByKuanhao(@Param("kuanhao") String kuanhaom,@Param("sortName") String sortName,@Param("sortOrder") String sortOrder);
 
-    @Select("select * from yewubu_t order by $(sortName) $(sortOrder)")
+    @Select("select * from yewubu_t order by ${sortName} ${sortOrder}")
     List<Map> selectAll(@Param("sortName") String sortName,@Param("sortOrder") String sortOrder);
 
     @Delete("delete from yewubu_t where id=#{id}")

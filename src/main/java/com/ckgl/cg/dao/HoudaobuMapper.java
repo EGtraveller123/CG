@@ -3,6 +3,7 @@ package com.ckgl.cg.dao;
 
 import com.ckgl.cg.bean.Houdaobu;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
@@ -14,8 +15,8 @@ import java.util.Map;
 @Component
 public interface HoudaobuMapper {
 
-    @Select("select a.id,a.kuanhao,a.yanse,a.cjbshuliang,b.hdbshuliang as hdzonghe from caijianbu a LEFT JOIN houdaobu b on a.id=b.caijianbuid order by id desc")
-    List<Map> selectAll();
+    @Select("select a.id,a.kuanhao,a.yanse,a.cjbshuliang,b.hdbshuliang as hdzonghe from caijianbu a LEFT JOIN houdaobu b on a.id=b.caijianbuid order by ${sortName} ${sortOrder}")
+    List<Map> selectAll(@Param("sortName") String sortName, @Param("sortOrder") String sortOrder);
 
     @Insert("insert into houdaobu(caijianbuid,kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdbshuliang) values (#{caijianbuid},#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{hdbshuliang})")
     boolean insertHoudaobu(Houdaobu houdaobu);

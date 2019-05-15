@@ -34,7 +34,7 @@ public class HoudaobuController {
         return "houdaobu";
     }
 
-    private Map<String, Object> query(String searchType, String keyWord,int offset, int limit) {
+    private Map<String, Object> query(String searchType, String keyWord,int offset, int limit,String sortName,String sortOrder) {
         Map<String, Object> queryResult = null;
 
         switch (searchType) {
@@ -42,7 +42,7 @@ public class HoudaobuController {
                 queryResult = houdaobuService.selectByKuanhao(offset,limit,keyWord);
                 break;
             case SEARCH_ALL:
-                queryResult = houdaobuService.selectAll(offset,limit);
+                queryResult = houdaobuService.selectAll(offset,limit,sortName,sortOrder);
                 break;
             case FIND_BY_KUANHAO:
                 queryResult = houdaobutService.findById(offset,limit,keyWord);
@@ -64,14 +64,16 @@ public class HoudaobuController {
     @RequestMapping(value = "byKuanhao", method = RequestMethod.GET)
     public
     @ResponseBody
-    Map<String, Object> selectByKuanhao(@RequestParam("kuanhao") String kuanhao) {
+    Map<String, Object> selectByKuanhao(@RequestParam("kuanhao") String kuanhao,
+                                        @RequestParam("sortName") String sortName,
+                                        @RequestParam("sortOrder") String sortOrder) {
         // 初始化 Response
         Response responseContent = ResponseFactory.newInstance();
         String result = Response.RESPONSE_RESULT_ERROR;
 
         // 获取后道部
         Houdaobu houdaobu = null;
-        Map<String, Object> queryResult = query(SEARCH_BY_KUANHAO, kuanhao,-1, -1);
+        Map<String, Object> queryResult = query(SEARCH_BY_KUANHAO, kuanhao,-1, -1,sortName,sortOrder);
         if (queryResult != null) {
             houdaobu = (Houdaobu) queryResult.get("data");
             if (houdaobu != null) {
@@ -97,12 +99,14 @@ public class HoudaobuController {
     Map<String, Object> getHoudaobuList(@RequestParam("searchType") String searchType,
                                         @RequestParam("offset") int offset,
                                         @RequestParam("limit") int limit,
-                                        @RequestParam("keyWord") String keyWord) {
+                                        @RequestParam("keyWord") String keyWord,
+                                        @RequestParam("sortName") String sortName,
+                                        @RequestParam("sortOrder") String sortOrder) {
         // 初始化 Response
         Response responseContent = ResponseFactory.newInstance();
         List<Houdaobu> rows = null;
         long total = 0;
-        Map<String, Object> queryResult = query(searchType, keyWord,offset, limit);
+        Map<String, Object> queryResult = query(searchType, keyWord,offset, limit,sortName,sortOrder);
         if (queryResult != null) {
             rows = (List<Houdaobu>) queryResult.get("data");
             total = (long) queryResult.get("total");
