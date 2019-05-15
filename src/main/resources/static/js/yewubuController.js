@@ -179,6 +179,7 @@ function customerListInit() {
     });
 }
 
+
 // 查看操作
 // function rowShowOperation(row) {
 //     $('#show_modal').modal("show");

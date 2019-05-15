@@ -100,6 +100,7 @@ function goodsListInit() {
                         halign :"center",
                         align : "center"
                     },
+
                     {
                         field : 'hdzonghe',
                         title : '后道数量',

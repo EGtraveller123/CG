@@ -34,6 +34,9 @@ public class HoudaobutService {
         PageHelper.startPage(offset,limit);
         Caijianbu caijianbus = null;
         List<Map> houdaobuts1 = null;
+        caijianbus = houdaobutMapper.selectById(id);
+        String cjbkh = caijianbus.getKuanhao();
+        String cjbys=caijianbus.getYanse();
         long total = 0;
         boolean isPagination = true;
         if (offset < 0 || limit < 0)
@@ -41,8 +44,7 @@ public class HoudaobutService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                caijianbus = houdaobutMapper.selectById(id);
-                houdaobuts1 = houdaobutMapper.selectByKuanhaoYanse(caijianbus.getKuanhao(),caijianbus.getYanse());
+                houdaobuts1 = houdaobutMapper.selectByKuanhaoYanse(cjbkh,cjbys);
                 if (houdaobuts1 != null) {
                     PageInfo<Map> pageInfo = new PageInfo<>(houdaobuts1);
                     total = pageInfo.getTotal();
@@ -50,7 +52,7 @@ public class HoudaobutService {
                     houdaobuts1 = new ArrayList<>();
             } else {
                 caijianbus = houdaobutMapper.selectById(id);
-                houdaobuts1 = houdaobutMapper.selectByKuanhaoYanse(caijianbus.getKuanhao(),caijianbus.getYanse());
+                houdaobuts1 = houdaobutMapper.selectByKuanhaoYanse(cjbkh,cjbys);
                 if (houdaobuts1 != null)
                     total = houdaobuts1.size();
                 else

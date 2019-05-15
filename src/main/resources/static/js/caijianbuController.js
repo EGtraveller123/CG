@@ -160,6 +160,7 @@ function goodsListInit() {
                 onLoadError:function(status){
                     handleAjaxError(status);
                 },
+
                 sortName : 'id',
                 sortOrder : 'desc',
                 method : 'GET',

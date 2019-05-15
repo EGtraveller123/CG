@@ -108,6 +108,7 @@ function goodsListInit() {
                 pageList : [10],
                 clickToSelect : true
             });
+
 }
 
 // 表格刷新

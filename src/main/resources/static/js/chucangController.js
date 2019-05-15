@@ -12,6 +12,7 @@ $(function() {
     addGoodsAction();
 })
 
+
 // 下拉框選擇動作
 function optionAction() {
     $(".dropOption").click(function() {
