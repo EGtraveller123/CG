@@ -14,16 +14,16 @@ import java.util.Map;
 @Component
 public interface HoudaobuMapper {
 
-    @Select("select id,kuanhao,yanse,cjbshuliang from caijianbu")
+    @Select("select a.id,a.kuanhao,a.yanse,a.cjbshuliang,b.hdbshuliang as hdzonghe from caijianbu a LEFT JOIN houdaobu b on a.id=b.caijianbuid order by id desc")
     List<Map> selectAll();
 
-    @Insert("insert into houdaobu(caijianbuid,kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl) values (#{caijianbuid},#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")
+    @Insert("insert into houdaobu(caijianbuid,kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdbshuliang) values (#{caijianbuid},#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{hdbshuliang})")
     boolean insertHoudaobu(Houdaobu houdaobu);
 
     @Select("select * from houdaobu where caijianbuid=#{id}")
     Houdaobu selectByid(Integer id);
 
-    @Update("update houdaobu set xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl} where caijianbuid=#{caijianbuid}")
+    @Update("update houdaobu set xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl},hdbshuliang=#{hdbshuliang} where caijianbuid=#{caijianbuid}")
     boolean updateHoudaobu(Houdaobu houdaobu);
 
     @Select("select * from houdaobu_t where kuanhao=#{kuanhao}")

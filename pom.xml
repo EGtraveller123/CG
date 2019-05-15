@@ -97,9 +97,9 @@
             <version>1.16.18</version>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>c3p0</groupId>-->
-            <!--<artifactId>c3p0</artifactId>-->
-            <!--<version>0.9.1.1</version>-->
+        <!--<groupId>c3p0</groupId>-->
+        <!--<artifactId>c3p0</artifactId>-->
+        <!--<version>0.9.1.1</version>-->
         <!--</dependency>-->
         <dependency>
             <groupId>com.mchange</groupId>
@@ -156,12 +156,12 @@
 
     <build>
         <!--<resources>-->
-            <!--<resource>-->
-            <!--<directory>src/main/java</directory>-->
-            <!--<includes>-->
-                <!--<include>**/*.xml</include>-->
-            <!--</includes>-->
-            <!--</resource>-->
+        <!--<resource>-->
+        <!--<directory>src/main/java</directory>-->
+        <!--<includes>-->
+        <!--<include>**/*.xml</include>-->
+        <!--</includes>-->
+        <!--</resource>-->
         <!--</resources>-->
         <plugins>
             <plugin>

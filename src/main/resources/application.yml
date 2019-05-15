@@ -39,4 +39,3 @@ mybatis:
   type-aliases-package: com.example.demo.bean
   #配置mapper xml 文件所在的路径
   mapper-locations: classpath:resources/mapper/*.xml
-

@@ -31,17 +31,17 @@ public class CaijianbutService {
 
     public Map<String, Object> selectById(int offset, int limit, int id) {
         Map<String, Object> resultSet = new HashMap<>();
-        PageHelper.startPage(offset,limit);
         Yewubu yewubus = null;
+        PageHelper.startPage(offset,limit);
         List<Map> caijianbuts1 = null;
         long total = 0;
         boolean isPagination = true;
+        yewubus = caijianbutMapper.selectById(id);
         if (offset < 0 || limit < 0)
             isPagination = false;
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                yewubus = caijianbutMapper.selectById(id);
                 caijianbuts1 = caijianbutMapper.selectByKuanhaoYanse(yewubus.getKuanhao(),yewubus.getYanse());
                 if (caijianbuts1 != null) {
                     PageInfo<Map> pageInfo = new PageInfo<>(caijianbuts1);
@@ -49,9 +49,8 @@ public class CaijianbutService {
                 } else
                     caijianbuts1 = new ArrayList<>();
             } else {
-                yewubus = caijianbutMapper.selectById(id);
                 caijianbuts1 = caijianbutMapper.selectByKuanhaoYanse(yewubus.getKuanhao(),yewubus.getYanse());
-                if (yewubus != null)
+                if (caijianbuts1 != null)
                     total = caijianbuts1.size();
                 else
                     caijianbuts1 = new ArrayList<>();

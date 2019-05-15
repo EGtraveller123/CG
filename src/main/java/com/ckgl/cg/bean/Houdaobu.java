@@ -12,6 +12,15 @@ public class Houdaobu {
     private Integer xl;
     private Integer xxl;
     private Integer xxxl;
+    private Integer hdbshuliang;
+
+    public Integer getHdbshuliang() {
+        return hdbshuliang;
+    }
+
+    public void setHdbshuliang(Integer hdbshuliang) {
+        this.hdbshuliang = hdbshuliang;
+    }
 
     public Integer getId() {
         return id;

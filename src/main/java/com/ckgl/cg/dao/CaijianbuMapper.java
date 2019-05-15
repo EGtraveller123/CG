@@ -14,7 +14,7 @@ import java.util.Map;
 @Component
 public interface CaijianbuMapper {
 
-    @Select("select id,kuanhao,yanse,ywbshuliang from yewubu")
+    @Select("select a.id,a.kuanhao,a.yanse,a.ywbshuliang,b.cjbshuliang as cjzonghe from yewubu a LEFT JOIN caijianbu b on a.id=b.yewubuid order by id desc")
     List<Map> selectAll();
 
     @Insert("insert into caijianbu(yewubuid,kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjbshuliang) values (#{yewubuid},#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{cjbshuliang})")
@@ -23,7 +23,7 @@ public interface CaijianbuMapper {
     @Select("select * from caijianbu where yewubuid=#{id}")
     Caijianbu selectByid(Integer id);
 
-    @Update("update caijianbu set xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl} where yewubuid=#{yewubuid}")
+    @Update("update caijianbu set xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl},cjbshuliang=#{cjbshuliang} where yewubuid=#{yewubuid}")
     boolean updateCaijianbu(Caijianbu caijianbu);
 
     @Select("select id,kuanhao,yanse,ywbshuliang from yewubu where kuanhao=#{kuanhao}")

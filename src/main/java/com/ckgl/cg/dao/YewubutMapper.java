@@ -20,7 +20,7 @@ public interface YewubutMapper {
     @Select("select id,kuanhao,kehu,yanse,xs,s,m,l,xl,xxl,xxxl,chriqi,ywshuliang from yewubu_t where kuanhao=#{kuanhao}")
     List<Map> selectByKuanhao(String kuanhao);
 
-    @Select("select * from yewubu_t")
+    @Select("select * from yewubu_t order by id desc")
     List<Map> selectAll();
 
     @Delete("delete from yewubu_t where id=#{id}")
