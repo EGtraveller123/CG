@@ -39,7 +39,7 @@ public class KucunController {
                 queryResult = kucunService.selectByKuanhao(keyWord);
                 break;
             case FIND_BY_KUANHAO:
-                queryResult = kucunService.findByKuanhao(keyWord);
+                queryResult = kucunService.findByKuanhao(offset,limit,keyWord);
                 break;
             case SEARCH_ALL:
                 queryResult = kucunService.selectAll(offset, limit);
@@ -111,33 +111,33 @@ public class KucunController {
         return responseContent.generateResponse();
     }
 
-    /**
-     * @param kuanhao 款号
-     * @return 返回一个map，其中：key 为 result 的值为操作的结果，包括：success 与 error；key 为 data
-     * 的值为客户信息
-     */
-    @RequestMapping(value = "findByKuanhao", method = RequestMethod.GET)
-    public
-    @ResponseBody
-    Map<String, Object> findByKuanhao(@RequestParam("keyWord") String kuanhao) {
-        // 初始化 Response
-        Response responseContent = ResponseFactory.newInstance();
-        String result = Response.RESPONSE_RESULT_ERROR;
-
-        //初始化kucunt信息
-        Object kucunt = null;
-        Map<String, Object> queryResult = query(FIND_BY_KUANHAO, kuanhao, 5, 0);
-        if (queryResult != null) {
-            kucunt = queryResult.get("data");
-            if (kucunt != null) {
-                result = Response.RESPONSE_RESULT_SUCCESS;
-            }
-        }
-
-        // 设置 Response
-        responseContent.setResponseResult(result);
-        responseContent.setCustomerInfo("rows",kucunt);
-        responseContent.setResponseTotal((Long) queryResult.get("total"));
-        return responseContent.generateResponse();
-    }
+//    /**
+//     * @param kuanhao 款号
+//     * @return 返回一个map，其中：key 为 result 的值为操作的结果，包括：success 与 error；key 为 data
+//     * 的值为客户信息
+//     */
+//    @RequestMapping(value = "findByKuanhao", method = RequestMethod.GET)
+//    public
+//    @ResponseBody
+//    Map<String, Object> findByKuanhao(@RequestParam("keyWord") String kuanhao) {
+//        // 初始化 Response
+//        Response responseContent = ResponseFactory.newInstance();
+//        String result = Response.RESPONSE_RESULT_ERROR;
+//
+//        //初始化kucunt信息
+//        Object kucunt = null;
+//        Map<String, Object> queryResult = query(FIND_BY_KUANHAO, kuanhao, -1, -1);
+//        if (queryResult != null) {
+//            kucunt = queryResult.get("data");
+//            if (kucunt != null) {
+//                result = Response.RESPONSE_RESULT_SUCCESS;
+//            }
+//        }
+//
+//        // 设置 Response
+//        responseContent.setResponseResult(result);
+//        responseContent.setCustomerInfo("rows",kucunt);
+//        responseContent.setResponseTotal((Long) queryResult.get("total"));
+//        return responseContent.generateResponse();
+//    }
 }
