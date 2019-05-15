@@ -174,7 +174,7 @@ function customerListInit() {
                 pagination : true,
                 pageNumber : 1,
                 pageSize : 5,
-                pageList : 10,
+                pageList : [10],
                 clickToSelect : true
     });
 }

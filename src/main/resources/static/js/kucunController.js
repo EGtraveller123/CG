@@ -105,7 +105,7 @@ function goodsListInit() {
                 pagination : true,
                 pageNumber : 1,
                 pageSize : 5,
-                pageList : [ 5, 10, 25, 50, 100 ],
+                pageList : [10],
                 clickToSelect : true
             });
 }
@@ -186,7 +186,7 @@ function rowEditOperation(row) {
             pagination : true,
             pageNumber : 1,
             pageSize : 5,
-            pageList : [ 5, 10, 25, 50, 100 ],
+            pageList : [10],
             clickToSelect : true
         }
     );

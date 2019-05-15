@@ -169,7 +169,7 @@ function goodsListInit() {
                 pagination : true,
                 pageNumber : 1,
                 pageSize : 5,
-                pageList : 10,
+                pageList : [10],
                 clickToSelect : true
             });
 }
@@ -312,7 +312,7 @@ function showCaiJian() {
                 pagination : true,
                 pageNumber : 1,
                 pageSize : 5,
-                pageList : 10,
+                pageList : [10],
                 clickToSelect : true
             });
 }
@@ -576,7 +576,7 @@ function rowEditOperation(row) {
             pagination : true,
             pageNumber : 1,
             pageSize : 5,
-            pageList : 10,
+            pageList : [10],
             clickToSelect : true
         }
     );

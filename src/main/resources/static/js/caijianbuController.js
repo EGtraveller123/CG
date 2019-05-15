@@ -160,9 +160,9 @@ function goodsListInit() {
                 onLoadError:function(status){
                     handleAjaxError(status);
                 },
-                method : 'GET',
                 sortName : 'id',
                 sortOrder : 'desc',
+                method : 'GET',
                 locale : 'zh-CN',
                 queryParams : queryParams,
                 sidePagination : "server",
@@ -171,7 +171,7 @@ function goodsListInit() {
                 pagination : true,
                 pageNumber : 1,
                 pageSize : 5,
-                pageList : 10,
+                pageList : [10],
                 clickToSelect : true
             });
 }
@@ -314,7 +314,7 @@ function showYeWu(row) {
                 pagination : true,
                 pageNumber : 1,
                 pageSize : 5,
-                pageList : 10,
+                pageList : [10],
                 clickToSelect : true
     });
 }
@@ -582,7 +582,7 @@ function rowEditOperation(row) {
             pagination : true,
             pageNumber : 1,
             pageSize : 5,
-            pageList : 10,
+            pageList : [10],
             clickToSelect : true
         }
     );
