@@ -83,8 +83,6 @@ public class KucunService {
         return resultSet;
     }
 
-
-
     public Map<String, Object> findByKuanhao(int offset, int limit,String kuanhao) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
