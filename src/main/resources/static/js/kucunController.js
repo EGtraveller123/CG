@@ -40,8 +40,8 @@ function searchAction() {
 // 分页查询参数
 function queryParams(params) {
     var temp = {
-        limit : params.pageSize,
-        offset : params.pageNumber,
+        pageSize : params.pageSize,
+        pageNumber : params.pageNumber,
         searchType : search_type_goods,
         keyWord : search_keyWord
     }
