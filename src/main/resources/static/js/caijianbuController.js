@@ -12,6 +12,7 @@ $(function() {
     goodsListInit();
     bootstrapValidatorInit();
     addNew();
+    editCustomerAction();
 })
 
 // 下拉框選擇動作
@@ -188,6 +189,13 @@ function showYeWu(row) {
     $('#showdetail').bootstrapTable({
                 columns : [
                     {
+                        field : 'id',
+                        title : 'ID',
+                        width : '50px',
+                        halign :"center",
+                        align : "center"
+                    },
+                    {
                         field : 'kuanhao',
                         title : '款号',
                         width : '250px',
@@ -210,7 +218,7 @@ function showYeWu(row) {
                     },
                     {
                         field : 'xs',
-                        title : '裁剪 XS/34/0',
+                        title : '裁剪 XS/34',
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -223,7 +231,7 @@ function showYeWu(row) {
                     },
                     {
                         field : 's',
-                        title : '裁剪 S/36/1',
+                        title : '裁剪 S/36',
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -236,7 +244,7 @@ function showYeWu(row) {
                     },
                     {
                         field : 'm',
-                        title : '裁剪 M/38/2',
+                        title : '裁剪 M/38',
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -249,7 +257,7 @@ function showYeWu(row) {
                     },
                     {
                         field : 'l',
-                        title : '裁剪 L/40/3',
+                        title : '裁剪 L/40',
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -262,7 +270,7 @@ function showYeWu(row) {
                     },
                     {
                         field : 'xl',
-                        title : '裁剪 XL/42/4',
+                        title : '裁剪 XL/42',
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -275,7 +283,7 @@ function showYeWu(row) {
                     },
                     {
                         field : 'xxl',
-                        title : '裁剪 XXL/44/5',
+                        title : '裁剪 XXL/44',
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -288,7 +296,7 @@ function showYeWu(row) {
                     },
                     {
                         field : 'xxxl',
-                        title : '裁剪 XXXL/46/6',
+                        title : '裁剪 XXXL/46',
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -296,6 +304,25 @@ function showYeWu(row) {
                                 css: {
                                     "font-weight":"bold"
                                 }
+                            }
+                        }
+                    },
+                    {
+                        field : 'operation',
+                        title : '操作',
+                        halign :"center",
+                        align : "center",
+                        formatter : function(value, row, index) {
+                           var d = '<button class="btn btn-success btn-sm delete"><span>修改</span></button>';
+                           return d  ;
+                        },
+                        events : {
+                            // 操作列中编辑按钮的动作
+                            'click .delete': function (e, value,
+                                                     row, index) {
+                                selectID = row.id;
+                                $('#edit_goods_modal').modal(
+                                    'show');
                             }
                         }
                     }],
@@ -374,7 +401,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ye_xs',
-                    title : '业务 XS/34/0',
+                    title : '业务 XS/34',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -389,7 +416,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xs',
-                    title : '裁剪 XS/34/0',
+                    title : '裁剪 XS/34',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -403,7 +430,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ye_s',
-                    title : '业务 S/36/1',
+                    title : '业务 S/36',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -418,7 +445,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_s',
-                    title : '裁剪 S/36/1',
+                    title : '裁剪 S/36',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -432,7 +459,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ye_m',
-                    title : '业务 M/38/2',
+                    title : '业务 M/38',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -447,7 +474,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_m',
-                    title : '裁剪 M/38/2',
+                    title : '裁剪 M/38',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -461,7 +488,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ye_l',
-                    title : '业务 L/40/3',
+                    title : '业务 L/40',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -476,7 +503,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_l',
-                    title : '裁剪 L/40/3',
+                    title : '裁剪 L/40',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -490,7 +517,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ye_xl',
-                    title : '业务 XL/42/4',
+                    title : '业务 XL/42',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -505,7 +532,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xl',
-                    title : '裁剪 XL/42/4',
+                    title : '裁剪 XL/42',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -519,7 +546,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ye_xxl',
-                    title : '业务 XXL/44/5',
+                    title : '业务 XXL/44',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -534,7 +561,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xxl',
-                    title : '裁剪 XXL/44/5',
+                    title : '裁剪 XXL/44',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -548,7 +575,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ye_xxxl',
-                    title : '业务 XXXL/46/6',
+                    title : '业务 XXXL/46',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -563,7 +590,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xxxl',
-                    title : '裁剪 XXXL/46/6',
+                    title : '裁剪 XXXL/46',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -830,4 +857,53 @@ function addGoodsAction(row) {
         kuanhao : row.kuanhao,
         yanse : row.yanse
     }
+}
+
+// 修改裁剪信息
+function editCustomerAction(){
+    $('#edit_goods_modal_submit').click(function(){
+        var msg = "裁剪信息修改失败";
+        var data = {
+            id : selectID,
+            kuanhao : $('#kuanhao_edit').val(),
+            cjriqi : $('#cjriqi_edit').val(),
+            yanse : $('#yanse_edit').val(),
+            xs : $('#xs_edit').val(),
+            s : $('#s_edit').val(),
+            m : $('#m_edit').val(),
+            l :$('#l_edit').val(),
+            xl : $('#xl_edit').val(),
+            xxl : $('#xxl_edit').val(),
+            xxxl : $('#xxxl_edit').val()
+        }
+
+        // ajax
+        $.ajax({
+            type : "POST",
+            url : "update",
+            dataType : "json",
+            contentType : "application/json",
+            data : data,
+            success : function(response){
+                $('#edit_goods_modal').modal("hide");
+                if(response.result == "success"){
+
+                    msg = "裁剪信息修改成功";
+
+                }else{
+
+                    msg = "裁剪信息修改失败";
+
+                }
+                alert(msg);
+                tableRefresh();
+            },error : function(xhr, textStatus, errorThrown){
+                $('#edit_goods_modal').modal("hide");
+                // handler error
+                handleAjaxError(xhr.status)
+            }
+        })
+
+        $('#edit_goods_modal').modal('hide');
+    })
 }

@@ -384,6 +384,128 @@
                 </div>
             </div>
         </div>
+        <!-- 编辑后道信息模态框 -->
+        <div id="edit_goods_modal" class="modal fade" table-index="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true"
+             data-backdrop="static">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal"
+                                aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel">修改后道信息</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- 模态框的内容 -->
+                        <div class="row">
+                            <div class="col-md-1 col-sm-1"></div>
+                            <div class="col-md-8 col-sm-8">
+                                <form class="form-horizontal" role="form" id="customer_form_edit"
+                                      style="margin-top: 25px">
+                                    <div class="form-group">
+                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>款号：</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            <input type="text" class="form-control" id="kuanhao_edit"
+                                                   name="kuanhao" placeholder="款号">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>颜色：</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            <input type="text" class="form-control"
+                                                   id="yanse_edit" name="kehu"
+                                                   placeholder="颜色">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>裁剪日期：</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            <input type="text" class="form-control" id="cjriqi_edit"
+                                                   name="cjriqi" placeholder="业务部数量">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>XS/34：</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            <input type="text" class="form-control"
+                                                   id="xs_edit" name="xs"
+                                                   placeholder="xs">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>S/36：</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            <input type="text" class="form-control"
+                                                   id="s_edit" name="s"
+                                                   placeholder="s">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>M/38：</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            <input type="text" class="form-control"
+                                                   id="m_edit" name="m"
+                                                   placeholder="m">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>L/40：</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            <input type="text" class="form-control"
+                                                   id="l_edit" name="l"
+                                                   placeholder="l">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>XL/42：</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            <input type="text" class="form-control"
+                                                   id="xl_edit" name="xl"
+                                                   placeholder="xl">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>XXL/44：</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            <input type="text" class="form-control"
+                                                   id="xxl_edit" name="xxl"
+                                                   placeholder="xxl">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="" class="control-label col-md-4 col-sm-4"> <span>XXXL/46：</span>
+                                        </label>
+                                        <div class="col-md-8 col-sm-8">
+                                            <input type="text" class="form-control"
+                                                   id="xxxl_edit" name="xxxl"
+                                                   placeholder="xxxl">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-1 col-sm-1"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-default" type="button" data-dismiss="modal">
+                            <span>取消</span>
+                        </button>
+                        <button class="btn btn-success" type="button" id="edit_goods_modal_submit" >
+                            <span>确认更改</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- /.row -->
     </section>
     <!-- /.content -->

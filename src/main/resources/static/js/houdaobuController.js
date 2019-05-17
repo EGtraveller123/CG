@@ -203,7 +203,7 @@ function showCaiJian() {
                     },
                     {
                         field : 'xs',
-                        title : '后道XS/34/0',
+                        title : '后道XS/34',
                         width : "65px",
                         halign :"center",
                         align : "center",
@@ -217,7 +217,7 @@ function showCaiJian() {
                     },
                     {
                         field : 's',
-                        title : '后道 S/36/1',
+                        title : '后道 S/36',
                         width : "65px",
                         halign :"center",
                         align : "center",
@@ -231,7 +231,7 @@ function showCaiJian() {
                     },
                     {
                         field : 'm',
-                        title : '后道 M/38/2',
+                        title : '后道 M/38',
                         width : "65px",
                         halign :"center",
                         align : "center",
@@ -245,7 +245,7 @@ function showCaiJian() {
                     },
                     {
                         field : 'l',
-                        title : '后道 L/40/3',
+                        title : '后道 L/40',
                         width : "65px",
                         halign :"center",
                         align : "center",
@@ -259,7 +259,7 @@ function showCaiJian() {
                     },
                     {
                         field : 'xl',
-                        title : '后道 XL/42/4',
+                        title : '后道 XL/42',
                         width : "65px",
                         halign :"center",
                         align : "center",
@@ -273,7 +273,7 @@ function showCaiJian() {
                     },
                     {
                         field : 'xxl',
-                        title : '后道 XXL/44/5',
+                        title : '后道 XXL/44',
                         width : "65px",
                         halign :"center",
                         align : "center",
@@ -287,7 +287,7 @@ function showCaiJian() {
                     },
                     {
                         field : 'xxxl',
-                        title : '后道 XXXL/46/6',
+                        title : '后道 XXXL/46',
                         width : "65px",
                         halign :"center",
                         align : "center",
@@ -304,6 +304,25 @@ function showCaiJian() {
                         title : '备注',
                         halign :"center",
                         align : "center",
+                    },
+                    {
+                        field : 'operation',
+                        title : '操作',
+                        halign :"center",
+                        align : "center",
+                        formatter : function(value, row, index) {
+                            var d = '<button class="btn btn-success btn-sm delete"><span>修改</span></button>';
+                            return d  ;
+                        },
+                        events : {
+                            // 操作列中编辑按钮的动作
+                            'click .delete': function (e, value,
+                                                       row, index) {
+                                selectID = row.id;
+                                $('#edit_goods_modal').modal(
+                                    'show');
+                            }
+                        }
                     }],
                 locale : 'zh-CN',
                 url : 'all',
@@ -372,7 +391,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xs',
-                    title : '裁剪 XS/34/0',
+                    title : '裁剪 XS/34',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -387,7 +406,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_xs',
-                    title : '后道 XS/34/0',
+                    title : '后道 XS/34',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -401,7 +420,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_s',
-                    title : '裁剪 S/36/1',
+                    title : '裁剪 S/36',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -416,7 +435,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_s',
-                    title : '后道 S/36/1',
+                    title : '后道 S/36',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -430,7 +449,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_m',
-                    title : '裁剪 M/38/2',
+                    title : '裁剪 M/38',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -445,7 +464,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_m',
-                    title : '后道 M/38/2',
+                    title : '后道 M/38',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -459,7 +478,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_l',
-                    title : '裁剪 L/40/3',
+                    title : '裁剪 L/40',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -474,7 +493,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_l',
-                    title : '后道 L/40/3',
+                    title : '后道 L/40',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -488,7 +507,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xl',
-                    title : '裁剪 XL/42/4',
+                    title : '裁剪 XL/42',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -503,7 +522,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_xl',
-                    title : '后道 XL/42/4',
+                    title : '后道 XL/42',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -517,7 +536,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xxl',
-                    title : '裁剪 XXL/44/5',
+                    title : '裁剪 XXL/44',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -532,7 +551,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_xxl',
-                    title : '后道 XXL/44/5',
+                    title : '后道 XXL/44',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -546,7 +565,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xxxl',
-                    title : '裁剪 XXXL/46/6',
+                    title : '裁剪 XXXL/46',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -561,7 +580,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_xxxl',
-                    title : '后道 XXXL/46/6',
+                    title : '后道 XXXL/46',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -814,4 +833,53 @@ function addGoodsAction(row) {
         kuanhao : row.kuanhao,
         yanse : row.yanse
     }
+}
+
+// 修改后道信息
+function editCustomerAction(){
+    $('#edit_goods_modal_submit').click(function(){
+        var msg = "后道信息修改失败";
+        var data = {
+            id : selectID,
+            kuanhao : $('#kuanhao_edit').val(),
+            cjriqi : $('#cjriqi_edit').val(),
+            yanse : $('#yanse_edit').val(),
+            xs : $('#xs_edit').val(),
+            s : $('#s_edit').val(),
+            m : $('#m_edit').val(),
+            l :$('#l_edit').val(),
+            xl : $('#xl_edit').val(),
+            xxl : $('#xxl_edit').val(),
+            xxxl : $('#xxxl_edit').val()
+        }
+
+        // ajax
+        $.ajax({
+            type : "POST",
+            url : "update",
+            dataType : "json",
+            contentType : "application/json",
+            data : data,
+            success : function(response){
+                $('#edit_goods_modal').modal("hide");
+                if(response.result == "success"){
+
+                    msg = "后道信息修改成功";
+
+                }else{
+
+                    msg = "后道信息修改失败";
+
+                }
+                alert(msg);
+                tableRefresh();
+            },error : function(xhr, textStatus, errorThrown){
+                $('#edit_goods_modal').modal("hide");
+                // handler error
+                handleAjaxError(xhr.status)
+            }
+        })
+
+        $('#edit_goods_modal').modal('hide');
+    })
 }
