@@ -189,6 +189,10 @@ function showCaiJian() {
             {
                 columns : [
                     {
+                        field : 'id',
+                        title : 'ID'
+                    },
+                    {
                         field : 'kuanhao',
                         title : '款号',
                         width : "250px",
@@ -330,6 +334,7 @@ function showCaiJian() {
                                 $('#xl_edit').val(row.xl);
                                 $('#xxl_edit').val(row.xxl);
                                 $('#xxxl_edit').val(row.xxxl);
+                                $('#beizhu_edit').val(row.beizhu);
                                 $('#edit_goods_modal').modal(
                                     'show');
                             }
@@ -385,7 +390,8 @@ function rowEditOperation(row) {
     search_type_goods = "findByKuanhao";
     $('#edit_modal_submit').click(function(){
         $('#edit_modal').modal("hide");
-        search_type_goods = "searchAll";});
+        search_type_goods = "searchAll";
+    });
     $('#goodsdetail').bootstrapTable(
         {
             columns : [
@@ -850,7 +856,7 @@ function addGoodsAction(row) {
 function editCustomerAction(){
     $('#edit_goods_modal_submit').click(function(){
         var msg = "后道信息修改失败";
-        var data = {
+        data = {
             id : selectID,
             kuanhao : $('#kuanhao_edit').val(),
             hdriqi : $('#hdriqi_edit').val(),
@@ -861,7 +867,8 @@ function editCustomerAction(){
             l :$('#l_edit').val(),
             xl : $('#xl_edit').val(),
             xxl : $('#xxl_edit').val(),
-            xxxl : $('#xxxl_edit').val()
+            xxxl : $('#xxxl_edit').val(),
+            beizhu : $('#beizhu_edit').val()
         }
 
         // ajax
@@ -882,7 +889,10 @@ function editCustomerAction(){
                     msg = "后道信息修改失败";
 
                 }
+                search_type_goods = "searchAll";
+                search_keyWord = "";
                 alert(msg);
+                infotableRefresh();
                 tableRefresh();
             },error : function(xhr, textStatus, errorThrown){
                 $('#edit_goods_modal').modal("hide");

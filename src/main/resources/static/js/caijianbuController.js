@@ -873,7 +873,7 @@ function addGoodsAction(row) {
 function editCustomerAction(){
     $('#edit_goods_modal_submit').click(function(){
         var msg = "裁剪信息修改失败";
-        var data = {
+        data = {
             id : selectID,
             kuanhao : $('#kuanhao_edit').val(),
             cjriqi : $('#cjriqi_edit').val(),
@@ -905,7 +905,10 @@ function editCustomerAction(){
                     msg = "裁剪信息修改失败";
 
                 }
+                search_type_goods = "searchAll";
+                search_keyWord = "";
                 alert(msg);
+                infotableRefresh();
                 tableRefresh();
             },error : function(xhr, textStatus, errorThrown){
                 $('#edit_goods_modal').modal("hide");

@@ -132,9 +132,12 @@ public class HoudaobuService {
         JSONObject res = new JSONObject();
         houdaobut = houdaobuMapper.selectHoudaobutById(jsonObject.getInteger("id"));
         houdaobu = houdaobuMapper.selectKuanhaoYanse(houdaobut.getKuanhao(),houdaobut.getYanse());
+        houdaobut1.setId(jsonObject.getInteger("id"));
         houdaobut1.setKuanhao(houdaobut.getKuanhao());
         houdaobut1.setYanse(houdaobut.getYanse());
-        houdaobut.setXs(jsonObject.getInteger("xs"));
+        houdaobut1.setHdriqi(jsonObject.getString("hdriqi"));
+        houdaobut1.setBeizhu(jsonObject.getString("beizhu"));
+        houdaobut1.setXs(jsonObject.getInteger("xs"));
         houdaobut1.setS(jsonObject.getInteger("s"));
         houdaobut1.setM(jsonObject.getInteger("m"));
         houdaobut1.setL(jsonObject.getInteger("l"));
