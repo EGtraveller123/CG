@@ -12,6 +12,7 @@ $(function() {
     goodsListInit();
     bootstrapValidatorInit();
     addNew();
+    editCustomerAction();
 })
 
 // 下拉框選擇動作
