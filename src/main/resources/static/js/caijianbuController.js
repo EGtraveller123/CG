@@ -893,7 +893,7 @@ function editCustomerAction(){
             url : "update",
             dataType : "json",
             contentType : "application/json",
-            data : data,
+            data : JSON.stringify(data),
             success : function(response){
                 $('#edit_goods_modal').modal("hide");
                 if(response.result == "success"){
