@@ -89,8 +89,7 @@ function customerListInit() {
                     },
                     {
                         field : 'chriqi',
-                        title : '出货日期',
-                        visible : false
+                        title : '出货日期'
                     },
                     {
                         field : 'xs',
@@ -125,15 +124,11 @@ function customerListInit() {
                         title : '业务数量'
                     },
                     {
-                        field : 'chriqi',
-                        title : '出货日期'
-                    },
-                    {
                         field : 'operation',
                         title : '操作',
                         formatter : function(value, row, index) {
                             // var s = '<button class="btn btn-info btn-sm edit"><span>编辑</span></button>';
-                            var d = '<button class="btn btn-danger" id="delete1"><span>删除</span></button>';
+                            var d = '<button class="btn btn-danger btn-sm delete"><span>删除</span></button>';
                             // var b = '<button id="showme" class="btn btn-info btn-sm search"><span>查看</span></button>';
                             var fun = '';
                             return  d ;
@@ -145,7 +140,7 @@ function customerListInit() {
                             //     selectID = row.kuanhao;
                             //     rowEditOperation(row);
                             // },
-                            'click #delete1' : function(e,
+                            'click .delete' : function(e,
                                                        value, row, index) {
                                 selectID = row.id;
                                 $('#deleteWarning_modal').modal(
