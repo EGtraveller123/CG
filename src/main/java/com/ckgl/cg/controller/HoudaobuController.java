@@ -39,7 +39,7 @@ public class HoudaobuController {
 
         switch (searchType) {
             case SEARCH_BY_KUANHAO:
-                queryResult = houdaobuService.selectByKuanhao(offset,limit,keyWord);
+                queryResult = houdaobuService.selectByKuanhao(offset,limit,keyWord,sortName,sortOrder);
                 break;
             case SEARCH_ALL:
                 queryResult = houdaobuService.selectAll(offset,limit,sortName,sortOrder);
@@ -51,7 +51,7 @@ public class HoudaobuController {
                 queryResult = houdaobutService.selectById(offset,limit,Integer.valueOf(keyWord));
                 break;
             case SELECT_BY_CAIJIANBU:
-                queryResult = houdaobuService.selectByCaijianbu(offset,limit,keyWord,sortName,sortOrder);
+                queryResult = houdaobuService.selectByCaijianbu(offset,limit,keyWord);
                 break;
             default:
                 // do other thing

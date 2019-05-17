@@ -28,7 +28,7 @@ public interface HoudaobutMapper {
             "values(#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{hdriqi},#{beizhu})")
     boolean insertHoudaobut(Houdaobut houdaobut);
 
-    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdriqi,beizhu from houdaobu_t where kuanhao=#{kuanhao} and yanse=#{yanse}")
+    @Select("select id,kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdriqi,beizhu from houdaobu_t where kuanhao=#{kuanhao} and yanse=#{yanse}")
     List<Map> selectByKuanhaoYanse(String kuanhao,String yanse);
 
 }

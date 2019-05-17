@@ -19,7 +19,7 @@ public interface CaijianbutMapper {
     @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl from yewubu where id=#{id}")
     Yewubu selectById(Integer id);
 
-    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi from caijianbu_t where kuanhao=#{kuanhao} and yanse=#{yanse}")
+    @Select("select id,kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,cjriqi from caijianbu_t where kuanhao=#{kuanhao} and yanse=#{yanse}")
     List<Map> selectByKuanhaoYanse(String kuanhao,String yanse);
 
     @Select("select a.kuanhao as ca_kuanhao,a.yanse as ca_yanse ,a.xs as ye_xs,a.s as ye_s,a.m as ye_m,a.l as ye_l,a.xl as ye_xl,a.xxl as ye_xxl,a.xxxl as ye_xxxl," +

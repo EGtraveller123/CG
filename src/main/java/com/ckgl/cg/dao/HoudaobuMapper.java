@@ -6,7 +6,6 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -28,12 +27,12 @@ public interface HoudaobuMapper {
     @Update("update houdaobu set xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl},hdbshuliang=#{hdbshuliang} where caijianbuid=#{caijianbuid}")
     boolean updateHoudaobu(Houdaobu houdaobu);
 
-    @Select("select * from houdaobu where kuanhao=#{kuanhao}")
-    List<Map> selectByKuanhao2(String kuanhao);
+    @Select("select a.id,a.kuanhao,a.yanse,a.cjbshuliang,b.hdbshuliang as hdzonghe from caijianbu a LEFT JOIN houdaobu b on a.id=b.caijianbuid where a.kuanhao=#{kuanhao} order by ${sortName} ${sortOrder}")
+    List<Map> selectByKuanhao2(@Param("kuanhao") String kuanhao,@Param("sortName") String sortName, @Param("sortOrder") String sortOrder);
 
     @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl from houdaobu where kuanhao=#{kuanhao} and yanse=#{yanse}")
     Houdaobu selectKuanhaoYanse(String kuanhao,String yanse);
 
-    @Select("select a.id,a.kuanhao,a.yanse,a.cjbshuliang,b.hdbshuliang as hdzonghe from caijianbu a LEFT JOIN houdaobu b on a.id=b.caijianbuid where kuanhao=#{kuanhao} order by ${sortName} ${sortOrder} ")
-    List<Map> selectByYewubu(@Param("kuanhao") String kuanhao, @Param("sortName") String sortName, @Param("sortOrder") String sortOrder);
+    @Select("select id,kuanhao,sum(cjbshuliang) as cjbshuliang from caijianbu where kuanhao=#{kuanhao}")
+    List<Map> selectByYewubu(String kuanhao);
 }

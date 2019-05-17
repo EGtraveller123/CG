@@ -24,7 +24,7 @@ public class HoudaobuService {
     private HoudaobutMapper houdaobutMapper;
 
 
-    public Map<String, Object> selectByKuanhao(int offset, int limit, String kuanhao) {
+    public Map<String, Object> selectByKuanhao(int offset, int limit, String kuanhao,String sortName,String sortOrder) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
         List<Map> houdaobuts = null;
@@ -35,14 +35,14 @@ public class HoudaobuService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                houdaobuts = houdaobuMapper.selectByKuanhao2(kuanhao);
+                houdaobuts = houdaobuMapper.selectByKuanhao2(kuanhao,sortName,sortOrder);
                 if (houdaobuts != null) {
                     PageInfo<Map> pageInfo = new PageInfo<>(houdaobuts);
                     total = pageInfo.getTotal();
                 } else
                     houdaobuts = new ArrayList<>();
             } else {
-                houdaobuts = houdaobuMapper.selectByKuanhao2(kuanhao);
+                houdaobuts = houdaobuMapper.selectByKuanhao2(kuanhao,sortName,sortOrder);
                 if (houdaobuts != null)
                     total = houdaobuts.size();
                 else
@@ -91,7 +91,7 @@ public class HoudaobuService {
         return resultSet;
     }
 
-    public Map<String, Object> selectByCaijianbu(int offset, int limit,String kuanhao,String sortName,String sortOrder) {
+    public Map<String, Object> selectByCaijianbu(int offset, int limit,String kuanhao) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
         List<Map> Houdaobus = null;
@@ -102,14 +102,14 @@ public class HoudaobuService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                Houdaobus = houdaobuMapper.selectByYewubu(kuanhao,sortName,sortOrder);
+                Houdaobus = houdaobuMapper.selectByYewubu(kuanhao);
                 if (Houdaobus != null) {
                     PageInfo<Map> pageInfo = new PageInfo<>(Houdaobus);
                     total = pageInfo.getTotal();
                 } else
                     Houdaobus = new ArrayList<>();
             } else {
-                Houdaobus = houdaobuMapper.selectByYewubu(kuanhao,sortName,sortOrder);
+                Houdaobus = houdaobuMapper.selectByYewubu(kuanhao);
                 if (Houdaobus != null)
                     total = Houdaobus.size();
                 else
