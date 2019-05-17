@@ -2,10 +2,7 @@ package com.ckgl.cg.dao;
 
 
 import com.ckgl.cg.bean.Caijianbu;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -35,4 +32,7 @@ public interface CaijianbuMapper {
 
     @Select("select id,kuanhao,sum(ywbshuliang) as ywbshuliang from yewubu where kuanhao=#{kuanhao}")
     List<Map> selectByYewubu(String kuanhao);
+
+    @Delete("delete from caijianbu where kuanhao=#{kuanhao} and yanse=#{yanse}")
+    boolean deleteCaijianbu(String kuanhao,String yanse);
 }
