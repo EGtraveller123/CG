@@ -4,6 +4,7 @@ import com.ckgl.cg.bean.Yewubu;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
 
 
@@ -31,5 +32,9 @@ public interface CaijianbutMapper {
             "values(#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{cjriqi})")
     boolean insertCaijiant(Caijianbut caijianbut);
 
+    @Update("update caijianbu_t set kuanhao=#{kuanhao},yanse=#{yanse},cjriqi=#{cjriqi},xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl} where id=#{id}")
+    boolean updateCaijianbut(Caijianbut caijianbut);
 
+    @Select("select * from caijianbu_t where id=#{id}")
+    Caijianbut selectCaijianbutById(int id);
 }

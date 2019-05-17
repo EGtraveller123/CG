@@ -123,4 +123,10 @@ public class HoudaobuController {
     public JSONObject insert(@RequestBody JSONObject jsonObject){
         return houdaobutService.insert(jsonObject);
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    public JSONObject update(@RequestBody JSONObject jsonObject){
+        return houdaobuService.updateHoudaobu(jsonObject);
+    }
 }

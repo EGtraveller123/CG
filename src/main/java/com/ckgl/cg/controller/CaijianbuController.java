@@ -111,4 +111,11 @@ public class CaijianbuController {
     }
 
 
+    @ResponseBody
+    @RequestMapping(value = "/update",method = RequestMethod.POST)
+    public JSONObject update(@RequestBody JSONObject jsonObject){
+        return caijianbuService.updateCaijianbut(jsonObject);
+    }
+
+
 }

@@ -2,6 +2,7 @@ package com.ckgl.cg.dao;
 
 
 import com.ckgl.cg.bean.Houdaobu;
+import com.ckgl.cg.bean.Houdaobut;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -35,4 +36,12 @@ public interface HoudaobuMapper {
 
     @Select("select id,kuanhao,sum(cjbshuliang) as cjbshuliang from caijianbu where kuanhao=#{kuanhao}")
     List<Map> selectByYewubu(String kuanhao);
+
+    @Update("update houdaobu_t set kuanhao=#{kuanhao},yanse=#{yanse},cjriqi=#{cjriqi},xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl} where id=#{id}")
+    boolean updateHoudaobut(Houdaobut houdaobut);
+
+    @Select("select * from houdaobu_t where id=#{id}")
+    Houdaobut selectHoudaobutById(int id);
+
+
 }

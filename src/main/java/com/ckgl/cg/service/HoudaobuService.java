@@ -2,6 +2,7 @@ package com.ckgl.cg.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ckgl.cg.bean.Houdaobu;
+import com.ckgl.cg.bean.Houdaobut;
 import com.ckgl.cg.dao.HoudaobuMapper;
 import com.ckgl.cg.dao.HoudaobutMapper;
 import com.github.pagehelper.PageHelper;
@@ -121,6 +122,34 @@ public class HoudaobuService {
         resultSet.put("data", Houdaobus);
         resultSet.put("total", total);
         return resultSet;
+    }
+
+    public JSONObject updateHoudaobu(JSONObject jsonObject){
+        Houdaobut houdaobut = new Houdaobut();
+        Houdaobut houdaobut1 = new Houdaobut();
+        Houdaobu houdaobu = new Houdaobu();
+        JSONObject res = new JSONObject();
+        houdaobut = houdaobuMapper.selectHoudaobutById(jsonObject.getInteger("id"));
+        houdaobu = houdaobuMapper.selectKuanhaoYanse(houdaobut.getKuanhao(),houdaobut.getYanse());
+        houdaobut1.setKuanhao(houdaobut.getKuanhao());
+        houdaobut1.setYanse(houdaobut.getYanse());
+        houdaobut.setXs(jsonObject.getInteger("xs"));
+        houdaobut1.setS(jsonObject.getInteger("s"));
+        houdaobut1.setM(jsonObject.getInteger("m"));
+        houdaobut1.setL(jsonObject.getInteger("l"));
+        houdaobut1.setXl(jsonObject.getInteger("xl"));
+        houdaobut1.setXxl(jsonObject.getInteger("xxl"));
+        houdaobut1.setXxxl(jsonObject.getInteger("xxxl"));
+        if(houdaobuMapper.updateHoudaobut(houdaobut1)){
+            houdaobu.setHdbshuliang(houdaobu.getHdbshuliang()-houdaobut.getXs()-houdaobut.getS()-houdaobut.getM()-houdaobut.getL()-
+                    houdaobut.getXl()-houdaobut.getXl()-houdaobut.getXxl()-houdaobut.getXxxl()+
+                    houdaobut1.getXs()+houdaobut1.getS()+houdaobut1.getM()+houdaobut1.getL()+houdaobut1.getXl()+
+                    houdaobut1.getXxl()+houdaobut1.getXxxl());
+            res.put("result","success");
+        }else{
+            res.put("result","error");
+        }
+        return res;
     }
 
 }
