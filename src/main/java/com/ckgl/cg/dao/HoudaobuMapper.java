@@ -31,7 +31,7 @@ public interface HoudaobuMapper {
     @Select("select a.id,a.kuanhao,a.yanse,a.cjbshuliang,b.hdbshuliang as hdzonghe from caijianbu a LEFT JOIN houdaobu b on a.id=b.caijianbuid where a.kuanhao=#{kuanhao} order by ${sortName} ${sortOrder}")
     List<Map> selectByKuanhao2(@Param("kuanhao") String kuanhao,@Param("sortName") String sortName, @Param("sortOrder") String sortOrder);
 
-    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl from houdaobu where kuanhao=#{kuanhao} and yanse=#{yanse}")
+    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,hdbshuliang from houdaobu where kuanhao=#{kuanhao} and yanse=#{yanse}")
     Houdaobu selectKuanhaoYanse(String kuanhao,String yanse);
 
     @Select("select id,kuanhao,sum(cjbshuliang) as cjbshuliang from caijianbu where kuanhao=#{kuanhao}")
@@ -42,6 +42,9 @@ public interface HoudaobuMapper {
 
     @Select("select * from houdaobu_t where id=#{id}")
     Houdaobut selectHoudaobutById(int id);
+
+    @Update("update houdaobu set kuanhao=#{kuanhao},yanse=#{yanse},xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl},hdbshuliang=#{hdbshuliang}")
+    boolean updateHoudaobu2(Houdaobu houdaobu);
 
 
 }

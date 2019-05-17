@@ -128,6 +128,7 @@ public class HoudaobuService {
         Houdaobut houdaobut = new Houdaobut();
         Houdaobut houdaobut1 = new Houdaobut();
         Houdaobu houdaobu = new Houdaobu();
+        Houdaobu houdaobu1 = new Houdaobu();
         JSONObject res = new JSONObject();
         houdaobut = houdaobuMapper.selectHoudaobutById(jsonObject.getInteger("id"));
         houdaobu = houdaobuMapper.selectKuanhaoYanse(houdaobut.getKuanhao(),houdaobut.getYanse());
@@ -140,11 +141,21 @@ public class HoudaobuService {
         houdaobut1.setXl(jsonObject.getInteger("xl"));
         houdaobut1.setXxl(jsonObject.getInteger("xxl"));
         houdaobut1.setXxxl(jsonObject.getInteger("xxxl"));
+        houdaobu1.setKuanhao(houdaobu.getKuanhao());
+        houdaobu1.setYanse(houdaobu.getYanse());
+        houdaobu1.setXs(houdaobu.getXs()-houdaobut.getXs()+houdaobut1.getXs());
+        houdaobu1.setS(houdaobu.getS()-houdaobut.getS()+houdaobut1.getS());
+        houdaobu1.setM(houdaobu.getM()-houdaobut.getM()+houdaobut1.getM());
+        houdaobu1.setL(houdaobu.getL()-houdaobut.getL()+houdaobut1.getL());
+        houdaobu1.setXl(houdaobu.getXl()-houdaobut.getXl()+houdaobut1.getXl());
+        houdaobu1.setXxl(houdaobu.getXxl()-houdaobut.getXxl()+houdaobut1.getXxl());
+        houdaobu1.setXxxl(houdaobu.getXxxl()-houdaobut.getXxxl()+houdaobut1.getXxxl());
+        houdaobu1.setHdbshuliang(houdaobu.getHdbshuliang()-houdaobut.getXs()-houdaobut.getS()-houdaobut.getM()-houdaobut.getL()-
+                houdaobut.getXl()-houdaobut.getXl()-houdaobut.getXxl()-houdaobut.getXxxl()+
+                houdaobut1.getXs()+houdaobut1.getS()+houdaobut1.getM()+houdaobut1.getL()+houdaobut1.getXl()+
+                houdaobut1.getXxl()+houdaobut1.getXxxl());
         if(houdaobuMapper.updateHoudaobut(houdaobut1)){
-            houdaobu.setHdbshuliang(houdaobu.getHdbshuliang()-houdaobut.getXs()-houdaobut.getS()-houdaobut.getM()-houdaobut.getL()-
-                    houdaobut.getXl()-houdaobut.getXl()-houdaobut.getXxl()-houdaobut.getXxxl()+
-                    houdaobut1.getXs()+houdaobut1.getS()+houdaobut1.getM()+houdaobut1.getL()+houdaobut1.getXl()+
-                    houdaobut1.getXxl()+houdaobut1.getXxxl());
+            houdaobuMapper.updateHoudaobu2(houdaobu1);
             res.put("result","success");
         }else{
             res.put("result","error");

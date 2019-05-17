@@ -80,7 +80,7 @@ public class YewubutService {
         Caijianbu caijianbu = new Caijianbu();
         yewubut=yewubutMapper.selectByid(Integer.valueOf(jsonObject));
         yewubu=yewubuMapper.selectByKuanhaoYanse(yewubut.getKuanhao(),yewubut.getYanse());
-        caijianbu=caijianbuMapper.selectKuanhaoYanse(yewubut.getKuanhao(),yewubut.getYanse());
+        caijianbu=caijianbuMapper.selectKuanhaoYanse(yewubu.getKuanhao(),yewubu.getYanse());
         if(yewubutMapper.deleteYewubut(Integer.valueOf(jsonObject))){
             yewubu.setXs(yewubu.getXs()-yewubut.getXs());
             yewubu.setS(yewubu.getS()-yewubut.getS());
@@ -91,15 +91,15 @@ public class YewubutService {
             yewubu.setXxxl(yewubu.getXxxl()-yewubut.getXxxl());
             yewubu.setYwbshuliang(yewubu.getXs()+yewubu.getS()+yewubu.getM()+yewubu.getL()+yewubu.getXl()+yewubu.getXxl()+yewubu.getXxxl());
             yewubuMapper.updateYewubu(yewubu);
-            if(caijianbu.getXs()==0&&caijianbu.getS()==0&&caijianbu.getM()==0&&caijianbu.getL()==0&&caijianbu.getXl()==0&&caijianbu.getXxl()==0&&caijianbu.getXxxl()==0){
-                caijianbuMapper.deleteCaijianbu(yewubut.getKuanhao(),yewubut.getYanse());
-                res.put("result","success");
-            }else{
-                res.put("result","success");
-            }
             res.put("result","success");
         }else{
             res.put("result","error");
+        }
+        if(caijianbu.getXs()==0&&caijianbu.getS()==0&&caijianbu.getM()==0&&caijianbu.getL()==0&&caijianbu.getXl()==0&&caijianbu.getXxl()==0&&caijianbu.getXxxl()==0){
+            caijianbuMapper.deleteCaijianbu(yewubut.getKuanhao(),yewubut.getYanse());
+            res.put("result","success");
+        }else{
+            res.put("result","success");
         }
         return res;
     }
