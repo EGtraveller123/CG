@@ -125,6 +125,10 @@ function customerListInit() {
                         title : '业务数量'
                     },
                     {
+                        field : 'chriqi',
+                        title : '出货日期'
+                    },
+                    {
                         field : 'operation',
                         title : '操作',
                         formatter : function(value, row, index) {
