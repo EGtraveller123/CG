@@ -218,7 +218,7 @@ function showYeWu(row) {
                     },
                     {
                         field : 'xs',
-                        title : '裁剪 XS/34',
+                        title : '裁剪 XS/34/0',
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -231,7 +231,7 @@ function showYeWu(row) {
                     },
                     {
                         field : 's',
-                        title : '裁剪 S/36',
+                        title : '裁剪 S/36/1',
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -244,7 +244,7 @@ function showYeWu(row) {
                     },
                     {
                         field : 'm',
-                        title : '裁剪 M/38',
+                        title : '裁剪 M/38/2',
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -257,7 +257,7 @@ function showYeWu(row) {
                     },
                     {
                         field : 'l',
-                        title : '裁剪 L/40',
+                        title : '裁剪 L/40/3',
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -270,7 +270,7 @@ function showYeWu(row) {
                     },
                     {
                         field : 'xl',
-                        title : '裁剪 XL/42',
+                        title : '裁剪 XL/42/4',
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -283,7 +283,7 @@ function showYeWu(row) {
                     },
                     {
                         field : 'xxl',
-                        title : '裁剪 XXL/44',
+                        title : '裁剪 XXL/44/5',
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -296,7 +296,7 @@ function showYeWu(row) {
                     },
                     {
                         field : 'xxxl',
-                        title : '裁剪 XXXL/46',
+                        title : '裁剪 XXXL/46/6',
                         halign :"center",
                         align : "center",
                         cellStyle:function(value,row,index) {
@@ -411,7 +411,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ye_xs',
-                    title : '业务 XS/34',
+                    title : '业务 XS/34/0',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -426,7 +426,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xs',
-                    title : '裁剪 XS/34',
+                    title : '裁剪 XS/34/0',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -440,7 +440,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ye_s',
-                    title : '业务 S/36',
+                    title : '业务 S/36/1',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -455,7 +455,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_s',
-                    title : '裁剪 S/36',
+                    title : '裁剪 S/36/1',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -469,7 +469,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ye_m',
-                    title : '业务 M/38',
+                    title : '业务 M/38/2',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -484,7 +484,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_m',
-                    title : '裁剪 M/38',
+                    title : '裁剪 M/38/2',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -498,7 +498,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ye_l',
-                    title : '业务 L/40',
+                    title : '业务 L/40/3',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -513,7 +513,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_l',
-                    title : '裁剪 L/40',
+                    title : '裁剪 L/40/3',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -527,7 +527,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ye_xl',
-                    title : '业务 XL/42',
+                    title : '业务 XL/42/4',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -542,7 +542,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xl',
-                    title : '裁剪 XL/42',
+                    title : '裁剪 XL/42/4',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -556,7 +556,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ye_xxl',
-                    title : '业务 XXL/44',
+                    title : '业务 XXL/44/5',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -571,7 +571,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xxl',
-                    title : '裁剪 XXL/44',
+                    title : '裁剪 XXL/44/5',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -585,7 +585,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ye_xxxl',
-                    title : '业务 XXXL/46',
+                    title : '业务 XXXL/46/6',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -600,7 +600,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xxxl',
-                    title : '裁剪 XXXL/46',
+                    title : '裁剪 XXXL/46/6',
                     width : "65px",
                     halign :"center",
                     align : "center",
