@@ -321,6 +321,16 @@ function showYeWu(row) {
                             'click .delete': function (e, value,
                                                      row, index) {
                                 selectID = row.id;
+                                $('#kuanhao_edit').val(row.kuanhao);
+                                $('#cjriqi_edit').val(row.cjriqi);
+                                $('#yanse_edit').val(row.yanse);
+                                $('#xs_edit').val(row.xs);
+                                $('#s_edit').val(row.s);
+                                $('#m_edit').val(row.m);
+                                $('#l_edit').val(row.l);
+                                $('#xl_edit').val(row.xl);
+                                $('#xxl_edit').val(row.xxl);
+                                $('#xxxl_edit').val(row.xxxl);
                                 $('#edit_goods_modal').modal(
                                     'show');
                             }

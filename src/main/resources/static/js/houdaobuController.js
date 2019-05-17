@@ -319,6 +319,16 @@ function showCaiJian() {
                             'click .delete': function (e, value,
                                                        row, index) {
                                 selectID = row.id;
+                                $('#kuanhao_edit').val(row.kuanhao);
+                                $('#hdriqi_edit').val(row.hdriqi);
+                                $('#yanse_edit').val(row.yanse);
+                                $('#xs_edit').val(row.xs);
+                                $('#s_edit').val(row.s);
+                                $('#m_edit').val(row.m);
+                                $('#l_edit').val(row.l);
+                                $('#xl_edit').val(row.xl);
+                                $('#xxl_edit').val(row.xxl);
+                                $('#xxxl_edit').val(row.xxxl);
                                 $('#edit_goods_modal').modal(
                                     'show');
                             }
@@ -842,7 +852,7 @@ function editCustomerAction(){
         var data = {
             id : selectID,
             kuanhao : $('#kuanhao_edit').val(),
-            cjriqi : $('#cjriqi_edit').val(),
+            hdriqi : $('#hdriqi_edit').val(),
             yanse : $('#yanse_edit').val(),
             xs : $('#xs_edit').val(),
             s : $('#s_edit').val(),
