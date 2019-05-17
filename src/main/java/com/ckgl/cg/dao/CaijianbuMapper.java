@@ -27,8 +27,8 @@ public interface CaijianbuMapper {
     @Update("update caijianbu set xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl},cjbshuliang=#{cjbshuliang} where yewubuid=#{yewubuid}")
     boolean updateCaijianbu(Caijianbu caijianbu);
 
-    @Select("select id,kuanhao,yanse,ywbshuliang from yewubu where kuanhao=#{kuanhao}")
-    List<Map> selectByKuanhao2(String kuanhao);
+    @Select("select a.id,a.kuanhao,a.yanse,a.ywbshuliang,b.cjbshuliang as cjzonghe from yewubu a LEFT JOIN caijianbu b on a.id=b.yewubuid where a.kuanhao=#{kuanhao} order by ${sortOrder} ${sortName} ")
+    List<Map> selectByKuanhao2(@Param("kuanhao") String kuanhao,@Param("sortName") String sortName, @Param("sortOrder") String sortOrder);
 
     @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl from caijianbu where kuanhao=#{kuanhao} and yanse=#{yanse}")
     Caijianbu selectKuanhaoYanse(String kuanhao,String yanse);

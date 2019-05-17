@@ -94,31 +94,31 @@ function customerListInit() {
                     },
                     {
                         field : 'xs',
-                        title : 'XS/34'
+                        title : 'XS/34/0'
                     },
                     {
                         field : 's',
-                        title : 'S/36'
+                        title : 'S/36/1'
                     },
                     {
                         field : 'm',
-                        title : 'M/38'
+                        title : 'M/38/2'
                     },
                     {
                         field : 'l',
-                        title : 'L/40'
+                        title : 'L/40/3'
                     },
                     {
                         field : 'xl',
-                        title : 'XL/42'
+                        title : 'XL/42/4'
                     },
                     {
                         field : 'xxl',
-                        title : 'XXL/44'
+                        title : 'XXL/44/5'
                     },
                     {
                         field : 'xxxl',
-                        title : 'XXXL/46'
+                        title : 'XXXL/46/6'
                     },
                     {
                         field : 'ywshuliang',

@@ -39,7 +39,7 @@ public class CaijianbuController {
 
         switch (searchType) {
             case SEARCH_BY_KUANHAO:
-                queryResult = caijianbuService.selectByKuanhao(offset,limit,keyWord);
+                queryResult = caijianbuService.selectByKuanhao(offset,limit,keyWord,sortName,sortOrder);
                 break;
             case SEARCH_ALL:
                 queryResult = caijianbuService.selectAll(offset,limit,sortName,sortOrder);

@@ -51,7 +51,7 @@ public class HoudaobuController {
                 queryResult = houdaobutService.selectById(offset,limit,Integer.valueOf(keyWord));
                 break;
             case SELECT_BY_CAIJIANBU:
-                queryResult = houdaobuService.selectByCaijianbu(offset,limit,keyWord);
+                queryResult = houdaobuService.selectByCaijianbu(offset,limit,keyWord,sortName,sortOrder);
                 break;
             default:
                 // do other thing

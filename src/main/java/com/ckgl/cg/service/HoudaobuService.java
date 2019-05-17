@@ -91,7 +91,7 @@ public class HoudaobuService {
         return resultSet;
     }
 
-    public Map<String, Object> selectByCaijianbu(int offset, int limit,String kuanhao) {
+    public Map<String, Object> selectByCaijianbu(int offset, int limit,String kuanhao,String sortName,String sortOrder) {
         Map<String, Object> resultSet = new HashMap<>();
         PageHelper.startPage(offset,limit);
         List<Map> Houdaobus = null;
@@ -102,14 +102,14 @@ public class HoudaobuService {
         try {
             if (isPagination) {
                 PageHelper.offsetPage(offset, limit);
-                Houdaobus = houdaobuMapper.selectByYewubu(kuanhao);
+                Houdaobus = houdaobuMapper.selectByYewubu(kuanhao,sortName,sortOrder);
                 if (Houdaobus != null) {
                     PageInfo<Map> pageInfo = new PageInfo<>(Houdaobus);
                     total = pageInfo.getTotal();
                 } else
                     Houdaobus = new ArrayList<>();
             } else {
-                Houdaobus = houdaobuMapper.selectByYewubu(kuanhao);
+                Houdaobus = houdaobuMapper.selectByYewubu(kuanhao,sortName,sortOrder);
                 if (Houdaobus != null)
                     total = Houdaobus.size();
                 else
