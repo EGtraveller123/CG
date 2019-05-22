@@ -172,7 +172,7 @@ function goodsListInit() {
                 dataType : 'json',
                 pagination : true,
                 pageNumber : 1,
-                pageSize : 5,
+                pageSize : 10,
                 pageList : [10],
                 clickToSelect : true
             });
@@ -353,7 +353,7 @@ function showCaiJian() {
                 dataType : 'json',
                 pagination : true,
                 pageNumber : 1,
-                pageSize : 5,
+                pageSize : 10,
                 pageList : [10],
                 clickToSelect : true
             });
@@ -622,7 +622,7 @@ function rowEditOperation(row) {
             dataType : 'json',
             pagination : true,
             pageNumber : 1,
-            pageSize : 5,
+            pageSize : 10,
             pageList : [10],
             clickToSelect : true
         }
@@ -675,7 +675,7 @@ function rowEditOperation(row) {
     //         dataType : 'json',
     //         pagination : true,
     //         pageNumber : 1,
-    //         pageSize : 5,
+    //         pageSize : 10,
     //         pageList : [ 5, 10, 25, 50, 100 ],
     //         clickToSelect : true
     //     }

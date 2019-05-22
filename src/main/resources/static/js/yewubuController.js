@@ -168,13 +168,13 @@ function customerListInit() {
                 sortOrder : 'desc',
                 queryParams : queryParams,
                 sidePagination : "server",
-                offset : 0,
-                limit : 5,
                 contentType: "application/x-www-form-urlencoded",
                 uniqueId: "id",
+                offset : 0,
+                limit : 10,
                 pagination : true,
                 pageNumber : 1,
-                pageSize : 5,
+                pageSize : 10,
                 pageList : [10],
                 clickToSelect : true
     });
@@ -238,7 +238,7 @@ function customerListInit() {
 //             dataType : 'json',
 //             pagination : true,
 //             pageNumber : 1,
-//             pageSize : 5,
+//             pageSize : 10,
 //             pageList : [ 5, 10, 25, 50, 100 ],
 //             clickToSelect : true
 //         }
@@ -291,7 +291,7 @@ function customerListInit() {
     //         dataType : 'json',
     //         pagination : true,
     //         pageNumber : 1,
-    //         pageSize : 5,
+    //         pageSize : 10,
     //         pageList : [ 5, 10, 25, 50, 100 ],
     //         clickToSelect : true
     //     }
