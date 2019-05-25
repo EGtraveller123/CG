@@ -6,7 +6,7 @@ var search_keyWord = "";
 var selectID;
 var data;
 
-$(function() {
+$(function () {
     optionAction();
     searchAction();
     goodsListInit();
@@ -17,13 +17,13 @@ $(function() {
 
 // 下拉框選擇動作
 function optionAction() {
-    $(".dropOption").click(function() {
+    $(".dropOption").click(function () {
         var type = "查询款号";
         $("#search_input").val("");
         if (type == "查询款号") {
             $("#search_input").attr("readOnly", "true");
             search_type_goods = "searchByKuanhao";
-        }  else {
+        } else {
             $("#search_input").removeAttr("readOnly");
         }
 
@@ -35,21 +35,21 @@ function optionAction() {
 function dateNow() {
     var date = new Date();
     var year = date.getFullYear(); //获取年
-    var month = date.getMonth()+1;//获取月
+    var month = date.getMonth() + 1;//获取月
     var day = date.getDate(); //获取当日
-    if(month<10){
-        month = "0"+ month;
+    if (month < 10) {
+        month = "0" + month;
     }
-    if(day<10){
+    if (day < 10) {
         day = "0" + day;
     }
-    var time = year+"-"+month+"-"+day; //组合时间   alert("当前日期："+time);
+    var time = year + "-" + month + "-" + day; //组合时间   alert("当前日期："+time);
     $('#cjriqi').val(time);
 }
 
 // 搜索动作
 function searchAction() {
-    $('#search_button').click(function() {
+    $('#search_button').click(function () {
         search_type_goods = "searchByKuanhao";
         search_keyWord = $('#search_input').val();
         tableRefresh();
@@ -59,12 +59,12 @@ function searchAction() {
 // 分页查询参数
 function queryParams(params) {
     var temp = {
-        limit : params.limit,
-        offset : params.offset,
-        searchType : search_type_goods,
-        keyWord : search_keyWord,
+        limit: params.limit,
+        offset: params.offset,
+        searchType: search_type_goods,
+        keyWord: search_keyWord,
         sortOrder: params.order,//排序
-        sortName:params.sort//排序字段
+        sortName: params.sort//排序字段
     }
     return temp;
 }
@@ -74,57 +74,57 @@ function goodsListInit() {
     $('#goodsList')
         .bootstrapTable(
             {
-                columns : [
+                columns: [
                     {
-                        field : 'id',
-                        title : 'ID',
+                        field: 'id',
+                        title: 'ID',
                         sortable: true
                     },
                     {
-                        field : 'kuanhao',
-                        title : '款号',
-                        width : "250px",
-                        halign :"center",
-                        align : "center"
+                        field: 'kuanhao',
+                        title: '款号',
+                        width: "250px",
+                        halign: "center",
+                        align: "center"
                     },
                     {
-                        field : 'yanse',
-                        title : '颜色',
-                        width : "100px",
-                        halign :"center",
-                        align : "center",
-                        sortable : true
+                        field: 'yanse',
+                        title: '颜色',
+                        width: "100px",
+                        halign: "center",
+                        align: "center",
+                        sortable: true
                     },
                     {
-                        field : 'ywbshuliang',
-                        title : '业务数量',
-                        width : "100px",
-                        halign :"center",
-                        align : "center"
+                        field: 'ywbshuliang',
+                        title: '业务数量',
+                        width: "100px",
+                        halign: "center",
+                        align: "center"
                     },
                     {
-                        field : 'cjzonghe',
-                        title : '裁剪总和',
-                        halign :"center",
-                        align : "center"
+                        field: 'cjzonghe',
+                        title: '裁剪总和',
+                        halign: "center",
+                        align: "center"
                     },
                     {
-                        field : 'operation',
-                        title : '操作',
-                        halign :"center",
-                        align : "center",
-                        formatter : function(value, row, index) {
+                        field: 'operation',
+                        title: '操作',
+                        halign: "center",
+                        align: "center",
+                        formatter: function (value, row, index) {
                             var s = '<button class="btn btn-info" id="moredetail" type="button" style="padding-left: 40px;padding-right: 40px"><span>查看详情</span></button>';
                             var sd = '<button class="btn btn-primary" id="ywLinkcj" type="button" style="margin-left: 20px;padding-left: 20px;padding-right: 20px"><span>比较业务部数量</span></button>';
                             var de = '<button class="btn btn-success" id="myModalLabel" type="button" style="margin-left: 20px;padding-left: 40px;padding-right: 40px"><span>添加详情</span></button>';
                             // var d = '<button class="btn btn-danger btn-sm delete"><span>删除</span></button>';
                             // var fun = '';
-                            return s + ' ' + sd + ' ' + de  ;
+                            return s + ' ' + sd + ' ' + de;
                         },
-                        events : {
+                        events: {
                             // 操作列中编辑按钮的动作
                             'click #moredetail': function (e, value,
-                                                     row, index) {
+                                                           row, index) {
                                 selectID = row.id;
                                 search_keyWord = selectID;
                                 search_type_goods = "findByKuanhaoYanse";
@@ -132,7 +132,7 @@ function goodsListInit() {
                                 infotableRefresh();
                             },
                             'click #ywLinkcj': function (e, value,
-                                                     row, index) {
+                                                         row, index) {
                                 selectID = row.id;
                                 search_keyWord = selectID;
                                 search_type_goods = "findByKuanhao";
@@ -140,7 +140,7 @@ function goodsListInit() {
                                 detailTableRefresh();
                             },
                             'click #myModalLabel': function (e, value,
-                                                     row, index) {
+                                                             row, index) {
                                 selectID = row.kuanhao;
                                 search_keyWord = selectID;
                                 addGoodsAction(row);
@@ -154,227 +154,227 @@ function goodsListInit() {
                             // }
                         }
                     }],
-                url : 'all',
-                onLoadSuccess:function(json){
-                    $("#goodsList").bootstrapTable('load',json);
+                url: 'all',
+                onLoadSuccess: function (json) {
+                    $("#goodsList").bootstrapTable('load', json);
                 },
-                onLoadError:function(status){
+                onLoadError: function (status) {
                     handleAjaxError(status);
                 },
 
-                sortName : 'id',
-                sortOrder : 'desc',
-                method : 'GET',
-                locale : 'zh-CN',
-                queryParams : queryParams,
-                sidePagination : "server",
+                sortName: 'id',
+                sortOrder: 'desc',
+                method: 'GET',
+                locale: 'zh-CN',
+                queryParams: queryParams,
+                sidePagination: "server",
                 contentType: "application/x-www-form-urlencoded",
-                dataType : 'json',
-                pagination : true,
-                pageNumber : 1,
-                pageSize : 10,
-                pageList : [10],
-                clickToSelect : true
+                dataType: 'json',
+                pagination: true,
+                pageNumber: 1,
+                pageSize: 10,
+                pageList: [10],
+                clickToSelect: true
             });
 }
 
 function showYeWu(row) {
     $('#show_modal').modal("show");
     $('#show_modal').modal({backdrop: 'static', keyboard: false});
-    $('#show_modal_submit').click(function(){
+    $('#show_modal_submit').click(function () {
         $('#show_modal').modal("hide");
         search_type_goods = "searchAll";
 
-        });
+    });
     $('#showdetail').bootstrapTable({
-                columns : [
-                    {
-                        field : 'id',
-                        title : 'ID',
-                        width : '50px',
-                        halign :"center",
-                        align : "center"
-                    },
-                    {
-                        field : 'kuanhao',
-                        title : '款号',
-                        width : '250px',
-                        halign :"center",
-                        align : "center"
-                    },
-                    {
-                        field : 'yanse',
-                        title : '颜色',
-                        width : "100px",
-                        halign :"center",
-                        align : "center"
-                    },
-                    {
-                        field : 'cjriqi',
-                        title : '裁剪日期',
-                        width : '150px',
-                        halign :"center",
-                        align : "center"
-                    },
-                    {
-                        field : 'xs',
-                        title : '裁剪 XS/34/0',
-                        halign :"center",
-                        align : "center",
-                        cellStyle:function(value,row,index) {
-                            return {
-                                css: {
-                                    "font-weight":"bold"
-                                }
-                            }
+        columns: [
+            {
+                field: 'id',
+                title: 'ID',
+                width: '50px',
+                halign: "center",
+                align: "center"
+            },
+            {
+                field: 'kuanhao',
+                title: '款号',
+                width: '250px',
+                halign: "center",
+                align: "center"
+            },
+            {
+                field: 'yanse',
+                title: '颜色',
+                width: "100px",
+                halign: "center",
+                align: "center"
+            },
+            {
+                field: 'cjriqi',
+                title: '裁剪日期',
+                width: '150px',
+                halign: "center",
+                align: "center"
+            },
+            {
+                field: 'xs',
+                title: '裁剪 XS/34/0',
+                halign: "center",
+                align: "center",
+                cellStyle: function (value, row, index) {
+                    return {
+                        css: {
+                            "font-weight": "bold"
                         }
-                    },
-                    {
-                        field : 's',
-                        title : '裁剪 S/36/1',
-                        halign :"center",
-                        align : "center",
-                        cellStyle:function(value,row,index) {
-                            return {
-                                css: {
-                                    "font-weight":"bold"
-                                }
-                            }
+                    }
+                }
+            },
+            {
+                field: 's',
+                title: '裁剪 S/36/1',
+                halign: "center",
+                align: "center",
+                cellStyle: function (value, row, index) {
+                    return {
+                        css: {
+                            "font-weight": "bold"
                         }
-                    },
-                    {
-                        field : 'm',
-                        title : '裁剪 M/38/2',
-                        halign :"center",
-                        align : "center",
-                        cellStyle:function(value,row,index) {
-                            return {
-                                css: {
-                                    "font-weight":"bold"
-                                }
-                            }
+                    }
+                }
+            },
+            {
+                field: 'm',
+                title: '裁剪 M/38/2',
+                halign: "center",
+                align: "center",
+                cellStyle: function (value, row, index) {
+                    return {
+                        css: {
+                            "font-weight": "bold"
                         }
-                    },
-                    {
-                        field : 'l',
-                        title : '裁剪 L/40/3',
-                        halign :"center",
-                        align : "center",
-                        cellStyle:function(value,row,index) {
-                            return {
-                                css: {
-                                    "font-weight":"bold"
-                                }
-                            }
+                    }
+                }
+            },
+            {
+                field: 'l',
+                title: '裁剪 L/40/3',
+                halign: "center",
+                align: "center",
+                cellStyle: function (value, row, index) {
+                    return {
+                        css: {
+                            "font-weight": "bold"
                         }
-                    },
-                    {
-                        field : 'xl',
-                        title : '裁剪 XL/42/4',
-                        halign :"center",
-                        align : "center",
-                        cellStyle:function(value,row,index) {
-                            return {
-                                css: {
-                                    "font-weight":"bold"
-                                }
-                            }
+                    }
+                }
+            },
+            {
+                field: 'xl',
+                title: '裁剪 XL/42/4',
+                halign: "center",
+                align: "center",
+                cellStyle: function (value, row, index) {
+                    return {
+                        css: {
+                            "font-weight": "bold"
                         }
-                    },
-                    {
-                        field : 'xxl',
-                        title : '裁剪 XXL/44/5',
-                        halign :"center",
-                        align : "center",
-                        cellStyle:function(value,row,index) {
-                            return {
-                                css: {
-                                    "font-weight":"bold"
-                                }
-                            }
+                    }
+                }
+            },
+            {
+                field: 'xxl',
+                title: '裁剪 XXL/44/5',
+                halign: "center",
+                align: "center",
+                cellStyle: function (value, row, index) {
+                    return {
+                        css: {
+                            "font-weight": "bold"
                         }
-                    },
-                    {
-                        field : 'xxxl',
-                        title : '裁剪 XXXL/46/6',
-                        halign :"center",
-                        align : "center",
-                        cellStyle:function(value,row,index) {
-                            return {
-                                css: {
-                                    "font-weight":"bold"
-                                }
-                            }
+                    }
+                }
+            },
+            {
+                field: 'xxxl',
+                title: '裁剪 XXXL/46/6',
+                halign: "center",
+                align: "center",
+                cellStyle: function (value, row, index) {
+                    return {
+                        css: {
+                            "font-weight": "bold"
                         }
-                    },
-                    {
-                        field : 'operation',
-                        title : '操作',
-                        halign :"center",
-                        align : "center",
-                        formatter : function(value, row, index) {
-                           var d = '<button class="btn btn-success btn-sm delete"><span>修改</span></button>';
-                           return d  ;
-                        },
-                        events : {
-                            // 操作列中编辑按钮的动作
-                            'click .delete': function (e, value,
-                                                     row, index) {
-                                selectID = row.id;
-                                $('#kuanhao_edit').val(row.kuanhao);
-                                $('#cjriqi_edit').val(row.cjriqi);
-                                $('#yanse_edit').val(row.yanse);
-                                $('#xs_edit').val(row.xs);
-                                $('#s_edit').val(row.s);
-                                $('#m_edit').val(row.m);
-                                $('#l_edit').val(row.l);
-                                $('#xl_edit').val(row.xl);
-                                $('#xxl_edit').val(row.xxl);
-                                $('#xxxl_edit').val(row.xxxl);
-                                $('#edit_goods_modal').modal(
-                                    'show');
-                            }
-                        }
-                    }],
-        onLoadSuccess:function(json){
-            $("#showdetail").bootstrapTable('load',json);
+                    }
+                }
+            },
+            {
+                field: 'operation',
+                title: '操作',
+                halign: "center",
+                align: "center",
+                formatter: function (value, row, index) {
+                    var d = '<button class="btn btn-success btn-sm delete"><span>修改</span></button>';
+                    return d;
+                },
+                events: {
+                    // 操作列中编辑按钮的动作
+                    'click .delete': function (e, value,
+                                               row, index) {
+                        selectID = row.id;
+                        $('#kuanhao_edit').val(row.kuanhao);
+                        $('#cjriqi_edit').val(row.cjriqi);
+                        $('#yanse_edit').val(row.yanse);
+                        $('#xs_edit').val(row.xs);
+                        $('#s_edit').val(row.s);
+                        $('#m_edit').val(row.m);
+                        $('#l_edit').val(row.l);
+                        $('#xl_edit').val(row.xl);
+                        $('#xxl_edit').val(row.xxl);
+                        $('#xxxl_edit').val(row.xxxl);
+                        $('#edit_goods_modal').modal(
+                            'show');
+                    }
+                }
+            }],
+        onLoadSuccess: function (json) {
+            $("#showdetail").bootstrapTable('load', json);
         },
-        onLoadError:function(status){
+        onLoadError: function (status) {
             handleAjaxError(status);
         },
-                locale : 'zh-CN',
-                url : 'all',
-                sortName : 'cjriqi',
-                sortOrder : 'desc',
-                method : 'GET',
-                queryParams : queryParams,
-                sidePagination : "server",
-                contentType: "application/x-www-form-urlencoded; charset=UTF-8 ",
-                dataType : 'json',
-                pagination : true,
-                pageNumber : 1,
-                pageSize : 10,
-                pageList : [10],
-                clickToSelect : true
+        locale: 'zh-CN',
+        url: 'all',
+        sortName: 'cjriqi',
+        sortOrder: 'desc',
+        method: 'GET',
+        queryParams: queryParams,
+        sidePagination: "server",
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8 ",
+        dataType: 'json',
+        pagination: true,
+        pageNumber: 1,
+        pageSize: 10,
+        pageList: [10],
+        clickToSelect: true
     });
 }
 
 // 表格刷新
 function tableRefresh() {
     $('#goodsList').bootstrapTable('refresh', {
-        query : {}
+        query: {}
     });
 }
 
 function infotableRefresh() {
     $('#showdetail').bootstrapTable('refresh', {
-        query : {}
+        query: {}
     });
 }
 
 function detailTableRefresh() {
     $('#goodsdetail').bootstrapTable('refresh', {
-        query : {}
+        query: {}
     });
     // $('#sumGoods').bootstrapTable('refresh', {
     //     query : {}
@@ -386,246 +386,246 @@ function detailTableRefresh() {
 function rowEditOperation(row) {
     $('#edit_modal').modal("show");
     $('#edit_modal').modal({backdrop: 'static', keyboard: false});
-    $('#edit_modal_submit').click(function(){
+    $('#edit_modal_submit').click(function () {
         $('#edit_modal').modal("hide");
         search_type_goods = "searchAll";
-        });
+    });
     $('#goodsdetail').bootstrapTable(
         {
-            columns : [
+            columns: [
                 {
-                    field : 'ca_kuanhao',
-                    title : '款号',
-                    width : "250px",
-                    halign :"center",
-                    align : "center"
+                    field: 'ca_kuanhao',
+                    title: '款号',
+                    width: "250px",
+                    halign: "center",
+                    align: "center"
                     // valign : 'middle'
                     //sortable: true
                 },
                 {
-                    field : 'ca_yanse',
-                    title : '颜色',
-                    width : "100px",
-                    halign :"center",
-                    align : "center"
+                    field: 'ca_yanse',
+                    title: '颜色',
+                    width: "100px",
+                    halign: "center",
+                    align: "center"
                 },
                 {
-                    field : 'ye_xs',
-                    title : '业务 XS/34/0',
-                    width : "65px",
-                    halign :"center",
-                    align : "center",
-                    cellStyle:function(value,row,index) {
+                    field: 'ye_xs',
+                    title: '业务 XS/34/0',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
                         return {
                             css: {
-                                "font-weight":"bold",
-                                "color":"#ff1111"
+                                "font-weight": "bold",
+                                "color": "#ff1111"
                             }
                         }
                     }
                 },
                 {
-                    field : 'ca_xs',
-                    title : '裁剪 XS/34/0',
-                    width : "65px",
-                    halign :"center",
-                    align : "center",
-                    cellStyle:function(value,row,index) {
+                    field: 'ca_xs',
+                    title: '裁剪 XS/34/0',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
                         return {
                             css: {
-                                "font-weight":"bold"
+                                "font-weight": "bold"
                             }
                         }
                     }
                 },
                 {
-                    field : 'ye_s',
-                    title : '业务 S/36/1',
-                    width : "65px",
-                    halign :"center",
-                    align : "center",
-                    cellStyle:function(value,row,index) {
+                    field: 'ye_s',
+                    title: '业务 S/36/1',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
                         return {
                             css: {
-                                "font-weight":"bold",
-                                "color":"#ff1111"
+                                "font-weight": "bold",
+                                "color": "#ff1111"
                             }
                         }
                     }
                 },
                 {
-                    field : 'ca_s',
-                    title : '裁剪 S/36/1',
-                    width : "65px",
-                    halign :"center",
-                    align : "center",
-                    cellStyle:function(value,row,index) {
+                    field: 'ca_s',
+                    title: '裁剪 S/36/1',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
                         return {
                             css: {
-                                "font-weight":"bold"
+                                "font-weight": "bold"
                             }
                         }
                     }
                 },
                 {
-                    field : 'ye_m',
-                    title : '业务 M/38/2',
-                    width : "65px",
-                    halign :"center",
-                    align : "center",
-                    cellStyle:function(value,row,index) {
+                    field: 'ye_m',
+                    title: '业务 M/38/2',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
                         return {
                             css: {
-                                "font-weight":"bold",
-                                "color":"#ff1111"
+                                "font-weight": "bold",
+                                "color": "#ff1111"
                             }
                         }
                     }
                 },
                 {
-                    field : 'ca_m',
-                    title : '裁剪 M/38/2',
-                    width : "65px",
-                    halign :"center",
-                    align : "center",
-                    cellStyle:function(value,row,index) {
+                    field: 'ca_m',
+                    title: '裁剪 M/38/2',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
                         return {
                             css: {
-                                "font-weight":"bold"
+                                "font-weight": "bold"
                             }
                         }
                     }
                 },
                 {
-                    field : 'ye_l',
-                    title : '业务 L/40/3',
-                    width : "65px",
-                    halign :"center",
-                    align : "center",
-                    cellStyle:function(value,row,index) {
+                    field: 'ye_l',
+                    title: '业务 L/40/3',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
                         return {
                             css: {
-                                "font-weight":"bold",
-                                "color":"#ff1111"
+                                "font-weight": "bold",
+                                "color": "#ff1111"
                             }
                         }
                     }
                 },
                 {
-                    field : 'ca_l',
-                    title : '裁剪 L/40/3',
-                    width : "65px",
-                    halign :"center",
-                    align : "center",
-                    cellStyle:function(value,row,index) {
+                    field: 'ca_l',
+                    title: '裁剪 L/40/3',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
                         return {
                             css: {
-                                "font-weight":"bold"
+                                "font-weight": "bold"
                             }
                         }
                     }
                 },
                 {
-                    field : 'ye_xl',
-                    title : '业务 XL/42/4',
-                    width : "65px",
-                    halign :"center",
-                    align : "center",
-                    cellStyle:function(value,row,index) {
+                    field: 'ye_xl',
+                    title: '业务 XL/42/4',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
                         return {
                             css: {
-                                "font-weight":"bold",
-                                "color":"#ff1111"
+                                "font-weight": "bold",
+                                "color": "#ff1111"
                             }
                         }
                     }
                 },
                 {
-                    field : 'ca_xl',
-                    title : '裁剪 XL/42/4',
-                    width : "65px",
-                    halign :"center",
-                    align : "center",
-                    cellStyle:function(value,row,index) {
+                    field: 'ca_xl',
+                    title: '裁剪 XL/42/4',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
                         return {
                             css: {
-                                "font-weight":"bold"
+                                "font-weight": "bold"
                             }
                         }
                     }
                 },
                 {
-                    field : 'ye_xxl',
-                    title : '业务 XXL/44/5',
-                    width : "65px",
-                    halign :"center",
-                    align : "center",
-                    cellStyle:function(value,row,index) {
+                    field: 'ye_xxl',
+                    title: '业务 XXL/44/5',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
                         return {
                             css: {
-                                "font-weight":"bold",
-                                "color":"#ff1111"
+                                "font-weight": "bold",
+                                "color": "#ff1111"
                             }
                         }
                     }
                 },
                 {
-                    field : 'ca_xxl',
-                    title : '裁剪 XXL/44/5',
-                    width : "65px",
-                    halign :"center",
-                    align : "center",
-                    cellStyle:function(value,row,index) {
+                    field: 'ca_xxl',
+                    title: '裁剪 XXL/44/5',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
                         return {
                             css: {
-                                "font-weight":"bold"
+                                "font-weight": "bold"
                             }
                         }
                     }
                 },
                 {
-                    field : 'ye_xxxl',
-                    title : '业务 XXXL/46/6',
-                    width : "65px",
-                    halign :"center",
-                    align : "center",
-                    cellStyle:function(value,row,index) {
+                    field: 'ye_xxxl',
+                    title: '业务 XXXL/46/6',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
                         return {
                             css: {
-                                "font-weight":"bold",
-                                "color":"#ff1111"
+                                "font-weight": "bold",
+                                "color": "#ff1111"
                             }
                         }
                     }
                 },
                 {
-                    field : 'ca_xxxl',
-                    title : '裁剪 XXXL/46/6',
-                    width : "65px",
-                    halign :"center",
-                    align : "center",
-                    cellStyle:function(value,row,index) {
+                    field: 'ca_xxxl',
+                    title: '裁剪 XXXL/46/6',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
                         return {
                             css: {
-                                "font-weight":"bold"
+                                "font-weight": "bold"
                             }
                         }
                     }
                 }],
-            locale : 'zh-CN',
-            url : 'all',
-            sortName : 'kuanhao',
-            sortOrder : 'asc',
-            method : 'GET',
-            queryParams : queryParams,
-            sidePagination : "server",
+            locale: 'zh-CN',
+            url: 'all',
+            sortName: 'kuanhao',
+            sortOrder: 'asc',
+            method: 'GET',
+            queryParams: queryParams,
+            sidePagination: "server",
             contentType: "application/x-www-form-urlencoded",
-            dataType : 'json',
-            pagination : true,
-            pageNumber : 1,
-            pageSize : 10,
-            pageList : [10],
-            clickToSelect : true
+            dataType: 'json',
+            pagination: true,
+            pageNumber: 1,
+            pageSize: 10,
+            pageList: [10],
+            clickToSelect: true
         }
     );
     // $('#sumGoods').bootstrapTable(
@@ -700,9 +700,9 @@ function bootstrapValidatorInit() {
                     notEmpty: {
                         message: '日期不能为空'
                     },
-                    regexp : {
-                        regexp : '^[1-9]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$',
-                        message : '日期的格式不正确，正确格式为：2014-01-01'
+                    regexp: {
+                        regexp: '^[1-9]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$',
+                        message: '日期的格式不正确，正确格式为：2014-01-01'
                     }
                 }
             },
@@ -713,80 +713,80 @@ function bootstrapValidatorInit() {
                     }
                 }
             },
-            xs : {
-                validators : {
+            xs: {
+                validators: {
                     notEmpty: {
-                        message:'尺码不能为空，如没有请输入0'
+                        message: '尺码不能为空，如没有请输入0'
                     },
-                    regexp : {
-                        regexp : '^[0-9]*$',
-                        message : '只能输入0-9的整数，不能输入特殊字符'
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
-            s : {
-                validators : {
+            s: {
+                validators: {
                     notEmpty: {
-                        message:'尺码不能为空，如没有请输入0'
+                        message: '尺码不能为空，如没有请输入0'
                     },
-                    regexp : {
-                        regexp : '^[0-9]*$',
-                        message : '只能输入0-9的整数，不能输入特殊字符'
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
-            m : {
-                validators : {
+            m: {
+                validators: {
                     notEmpty: {
-                        message:'尺码不能为空，如没有请输入0'
+                        message: '尺码不能为空，如没有请输入0'
                     },
-                    regexp : {
-                        regexp : '^[0-9]*$',
-                        message : '只能输入0-9的整数，不能输入特殊字符'
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
-            l : {
-                validators : {
+            l: {
+                validators: {
                     notEmpty: {
-                        message:'尺码不能为空，如没有请输入0'
+                        message: '尺码不能为空，如没有请输入0'
                     },
-                    regexp : {
-                        regexp : '^[0-9]*$',
-                        message : '只能输入0-9的整数，不能输入特殊字符'
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
-            xl : {
-                validators : {
+            xl: {
+                validators: {
                     notEmpty: {
-                        message:'尺码不能为空，如没有请输入0'
+                        message: '尺码不能为空，如没有请输入0'
                     },
-                    regexp : {
-                        regexp : '^[0-9]*$',
-                        message : '只能输入0-9的整数，不能输入特殊字符'
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
-            xxl : {
-                validators : {
+            xxl: {
+                validators: {
                     notEmpty: {
-                        message:'尺码不能为空，如没有请输入0'
+                        message: '尺码不能为空，如没有请输入0'
                     },
-                    regexp : {
-                        regexp : '^[0-9]*$',
-                        message : '只能输入0-9的整数，不能输入特殊字符'
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
-            xxxl : {
-                validators : {
+            xxxl: {
+                validators: {
                     notEmpty: {
-                        message:'尺码不能为空，如没有请输入0'
+                        message: '尺码不能为空，如没有请输入0'
                     },
-                    regexp : {
-                        regexp : '^[0-9]*$',
-                        message : '只能输入0-9的整数，不能输入特殊字符'
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             }
@@ -795,32 +795,32 @@ function bootstrapValidatorInit() {
 }
 
 function addNew() {
-    $('#add_modal_submit').click(function() {
+    $('#add_modal_submit').click(function () {
         var msg = "操作失败";//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
         $("#goods_form").bootstrapValidator('validate');//提交验证
         if ($("#goods_form").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
             data = {
-                id : data.id,
-                kuanhao : data.kuanhao,
-                cjriqi : $('#cjriqi').val(),
-                yanse : data.yanse,
-                xs : $('#xs').val(),
-                s : $('#s').val(),
-                m : $('#m').val(),
-                l :$('#l').val(),
-                xl : $('#xl').val(),
-                xxl : $('#xxl').val(),
-                xxxl : $('#xxxl').val()
+                id: data.id,
+                kuanhao: data.kuanhao,
+                cjriqi: $('#cjriqi').val(),
+                yanse: data.yanse,
+                xs: $('#xs').val(),
+                s: $('#s').val(),
+                m: $('#m').val(),
+                l: $('#l').val(),
+                xl: $('#xl').val(),
+                xxl: $('#xxl').val(),
+                xxxl: $('#xxxl').val()
 
             }
             // ajax
             $.ajax({
-                type : "POST",
-                url : "insert",
-                dataType : "json",
-                contentType : "application/json",
-                data : JSON.stringify(data),
-                success : function(response) {
+                type: "POST",
+                url: "insert",
+                dataType: "json",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (response) {
                     $('#add_modal').modal("hide");
                     var type;
                     var append = '';
@@ -863,44 +863,44 @@ function addGoodsAction(row) {
     $('#add_modal').modal("show");
     dateNow();
     data = {
-        id : row.id,
-        kuanhao : row.kuanhao,
-        yanse : row.yanse
+        id: row.id,
+        kuanhao: row.kuanhao,
+        yanse: row.yanse
     }
 }
 
 // 修改裁剪信息
-function editCustomerAction(){
-    $('#edit_goods_modal_submit').click(function(){
+function editCustomerAction() {
+    $('#edit_goods_modal_submit').click(function () {
         var msg = "裁剪信息修改失败";
         data = {
-            id : selectID,
-            kuanhao : $('#kuanhao_edit').val(),
-            cjriqi : $('#cjriqi_edit').val(),
-            yanse : $('#yanse_edit').val(),
-            xs : $('#xs_edit').val(),
-            s : $('#s_edit').val(),
-            m : $('#m_edit').val(),
-            l :$('#l_edit').val(),
-            xl : $('#xl_edit').val(),
-            xxl : $('#xxl_edit').val(),
-            xxxl : $('#xxxl_edit').val()
+            id: selectID,
+            kuanhao: $('#kuanhao_edit').val(),
+            cjriqi: $('#cjriqi_edit').val(),
+            yanse: $('#yanse_edit').val(),
+            xs: $('#xs_edit').val(),
+            s: $('#s_edit').val(),
+            m: $('#m_edit').val(),
+            l: $('#l_edit').val(),
+            xl: $('#xl_edit').val(),
+            xxl: $('#xxl_edit').val(),
+            xxxl: $('#xxxl_edit').val()
         }
 
         // ajax
         $.ajax({
-            type : "POST",
-            url : "update",
-            dataType : "json",
-            contentType : "application/json",
-            data : JSON.stringify(data),
-            success : function(response){
+            type: "POST",
+            url: "update",
+            dataType: "json",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function (response) {
                 $('#edit_goods_modal').modal("hide");
-                if(response.result == "success"){
+                if (response.result == "success") {
 
                     msg = "裁剪信息修改成功";
 
-                }else{
+                } else {
 
                     msg = "裁剪信息修改失败";
 
@@ -910,7 +910,7 @@ function editCustomerAction(){
                 alert(msg);
                 infotableRefresh();
                 tableRefresh();
-            },error : function(xhr, textStatus, errorThrown){
+            }, error: function (xhr, textStatus, errorThrown) {
                 $('#edit_goods_modal').modal("hide");
                 // handler error
                 handleAjaxError(xhr.status)

@@ -24,6 +24,17 @@ public interface YewubuMapper {
     @Update("update yewubu set xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl},ywbshuliang=#{ywbshuliang} where kuanhao=#{kuanhao} and yanse=#{yanse}")
     boolean updateYewubu(Yewubu yewubu);
 
+    @Delete("delete from yewubu where kuanhao=#{kuanhao} and yanse=#{yanse}")
+    boolean deleteYewubu(String kuanhao,String yanse);
+
+    //求业务部数量的总和
+    @Select("select sum(ywbshuliang) from yewubu")
+    Yewubu selectYwbZonghe();
+
+    //根据款号求业务部数量的总和
+    @Select("select sum(ywbshuliang) from yewubu where kuanhao=#{kuanhao}")
+    Yewubu selectYebtZonghe(String kuanhao);
+
 //    @Select("select * from yewubu where kuanhao=#{kuanhao} and yanse=#{yanse}")
 //    Yewubu selectByKuanhao(String kuanhao,String yanse);
 }

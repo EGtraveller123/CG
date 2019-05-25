@@ -46,5 +46,12 @@ public interface HoudaobuMapper {
     @Update("update houdaobu set kuanhao=#{kuanhao},yanse=#{yanse},xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl},hdbshuliang=#{hdbshuliang} where kuanhao=#{kuanhao} and yanse=#{yanse}")
     boolean updateHoudaobu2(Houdaobu houdaobu);
 
+    //求后道部数量的总和
+    @Select("select sum(hdbshuliang) from houdaobu")
+    Houdaobu selectHdbZonghe();
+
+    //根据款号求后道部数量的总和
+    @Select("select sum(hdbshuliang) from houdaobu where kuanhao=#{kuanhao}")
+    Houdaobu selectHdbtZonghe(String kuanhao);
 
 }

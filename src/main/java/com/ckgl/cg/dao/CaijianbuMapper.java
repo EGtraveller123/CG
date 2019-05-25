@@ -39,4 +39,12 @@ public interface CaijianbuMapper {
     @Update("update caijianbu set xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl},cjbshuliang=#{cjbshuliang} where kuanhao=#{kuanhao} and yanse=#{yanse}")
     boolean updateCaijianbuByKuanhaoYanse(Caijianbu caijianbu);
 
+    //求裁剪部数量的总和
+    @Select("select sum(cjbshuliang) from caijianbu")
+    Caijianbu selectCjbZonghe();
+
+    //根据款号求裁剪部数量的总和
+    @Select("select sum(cjbshuliang) from caijianbu where kuanhao=#{kuanhao}")
+    Caijianbu selectCjbtZonghe(String kuanhao);
+
 }

@@ -1,7 +1,6 @@
 package com.ckgl.cg.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ckgl.cg.bean.Caijianbu;
 import com.ckgl.cg.bean.Yewubu;
 import com.ckgl.cg.bean.Yewubut;
 import com.ckgl.cg.dao.CaijianbuMapper;
@@ -77,10 +76,8 @@ public class YewubutService {
         JSONObject res = new JSONObject();
         Yewubu yewubu = new Yewubu();
         Yewubut yewubut = new Yewubut();
-        Caijianbu caijianbu = new Caijianbu();
         yewubut=yewubutMapper.selectByid(Integer.valueOf(jsonObject));
         yewubu=yewubuMapper.selectByKuanhaoYanse(yewubut.getKuanhao(),yewubut.getYanse());
-        caijianbu=caijianbuMapper.selectKuanhaoYanse(yewubu.getKuanhao(),yewubu.getYanse());
         if(yewubutMapper.deleteYewubut(Integer.valueOf(jsonObject))){
             yewubu.setXs(yewubu.getXs()-yewubut.getXs());
             yewubu.setS(yewubu.getS()-yewubut.getS());
@@ -91,15 +88,12 @@ public class YewubutService {
             yewubu.setXxxl(yewubu.getXxxl()-yewubut.getXxxl());
             yewubu.setYwbshuliang(yewubu.getXs()+yewubu.getS()+yewubu.getM()+yewubu.getL()+yewubu.getXl()+yewubu.getXxl()+yewubu.getXxxl());
             yewubuMapper.updateYewubu(yewubu);
+            if(yewubu.getXs()==0&&yewubu.getS()==0&&yewubu.getM()==0&&yewubu.getL()==0&&yewubu.getXl()==0&&yewubu.getXxl()==0&&yewubu.getXxxl()==0){
+                yewubuMapper.deleteYewubu(yewubu.getKuanhao(),yewubu.getYanse());
+            }
             res.put("result","success");
         }else{
             res.put("result","error");
-        }
-        if(caijianbu.getXs()==0&&caijianbu.getS()==0&&caijianbu.getM()==0&&caijianbu.getL()==0&&caijianbu.getXl()==0&&caijianbu.getXxl()==0&&caijianbu.getXxxl()==0){
-            caijianbuMapper.deleteCaijianbu(yewubut.getKuanhao(),yewubut.getYanse());
-            res.put("result","success");
-        }else{
-            res.put("result","success");
         }
         return res;
     }

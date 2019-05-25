@@ -30,28 +30,28 @@ public class HoudaobuController {
     private static final String SELECT_BY_CAIJIANBU = "selectByYewubu";
 
     @RequestMapping("/a")
-    public String jumpPage(){
+    public String jumpPage() {
         return "houdaobu";
     }
 
-    private Map<String, Object> query(String searchType, String keyWord,int offset, int limit,String sortName,String sortOrder) {
+    private Map<String, Object> query(String searchType, String keyWord, int offset, int limit, String sortName, String sortOrder) {
         Map<String, Object> queryResult = null;
 
         switch (searchType) {
             case SEARCH_BY_KUANHAO:
-                queryResult = houdaobuService.selectByKuanhao(offset,limit,keyWord,sortName,sortOrder);
+                queryResult = houdaobuService.selectByKuanhao(offset, limit, keyWord, sortName, sortOrder);
                 break;
             case SEARCH_ALL:
-                queryResult = houdaobuService.selectAll(offset,limit,sortName,sortOrder);
+                queryResult = houdaobuService.selectAll(offset, limit, sortName, sortOrder);
                 break;
             case FIND_BY_KUANHAO:
-                queryResult = houdaobutService.findById(offset,limit,keyWord);
+                queryResult = houdaobutService.findById(offset, limit, keyWord);
                 break;
             case FIND_BY_KUANHAO_YANSE:
-                queryResult = houdaobutService.selectById(offset,limit,Integer.valueOf(keyWord));
+                queryResult = houdaobutService.selectById(offset, limit, Integer.valueOf(keyWord));
                 break;
             case SELECT_BY_CAIJIANBU:
-                queryResult = houdaobuService.selectByCaijianbu(offset,limit,keyWord);
+                queryResult = houdaobuService.selectByCaijianbu(offset, limit, keyWord);
                 break;
             default:
                 // do other thing
@@ -73,7 +73,7 @@ public class HoudaobuController {
 
         // 获取后道部
         Houdaobu houdaobu = null;
-        Map<String, Object> queryResult = query(SEARCH_BY_KUANHAO, kuanhao,-1, -1,sortName,sortOrder);
+        Map<String, Object> queryResult = query(SEARCH_BY_KUANHAO, kuanhao, -1, -1, sortName, sortOrder);
         if (queryResult != null) {
             houdaobu = (Houdaobu) queryResult.get("data");
             if (houdaobu != null) {
@@ -106,7 +106,7 @@ public class HoudaobuController {
         Response responseContent = ResponseFactory.newInstance();
         List<Houdaobu> rows = null;
         long total = 0;
-        Map<String, Object> queryResult = query(searchType, keyWord,offset, limit,sortName,sortOrder);
+        Map<String, Object> queryResult = query(searchType, keyWord, offset, limit, sortName, sortOrder);
         if (queryResult != null) {
             rows = (List<Houdaobu>) queryResult.get("data");
             total = (long) queryResult.get("total");
@@ -119,14 +119,14 @@ public class HoudaobuController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/insert",method = RequestMethod.POST)
-    public JSONObject insert(@RequestBody JSONObject jsonObject){
+    @RequestMapping(value = "/insert", method = RequestMethod.POST)
+    public JSONObject insert(@RequestBody JSONObject jsonObject) {
         return houdaobutService.insert(jsonObject);
     }
 
     @ResponseBody
-    @RequestMapping(value = "/update",method = RequestMethod.POST)
-    public JSONObject update(@RequestBody JSONObject jsonObject){
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public JSONObject update(@RequestBody JSONObject jsonObject) {
         return houdaobuService.updateHoudaobu(jsonObject);
     }
 }
