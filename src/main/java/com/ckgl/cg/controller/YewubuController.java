@@ -28,6 +28,7 @@ public class YewubuController{
     private static final String SEARCH_BY_KEHU = "searchByKehu";
     private static final String SEARCH_ALL = "searchAll";
     private static final String NONE = "none";
+    private static final String SELECT_BY_YWBZONGHE = "selectByYwbZonghe";
 
     @RequestMapping("/a")
     public String jumpPage(){
@@ -50,6 +51,9 @@ public class YewubuController{
                 break;
             case NONE:
                 queryResult = yewubuService.selectAll(offset, limit,sortName,sortOrder);
+                break;
+            case SELECT_BY_YWBZONGHE:
+                queryResult = yewubuService.selectYwbZonghe();
                 break;
             default:
                 // do other thing

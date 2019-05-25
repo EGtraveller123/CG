@@ -166,4 +166,12 @@ public class HoudaobuService {
         return res;
     }
 
+    //后道部总和
+    public Map<String,Object> selectHdbZonghe(){
+        Map<String, Object> resultSet = new HashMap<>();
+        List<Map> Houdaobus = houdaobuMapper.selectHdbZonghe();
+        resultSet.put("data", Houdaobus);
+        return resultSet;
+    }
+
 }

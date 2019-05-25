@@ -28,6 +28,7 @@ public class HoudaobuController {
     private static final String FIND_BY_KUANHAO_YANSE = "findByKuanhaoYanse";
     private static final String FIND_BY_KUANHAO = "findByKuanhao";
     private static final String SELECT_BY_CAIJIANBU = "selectByYewubu";
+    private static final String SELECT_BY_HDBZONGHE = "selectByHdbZonghe";
 
     @RequestMapping("/a")
     public String jumpPage() {
@@ -52,6 +53,9 @@ public class HoudaobuController {
                 break;
             case SELECT_BY_CAIJIANBU:
                 queryResult = houdaobuService.selectByCaijianbu(offset, limit, keyWord);
+                break;
+            case SELECT_BY_HDBZONGHE:
+                queryResult = houdaobuService.selectHdbZonghe();
                 break;
             default:
                 // do other thing

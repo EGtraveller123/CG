@@ -41,10 +41,10 @@ public interface CaijianbuMapper {
 
     //求裁剪部数量的总和
     @Select("select sum(cjbshuliang) from caijianbu")
-    Caijianbu selectCjbZonghe();
+    List<Map> selectCjbZonghe();
 
     //根据款号求裁剪部数量的总和
     @Select("select sum(cjbshuliang) from caijianbu where kuanhao=#{kuanhao}")
-    Caijianbu selectCjbtZonghe(String kuanhao);
+    List<Map> selectCjbtZonghe(String kuanhao);
 
 }

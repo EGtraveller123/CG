@@ -48,10 +48,10 @@ public interface HoudaobuMapper {
 
     //求后道部数量的总和
     @Select("select sum(hdbshuliang) from houdaobu")
-    Houdaobu selectHdbZonghe();
+    List<Map> selectHdbZonghe();
 
     //根据款号求后道部数量的总和
     @Select("select sum(hdbshuliang) from houdaobu where kuanhao=#{kuanhao}")
-    Houdaobu selectHdbtZonghe(String kuanhao);
+    List<Map> selectHdbtZonghe(String kuanhao);
 
 }

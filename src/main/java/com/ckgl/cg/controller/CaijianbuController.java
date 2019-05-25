@@ -28,6 +28,7 @@ public class CaijianbuController {
     private static final String FIND_BY_KUANHAO_YANSE = "findByKuanhaoYanse";
     private static final String FIND_BY_KUANHAO = "findByKuanhao";
     private static final String SELECT_BY_YEWUBU = "selectByYewubu";
+    private static final String SELECT_BY_CJBZONGHE = "selectByCjbZonghe";
 
     @RequestMapping("/a")
     public String jumpPage(){
@@ -52,6 +53,9 @@ public class CaijianbuController {
                 break;
             case SELECT_BY_YEWUBU:
                 queryResult = caijianbuService.selectByYewubu(offset,limit,keyWord);
+                break;
+            case SELECT_BY_CJBZONGHE:
+                queryResult = caijianbuService.selectCjbZonghe();
                 break;
             default:
                 // do other thing

@@ -2,6 +2,7 @@ package com.ckgl.cg.service;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.ckgl.cg.dao.YewubuMapper;
 import com.ckgl.cg.dao.YewubutMapper;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.exceptions.PersistenceException;
@@ -21,6 +22,9 @@ public class YewubuService {
 
     @Autowired
     private YewubutMapper yewubutMapper;
+
+    @Autowired
+    private YewubuMapper yewubuMapper;
 
     public Map<String, Object> selectAll(int offset, int limit,String sortName,String sortOrder) {
         Map<String, Object> resultSet = new HashMap<>();
@@ -119,4 +123,11 @@ public class YewubuService {
         return resultSet;
     }
 
+    //业务部总和
+    public Map<String,Object> selectYwbZonghe(){
+        Map<String, Object> resultSet = new HashMap<>();
+        List<Map> Yewubus = yewubuMapper.selectYwbZonghe();
+        resultSet.put("data", Yewubus);
+        return resultSet;
+    }
 }

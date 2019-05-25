@@ -170,5 +170,13 @@ public class CaijianbuService {
         return res;
     }
 
+    //裁剪部总和
+    public Map<String,Object> selectCjbZonghe(){
+        Map<String, Object> resultSet = new HashMap<>();
+        List<Map> Caijianbus = caijianbuMapper.selectCjbZonghe();
+        resultSet.put("data", Caijianbus);
+        return resultSet;
+    }
+
 
 }
