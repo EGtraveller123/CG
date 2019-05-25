@@ -28,6 +28,7 @@ public class HoudaobuController {
     private static final String FIND_BY_KUANHAO_YANSE = "findByKuanhaoYanse";
     private static final String FIND_BY_KUANHAO = "findByKuanhao";
     private static final String SELECT_BY_CAIJIANBU = "selectByYewubu";
+    //后道部数量总和
     private static final String SELECT_BY_HDBZONGHE = "selectByHdbZonghe";
 
     @RequestMapping("/a")

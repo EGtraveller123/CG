@@ -28,6 +28,7 @@ public class YewubuController{
     private static final String SEARCH_BY_KEHU = "searchByKehu";
     private static final String SEARCH_ALL = "searchAll";
     private static final String NONE = "none";
+    //业务部数量总和
     private static final String SELECT_BY_YWBZONGHE = "selectByYwbZonghe";
 
     @RequestMapping("/a")

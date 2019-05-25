@@ -28,6 +28,7 @@ public class CaijianbuController {
     private static final String FIND_BY_KUANHAO_YANSE = "findByKuanhaoYanse";
     private static final String FIND_BY_KUANHAO = "findByKuanhao";
     private static final String SELECT_BY_YEWUBU = "selectByYewubu";
+    //裁剪部数量总和
     private static final String SELECT_BY_CJBZONGHE = "selectByCjbZonghe";
 
     @RequestMapping("/a")
