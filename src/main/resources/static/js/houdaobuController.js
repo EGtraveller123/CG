@@ -156,6 +156,7 @@ function goodsListInit() {
                 url : 'all',
                 onLoadSuccess:function(json){
                     $("#goodsList").bootstrapTable('load',json);
+                    sumZH(json);
                 },
                 onLoadError:function(status){
                     handleAjaxError(status);
@@ -681,6 +682,10 @@ function rowEditOperation(row) {
     //     }
     // );
 
+}
+
+function sumZH(response) {
+    $('#sumZH').text("后道部数量总和："+response.sum);
 }
 
 // 添加供应商模态框数据校验

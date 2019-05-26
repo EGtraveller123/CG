@@ -41,6 +41,10 @@ function optionAction() {
     })
 }
 
+function sumZH(response) {
+    $('#sumZH').text("业务部数量总和："+response.sum);
+}
+
 // 搜索动作
 function searchAction() {
     $('#search_button').click(function() {
@@ -158,6 +162,7 @@ function customerListInit() {
                 url : 'all',
                 onLoadSuccess:function(json){
                     $("#customerList").bootstrapTable('load',json);
+                    sumZH(json);
                 },
                 onLoadError:function(status){
                     handleAjaxError(status);
