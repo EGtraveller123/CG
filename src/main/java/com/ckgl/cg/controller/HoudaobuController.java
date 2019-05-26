@@ -114,14 +114,24 @@ public class HoudaobuController {
         int sum = 0;
         Map<String, Object> queryResult = query(searchType, keyWord, offset, limit, sortName, sortOrder);
         if (queryResult != null) {
-            rows = (List<Houdaobu>) queryResult.get("data");
-            total = (long) queryResult.get("total");
-            sum = (int) queryResult.get("sum");
+            if(searchType.equals(SEARCH_ALL)){
+                rows = (List<Houdaobu>) queryResult.get("data");
+                total = (long) queryResult.get("total");
+                sum = (int) queryResult.get("sum");
+            }else {
+                rows = (List<Houdaobu>) queryResult.get("data");
+                total = (long) queryResult.get("total");
+            }
         }
         // 设置 Response
-        responseContent.setCustomerInfo("rows", rows);
-        responseContent.setResponseTotal(total);
-        responseContent.setResponseSum(sum);
+        if(searchType.equals(SEARCH_ALL)){
+            responseContent.setCustomerInfo("rows", rows);
+            responseContent.setResponseTotal(total);
+            responseContent.setResponseSum(sum);
+        }else {
+            responseContent.setCustomerInfo("rows", rows);
+            responseContent.setResponseTotal(total);
+        }
         responseContent.setResponseResult(Response.RESPONSE_RESULT_SUCCESS);
         return responseContent.generateResponse();
     }

@@ -101,13 +101,23 @@ public class CaijianbuController {
         int sum = 0;
         Map<String, Object> queryResult = query(searchType, keyWord,offset, limit,sortName,soortOrder);
         if (queryResult != null) {
-            rows = (List<Caijianbu>) queryResult.get("data");
-            total = (long) queryResult.get("total");
-            sum = (int) queryResult.get("sum");
+            if(searchType.equals(SEARCH_ALL)){
+                rows = (List<Caijianbu>) queryResult.get("data");
+                total = (long) queryResult.get("total");
+                sum = (int) queryResult.get("sum");
+            }else {
+                rows = (List<Caijianbu>) queryResult.get("data");
+                total = (long) queryResult.get("total");
+            }
         }
-        responseContent.setCustomerInfo("rows", rows);
-        responseContent.setResponseTotal(total);
-        responseContent.setResponseSum(sum);
+        if(searchType.equals(SEARCH_ALL)){
+            responseContent.setCustomerInfo("rows", rows);
+            responseContent.setResponseTotal(total);
+            responseContent.setResponseSum(sum);
+        }else{
+            responseContent.setCustomerInfo("rows", rows);
+            responseContent.setResponseTotal(total);
+        }
         responseContent.setResponseResult(Response.RESPONSE_RESULT_SUCCESS);
         return responseContent.generateResponse();
     }
