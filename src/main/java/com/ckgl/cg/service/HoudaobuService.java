@@ -62,6 +62,7 @@ public class HoudaobuService {
         PageHelper.startPage(offset,limit);
         List<Map> houdaobus = null;
         long total = 0;
+        int sum = 0;
         boolean isPagination = true;
 
         if (offset < 0 || limit < 0)
@@ -86,9 +87,10 @@ public class HoudaobuService {
         } catch (PersistenceException e) {
             e.printStackTrace();
         }
-
+        sum = houdaobuMapper.selectHdbZonghe();
         resultSet.put("data", houdaobus);
         resultSet.put("total", total);
+        resultSet.put("sum",sum);
         return resultSet;
     }
 
@@ -166,12 +168,12 @@ public class HoudaobuService {
         return res;
     }
 
-    //后道部总和
-    public Map<String,Object> selectHdbZonghe(){
-        Map<String, Object> resultSet = new HashMap<>();
-        List<Map> Houdaobus = houdaobuMapper.selectHdbZonghe();
-        resultSet.put("data", Houdaobus);
-        return resultSet;
-    }
+//    //后道部总和
+//    public Map<String,Object> selectHdbZonghe(){
+//        Map<String, Object> resultSet = new HashMap<>();
+//        List<Map> Houdaobus = houdaobuMapper.selectHdbZonghe();
+//        resultSet.put("data", Houdaobus);
+//        return resultSet;
+//    }
 
 }

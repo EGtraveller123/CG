@@ -28,8 +28,8 @@ public class HoudaobuController {
     private static final String FIND_BY_KUANHAO_YANSE = "findByKuanhaoYanse";
     private static final String FIND_BY_KUANHAO = "findByKuanhao";
     private static final String SELECT_BY_CAIJIANBU = "selectByYewubu";
-    //后道部数量总和
-    private static final String SELECT_BY_HDBZONGHE = "selectByHdbZonghe";
+//    //后道部数量总和
+//    private static final String SELECT_BY_HDBZONGHE = "selectByHdbZonghe";
 
     @RequestMapping("/a")
     public String jumpPage() {
@@ -55,9 +55,9 @@ public class HoudaobuController {
             case SELECT_BY_CAIJIANBU:
                 queryResult = houdaobuService.selectByCaijianbu(offset, limit, keyWord);
                 break;
-            case SELECT_BY_HDBZONGHE:
-                queryResult = houdaobuService.selectHdbZonghe();
-                break;
+//            case SELECT_BY_HDBZONGHE:
+//                queryResult = houdaobuService.selectHdbZonghe();
+//                break;
             default:
                 // do other thing
                 break;
@@ -111,14 +111,17 @@ public class HoudaobuController {
         Response responseContent = ResponseFactory.newInstance();
         List<Houdaobu> rows = null;
         long total = 0;
+        int sum = 0;
         Map<String, Object> queryResult = query(searchType, keyWord, offset, limit, sortName, sortOrder);
         if (queryResult != null) {
             rows = (List<Houdaobu>) queryResult.get("data");
             total = (long) queryResult.get("total");
+            sum = (int) queryResult.get("sum");
         }
         // 设置 Response
         responseContent.setCustomerInfo("rows", rows);
         responseContent.setResponseTotal(total);
+        responseContent.setResponseSum(sum);
         responseContent.setResponseResult(Response.RESPONSE_RESULT_SUCCESS);
         return responseContent.generateResponse();
     }

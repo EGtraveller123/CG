@@ -28,8 +28,8 @@ public class CaijianbuController {
     private static final String FIND_BY_KUANHAO_YANSE = "findByKuanhaoYanse";
     private static final String FIND_BY_KUANHAO = "findByKuanhao";
     private static final String SELECT_BY_YEWUBU = "selectByYewubu";
-    //裁剪部数量总和
-    private static final String SELECT_BY_CJBZONGHE = "selectByCjbZonghe";
+//    //裁剪部数量总和
+//    private static final String SELECT_BY_CJBZONGHE = "selectByCjbZonghe";
 
     @RequestMapping("/a")
     public String jumpPage(){
@@ -55,9 +55,9 @@ public class CaijianbuController {
             case SELECT_BY_YEWUBU:
                 queryResult = caijianbuService.selectByYewubu(offset,limit,keyWord);
                 break;
-            case SELECT_BY_CJBZONGHE:
-                queryResult = caijianbuService.selectCjbZonghe();
-                break;
+//            case SELECT_BY_CJBZONGHE:
+//                queryResult = caijianbuService.selectCjbZonghe();
+//                break;
             default:
                 // do other thing
                 break;
@@ -98,13 +98,16 @@ public class CaijianbuController {
         Response responseContent = ResponseFactory.newInstance();
         List<Caijianbu> rows = null;
         long total = 0;
+        int sum = 0;
         Map<String, Object> queryResult = query(searchType, keyWord,offset, limit,sortName,soortOrder);
         if (queryResult != null) {
             rows = (List<Caijianbu>) queryResult.get("data");
             total = (long) queryResult.get("total");
+            sum = (int) queryResult.get("sum");
         }
         responseContent.setCustomerInfo("rows", rows);
         responseContent.setResponseTotal(total);
+        responseContent.setResponseSum(sum);
         responseContent.setResponseResult(Response.RESPONSE_RESULT_SUCCESS);
         return responseContent.generateResponse();
     }

@@ -20,6 +20,7 @@ public class Response {
     private static final String RESPONSE_MSG = "msg";
     private static final String RESPONSE_DATA = "data";
     private static final String RESPONSE_TOTAL = "total";
+    private static final String RESPONSE_SUM = "sum";
 
     // 存放响应中的信息
     private Map<String,Object> responseContent;
@@ -76,5 +77,13 @@ public class Response {
      */
     public Map<String, Object> generateResponse(){
         return this.responseContent;
+    }
+
+    /**
+     * 设置 response 中携带数据的数量，与 RESPONSE_SUM 配合使用
+     * @param sum 携带数据的数量
+     */
+    public void setResponseSum(int sum){
+        this.responseContent.put(Response.RESPONSE_SUM,sum);
     }
 }

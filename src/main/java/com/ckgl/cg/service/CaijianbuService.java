@@ -64,6 +64,7 @@ public class CaijianbuService {
         PageHelper.startPage(offset,limit);
         List<Map> Caijianbus = null;
         long total = 0;
+        int sum = 0;
         boolean isPagination = true;
 
         if (offset < 0 || limit < 0)
@@ -88,9 +89,10 @@ public class CaijianbuService {
         } catch (PersistenceException e) {
             e.printStackTrace();
         }
-
+        sum = caijianbuMapper.selectCjbZonghe();
         resultSet.put("data", Caijianbus);
         resultSet.put("total", total);
+        resultSet.put("sum", sum);
         return resultSet;
     }
 
@@ -169,14 +171,14 @@ public class CaijianbuService {
         }
         return res;
     }
-
-    //裁剪部总和
-    public Map<String,Object> selectCjbZonghe(){
-        Map<String, Object> resultSet = new HashMap<>();
-        List<Map> Caijianbus = caijianbuMapper.selectCjbZonghe();
-        resultSet.put("data", Caijianbus);
-        return resultSet;
-    }
+//
+//    //裁剪部总和
+//    public Map<String,Object> selectCjbZonghe(){
+//        Map<String, Object> resultSet = new HashMap<>();
+//        List<Map> Caijianbus = caijianbuMapper.selectCjbZonghe();
+//        resultSet.put("data", Caijianbus);
+//        return resultSet;
+//    }
 
 
 }

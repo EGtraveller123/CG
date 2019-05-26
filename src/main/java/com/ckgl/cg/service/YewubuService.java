@@ -31,6 +31,7 @@ public class YewubuService {
         PageHelper.startPage(offset,limit);
         List<Map> yewubuts = null;
         long total = 0;
+        int sum = 0;
         boolean isPagination = true;
         if (offset < 0 || limit < 0)
             isPagination = false;
@@ -54,8 +55,10 @@ public class YewubuService {
         } catch (PersistenceException e) {
             e.printStackTrace();
         }
+        sum = yewubuMapper.selectYwbZonghe();
         resultSet.put("data", yewubuts);
         resultSet.put("total", total);
+        resultSet.put("sum",sum);
         return resultSet;
     }
 
@@ -123,11 +126,11 @@ public class YewubuService {
         return resultSet;
     }
 
-    //业务部总和
-    public Map<String,Object> selectYwbZonghe(){
-        Map<String, Object> resultSet = new HashMap<>();
-        List<Map> Yewubus = yewubuMapper.selectYwbZonghe();
-        resultSet.put("data", Yewubus);
-        return resultSet;
-    }
+//    //业务部总和
+//    public Map<String,Object> selectYwbZonghe(){
+//        Map<String, Object> resultSet = new HashMap<>();
+//        List<Map> Yewubus = yewubuMapper.selectYwbZonghe();
+//        resultSet.put("data", Yewubus);
+//        return resultSet;
+//    }
 }

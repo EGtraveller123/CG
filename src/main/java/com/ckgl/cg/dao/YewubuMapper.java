@@ -29,7 +29,7 @@ public interface YewubuMapper {
 
     //求业务部数量的总和
     @Select("select sum(ywbshuliang) from yewubu")
-    List<Map> selectYwbZonghe();
+    int selectYwbZonghe();
 
     //根据款号求业务部数量的总和
     @Select("select sum(ywbshuliang) from yewubu where kuanhao=#{kuanhao}")

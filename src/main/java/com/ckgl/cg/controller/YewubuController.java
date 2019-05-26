@@ -28,8 +28,8 @@ public class YewubuController{
     private static final String SEARCH_BY_KEHU = "searchByKehu";
     private static final String SEARCH_ALL = "searchAll";
     private static final String NONE = "none";
-    //业务部数量总和
-    private static final String SELECT_BY_YWBZONGHE = "selectByYwbZonghe";
+//    //业务部数量总和
+//    private static final String SELECT_BY_YWBZONGHE = "selectByYwbZonghe";
 
     @RequestMapping("/a")
     public String jumpPage(){
@@ -53,9 +53,9 @@ public class YewubuController{
             case NONE:
                 queryResult = yewubuService.selectAll(offset, limit,sortName,sortOrder);
                 break;
-            case SELECT_BY_YWBZONGHE:
-                queryResult = yewubuService.selectYwbZonghe();
-                break;
+//            case SELECT_BY_YWBZONGHE:
+//                queryResult = yewubuService.selectYwbZonghe();
+//                break;
             default:
                 // do other thing
                 break;
@@ -75,13 +75,16 @@ public class YewubuController{
         Response responseContent = ResponseFactory.newInstance();
         List<Yewubu> rows = null;
         long total = 0;
+        int sum = 0;
         Map<String, Object> queryResult = query(searchType, keyWord, offset, limit,sortName,sortOrder);
         if (queryResult != null) {
             rows = (List<Yewubu>) queryResult.get("data");
             total = (long) queryResult.get("total");
+            sum = (int) queryResult.get("sum");
         }
         responseContent.setCustomerInfo("rows", rows);
         responseContent.setResponseTotal(total);
+        responseContent.setResponseSum(sum);
         responseContent.setResponseResult(Response.RESPONSE_RESULT_SUCCESS);
         return responseContent.generateResponse();
     }
