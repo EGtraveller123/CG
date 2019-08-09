@@ -974,6 +974,7 @@ function editCustomerAction() {
                 tableRefresh();
             }, error: function (xhr, textStatus, errorThrown) {
                 $('#edit_goods_modal').modal("hide");
+                tableRefresh();
                 // handler error
                 handleAjaxError(xhr.status)
             }
