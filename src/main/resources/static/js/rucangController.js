@@ -78,6 +78,12 @@ function goodsListInit() {
                         width : '100px'
                     },
                     {
+                        field : 'xxs',
+                        title : 'XXS/32/0',
+                        halign :"center",
+                        align : "center"
+                    },
+                    {
                         field : 'xs',
                         title : 'XS/34/0',
                         halign :"center",
@@ -322,6 +328,17 @@ function bootstrapValidatorInit() {
                     }
                 }
             },
+            xxs : {
+                validators : {
+                    notEmpty: {
+                        message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
+                    }
+                }
+            },
             xs : {
                 validators : {
                     notEmpty: {
@@ -433,6 +450,7 @@ function addGoodsAction() {
                 kuanhao : $('#kuanhao').val(),
                 jcriqi : $('#jcriqi').val(),
                 yanse : $('#yanse').val(),
+                xxs : $('#xxs').val(),
                 xs : $('#xs').val(),
                 s : $('#s').val(),
                 m : $('#m').val(),
@@ -470,6 +488,7 @@ function addGoodsAction() {
                     $('#kuanhao').val("");
                     dateNow();
                     $('#yanse').val("");
+                    $('#xxs').val("0");
                     $('#xs').val("0");
                     $('#s').val("0");
                     $('#m').val("0");

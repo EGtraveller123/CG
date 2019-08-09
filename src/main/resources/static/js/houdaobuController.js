@@ -208,6 +208,20 @@ function showCaiJian() {
                         align : "center"
                     },
                     {
+                        field : 'xxs',
+                        title : '后道XXS/32/0',
+                        width : "65px",
+                        halign :"center",
+                        align : "center",
+                        cellStyle:function(value,row,index) {
+                            return {
+                                css: {
+                                    "font-weight":"bold"
+                                }
+                            }
+                        }
+                    },
+                    {
                         field : 'xs',
                         title : '后道XS/34/0',
                         width : "65px",
@@ -328,6 +342,7 @@ function showCaiJian() {
                                 $('#kuanhao_edit').val(row.kuanhao);
                                 $('#hdriqi_edit').val(row.hdriqi);
                                 $('#yanse_edit').val(row.yanse);
+                                $('#xxs_edit').val(row.xxs);
                                 $('#xs_edit').val(row.xs);
                                 $('#s_edit').val(row.s);
                                 $('#m_edit').val(row.m);
@@ -406,6 +421,35 @@ function rowEditOperation(row) {
                     field : 'ho_yanse',
                     title : '颜色',
                     width : "100px"
+                },
+                {
+                    field : 'ca_xxs',
+                    title : '裁剪 XXS/32/0',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold",
+                                "color":"#ff1111"
+                            }
+                        }
+                    }
+                },
+                {
+                    field : 'ho_xxs',
+                    title : '后道 XXS/32/0',
+                    width : "65px",
+                    halign :"center",
+                    align : "center",
+                    cellStyle:function(value,row,index) {
+                        return {
+                            css: {
+                                "font-weight":"bold"
+                            }
+                        }
+                    }
                 },
                 {
                     field : 'ca_xs',
@@ -727,6 +771,13 @@ function bootstrapValidatorInit() {
                     }
                 }
             },
+            xxs : {
+                validators : {
+                    notEmpty: {
+                        message:'尺码不能为空，如没有请输入0'
+                    }
+                }
+            },
             xs : {
                 validators : {
                     notEmpty: {
@@ -790,6 +841,7 @@ function addNew() {
                 kuanhao : data.kuanhao,
                 hdriqi : $('#hdriqi').val(),
                 yanse : data.yanse,
+                xxs : $('#xxs').val(),
                 xs : $('#xs').val(),
                 s : $('#s').val(),
                 m : $('#m').val(),
@@ -823,6 +875,7 @@ function addNew() {
 
                     // reset
                     dateNow();
+                    $('#xxs').val("0");
                     $('#xs').val("0");
                     $('#s').val("0");
                     $('#m').val("0");
@@ -866,6 +919,7 @@ function editCustomerAction(){
             kuanhao : $('#kuanhao_edit').val(),
             hdriqi : $('#hdriqi_edit').val(),
             yanse : $('#yanse_edit').val(),
+            xxs : $('#xxs_edit').val(),
             xs : $('#xs_edit').val(),
             s : $('#s_edit').val(),
             m : $('#m_edit').val(),
