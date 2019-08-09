@@ -85,43 +85,43 @@ function goodsListInit() {
                     },
                     {
                         field : 'xs',
-                        title : 'XS/34/0',
+                        title : 'XS/34/1',
                         halign :"center",
                         align : "center"
                     },
                     {
                         field : 's',
-                        title : 'S/36/1',
+                        title : 'S/36/2',
                         halign :"center",
                         align : "center"
                     },
                     {
                         field : 'm',
-                        title : 'M/38/2',
+                        title : 'M/38/3',
                         halign :"center",
                         align : "center"
                     },
                     {
                         field : 'l',
-                        title : 'L/40/3',
+                        title : 'L/40/4',
                         halign :"center",
                         align : "center"
                     },
                     {
                         field : 'xl',
-                        title : 'XL/42/4',
+                        title : 'XL/42/5',
                         halign :"center",
                         align : "center"
                     },
                     {
                         field : 'xxl',
-                        title : 'XXL/44/5',
+                        title : 'XXL/44/6',
                         halign :"center",
                         align : "center"
                     },
                     {
                         field : 'xxxl',
-                        title : 'XXXL/46/6',
+                        title : 'XXXL/46/7',
                         halign :"center",
                         align : "center"
                     },

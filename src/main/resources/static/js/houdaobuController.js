@@ -223,7 +223,7 @@ function showCaiJian() {
                     },
                     {
                         field : 'xs',
-                        title : '后道XS/34/0',
+                        title : '后道XS/34/1',
                         width : "65px",
                         halign :"center",
                         align : "center",
@@ -237,7 +237,7 @@ function showCaiJian() {
                     },
                     {
                         field : 's',
-                        title : '后道 S/36/1',
+                        title : '后道 S/36/2',
                         width : "65px",
                         halign :"center",
                         align : "center",
@@ -251,7 +251,7 @@ function showCaiJian() {
                     },
                     {
                         field : 'm',
-                        title : '后道 M/38/2',
+                        title : '后道 M/38/3',
                         width : "65px",
                         halign :"center",
                         align : "center",
@@ -265,7 +265,7 @@ function showCaiJian() {
                     },
                     {
                         field : 'l',
-                        title : '后道 L/40/3',
+                        title : '后道 L/40/4',
                         width : "65px",
                         halign :"center",
                         align : "center",
@@ -279,7 +279,7 @@ function showCaiJian() {
                     },
                     {
                         field : 'xl',
-                        title : '后道 XL/42/4',
+                        title : '后道 XL/42/5',
                         width : "65px",
                         halign :"center",
                         align : "center",
@@ -293,7 +293,7 @@ function showCaiJian() {
                     },
                     {
                         field : 'xxl',
-                        title : '后道 XXL/44/5',
+                        title : '后道 XXL/44/6',
                         width : "65px",
                         halign :"center",
                         align : "center",
@@ -307,7 +307,7 @@ function showCaiJian() {
                     },
                     {
                         field : 'xxxl',
-                        title : '后道 XXXL/46/6',
+                        title : '后道 XXXL/46/7',
                         width : "65px",
                         halign :"center",
                         align : "center",
@@ -453,7 +453,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xs',
-                    title : '裁剪 XS/34/0',
+                    title : '裁剪 XS/34/1',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -468,7 +468,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_xs',
-                    title : '后道 XS/34/0',
+                    title : '后道 XS/34/1',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -482,7 +482,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_s',
-                    title : '裁剪 S/36/1',
+                    title : '裁剪 S/36/2',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -497,7 +497,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_s',
-                    title : '后道 S/36/1',
+                    title : '后道 S/36/2',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -511,7 +511,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_m',
-                    title : '裁剪 M/38/2',
+                    title : '裁剪 M/38/3',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -526,7 +526,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_m',
-                    title : '后道 M/38/2',
+                    title : '后道 M/38/3',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -540,7 +540,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_l',
-                    title : '裁剪 L/40/3',
+                    title : '裁剪 L/40/4',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -555,7 +555,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_l',
-                    title : '后道 L/40/3',
+                    title : '后道 L/40/4',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -569,7 +569,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xl',
-                    title : '裁剪 XL/42/4',
+                    title : '裁剪 XL/42/5',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -584,7 +584,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_xl',
-                    title : '后道 XL/42/4',
+                    title : '后道 XL/42/5',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -598,7 +598,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xxl',
-                    title : '裁剪 XXL/44/5',
+                    title : '裁剪 XXL/44/6',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -613,7 +613,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_xxl',
-                    title : '后道 XXL/44/5',
+                    title : '后道 XXL/44/6',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -627,7 +627,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ca_xxxl',
-                    title : '裁剪 XXXL/46/6',
+                    title : '裁剪 XXXL/46/7',
                     width : "65px",
                     halign :"center",
                     align : "center",
@@ -642,7 +642,7 @@ function rowEditOperation(row) {
                 },
                 {
                     field : 'ho_xxxl',
-                    title : '后道 XXXL/46/6',
+                    title : '后道 XXXL/46/7',
                     width : "65px",
                     halign :"center",
                     align : "center",
