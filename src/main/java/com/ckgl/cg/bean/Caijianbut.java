@@ -4,6 +4,7 @@ public class Caijianbut {
     private Integer id;
     private String kuanhao;
     private String yanse;
+    private Integer xxs;
     private Integer xs;
     private Integer s;
     private Integer m;
@@ -13,6 +14,13 @@ public class Caijianbut {
     private Integer xxxl;
     private String cjriqi;
 
+    public Integer getXxs() {
+        return xxs;
+    }
+
+    public void setXxs(Integer xxs) {
+        this.xxs = xxs;
+    }
 
     public Integer getId() {
         return id;

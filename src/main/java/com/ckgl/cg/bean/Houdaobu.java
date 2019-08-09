@@ -5,6 +5,7 @@ public class Houdaobu {
     private Integer caijianbuid;
     private String kuanhao;
     private String yanse;
+    private Integer xxs;
     private Integer xs;
     private Integer s;
     private Integer m;
@@ -13,6 +14,14 @@ public class Houdaobu {
     private Integer xxl;
     private Integer xxxl;
     private Integer hdbshuliang;
+
+    public Integer getXxs() {
+        return xxs;
+    }
+
+    public void setXxs(Integer xxs) {
+        this.xxs = xxs;
+    }
 
     public Integer getHdbshuliang() {
         return hdbshuliang;

@@ -139,6 +139,7 @@ public class HoudaobuService {
         houdaobut1.setYanse(houdaobut.getYanse());
         houdaobut1.setHdriqi(jsonObject.getString("hdriqi"));
         houdaobut1.setBeizhu(jsonObject.getString("beizhu"));
+        houdaobut1.setXxs(jsonObject.getInteger("xxs"));
         houdaobut1.setXs(jsonObject.getInteger("xs"));
         houdaobut1.setS(jsonObject.getInteger("s"));
         houdaobut1.setM(jsonObject.getInteger("m"));
@@ -148,6 +149,7 @@ public class HoudaobuService {
         houdaobut1.setXxxl(jsonObject.getInteger("xxxl"));
         houdaobu1.setKuanhao(houdaobu.getKuanhao());
         houdaobu1.setYanse(houdaobu.getYanse());
+        houdaobu1.setXxs(houdaobu.getXxs()-houdaobut.getXxs()+houdaobut1.getXxs());
         houdaobu1.setXs(houdaobu.getXs()-houdaobut.getXs()+houdaobut1.getXs());
         houdaobu1.setS(houdaobu.getS()-houdaobut.getS()+houdaobut1.getS());
         houdaobu1.setM(houdaobu.getM()-houdaobut.getM()+houdaobut1.getM());
@@ -155,9 +157,9 @@ public class HoudaobuService {
         houdaobu1.setXl(houdaobu.getXl()-houdaobut.getXl()+houdaobut1.getXl());
         houdaobu1.setXxl(houdaobu.getXxl()-houdaobut.getXxl()+houdaobut1.getXxl());
         houdaobu1.setXxxl(houdaobu.getXxxl()-houdaobut.getXxxl()+houdaobut1.getXxxl());
-        houdaobu1.setHdbshuliang(houdaobu.getHdbshuliang()-houdaobut.getXs()-houdaobut.getS()-houdaobut.getM()-houdaobut.getL()-
+        houdaobu1.setHdbshuliang(houdaobu.getHdbshuliang()-houdaobut.getXxs()-houdaobut.getXs()-houdaobut.getS()-houdaobut.getM()-houdaobut.getL()-
                 houdaobut.getXl()-houdaobut.getXl()-houdaobut.getXxl()-houdaobut.getXxxl()+
-                houdaobut1.getXs()+houdaobut1.getS()+houdaobut1.getM()+houdaobut1.getL()+houdaobut1.getXl()+
+                houdaobut1.getXxs()+houdaobut1.getXs()+houdaobut1.getS()+houdaobut1.getM()+houdaobut1.getL()+houdaobut1.getXl()+
                 houdaobut1.getXxl()+houdaobut1.getXxxl());
         if(houdaobuMapper.updateHoudaobut(houdaobut1)){
             houdaobuMapper.updateHoudaobu2(houdaobu1);

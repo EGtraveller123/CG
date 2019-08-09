@@ -54,6 +54,7 @@ public class JincangtService {
         Jincangt.setKuanhao(jsonObject.getString("kuanhao"));
         Jincangt.setYanse(jsonObject.getString("yanse"));
         Jincangt.setL(jsonObject.getInteger("l"));
+        Jincangt.setXxs(jsonObject.getInteger("xxs"));
         Jincangt.setXs(jsonObject.getInteger("xs"));
         Jincangt.setS(jsonObject.getInteger("s"));
         Jincangt.setM(jsonObject.getInteger("m"));
@@ -66,6 +67,7 @@ public class JincangtService {
             kucunt.setKuanhao(jsonObject.getString("kuanhao"));
             kucunt.setYanse(jsonObject.getString("yanse"));
             kucunt.setL(kucunt1.getL()+jsonObject.getInteger("l"));
+            kucunt.setXxs(kucunt1.getXxs()+jsonObject.getInteger("xxs"));
             kucunt.setXs(kucunt1.getXs()+jsonObject.getInteger("xs"));
             kucunt.setS(kucunt1.getS()+jsonObject.getInteger("s"));
             kucunt.setM(kucunt1.getM()+jsonObject.getInteger("m"));
@@ -81,6 +83,7 @@ public class JincangtService {
             kucunt.setKuanhao(jsonObject.getString("kuanhao"));
             kucunt.setYanse(jsonObject.getString("yanse"));
             kucunt.setL(jsonObject.getInteger("l"));
+            kucunt.setXxs(jsonObject.getInteger("xxs"));
             kucunt.setXs(jsonObject.getInteger("xs"));
             kucunt.setS(jsonObject.getInteger("s"));
             kucunt.setM(jsonObject.getInteger("m"));

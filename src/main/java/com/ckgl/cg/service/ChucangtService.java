@@ -55,6 +55,7 @@ public class ChucangtService {
             chucangt.setKuanhao(jsonObject.getString("kuanhao"));
             chucangt.setYanse(jsonObject.getString("yanse"));
             chucangt.setL(jsonObject.getInteger("l"));
+            chucangt.setXxs(jsonObject.getInteger("xxs"));
             chucangt.setXs(jsonObject.getInteger("xs"));
             chucangt.setS(jsonObject.getInteger("s"));
             chucangt.setM(jsonObject.getInteger("m"));
@@ -65,6 +66,7 @@ public class ChucangtService {
             if(chucangt.getL()<=kucunt1.getL()
                     &&chucangt.getM()<=kucunt1.getM()
                     &&chucangt.getS()<=kucunt1.getS()
+                    &&chucangt.getXxs()<=kucunt1.getXxs()
                     &&chucangt.getXs()<=kucunt1.getXs()
                     &&chucangt.getXl()<=kucunt1.getXl()
                     &&chucangt.getXxl()<=kucunt1.getXxl()
@@ -72,6 +74,7 @@ public class ChucangtService {
                 kucunt.setId(kucunt1.getId());
                 kucunt.setKuanhao(jsonObject.getString("kuanhao"));
                 kucunt.setYanse(jsonObject.getString("yanse"));
+                kucunt.setXxs(kucunt1.getXxs()-jsonObject.getInteger("xxs"));
                 kucunt.setXs(kucunt1.getXs()-jsonObject.getInteger("xs"));
                 kucunt.setS(kucunt1.getS()-jsonObject.getInteger("s"));
                 kucunt.setM(kucunt1.getM()-jsonObject.getInteger("m"));

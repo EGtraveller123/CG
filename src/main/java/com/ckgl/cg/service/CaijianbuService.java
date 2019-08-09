@@ -143,6 +143,7 @@ public class CaijianbuService {
         caijianbut1.setKuanhao(caijianbut.getKuanhao());
         caijianbut1.setYanse(caijianbut.getYanse());
         caijianbut1.setCjriqi(jsonObject.getString("cjriqi"));
+        caijianbut1.setXxs(jsonObject.getInteger("xxs"));
         caijianbut1.setXs(jsonObject.getInteger("xs"));
         caijianbut1.setS(jsonObject.getInteger("s"));
         caijianbut1.setM(jsonObject.getInteger("m"));
@@ -153,15 +154,15 @@ public class CaijianbuService {
         caijianbu1.setKuanhao(caijianbu.getKuanhao());
         caijianbu1.setYanse(caijianbu.getYanse());
         caijianbu1.setXs(caijianbu.getXs()-caijianbut.getXs()+caijianbut1.getXs());
-        caijianbu1.setS(caijianbu.getXs()-caijianbut.getXs()+caijianbut1.getS());
+        caijianbu1.setS(caijianbu.getS()-caijianbut.getS()+caijianbut1.getS());
         caijianbu1.setM(caijianbu.getM()-caijianbut.getM()+caijianbut1.getM());
         caijianbu1.setL(caijianbu.getL()-caijianbut.getL()+caijianbut1.getL());
         caijianbu1.setXl(caijianbu.getXl()-caijianbut.getXl()+caijianbut1.getXl());
         caijianbu1.setXxl(caijianbu.getXxl()-caijianbut.getXxl()+caijianbut1.getXxl());
         caijianbu1.setXxxl(caijianbu.getXxxl()-caijianbut.getXxxl()+caijianbut1.getXxxl());
-        caijianbu1.setCjbshuliang(caijianbu.getCjbshuliang() -
-                caijianbut.getXs() - caijianbut.getS() - caijianbut.getM() - caijianbut.getL() - caijianbut.getXl() -
-                caijianbut.getXxl() - caijianbut.getXxxl() + caijianbut1.getXs() + caijianbut1.getS() + caijianbut1.getM() +
+        caijianbu1.setCjbshuliang(caijianbu.getCjbshuliang() -caijianbut.getXs() -caijianbu.getXxs()-
+                caijianbut.getXs() - caijianbut.getXs() - caijianbut.getS() - caijianbut.getM() - caijianbut.getL() - caijianbut.getXl() -
+                caijianbut.getXxl() - caijianbut.getXxxl() + caijianbu1.getXxs()+caijianbut1.getXs() + caijianbut1.getS() + caijianbut1.getM() +
                 caijianbut1.getL() + caijianbut1.getXl() + caijianbut1.getXxl() + caijianbut1.getXxxl());
         if(caijianbutMapper.updateCaijianbut(caijianbut1)) {
             caijianbuMapper.updateCaijianbuByKuanhaoYanse(caijianbu1);

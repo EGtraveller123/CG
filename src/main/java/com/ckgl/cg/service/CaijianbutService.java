@@ -74,6 +74,7 @@ public class CaijianbutService {
         caijianbu1=caijianbuMapper.selectByid(jsonObject.getInteger("id"));
         caijianbut.setKuanhao(jsonObject.getString("kuanhao"));
         caijianbut.setYanse(jsonObject.getString("yanse"));
+        caijianbut.setXxs(jsonObject.getInteger("xxs"));
         caijianbut.setXs(jsonObject.getInteger("xs"));
         caijianbut.setS(jsonObject.getInteger("s"));
         caijianbut.setM(jsonObject.getInteger("m"));
@@ -92,6 +93,7 @@ public class CaijianbutService {
             caijianbu.setKuanhao(jsonObject.getString("kuanhao"));
             caijianbu.setYanse(jsonObject.getString("yanse"));
             caijianbu.setYewubuid(jsonObject.getInteger("id"));
+            caijianbu.setXxs(jsonObject.getInteger("xxs"));
             caijianbu.setXs(jsonObject.getInteger("xs"));
             caijianbu.setS(jsonObject.getInteger("s"));
             caijianbu.setM(jsonObject.getInteger("m"));
@@ -99,10 +101,11 @@ public class CaijianbutService {
             caijianbu.setXl(jsonObject.getInteger("xl"));
             caijianbu.setXxl(jsonObject.getInteger("xxl"));
             caijianbu.setXxxl(jsonObject.getInteger("xxxl"));
-            caijianbu.setCjbshuliang(jsonObject.getInteger("xs")+jsonObject.getInteger("s")+jsonObject.getInteger("m")+jsonObject.getInteger("l")+jsonObject.getInteger("xl")+jsonObject.getInteger("xxl")+jsonObject.getInteger("xxxl"));
+            caijianbu.setCjbshuliang(jsonObject.getInteger("xxs")+jsonObject.getInteger("xs")+jsonObject.getInteger("s")+jsonObject.getInteger("m")+jsonObject.getInteger("l")+jsonObject.getInteger("xl")+jsonObject.getInteger("xxl")+jsonObject.getInteger("xxxl"));
             caijianbuMapper.insertcaijianbu(caijianbu);
             res.put("result","success");
         }else{
+            caijianbu1.setXxs(caijianbu1.getXxs()+jsonObject.getInteger("xxs"));
             caijianbu1.setXs(caijianbu1.getXs()+jsonObject.getInteger("xs"));
             caijianbu1.setS(caijianbu1.getS()+jsonObject.getInteger("s"));
             caijianbu1.setM(caijianbu1.getM()+jsonObject.getInteger("m"));
@@ -110,7 +113,7 @@ public class CaijianbutService {
             caijianbu1.setXl(caijianbu1.getXl()+jsonObject.getInteger("xl"));
             caijianbu1.setXxl(caijianbu1.getXxl()+jsonObject.getInteger("xxl"));
             caijianbu1.setXxxl(caijianbu1.getXxxl()+jsonObject.getInteger("xxxl"));
-            caijianbu1.setCjbshuliang(caijianbu1.getCjbshuliang()+jsonObject.getInteger("xs")+jsonObject.getInteger("s")+jsonObject.getInteger("m")+jsonObject.getInteger("l")+jsonObject.getInteger("xl")+jsonObject.getInteger("xxl")+jsonObject.getInteger("xxxl"));
+            caijianbu1.setCjbshuliang(caijianbu1.getCjbshuliang()+jsonObject.getInteger("xxs")+jsonObject.getInteger("xs")+jsonObject.getInteger("s")+jsonObject.getInteger("m")+jsonObject.getInteger("l")+jsonObject.getInteger("xl")+jsonObject.getInteger("xxl")+jsonObject.getInteger("xxxl"));
             caijianbuMapper.updateCaijianbu(caijianbu1);
             res.put("result","success");
         }

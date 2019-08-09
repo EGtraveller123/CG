@@ -4,6 +4,16 @@ public class Kucunt {
     private Integer id;
     private String kuanhao;
     private String yanse;
+    private Integer xxs;
+
+    public Integer getXxs() {
+        return xxs;
+    }
+
+    public void setXxs(Integer xxs) {
+        this.xxs = xxs;
+    }
+
     private Integer xs;
     private Integer s;
     private Integer m;

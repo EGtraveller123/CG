@@ -74,6 +74,7 @@ public class HoudaobutService {
         houdaobu1=houdaobuMapper.selectByid(jsonObject.getInteger("id"));
         houdaobut.setKuanhao(jsonObject.getString("kuanhao"));
         houdaobut.setYanse(jsonObject.getString("yanse"));
+        houdaobut.setXxs(Integer.valueOf(jsonObject.getString("xxs")));
         houdaobut.setXs(Integer.valueOf(jsonObject.getString("xs")));
         houdaobut.setS(Integer.valueOf(jsonObject.getString("s")));
         houdaobut.setM(Integer.valueOf(jsonObject.getString("m")));
@@ -90,6 +91,7 @@ public class HoudaobutService {
             return res;
         }
         if(houdaobu1!=null){
+            houdaobu1.setXxs(houdaobu1.getXxs()+Integer.valueOf(jsonObject.getString("xxs")));
             houdaobu1.setXs(houdaobu1.getXs()+Integer.valueOf(jsonObject.getString("xs")));
             houdaobu1.setS(houdaobu1.getS()+Integer.valueOf(jsonObject.getString("s")));
             houdaobu1.setM(houdaobu1.getM()+Integer.valueOf(jsonObject.getString("m")));
@@ -97,13 +99,14 @@ public class HoudaobutService {
             houdaobu1.setXl(houdaobu1.getXl()+Integer.valueOf(jsonObject.getString("xl")));
             houdaobu1.setXxl(houdaobu1.getXxl()+Integer.valueOf(jsonObject.getString("xxl")));
             houdaobu1.setXxxl(houdaobu1.getXxxl()+Integer.valueOf(jsonObject.getString("xxxl")));
-            houdaobu1.setHdbshuliang(houdaobu1.getHdbshuliang()+Integer.valueOf(jsonObject.getString("xs"))+Integer.valueOf(jsonObject.getString("s"))+Integer.valueOf(jsonObject.getString("m"))+Integer.valueOf(jsonObject.getString("l"))+Integer.valueOf(jsonObject.getString("xl"))+Integer.valueOf(jsonObject.getString("xxl"))+Integer.valueOf(jsonObject.getString("xxxl")));
+            houdaobu1.setHdbshuliang(houdaobu1.getHdbshuliang()+Integer.valueOf(jsonObject.getString("xxs"))+Integer.valueOf(jsonObject.getString("xs"))+Integer.valueOf(jsonObject.getString("s"))+Integer.valueOf(jsonObject.getString("m"))+Integer.valueOf(jsonObject.getString("l"))+Integer.valueOf(jsonObject.getString("xl"))+Integer.valueOf(jsonObject.getString("xxl"))+Integer.valueOf(jsonObject.getString("xxxl")));
             houdaobuMapper.updateHoudaobu(houdaobu1);
             res.put("result","success");
         }else {
             houdaobu.setKuanhao(jsonObject.getString("kuanhao"));
             houdaobu.setYanse(jsonObject.getString("yanse"));
             houdaobu.setCaijianbuid(jsonObject.getInteger("id"));
+            houdaobu.setXxs(Integer.valueOf(jsonObject.getString("xxs")));
             houdaobu.setXs(Integer.valueOf(jsonObject.getString("xs")));
             houdaobu.setS(Integer.valueOf(jsonObject.getString("s")));
             houdaobu.setM(Integer.valueOf(jsonObject.getString("m")));
@@ -111,7 +114,7 @@ public class HoudaobutService {
             houdaobu.setXl(Integer.valueOf(jsonObject.getString("xl")));
             houdaobu.setXxl(Integer.valueOf(jsonObject.getString("xxl")));
             houdaobu.setXxxl(Integer.valueOf(jsonObject.getString("xxxl")));
-            houdaobu.setHdbshuliang(Integer.valueOf(jsonObject.getString("xs"))+Integer.valueOf(jsonObject.getString("s"))+Integer.valueOf(jsonObject.getString("m"))+Integer.valueOf(jsonObject.getString("l"))+Integer.valueOf(jsonObject.getString("xl"))+Integer.valueOf(jsonObject.getString("xxl"))+Integer.valueOf(jsonObject.getString("xxxl")));
+            houdaobu.setHdbshuliang(Integer.valueOf(jsonObject.getString("xxs"))+Integer.valueOf(jsonObject.getString("xs"))+Integer.valueOf(jsonObject.getString("s"))+Integer.valueOf(jsonObject.getString("m"))+Integer.valueOf(jsonObject.getString("l"))+Integer.valueOf(jsonObject.getString("xl"))+Integer.valueOf(jsonObject.getString("xxl"))+Integer.valueOf(jsonObject.getString("xxxl")));
             houdaobuMapper.insertHoudaobu(houdaobu);
             res.put("result","success");
         }

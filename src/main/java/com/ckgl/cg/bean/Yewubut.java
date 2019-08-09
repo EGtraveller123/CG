@@ -7,6 +7,16 @@ public class Yewubut {
     private String kehu;
     private String yanse;
     private String mianliao;
+    private Integer xxs;
+
+    public Integer getXxs() {
+        return xxs;
+    }
+
+    public void setXxs(Integer xxs) {
+        this.xxs = xxs;
+    }
+
     private Integer xs;
     private Integer s;
     private Integer m;

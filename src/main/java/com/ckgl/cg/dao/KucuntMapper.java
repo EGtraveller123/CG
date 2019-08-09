@@ -9,16 +9,16 @@ import java.util.List;
 @Component
 public interface KucuntMapper {
 
-    @Update("update kucun_t set xs=#{xs}, s=#{s}, m=#{m}, l=#{l}, xl=#{xl}, xxl=#{xxl}, xxxl=#{xxxl} where id = #{id}")
+    @Update("update kucun_t set xxs=#{xxs}, xs=#{xs}, s=#{s}, m=#{m}, l=#{l}, xl=#{xl}, xxl=#{xxl}, xxxl=#{xxxl} where id = #{id}")
     boolean updateKucunt(Kucunt kucunt);
 
-    @Insert("insert into kucun_t (kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl) values (#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")
+    @Insert("insert into kucun_t (kuanhao,yanse,xxs,xs,s,m,l,xl,xxl,xxxl) values (#{kuanhao},#{yanse},#{xxs},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl})")
     boolean insertKucunt(Kucunt kucunt);
 
     @Delete("delete from kucun_t where id = #{id}")
     boolean deleteKucunt(int id);
 
-    @Select("select sum(xs+s+m+l+xl+xxl+xxxl) from kucun_t where id=#{id}")
+    @Select("select sum(xxs+xs+s+m+l+xl+xxl+xxxl) from kucun_t where id=#{id}")
     int findKucuntSum(int id);
 
     @Select("select * from kucun_t")

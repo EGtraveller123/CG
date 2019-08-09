@@ -6,6 +6,7 @@ public class Caijianbu {
     private Integer yewubuid;
     private String kuanhao;
     private String yanse;
+    private Integer xxs;
     private Integer xs;
     private Integer s;
     private Integer m;
@@ -37,6 +38,14 @@ public class Caijianbu {
 
     public void setYanse(String yanse) {
         this.yanse = yanse;
+    }
+
+    public Integer getXxs() {
+        return xxs;
+    }
+
+    public void setXxs(Integer xxs) {
+        this.xxs = xxs;
     }
 
     public Integer getXs() {

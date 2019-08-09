@@ -15,13 +15,13 @@ import java.util.Map;
 @Component
 public interface YewubuMapper {
 
-    @Insert("insert into yewubu(kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,ywbshuliang) values (#{kuanhao},#{yanse},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{ywbshuliang})")
+    @Insert("insert into yewubu(kuanhao,yanse,xxs,xs,s,m,l,xl,xxl,xxxl,ywbshuliang) values (#{kuanhao},#{yanse},#{xxs},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{ywbshuliang})")
     boolean insertYewubu(Yewubu yewubu);
 
-    @Select("select kuanhao,yanse,xs,s,m,l,xl,xxl,xxxl,ywbshuliang,(select sum(xs+s+m+l+xl+xxl+xxxl) as cjzonghe from caijianbu_t where kuanhao=#{kuanhao} and yanse=#{yanse}) from yewubu where kuanhao=#{kuanhao} and yanse=#{yanse}")
+    @Select("select kuanhao,yanse,xxs,xs,s,m,l,xl,xxl,xxxl,ywbshuliang,(select sum(xxs+xs+s+m+l+xl+xxl+xxxl) as cjzonghe from caijianbu_t where kuanhao=#{kuanhao} and yanse=#{yanse}) from yewubu where kuanhao=#{kuanhao} and yanse=#{yanse}")
     Yewubu selectByKuanhaoYanse(String kuanhao,String yanse);
 
-    @Update("update yewubu set xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl},ywbshuliang=#{ywbshuliang} where kuanhao=#{kuanhao} and yanse=#{yanse}")
+    @Update("update yewubu set xxs=#{xxs},xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl},ywbshuliang=#{ywbshuliang} where kuanhao=#{kuanhao} and yanse=#{yanse}")
     boolean updateYewubu(Yewubu yewubu);
 
     @Delete("delete from yewubu where kuanhao=#{kuanhao} and yanse=#{yanse}")

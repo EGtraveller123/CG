@@ -24,6 +24,7 @@ public class Jincangt {
     private String yanse;
     private String beizhu;
     private String jcriqi;
+    private Integer xxs;
     private Integer xs;
     private Integer s;
     private Integer m;
@@ -32,22 +33,14 @@ public class Jincangt {
     private Integer xxl;
     private Integer xxxl;
 
-    @Override
-    public String toString() {
-        return "Jincangt{" +
-                "id=" + id +
-                ", kucunid='" + kucunid + '\'' +
-                ", beizhu='" + beizhu + '\'' +
-                ", jcriqi='" + jcriqi + '\'' +
-                ", xs=" + xs +
-                ", s=" + s +
-                ", m=" + m +
-                ", l=" + l +
-                ", xl=" + xl +
-                ", xxl=" + xxl +
-                ", xxxl=" + xxxl +
-                '}';
+    public Integer getXxs() {
+        return xxs;
     }
+
+    public void setXxs(Integer xxs) {
+        this.xxs = xxs;
+    }
+
 
     public Integer getId() {
         return id;
