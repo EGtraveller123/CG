@@ -96,6 +96,10 @@ function customerListInit() {
                         title : '出货日期'
                     },
                     {
+                        field : 'xxs',
+                        title : 'XXS/32/0'
+                    },
+                    {
                         field : 'xs',
                         title : 'XS/34/0'
                     },
@@ -320,6 +324,7 @@ function addGoodsAction() {
                 kehu : $('#kehu').val(),
                 mianliao : $('#mianliao').val(),
                 chriqi : $('#chriqi').val(),
+                xxs : $('#xxs').val(),
                 xs : $('#xs').val(),
                 s : $('#s').val(),
                 m : $('#m').val(),
@@ -353,6 +358,7 @@ function addGoodsAction() {
                     $('#yanse').val("");
                     $('#kehu').val("");
                     $('#mianliao').val("");
+                    $('#xxs').val("0");
                     $('#xs').val("0");
                     $('#s').val("0");
                     $('#m').val("0");
@@ -444,6 +450,17 @@ function bootstrapValidatorInitGoods() {
                     regexp : {
                         regexp : '^[1-9]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$',
                         message : '日期的格式不正确，正确格式为：2014-01-01'
+                    }
+                }
+            },
+            xxs : {
+                validators : {
+                    notEmpty: {
+                        message:'尺码不能为空，如没有请输入0'
+                    },
+                    regexp : {
+                        regexp : '^[0-9]*$',
+                        message : '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },

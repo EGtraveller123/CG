@@ -150,6 +150,10 @@ function rowEditOperation(row) {
                     title : '颜色'
                 },
                 {
+                    field : 'xxs',
+                    title : 'XXS/32/0'
+                },
+                {
                     field : 'xs',
                     title : 'XS/34/0'
                 },

@@ -218,6 +218,19 @@ function showYeWu(row) {
                 align: "center"
             },
             {
+                field: 'xxs',
+                title: '裁剪 XXS/32/0',
+                halign: "center",
+                align: "center",
+                cellStyle: function (value, row, index) {
+                    return {
+                        css: {
+                            "font-weight": "bold"
+                        }
+                    }
+                }
+            },
+            {
                 field: 'xs',
                 title: '裁剪 XS/34/0',
                 halign: "center",
@@ -325,6 +338,7 @@ function showYeWu(row) {
                         $('#kuanhao_edit').val(row.kuanhao);
                         $('#cjriqi_edit').val(row.cjriqi);
                         $('#yanse_edit').val(row.yanse);
+                        $('#xxs_edit').val(row.xxs);
                         $('#xs_edit').val(row.xs);
                         $('#s_edit').val(row.s);
                         $('#m_edit').val(row.m);
@@ -409,6 +423,35 @@ function rowEditOperation(row) {
                     width: "100px",
                     halign: "center",
                     align: "center"
+                },
+                {
+                    field: 'ye_xxs',
+                    title: '业务 XXS/32/0',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
+                        return {
+                            css: {
+                                "font-weight": "bold",
+                                "color": "#ff1111"
+                            }
+                        }
+                    }
+                },
+                {
+                    field: 'ca_xxs',
+                    title: '裁剪 XXS/32/0',
+                    width: "65px",
+                    halign: "center",
+                    align: "center",
+                    cellStyle: function (value, row, index) {
+                        return {
+                            css: {
+                                "font-weight": "bold"
+                            }
+                        }
+                    }
                 },
                 {
                     field: 'ye_xs',
@@ -718,6 +761,17 @@ function bootstrapValidatorInit() {
                     }
                 }
             },
+            xxs: {
+                validators: {
+                    notEmpty: {
+                        message: '尺码不能为空，如没有请输入0'
+                    },
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
+                    }
+                }
+            },
             xs: {
                 validators: {
                     notEmpty: {
@@ -809,6 +863,7 @@ function addNew() {
                 kuanhao: data.kuanhao,
                 cjriqi: $('#cjriqi').val(),
                 yanse: data.yanse,
+                xxs: $('#xxs').val(),
                 xs: $('#xs').val(),
                 s: $('#s').val(),
                 m: $('#m').val(),
@@ -841,6 +896,7 @@ function addNew() {
 
                     // reset
                     dateNow();
+                    $('#xxs').val("0");
                     $('#xs').val("0");
                     $('#s').val("0");
                     $('#m').val("0");
@@ -883,6 +939,7 @@ function editCustomerAction() {
             kuanhao: $('#kuanhao_edit').val(),
             cjriqi: $('#cjriqi_edit').val(),
             yanse: $('#yanse_edit').val(),
+            xxs: $('#xxs_edit').val(),
             xs: $('#xs_edit').val(),
             s: $('#s_edit').val(),
             m: $('#m_edit').val(),
