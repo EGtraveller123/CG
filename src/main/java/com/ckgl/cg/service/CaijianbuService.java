@@ -153,6 +153,7 @@ public class CaijianbuService {
         caijianbut1.setXxxl(jsonObject.getInteger("xxxl"));
         caijianbu1.setKuanhao(caijianbu.getKuanhao());
         caijianbu1.setYanse(caijianbu.getYanse());
+        caijianbu1.setXs(caijianbu.getXxs()-caijianbut.getXxs()+caijianbut1.getXxs());
         caijianbu1.setXs(caijianbu.getXs()-caijianbut.getXs()+caijianbut1.getXs());
         caijianbu1.setS(caijianbu.getS()-caijianbut.getS()+caijianbut1.getS());
         caijianbu1.setM(caijianbu.getM()-caijianbut.getM()+caijianbut1.getM());
