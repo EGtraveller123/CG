@@ -164,7 +164,7 @@ public class CaijianbuService {
         caijianbu1.setXxxl(caijianbu.getXxxl()-caijianbut.getXxxl()+caijianbut1.getXxxl());
         caijianbu1.setCjbshuliang(caijianbu.getCjbshuliang() -caijianbut.getXxs()-
                 caijianbut.getXs() - caijianbut.getS() - caijianbut.getM() - caijianbut.getL() - caijianbut.getXl() -
-                caijianbut.getXxl() - caijianbut.getXxxl() + caijianbu1.getXxs()+caijianbut1.getXs() + caijianbut1.getS() + caijianbut1.getM() +
+                caijianbut.getXxl() - caijianbut.getXxxl() + caijianbut1.getXxs()+caijianbut1.getXs() + caijianbut1.getS() + caijianbut1.getM() +
                 caijianbut1.getL() + caijianbut1.getXl() + caijianbut1.getXxl() + caijianbut1.getXxxl());
         if(caijianbutMapper.updateCaijianbut(caijianbut1)) {
             caijianbuMapper.updateCaijianbuByKuanhaoYanse(caijianbu1);
