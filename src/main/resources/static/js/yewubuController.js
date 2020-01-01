@@ -92,6 +92,10 @@ function customerListInit() {
                         sortable: true
                     },
                     {
+                        field : 'xdriqi',
+                        title : '下单日期'
+                    },
+                    {
                         field : 'chriqi',
                         title : '出货日期'
                     },
@@ -130,6 +134,10 @@ function customerListInit() {
                     {
                         field : 'ywshuliang',
                         title : '业务数量'
+                    },
+                    {
+                        field : 'beizhu',
+                        title : '备注'
                     },
                     {
                         field : 'operation',
@@ -322,7 +330,7 @@ function addGoodsAction() {
                 kuanhao : $('#kuanhaogoods').val(),
                 yanse : $('#yanse').val(),
                 kehu : $('#kehu').val(),
-                mianliao : $('#mianliao').val(),
+                xdriqi: $('#xdriqi').val(),
                 chriqi : $('#chriqi').val(),
                 xxs : $('#xxs').val(),
                 xs : $('#xs').val(),
@@ -331,7 +339,8 @@ function addGoodsAction() {
                 l :$('#l').val(),
                 xl : $('#xl').val(),
                 xxl : $('#xxl').val(),
-                xxxl : $('#xxxl').val()
+                xxxl : $('#xxxl').val(),
+                beizhu : $('#beizhu').val()
 
             }
             // ajax
@@ -366,6 +375,7 @@ function addGoodsAction() {
                     $('#xl').val("0");
                     $('#xxl').val("0");
                     $('#xxxl').val("0");
+                    $('#beizhu').val("无");
                     dateNow();
                     $('#goods_form').data("bootstrapValidator").resetForm();
                 },
@@ -435,10 +445,14 @@ function bootstrapValidatorInitGoods() {
                     }
                 }
             },
-            mianliao : {
+            xdriqi : {
                 validators : {
                     notEmpty : {
-                        message : '面料不能为空'
+                        message : '下单日期不能为空'
+                    },
+                    regexp : {
+                        regexp : '^[1-9]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$',
+                        message : '日期的格式不正确，正确格式为：2014-01-01'
                     }
                 }
             },
@@ -718,6 +732,7 @@ function dateNow() {
     }
     var time = year+"-"+month+"-"+day; //组合时间   alert("当前日期："+time);
     $('#chriqi').val(time);
+    $('#xdriqi').val(time);
 }
 
 // 添加客户信息
