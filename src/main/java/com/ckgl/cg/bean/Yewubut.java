@@ -6,7 +6,26 @@ public class Yewubut {
     private String kuanhao;
     private String kehu;
     private String yanse;
-    private String mianliao;
+//    private String mianliao;
+    private String xdriqi;
+    private String beizhu;
+
+    public String getBeizhu() {
+        return beizhu;
+    }
+
+    public void setBeizhu(String beizhu) {
+        this.beizhu = beizhu;
+    }
+
+    public String getXdriqi() {
+        return xdriqi;
+    }
+
+    public void setXdriqi(String xdriqi) {
+        this.xdriqi = xdriqi;
+    }
+
     private Integer xxs;
 
     public Integer getXxs() {
@@ -27,14 +46,14 @@ public class Yewubut {
     private String chriqi;
     private Integer ywshuliang;
 
-
-    public String getMianliao() {
-        return mianliao;
-    }
-
-    public void setMianliao(String mianliao) {
-        this.mianliao = mianliao;
-    }
+//
+//    public String getMianliao() {
+//        return mianliao;
+//    }
+//
+//    public void setMianliao(String mianliao) {
+//        this.mianliao = mianliao;
+//    }
 
     public String getChriqi() {
         return chriqi;

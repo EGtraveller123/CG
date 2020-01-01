@@ -31,7 +31,8 @@ public class YewubutService {
         yewubut.setKuanhao(jsonObject.getString("kuanhao"));
         yewubut.setKehu(jsonObject.getString("kehu"));
         yewubut.setYanse(jsonObject.getString("yanse"));
-        yewubut.setMianliao(jsonObject.getString("mianliao"));
+//        yewubut.setMianliao(jsonObject.getString("mianliao"));
+        yewubut.setXdriqi(jsonObject.getString("xdriqi"));
         yewubut.setXxs(jsonObject.getInteger("xxs"));
         yewubut.setXs(jsonObject.getInteger("xs"));
         yewubut.setS(jsonObject.getInteger("s"));
@@ -41,6 +42,7 @@ public class YewubutService {
         yewubut.setXxl(jsonObject.getInteger("xxl"));
         yewubut.setXxxl(jsonObject.getInteger("xxxl"));
         yewubut.setChriqi(jsonObject.getString("chriqi"));
+        yewubut.setBeizhu(jsonObject.getString("beizhu"));
         yewubut.setYwshuliang(jsonObject.getInteger("xxs")+jsonObject.getInteger("xs")+jsonObject.getInteger("s")+jsonObject.getInteger("m")+jsonObject.getInteger("l")+jsonObject.getInteger("xl")+jsonObject.getInteger("xxl")+jsonObject.getInteger("xxxl"));
         yewubutMapper.insertYewubut(yewubut);
         if(yewubu1==null){
