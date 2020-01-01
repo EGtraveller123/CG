@@ -322,6 +322,12 @@ function showYeWu(row) {
                 }
             },
             {
+                field : 'beizhu',
+                title : '备注',
+                halign :"center",
+                align : "center",
+            },
+            {
                 field: 'operation',
                 title: '操作',
                 halign: "center",
@@ -346,6 +352,7 @@ function showYeWu(row) {
                         $('#xl_edit').val(row.xl);
                         $('#xxl_edit').val(row.xxl);
                         $('#xxxl_edit').val(row.xxxl);
+                        $('#beizhu_edit').val(row.beizhu);
                         $('#edit_goods_modal').modal(
                             'show');
                     }
@@ -870,7 +877,8 @@ function addNew() {
                 l: $('#l').val(),
                 xl: $('#xl').val(),
                 xxl: $('#xxl').val(),
-                xxxl: $('#xxxl').val()
+                xxxl: $('#xxxl').val(),
+                beizhu : $('#beizhu').val()
 
             }
             // ajax
@@ -904,6 +912,7 @@ function addNew() {
                     $('#xl').val("0");
                     $('#xxl').val("0");
                     $('#xxxl').val("0");
+                    $('#beizhu').val("");
                     $('#goods_form').data("bootstrapValidator").resetForm();
 
                 },
@@ -946,7 +955,8 @@ function editCustomerAction() {
             l: $('#l_edit').val(),
             xl: $('#xl_edit').val(),
             xxl: $('#xxl_edit').val(),
-            xxxl: $('#xxxl_edit').val()
+            xxxl: $('#xxxl_edit').val(),
+            beizhu : $('#beizhu_edit').val()
         }
 
         // ajax
