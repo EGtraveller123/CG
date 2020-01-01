@@ -13,15 +13,15 @@ public class Caijianbut {
     private Integer xxl;
     private Integer xxxl;
     private String cjriqi;
-//    private String beizhu;
+    private String beizhu;
 
-//    public String getBeizhu() {
-//        return beizhu;
-//    }
-//
-//    public void setBeizhu(String beizhu) {
-//        this.beizhu = beizhu;
-//    }
+    public String getBeizhu() {
+        return beizhu;
+    }
+
+    public void setBeizhu(String beizhu) {
+        this.beizhu = beizhu;
+    }
 
     public Integer getXxs() {
         return xxs;

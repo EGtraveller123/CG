@@ -37,7 +37,7 @@ public interface HoudaobuMapper {
     @Select("select id,kuanhao,sum(cjbshuliang) as cjbshuliang from caijianbu where kuanhao=#{kuanhao}")
     List<Map> selectByYewubu(String kuanhao);
 
-    @Update("update houdaobu_t set kuanhao=#{kuanhao},yanse=#{yanse},hdriqi=#{hdriqi},xxs=#{xxs},xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl} where id=#{id}")
+    @Update("update houdaobu_t set kuanhao=#{kuanhao},yanse=#{yanse},beizhu=#{beizhu},hdriqi=#{hdriqi},xxs=#{xxs},xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl} where id=#{id}")
     boolean updateHoudaobut(Houdaobut houdaobut);
 
     @Select("select * from houdaobu_t where id=#{id}")
