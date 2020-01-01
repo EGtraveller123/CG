@@ -771,59 +771,91 @@ function bootstrapValidatorInit() {
                     }
                 }
             },
-            xxs : {
-                validators : {
+            xxs: {
+                validators: {
                     notEmpty: {
-                        message:'尺码不能为空，如没有请输入0'
+                        message: '尺码不能为空，如没有请输入0'
+                    },
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
             xs : {
-                validators : {
+                validators: {
                     notEmpty: {
-                        message:'尺码不能为空，如没有请输入0'
+                        message: '尺码不能为空，如没有请输入0'
+                    },
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
             s : {
-                validators : {
+                validators: {
                     notEmpty: {
-                        message:'尺码不能为空，如没有请输入0'
+                        message: '尺码不能为空，如没有请输入0'
+                    },
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
             m : {
-                validators : {
+                validators: {
                     notEmpty: {
-                        message:'尺码不能为空，如没有请输入0'
+                        message: '尺码不能为空，如没有请输入0'
+                    },
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
             l : {
-                validators : {
+                validators: {
                     notEmpty: {
-                        message:'尺码不能为空，如没有请输入0'
+                        message: '尺码不能为空，如没有请输入0'
+                    },
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
             xl : {
-                validators : {
+                validators: {
                     notEmpty: {
-                        message:'尺码不能为空，如没有请输入0'
+                        message: '尺码不能为空，如没有请输入0'
+                    },
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
             xxl : {
-                validators : {
+                validators: {
                     notEmpty: {
-                        message:'尺码不能为空，如没有请输入0'
+                        message: '尺码不能为空，如没有请输入0'
+                    },
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             },
             xxxl : {
-                validators : {
+                validators: {
                     notEmpty: {
-                        message:'尺码不能为空，如没有请输入0'
+                        message: '尺码不能为空，如没有请输入0'
+                    },
+                    regexp: {
+                        regexp: '^[0-9]*$',
+                        message: '只能输入0-9的整数，不能输入特殊字符'
                     }
                 }
             }
