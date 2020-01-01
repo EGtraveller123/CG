@@ -28,8 +28,8 @@ public interface CaijianbutMapper {
             "from yewubu a left join caijianbu b on a.id=b.yewubuid where a.id=#{id}")
     List<Map> findById(Integer id);
 
-    @Insert("insert into caijianbu_t(kuanhao,yanse,xxs,xs,s,m,l,xl,xxl,xxxl,cjriqi,xdriqi,beizhu) " +
-            "values(#{kuanhao},#{yanse},#{xxs},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{cjriqi},#{xdriqi},#{beizhu})")
+    @Insert("insert into caijianbu_t(kuanhao,yanse,xxs,xs,s,m,l,xl,xxl,xxxl,cjriqi) " +
+            "values(#{kuanhao},#{yanse},#{xxs},#{xs},#{s},#{m},#{l},#{xl},#{xxl},#{xxxl},#{cjriqi})")
     boolean insertCaijiant(Caijianbut caijianbut);
 
     @Update("update caijianbu_t set kuanhao=#{kuanhao},yanse=#{yanse},cjriqi=#{cjriqi},xxs=#{xxs},xs=#{xs},s=#{s},m=#{m},l=#{l},xl=#{xl},xxl=#{xxl},xxxl=#{xxxl} where id=#{id}")
