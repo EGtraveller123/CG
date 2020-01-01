@@ -83,6 +83,7 @@ public class CaijianbutService {
         caijianbut.setXxl(jsonObject.getInteger("xxl"));
         caijianbut.setXxxl(jsonObject.getInteger("xxxl"));
         caijianbut.setCjriqi(jsonObject.getString("cjriqi"));
+        caijianbut.setBeizhu(jsonObject.getString("beizhu"));
         if(caijianbutMapper.insertCaijiant(caijianbut)){
             res.put("result","success");
         }else {
