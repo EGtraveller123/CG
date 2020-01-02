@@ -366,7 +366,6 @@ function addGoodsAction() {
                     $('#kuanhaogoods').val("");
                     $('#yanse').val("");
                     $('#kehu').val("");
-                    $('#mianliao').val("");
                     $('#xxs').val("0");
                     $('#xs').val("0");
                     $('#s').val("0");
