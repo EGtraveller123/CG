@@ -45,21 +45,7 @@ public class YewubutService {
         yewubut.setBeizhu(jsonObject.getString("beizhu"));
         yewubut.setYwshuliang(jsonObject.getInteger("xxs")+jsonObject.getInteger("xs")+jsonObject.getInteger("s")+jsonObject.getInteger("m")+jsonObject.getInteger("l")+jsonObject.getInteger("xl")+jsonObject.getInteger("xxl")+jsonObject.getInteger("xxxl"));
         yewubutMapper.insertYewubut(yewubut);
-        if(yewubu1==null){
-            yewubu.setKuanhao(jsonObject.getString("kuanhao"));
-            yewubu.setYanse(jsonObject.getString("yanse"));
-            yewubu.setXxs(jsonObject.getInteger("xxs"));
-            yewubu.setXs(jsonObject.getInteger("xs"));
-            yewubu.setS(jsonObject.getInteger("s"));
-            yewubu.setM(jsonObject.getInteger("m"));
-            yewubu.setL(jsonObject.getInteger("l"));
-            yewubu.setXl(jsonObject.getInteger("xl"));
-            yewubu.setXxl(jsonObject.getInteger("xxl"));
-            yewubu.setXxxl(jsonObject.getInteger("xxxl"));
-            yewubu.setYwbshuliang(jsonObject.getInteger("xxs")+jsonObject.getInteger("xs")+jsonObject.getInteger("s")+jsonObject.getInteger("m")+jsonObject.getInteger("l")+jsonObject.getInteger("xl")+jsonObject.getInteger("xxl")+jsonObject.getInteger("xxxl"));
-            yewubuMapper.insertYewubu(yewubu);
-            res.put("result","success");
-        }else{
+        if(yewubu1!=null){
             yewubu.setKuanhao(yewubu1.getKuanhao());
             yewubu.setYanse(yewubu1.getYanse());
             yewubu.setXxs(yewubu1.getXxs()+jsonObject.getInteger("xxs"));
@@ -72,6 +58,20 @@ public class YewubutService {
             yewubu.setXxxl(yewubu1.getXxxl()+jsonObject.getInteger("xxxl"));
             yewubu.setYwbshuliang(yewubu1.getYwbshuliang()+jsonObject.getInteger("xxs")+jsonObject.getInteger("xs")+jsonObject.getInteger("s")+jsonObject.getInteger("m")+jsonObject.getInteger("l")+jsonObject.getInteger("xl")+jsonObject.getInteger("xxl")+jsonObject.getInteger("xxxl"));
             yewubuMapper.updateYewubu(yewubu);
+            res.put("result","success");
+        }else{
+            yewubu.setKuanhao(jsonObject.getString("kuanhao"));
+            yewubu.setYanse(jsonObject.getString("yanse"));
+            yewubu.setXxs(jsonObject.getInteger("xxs"));
+            yewubu.setXs(jsonObject.getInteger("xs"));
+            yewubu.setS(jsonObject.getInteger("s"));
+            yewubu.setM(jsonObject.getInteger("m"));
+            yewubu.setL(jsonObject.getInteger("l"));
+            yewubu.setXl(jsonObject.getInteger("xl"));
+            yewubu.setXxl(jsonObject.getInteger("xxl"));
+            yewubu.setXxxl(jsonObject.getInteger("xxxl"));
+            yewubu.setYwbshuliang(jsonObject.getInteger("xxs")+jsonObject.getInteger("xs")+jsonObject.getInteger("s")+jsonObject.getInteger("m")+jsonObject.getInteger("l")+jsonObject.getInteger("xl")+jsonObject.getInteger("xxl")+jsonObject.getInteger("xxxl"));
+            yewubuMapper.insertYewubu(yewubu);
             res.put("result","success");
         }
         return res;
