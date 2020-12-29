@@ -323,6 +323,8 @@ function addGoodsAction() {
         $('#add_goods_modal').modal("show");
     });
     $('#add_goods_modal_submit').click(function() {
+        var stamp = document.getElementById("add_goods_modal_submit");
+        stamp.disabled = true;
         var msg = "操作失败";//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
         $("#goods_form").bootstrapValidator('validate');//提交验证
         if ($("#goods_form").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
@@ -355,9 +357,11 @@ function addGoodsAction() {
 
                     if (response.result == "success") {
                         msg = "操作成功";
+                        stamp.disabled = false;
 
                     } else if (response.status != "success") {
                         msg = "操作失败";
+                        stamp.disabled = false;
 
                     }
                     alert(msg);
@@ -384,6 +388,8 @@ function addGoodsAction() {
                     handleAjaxError(xhr.status);
                 }
             });
+        }else {
+            stamp.disabled = false;
         }
     });
 }
